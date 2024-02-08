@@ -5,9 +5,10 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
-import com.revrobotics.CANSparkFlex;
 
+import edu.wpi.first.hal.CANAPITypes.CANDeviceType;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CANDevices;
 import frc.robot.Constants.IntakeConstants;
@@ -19,9 +20,23 @@ public class IntakeSys extends SubsystemBase {
         private final CANSparkFlex leaderRollerMtr;
         private final CANSparkFlex followerRollerMtr;
 
-        private final RelativeEncoder intakeEnc;
+        private final CANSparkFlex leaderPivotMtr;
+        private final CANSparkFlex followerPivotMtr;
 
-        private final SparkPIDController controller;
+        private final RelativeEncoder rollerEnc;
+
+        private final RelativeEncoder pivotEnc;
+
+        private final SparkPIDController pivotController;
+
+        private boolean rollersAreManual = false; 
+
+        /**
+     * Intake needs to be offset since the encoder can't output negative values.
+     * This value is an approximate midpoint between zero and its max value.
+     */
+    private final double offsetInches = 435.0;
+    
     /**
      * Constructs a new IntakeSys.
      * 
@@ -34,32 +49,62 @@ public class IntakeSys extends SubsystemBase {
         followerRollerMtr = new CANSparkFlex(CANDevices.followerRollerMtrId, MotorType.kBrushless);
 
         leaderRollerMtr.setSmartCurrentLimit(IntakeConstants.maxRollerCurrentAmps);
-            // Carl was here
+        
         leaderRollerMtr.setIdleMode(IdleMode.kBrake);
-
+        
         followerRollerMtr.follow(leaderRollerMtr, true);
 
-        intakeEnc = leaderRollerMtr.getEncoder();
+        
+        leaderPivotMtr = new CANSparkFlex(CANDevices.leaderPivotMtrId, MotorType.kBrushless);
+        followerPivotMtr = new CANSparkFlex(CANDevices.followerPivotMtrId, MotorType.kBrushless);
 
-        intakeEnc.setPosition(0);
+        leaderPivotMtr.getEncoder().setVelocityConversionFactor(IntakeConstants.pivotGearReduction);
+        followerPivotMtr.getEncoder().setVelocityConversionFactor(IntakeConstants.pivotGearReduction);
 
-        intakeEnc.setPositionConversionFactor(IntakeConstants.inchesPerEncRev);
+        leaderPivotMtr.setSmartCurrentLimit(IntakeConstants.maxPivotCurrentAmps);
+        
+        leaderPivotMtr.setIdleMode(IdleMode.kBrake);
 
-        //Change the Mtr to the pivot Mtr
-        controller = leaderRollerMtr.getPIDController();
+        followerPivotMtr.follow(leaderPivotMtr, true);
+        
 
-        controller.setP(IntakeConstants.KP);
-        controller.setD(IntakeConstants.KD);
+        rollerEnc = leaderRollerMtr.getEncoder();
+        rollerEnc.setPosition(0);
+        rollerEnc.setInverted(false);
+        rollerEnc.setPositionConversionFactor(IntakeConstants.inchesPerEncRev);
 
+        pivotEnc = leaderPivotMtr.getEncoder();
+        pivotEnc.setPosition(0);
+        pivotEnc.setInverted(false);
+        pivotEnc.setPositionConversionFactor(IntakeConstants.inchesPerEncRev);
 
+        pivotController = leaderPivotMtr.getPIDController();
+        pivotController.setP(IntakeConstants.KP);
+        pivotController.setD(IntakeConstants.KD);
+
+        pivotController.setIZone(0);
     }
 
     // This method will be called once per scheduler run
     @Override
     public void periodic() {
         
+        
     }
 
     // Put methods for controlling this subsystem here. Call these from Commands.
 
+public double getCurrentPosition() {
+        return pivotEnc.getPosition() - offsetInches;
+    }
+
+    public void manualRollerControl(double power) {
+        if(power != 0.0) {
+            rollersAreManual = true;
+            leaderRollerMtr.set(power);
+        }
+        else {
+            rollersAreManual = false;
+        }
+    }
 }

@@ -32,8 +32,13 @@ public class Constants {
         public static final int backRightSteerMtrId = 4;
         public static final int backRightDriveMtrId = 5;
 
+//Leader Mtr is Right Mtr and Follower Mtr is Left Mtr
         public static final int leaderRollerMtrId = 15;
         public static final int followerRollerMtrId = 16;
+
+//Leader Mtr is Right Mtr and Follower Mtr is Left Mtr
+        public static final int leaderPivotMtrId = 19;
+        public static final int followerPivotMtrId = 20;
 
         public static final int rightClimbMtrId = 17;
         public static final int leftClimbMtrId = 18;
@@ -157,6 +162,9 @@ public class Constants {
     public class IntakeConstants {
     
         public static final int maxRollerCurrentAmps = 40;
+        public static final int maxPivotCurrentAmps = 40;
+
+        public static final double pivotGearReduction = 45.0 / 1.0;
         
         public static final double inchesPerEncRev = 11;
 
@@ -164,9 +172,18 @@ public class Constants {
 
         public static final double KP = 0.01;
         public static final double KD = 0.01;
+
+        public static final double manualPower = 0.75;
     }
 
     public class ClimberConstants {
+
+        public static final int maxClimberCurrentAmps = 20;
+
+        public static final double inchesPerEncRev = 11;
+
+        public static final double rightClimbGearReduction = 12.0 / 1.0;
+        public static final double leftClimbGearReduction = 12.0 / 1.0;
 
     }
 }
