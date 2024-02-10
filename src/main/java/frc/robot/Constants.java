@@ -174,11 +174,15 @@ public class Constants {
         public static final double KD = 0.01;
 
         public static final double manualPower = 0.75;
+
+        public static final double rollerStartInches = 0.0;
     }
 
     public class ClimberConstants {
 
         public static final int maxClimberCurrentAmps = 20;
+
+        public static final double power = 0.42;
 
         public static final double inchesPerEncRev = 11;
 

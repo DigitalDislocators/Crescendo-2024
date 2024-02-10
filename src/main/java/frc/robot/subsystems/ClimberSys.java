@@ -5,6 +5,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CANDevices;
@@ -56,8 +57,38 @@ public class ClimberSys extends SubsystemBase {
     @Override
     public void periodic() {
         
+            if(power <= 0) {
+                rightClimbEnc.set(power);
+            }
+            else {
+                rightClimbEnc.set(0.0);
+            }
+    
+            if(power > 0) {
+                ClimberSys.climb(true);
+            }
+            else if(power < 0) {
+                ClimberSys.climb(false);
+            }
+    
+        }
+    
+        public void set(double power) {
+            rightClimbMtr.set(power);
+        }
+    
+        public void stop() {
+            rightClimbMtr.stopMotor();
+        }
+    
+        public double getClimberCounts() {
+            return -rightClimbMtr.getSelectedSensorPosition();
+        }
+    
+        public void zero() {
+            rightClimbMtr.setSelectedSensorPosition(0.0);
+        }
     }
 
     // Put methods for controlling this subsystem here. Call these from Commands.
 
-}

@@ -3,6 +3,9 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkFlex;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
+
+import java.util.function.DoubleSupplier;
+
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
@@ -29,14 +32,21 @@ public class IntakeSys extends SubsystemBase {
 
         private final SparkPIDController pivotController;
 
+        private double targetInches = 0.0;
+
+        private boolean pivotIsManual = false;
         private boolean rollersAreManual = false; 
+        private boolean rollersAreRelative = false;
+
+        private DoubleSupplier robotSpeedMetersPerSecond;
+        private double relativeSpeed = 0.0;
 
         /**
      * Intake needs to be offset since the encoder can't output negative values.
      * This value is an approximate midpoint between zero and its max value.
      */
     private final double offsetInches = 435.0;
-    
+
     /**
      * Constructs a new IntakeSys.
      * 
@@ -88,7 +98,17 @@ public class IntakeSys extends SubsystemBase {
     // This method will be called once per scheduler run
     @Override
     public void periodic() {
-        
+        if(!rollersAreManual) {
+            if(!pivotIsManual && getCurrentPosition() > IntakeConstants.rollerStartInches && targetInches == IntakeConstants.outInches) {
+                if(rollersAreRelative)
+                    setRPM((relativeSpeed - (robotSpeedMetersPerSecond.getAsDouble() * IntakeConstants.rollerRelativeSpeedFactor)) * IntakeConstants.driveMetersPerSecondToRollerRPM);
+                else
+                    setRPM(relativeSpeed * IntakeConstants.driveMetersPerSecondToRollerRPM);
+            }
+            else {
+                setRPM(0.0);
+            }
+        }
         
     }
 
