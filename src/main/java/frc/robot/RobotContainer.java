@@ -1,27 +1,50 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
+//import frc.robot.commands.IntakeCmd;
 import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.drivetrain.ArcadeDriveCmd;
 import frc.robot.subsystems.ExampleSys;
+import frc.robot.subsystems.IntakeSys;
 import frc.robot.subsystems.SwerveSys;
+import frc.robot.commands.InRoller;
+import frc.robot.commands.OutRoller;
+import frc.robot.commands.StopRollers;
+import frc.robot.commands.PivotManual;
 
 public class RobotContainer {
     
+
     // Initialize subsystems.
     private final SwerveSys swerveSys = new SwerveSys();
     private final ExampleSys exampleSys = new ExampleSys();
+    private final IntakeSys intakeSys = new IntakeSys();
 
     // Initialize joysticks.
-    private final CommandXboxController driverController = new CommandXboxController(ControllerConstants.driverGamepadPort);
+
+  private final XboxController driverController = new XboxController(ControllerConstants.driverGamepadPort);
+  private final XboxController operatorController = new XboxController(ControllerConstants.operatorGamepadPort);
+
+  private final JoystickButton operatorAButton = new JoystickButton(operatorController, 1);
+  private final JoystickButton operatorBButton = new JoystickButton(operatorController, 2);
+  private final JoystickButton operatorXButton = new JoystickButton(operatorController, 3);
+  private final JoystickButton operatorYButton = new JoystickButton(operatorController, 4);
+  private final JoystickButton operatorRightBumper = new JoystickButton(operatorController, 6);
+  private final JoystickButton operatorLeftBumper = new JoystickButton(operatorController, 5);
+  private final JoystickButton operatorLeftTriger = new JoystickButton(operatorController, 7);
+  private final JoystickButton operatorRightTriger = new JoystickButton(operatorController, 8);
 
     // Initialize auto selector.
     SendableChooser<Command> autoSelector = new SendableChooser<Command>();
@@ -34,6 +57,17 @@ public class RobotContainer {
         autoSelector.addOption("Example Auto", new ExampleAuto(swerveSys, exampleSys));
 
         configDriverBindings();
+        configOperatorsBindings();
+    }
+
+    private void configOperatorsBindings() {
+        intakeSys.setDefaultCommand(new Pi());
+    operatorRightTriger.onTrue(new InRoller(intakeSys)).onFalse(new StopRollers(intakeSys));
+    operatorLeftTriger.onTrue(new OutRoller(intakeSys)).onFalse(new StopRollers(intakeSys));
+    
+    
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'configOperatorsBindings'");
     }
 
     public void configDriverBindings() {
@@ -45,16 +79,14 @@ public class RobotContainer {
             true,
             swerveSys
         ));
-        
         // FIXME: Consider building simple commands this way instead of creating a whole file for them.
         // If you're more comfortable with it, you still can use the other way (i.e. new ResetHeadingCmd(swerveSys)).
         // Otherwise I would delete those simple commands just to keep things clean.
 
         // Start is the "three lines" button. Back is the "windows" button.
-        driverController.start().onTrue(Commands.runOnce(() -> swerveSys.resetHeading()));
+        
 
-        driverController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold)
-            .whileTrue(Commands.runOnce(() -> swerveSys.lock()));
+  
     }
 
     public Command getAutonomousCommand() {

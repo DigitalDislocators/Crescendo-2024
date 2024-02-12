@@ -23,7 +23,7 @@ public class ExampleAuto extends SequentialCommandGroup {
       // new SetTranslationCmd(new Translation2d(2.0, 2.0), swerveSys),
       new FollowTrajectoryCmd("Example Path 1", 0.1, swerveSys)
         .alongWith(new WaitUntilCommand(() -> swerveSys.getPose().getX() > 2.0))
-        .andThen(new ExampleCmd(exampleSys)),
+        .andThen(new PivotManual(exampleSys)),
       new WaitCommand(2.0),
       new FollowTrajectoryCmd("Example Path 2", 0.1, swerveSys)
     );

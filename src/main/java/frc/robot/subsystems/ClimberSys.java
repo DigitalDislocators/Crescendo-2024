@@ -1,94 +1,55 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
-import com.revrobotics.CANSparkBase.IdleMode;
-import com.revrobotics.CANSparkLowLevel.MotorType;
-
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CANDevices;
 import frc.robot.Constants.ClimberConstants;
+import frc.robot.Constants.ControllerConstants;
+
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkBase.IdleMode;
+import com.revrobotics.CANSparkBase.SoftLimitDirection;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+
+import edu.wpi.first.math.filter.SlewRateLimiter;
 
 public class ClimberSys extends SubsystemBase {
+  private final CANSparkMax leftClimber = new CANSparkMax(CANDevices.leftClimbMtrId, MotorType.kBrushless);
+  private final CANSparkMax rightClimber = new CANSparkMax(CANDevices.rightClimbMtrId, MotorType.kBrushless);
+  
+  private final SlewRateLimiter climberRateLimiter = new SlewRateLimiter(ClimberConstants.climberRateLimit);
 
-    // Declare actuators, sensors, and other variables here
+  public ClimberSys() {
+    //leftClimber.enableVoltageCompensation(DriveConstants.NOMINAL_VOLTAGE);
 
-        private final CANSparkMax rightClimbMtr;
-        private final CANSparkMax leftClimbMtr;
+    leftClimber.setIdleMode(IdleMode.kBrake);
+    rightClimber.setIdleMode(IdleMode.kBrake);
 
-        private RelativeEncoder rightClimbEnc;
+    leftClimber.setSoftLimit(SoftLimitDirection.kForward, ClimberConstants.climberForwardLimit);
+    rightClimber.setSoftLimit(SoftLimitDirection.kReverse, ClimberConstants.climberReverseLimit);
 
-        private RelativeEncoder leftClimbEnc;
+    leftClimber.enableSoftLimit(SoftLimitDirection.kForward, true);
+    rightClimber.enableSoftLimit(SoftLimitDirection.kReverse, true);
+  }
 
+  public void setClimberSpeed(double speed) {
+    leftClimber.set(climberRateLimiter.calculate(speed) * ClimberConstants.climberSpeedFactor);
+  }
 
-    /**
-     * Constructs a new ClimberSys.
-     * 
-     * <p>ClimberSys contains the basic framework of a robot subsystem for use in command-based programming.
-     */
-    public ClimberSys() {
-        // Initialize and configure actuators and sensors here
-    
-        rightClimbMtr = new CANSparkMax(CANDevices.rightClimbMtrId, MotorType.kBrushless);
-        rightClimbMtr.getEncoder().setVelocityConversionFactor(ClimberConstants.rightClimbGearReduction);
-        rightClimbMtr.setSmartCurrentLimit(ClimberConstants.maxClimberCurrentAmps);
-        rightClimbMtr.setIdleMode(IdleMode.kBrake);
+  public double getClimberPosition() {
+    return leftClimber.getEncoder().getPosition();
+  }
 
-        leftClimbMtr = new CANSparkMax(CANDevices.leftClimbMtrId, MotorType.kBrushless);
-        leftClimbMtr.getEncoder().setVelocityConversionFactor(ClimberConstants.leftClimbGearReduction);
-        leftClimbMtr.setSmartCurrentLimit(ClimberConstants.maxClimberCurrentAmps);
-        leftClimbMtr.setIdleMode(IdleMode.kBrake);
+  public boolean getUpperLimit() {
+    return Math.abs(getClimberPosition() - leftClimber.getSoftLimit(SoftLimitDirection.kForward)) < ClimberConstants.limitVariability;
+  }
 
+  public boolean getLowerLimit() {
+    return Math.abs(getClimberPosition() - rightClimber.getSoftLimit(SoftLimitDirection.kReverse)) < ClimberConstants.limitVariability;
+  }
 
-        rightClimbEnc = rightClimbMtr.getEncoder();
-        rightClimbEnc.setPosition(0);
-        rightClimbEnc.setInverted(false);
-        rightClimbEnc.setPositionConversionFactor(ClimberConstants.inchesPerEncRev);
+  @Override
+  public void periodic() {}
 
-        leftClimbEnc = leftClimbMtr.getEncoder();
-        leftClimbEnc.setPosition(0);
-        leftClimbEnc.setInverted(false);
-        leftClimbEnc.setPositionConversionFactor(ClimberConstants.inchesPerEncRev);
-    }
-
-    // This method will be called once per scheduler run
-    @Override
-    public void periodic() {
-        
-            if(power <= 0) {
-                rightClimbEnc.set(power);
-            }
-            else {
-                rightClimbEnc.set(0.0);
-            }
-    
-            if(power > 0) {
-                ClimberSys.climb(true);
-            }
-            else if(power < 0) {
-                ClimberSys.climb(false);
-            }
-    
-        }
-    
-        public void set(double power) {
-            rightClimbMtr.set(power);
-        }
-    
-        public void stop() {
-            rightClimbMtr.stopMotor();
-        }
-    
-        public double getClimberCounts() {
-            return -rightClimbMtr.getSelectedSensorPosition();
-        }
-    
-        public void zero() {
-            rightClimbMtr.setSelectedSensorPosition(0.0);
-        }
-    }
-
-    // Put methods for controlling this subsystem here. Call these from Commands.
-
+  @Override
+  public void simulationPeriodic() {}
+}

@@ -1,5 +1,7 @@
 package frc.robot;
 
+import java.util.function.DoubleSupplier;
+
 import com.pathplanner.lib.util.PIDConstants;
 
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
@@ -32,11 +34,11 @@ public class Constants {
         public static final int backRightSteerMtrId = 4;
         public static final int backRightDriveMtrId = 5;
 
-//Leader Mtr is Right Mtr and Follower Mtr is Left Mtr
+        //Leader Mtr is Right Mtr and Follower Mtr is Left Mtr
         public static final int leaderRollerMtrId = 15;
         public static final int followerRollerMtrId = 16;
 
-//Leader Mtr is Right Mtr and Follower Mtr is Left Mtr
+        //Leader Mtr is Right Mtr and Follower Mtr is Left Mtr
         public static final int leaderPivotMtrId = 19;
         public static final int followerPivotMtrId = 20;
 
@@ -47,9 +49,13 @@ public class Constants {
     public static final class ControllerConstants {
         public static final int driverGamepadPort = 0;
 
+        public static final int operatorGamepadPort = 1;
+
         public static final double joystickDeadband = 0.15;
 
         public static final double triggerPressedThreshhold = 0.25;
+
+        public static final int driverRightJoystick = 1;
     }
     
     public static final class DriveConstants {
@@ -164,23 +170,34 @@ public class Constants {
         public static final int maxRollerCurrentAmps = 40;
         public static final int maxPivotCurrentAmps = 40;
 
-        public static final double pivotGearReduction = 45.0 / 1.0;
+        public static final double pivotGearRatio = 45.0 / 1.0;
+
+        public static final double pivotDegreesPerEncRev = 360.0 / pivotGearRatio;
+        public static final double pivotDegPerSecPerRPM = 360.0 / (pivotGearRatio * 60.0);
         
-        public static final double inchesPerEncRev = 11;
-
-        public static final double feetPerSecondPerRPM = (inchesPerEncRev / 12) /60;
-
         public static final double KP = 0.01;
         public static final double KD = 0.01;
 
         public static final double manualPower = 0.75;
 
-        public static final double rollerStartInches = 0.0;
+        public static final double inPower = 30.0;
+
+        public static final double outPower = 75.0;
+
+        public static final double power = 25.0;
+
+        public static final double rollerFreeSpeedRPM = 6784.0;
+
+        public static final double pivotFreeSpeedRPM = 6784.0 / pivotGearRatio;
+
+        public static final double pivotMaxVelDegPerSec = 45.0;
+
+        public static final double pivotMaxAccelDegPerSecSq = 90.0;
     }
 
     public class ClimberConstants {
 
-        public static final int maxClimberCurrentAmps = 20;
+        public static final int maxClimberCurrentAmps = 40;
 
         public static final double power = 0.42;
 
@@ -188,6 +205,14 @@ public class Constants {
 
         public static final double rightClimbGearReduction = 12.0 / 1.0;
         public static final double leftClimbGearReduction = 12.0 / 1.0;
+
+        public static final float climberForwardLimit = 0;
+        public static final float climberReverseLimit = 0;
+
+        public static final double climberSpeedFactor = 0.0;
+
+        public static final double climberRateLimit = 0.0;
+        public static final double limitVariability = 0.1;
 
     }
 }
