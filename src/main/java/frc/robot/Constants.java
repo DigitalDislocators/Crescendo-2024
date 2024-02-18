@@ -1,9 +1,5 @@
 package frc.robot;
 
-import java.util.function.DoubleSupplier;
-
-import com.pathplanner.lib.util.PIDConstants;
-
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -14,7 +10,6 @@ public class Constants {
 
     public static final class CANDevices {
         // FIXME: Set these CAN ID values to the those of your robot, or change your CAN ID's to match this convention.
-        public static final int powerDistributionHubId = 1;
 
         public static final int imuId = 14;
 
@@ -42,11 +37,13 @@ public class Constants {
         public static final int leaderPivotMtrId = 19;
         public static final int followerPivotMtrId = 20;
 
-        public static final int rightClimbMtrId = 17;
-        public static final int leftClimbMtrId = 18;
+        //Leader Mtr is Left Mtr and Follower Mtr is Right Mtr
+        public static final int followerClimbMtrId = 17;
+        public static final int leaderClimbMtrId = 18;
     }
 
     public static final class ControllerConstants {
+
         public static final int driverGamepadPort = 0;
 
         public static final int operatorGamepadPort = 1;
@@ -109,7 +106,7 @@ public class Constants {
         public static final double steerMtrMaxSpeedRadPerSec = 2.0;
         public static final double steerMtrMaxAccelRadPerSecSq = 1.0;
 
-        public static final double maxDriveSpeedMetersPerSec = 5.0;
+        public static final double maxDriveSpeedMetersPerSec = 15.0;
 
         /**
          * The rate the robot will spin with full Rot command.
@@ -131,7 +128,7 @@ public class Constants {
         public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(144.75); 
 
         // FIXME: You may want to change this value.
-        public static final int driveCurrentLimitAmps = 40;
+        public static final int driveCurrentLimitAmps = 80;
         
         // FIXME: These values should be fine, but if the modules start to rattle you may want to play with the steer PID values.
         public static final double drivekP = 0.005;
@@ -157,36 +154,40 @@ public class Constants {
         public static final double drivekP = 12.8;
         public static final double drivekD = 0.085;
 
-        public static final PIDConstants driveConstants = new PIDConstants(drivekD, drivekD);
+        // public static final PIDConstants driveConstants = new PIDConstants(drivekD, drivekD);
 
         public static final double rotkP = 1.27;
         public static final double rotkD = 0.5;
 
-        public static final PIDConstants rotConstants = new PIDConstants(rotkP, rotkD);
+        // public static final PIDConstants rotConstants = new PIDConstants(rotkP, rotkD);
     }
 
-    public class IntakeConstants {
+    public class RollerConstants {
     
-        public static final int maxRollerCurrentAmps = 40;
+        public static final int maxRollerCurrentAmps = 80;
+
+        public static final double rollerFreeSpeedRPM = 6784.0;
+
+        public static final double manualPower = 1.0;
+
+        public static final double inPower = 1.0;
+
+        public static final double outPower = 1.0;
+
+        public static final double power = 1.0;
+    }
+
+    public class PivotConstants {
+
         public static final int maxPivotCurrentAmps = 40;
 
         public static final double pivotGearRatio = 45.0 / 1.0;
 
-        public static final double pivotDegreesPerEncRev = 360.0 / pivotGearRatio;
-        public static final double pivotDegPerSecPerRPM = 360.0 / (pivotGearRatio * 60.0);
-        
         public static final double KP = 0.01;
         public static final double KD = 0.01;
 
-        public static final double manualPower = 0.75;
-
-        public static final double inPower = 30.0;
-
-        public static final double outPower = 75.0;
-
-        public static final double power = 25.0;
-
-        public static final double rollerFreeSpeedRPM = 6784.0;
+        public static final double pivotDegreesPerEncRev = 360.0 / pivotGearRatio;
+        public static final double pivotDegPerSecPerRPM = 360.0 / (pivotGearRatio * 60.0);
 
         public static final double pivotFreeSpeedRPM = 6784.0 / pivotGearRatio;
 
@@ -199,20 +200,19 @@ public class Constants {
 
         public static final int maxClimberCurrentAmps = 40;
 
-        public static final double power = 0.42;
+        public static final Double climberPower = 0.42;
 
         public static final double inchesPerEncRev = 11;
 
         public static final double rightClimbGearReduction = 12.0 / 1.0;
         public static final double leftClimbGearReduction = 12.0 / 1.0;
 
-        public static final float climberForwardLimit = 0;
+        public static final float climberForwardLimit = 80;
         public static final float climberReverseLimit = 0;
 
-        public static final double climberSpeedFactor = 0.0;
+        public static final double climberSpeedFactor = 1.0;
 
         public static final double climberRateLimit = 0.0;
         public static final double limitVariability = 0.1;
-
     }
 }

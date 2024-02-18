@@ -1,39 +1,42 @@
 package frc.robot.commands;
 
-import frc.robot.subsystems.IntakeSys;
+import frc.robot.subsystems.ClimberSys;
 
 import java.util.function.DoubleSupplier;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class PivotManual extends CommandBase {
+public class ManualClimbCmd extends Command {
 
-  private final IntakeSys pivot;
+  private ClimberSys climber;
 
-  private final DoubleSupplier power;
+  private DoubleSupplier climberPower;
 
   /**
    * Creates a new ExampleCommand.
    *
-   * @param subsystem The subsystem used by this command.
+   * @param  The subsystem used by this command.
+   * 
    */
-  public PivotManual(DoubleSupplier power, IntakeSys pivot) {
-    this.pivot = pivot;
-    this.power = power;
+  public ManualClimbCmd(DoubleSupplier climberPower, ClimberSys climber) {
+    this.climber = climber;
+    this.climberPower = climberPower;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(pivot);
+    addRequirements(climber);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }  
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    IntakeSys.manualDegreesPerSec(manualDegreesPerSec.getAsDouble());
+    climber.setClimberSpeed(climberPower.getAsDouble());
   }
+
 
   // Called once the command ends or is interrupted.
   @Override

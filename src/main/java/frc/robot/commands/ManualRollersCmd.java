@@ -1,38 +1,42 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.commands;
 
-import frc.robot.Constants.IntakeConstants;
-import frc.robot.subsystems.IntakeSys;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.RollerSys;
+
+import java.util.function.DoubleSupplier;
+
+import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class InRoller extends CommandBase {
+public class ManualRollersCmd extends Command {
 
-  private final IntakeSys rollers;
+  private RollerSys rollers;
+
+  private DoubleSupplier manualpower;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param rollers The subsystem used by this command.
+   * 
    */
-  public InRoller(IntakeSys rollers) {
+  public ManualRollersCmd(DoubleSupplier manualpower, RollerSys rollers) {
     this.rollers = rollers;
+    this.manualpower = manualpower;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(rollers);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }  
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    rollers.setRollersRPM(IntakeConstants.inPower);
+    rollers.setManualPower(manualpower.getAsDouble());
   }
+
 
   // Called once the command ends or is interrupted.
   @Override
@@ -41,6 +45,6 @@ public class InRoller extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }

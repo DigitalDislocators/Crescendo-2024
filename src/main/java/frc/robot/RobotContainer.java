@@ -1,100 +1,83 @@
 package frc.robot;
 
+import edu.wpi.first.hal.FRCNetComm.tResourceType;
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.ControllerConstants;
-import frc.robot.Constants.DriveConstants;
 //import frc.robot.commands.IntakeCmd;
-import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.drivetrain.ArcadeDriveCmd;
-import frc.robot.subsystems.ExampleSys;
-import frc.robot.subsystems.IntakeSys;
+import frc.robot.subsystems.RollerSys;
+import frc.robot.subsystems.PivotSys;
+import frc.robot.subsystems.ServoSys;
+import frc.robot.subsystems.ClimberSys;
 import frc.robot.subsystems.SwerveSys;
-import frc.robot.commands.InRoller;
-import frc.robot.commands.OutRoller;
-import frc.robot.commands.StopRollers;
-import frc.robot.commands.PivotManual;
+import frc.robot.commands.PivotManualCmd;
+import frc.robot.commands.ManualClimbCmd;
+import frc.robot.commands.ManualRollersCmd;
 
 public class RobotContainer {
     
 
     // Initialize subsystems.
     private final SwerveSys swerveSys = new SwerveSys();
-    private final ExampleSys exampleSys = new ExampleSys();
-    private final IntakeSys intakeSys = new IntakeSys();
+    private final PivotSys pivotSys = new PivotSys();
+    private final RollerSys rollerSys = new RollerSys();
+    private final ClimberSys climberSys = new ClimberSys();
 
     // Initialize joysticks.
 
-  private final XboxController driverController = new XboxController(ControllerConstants.driverGamepadPort);
-  private final XboxController operatorController = new XboxController(ControllerConstants.operatorGamepadPort);
+  private final CommandXboxController driverController = new CommandXboxController(ControllerConstants.driverGamepadPort);
+  private final CommandXboxController operatorController = new CommandXboxController(ControllerConstants.operatorGamepadPort);
 
-  private final JoystickButton operatorAButton = new JoystickButton(operatorController, 1);
-  private final JoystickButton operatorBButton = new JoystickButton(operatorController, 2);
-  private final JoystickButton operatorXButton = new JoystickButton(operatorController, 3);
-  private final JoystickButton operatorYButton = new JoystickButton(operatorController, 4);
-  private final JoystickButton operatorRightBumper = new JoystickButton(operatorController, 6);
-  private final JoystickButton operatorLeftBumper = new JoystickButton(operatorController, 5);
-  private final JoystickButton operatorLeftTriger = new JoystickButton(operatorController, 7);
-  private final JoystickButton operatorRightTriger = new JoystickButton(operatorController, 8);
-
+  
     // Initialize auto selector.
-    SendableChooser<Command> autoSelector = new SendableChooser<Command>();
+    //SendableChooser<Command> autoSelector = new SendableChooser<Command>();
 
     public RobotContainer() {
-        SmartDashboard.putData("auto selector", autoSelector);
+        // SmartDashboard.putData("auto selector", autoSelector);
+
+        // intakeSys.setDefaultCommand(getAutonomousCommand());
 
         // Add programs to auto selector.
-        autoSelector.setDefaultOption("Do Nothing", null);
-        autoSelector.addOption("Example Auto", new ExampleAuto(swerveSys, exampleSys));
+        // autoSelector.setDefaultOption("Do Nothing", null);
 
         configDriverBindings();
         configOperatorsBindings();
-    }
 
-    private void configOperatorsBindings() {
-        intakeSys.setDefaultCommand(new Pi());
-    operatorRightTriger.onTrue(new InRoller(intakeSys)).onFalse(new StopRollers(intakeSys));
-    operatorLeftTriger.onTrue(new OutRoller(intakeSys)).onFalse(new StopRollers(intakeSys));
-    
-    
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'configOperatorsBindings'");
-    }
-
-    public void configDriverBindings() {
         swerveSys.setDefaultCommand(new ArcadeDriveCmd(
             () -> MathUtil.applyDeadband(driverController.getLeftY(), ControllerConstants.joystickDeadband),
             () -> MathUtil.applyDeadband(driverController.getLeftX(), ControllerConstants.joystickDeadband),
             () -> MathUtil.applyDeadband(driverController.getRightX(), ControllerConstants.joystickDeadband),
             true,
             true,
-            swerveSys
-        ));
-        // FIXME: Consider building simple commands this way instead of creating a whole file for them.
-        // If you're more comfortable with it, you still can use the other way (i.e. new ResetHeadingCmd(swerveSys)).
-        // Otherwise I would delete those simple commands just to keep things clean.
+            swerveSys));
+    }
 
-        // Start is the "three lines" button. Back is the "windows" button.
-        
+    private void configOperatorsBindings() {
+       rollerSys.setDefaultCommand(new ManualRollersCmd(
+        () -> (operatorController.getRightTriggerAxis() * 0.5) - (operatorController.getLeftTriggerAxis() * 0.3), rollerSys));
 
-  
+       pivotSys.setDefaultCommand(new PivotManualCmd( 
+        () -> MathUtil.applyDeadband(operatorController.getLeftY(), ControllerConstants.joystickDeadband), pivotSys));
+
+       climberSys.setDefaultCommand(new ManualClimbCmd(
+        () -> MathUtil.applyDeadband((operatorController.getRightY() * -1), ControllerConstants.joystickDeadband), climberSys));
+      
+      
+            //ServoSys.set
+    }
+
+    public void configDriverBindings() {
+       
     }
 
     public Command getAutonomousCommand() {
-        return autoSelector.getSelected();
+        return null;//return autoSelector.getSelected();
     }
 
     // For uniformity, any information sent to Shuffleboard/SmartDashboard should go here.
-    public void updateInterface() {
+    /*public void updateInterface() {
         SmartDashboard.putNumber("heading degrees", swerveSys.getHeading().getDegrees());
         SmartDashboard.putNumber("speed m/s", swerveSys.getAverageDriveVelocityMetersPerSec());
 
@@ -112,5 +95,5 @@ public class RobotContainer {
         SmartDashboard.putNumber("FR offset CANCoder degrees", swerveSys.getCanCoderAngles()[1].getDegrees() - DriveConstants.frontRightModOffset.getDegrees());
         SmartDashboard.putNumber("BL offset CANCoder degrees", swerveSys.getCanCoderAngles()[2].getDegrees() - DriveConstants.backLeftModOffset.getDegrees());
         SmartDashboard.putNumber("BR offset CANCoder degrees", swerveSys.getCanCoderAngles()[3].getDegrees() - DriveConstants.backRightModOffset.getDegrees());
-    }
+    }*/
 }

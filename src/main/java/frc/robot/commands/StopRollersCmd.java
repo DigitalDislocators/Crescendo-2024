@@ -1,24 +1,20 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.commands;
 
-import frc.robot.Constants.IntakeConstants;
-import frc.robot.subsystems.IntakeSys;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.RollerSys;
+
+import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class OutRoller extends CommandBase {
+public class StopRollersCmd extends Command {
 
-  private final IntakeSys rollers;
+  private final RollerSys rollers;
 
   /**
    * Creates a new ExampleCommand.
    *
-   * @param rollers The subsystem used by this command.
+   * @param subsystem The subsystem used by this command.
    */
-  public OutRoller(IntakeSys rollers) {
+  public StopRollersCmd(RollerSys rollers) {
     this.rollers = rollers;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(rollers);
@@ -30,9 +26,8 @@ public class OutRoller extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    rollers.setRollersRPM(IntakeConstants.outPower);
-  }
+  public void execute() {}
+  
 
   // Called once the command ends or is interrupted.
   @Override
