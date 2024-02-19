@@ -9,7 +9,7 @@ import edu.wpi.first.math.util.Units;
 public class Constants {
 
     public static final class CANDevices {
-        // FIXME: Set these CAN ID values to the those of your robot, or change your CAN ID's to match this convention.
+        // Set these CAN ID values to the those of your robot, or change your CAN ID's to match this convention.
 
         public static final int imuId = 14;
 
@@ -59,13 +59,13 @@ public class Constants {
         /**
          * The track width from wheel center to wheel center.
          */
-        // FIXME: Make sure to measure from the center of each wheel
+        // Make sure to measure from the center of each wheel
         public static final double trackWidth = Units.inchesToMeters(19.6875);
 
         /**
          * The track length from wheel center to wheel center.
          */
-        // FIXME: mature sure to measure from the center of each wheel
+        // mature sure to measure from the center of each wheel
         public static final double wheelBase = Units.inchesToMeters(19.6875);
 
         /**
@@ -85,7 +85,7 @@ public class Constants {
          * The drive gear ratios for the different levels can be found from the chart at
          * swervedrivespecialties.com/products/mk41-swerve-module.
          */
-        // FIXME: This is the gear ratio for L3 modules.
+        // This is the gear ratio for L3 modules.
         public static final double driveMtrGearReduction = (16.0 / 50.0) * (28.0 / 16.0) * (15.0 / 45.0);
 
         /**
@@ -113,13 +113,13 @@ public class Constants {
          */
         public static final double maxTurnRateRadiansPerSec = 2.0 * Math.PI;
 
-        // FIXME: Set line up the swerve modules and set these values.
+        // Set line up the swerve modules and set these values.
 
         // The bolt heads should be pointing to the left. These values are subtracted from the CANCoder reading,
         // so they should be the raw CANCoder value when set straight. These values should be between 0 and 360
         // degrees.
 
-        // FIXME: Don't quote me on that they should be pointing to the left. (I'm almost positive though.) If 
+        // Don't quote me on that they should be pointing to the left. (I'm almost positive though.) If 
         // the drive base drives 180 off from the commanded direction, flip these readings 180 degrees and change
         // the comment above for future reference.
         public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(125.25); 
@@ -127,10 +127,10 @@ public class Constants {
         public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(146.5);
         public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(144.75); 
 
-        // FIXME: You may want to change this value.
+        // You may want to change this value.
         public static final int driveCurrentLimitAmps = 80;
         
-        // FIXME: These values should be fine, but if the modules start to rattle you may want to play with the steer PID values.
+        // These values should be fine, but if the modules start to rattle you may want to play with the steer PID values.
         public static final double drivekP = 0.005;
         public static final double drivekD = 0.0;
 
@@ -150,7 +150,7 @@ public class Constants {
          */
         public static final double maxVelMetersPerSec = 3.25;
 
-        // FIXME: These drive and rotation PID constants most likely need to be tuned for better accuracy.
+        // These drive and rotation PID constants most likely need to be tuned for better accuracy.
         public static final double drivekP = 12.8;
         public static final double drivekD = 0.085;
 
@@ -166,53 +166,72 @@ public class Constants {
     
         public static final int maxRollerCurrentAmps = 80;
 
-        public static final double rollerFreeSpeedRPM = 6784.0;
+        public static final double gearRatio = 0.5;
 
-        public static final double manualPower = 1.0;
+        public static final double freeSpeedRPM = 6784.0;
 
-        public static final double inPower = 1.0;
+        public static final double maxRPM = freeSpeedRPM / gearRatio;
 
-        public static final double outPower = 1.0;
+        public static final double manualShootPower = 0.5;
 
-        public static final double power = 1.0;
+        public static final double manualIntakePower = 0.3;
+        
+        public static final double shootPower = 0.5;
+        
+        public static final double intakePower = 0.4;
     }
 
     public class PivotConstants {
 
-        public static final int maxPivotCurrentAmps = 40;
+        public static final int maxPivotCurrentAmps = 20;
 
-        public static final double pivotGearRatio = 45.0 / 1.0;
+        public static final double gearRatio = 45.0;
 
-        public static final double KP = 0.01;
-        public static final double KD = 0.01;
+        public static final double Kp = 0.01;
+        public static final double Kd = 0.01;
 
-        public static final double pivotDegreesPerEncRev = 360.0 / pivotGearRatio;
-        public static final double pivotDegPerSecPerRPM = 360.0 / (pivotGearRatio * 60.0);
+        public static final double degreesPerEncRev = 360.0 / gearRatio;
+        public static final double degPerSecPerRPM = 360.0 / (gearRatio * 60.0);
 
-        public static final double pivotFreeSpeedRPM = 6784.0 / pivotGearRatio;
+        public static final double freeSpeedRPM = 6784.0 / gearRatio;
 
-        public static final double pivotMaxVelDegPerSec = 45.0;
+        public static final double maxVelDegPerSec = 150.0;
 
-        public static final double pivotMaxAccelDegPerSecSq = 90.0;
+        public static final double maxAccelDegPerSecSq = 150.0;
+
+        public static final double maxManualPower = .3;
+
+        public static final double trapPresetDeg = 0.0;
+
+        public static final double ampPresetDeg = 0.0;
+        
+        public static final double sourcePresetDeg = 0.0;
+
+        public static final double groundPresetDeg = 0.0;
+
+        public static final double homePresetDeg = 0.0;
+
+        public static final double podiumPresetDeg = 0.0;
+
+        public static final float lowerLimitDegrees = 0f;
+
+        public static final float upperLimitDegrees = 190f;
     }
 
     public class ClimberConstants {
 
         public static final int maxClimberCurrentAmps = 40;
 
-        public static final Double climberPower = 0.42;
-
         public static final double inchesPerEncRev = 11;
 
-        public static final double rightClimbGearReduction = 12.0 / 1.0;
-        public static final double leftClimbGearReduction = 12.0 / 1.0;
+        public static final double rightClimbGearReduction = 1.0 / 20.0;
+        public static final double leftClimbGearReduction = 1.0 / 20.0;
 
-        public static final float climberForwardLimit = 80;
+        public static final float climberForwardLimit = 147;
         public static final float climberReverseLimit = 0;
 
         public static final double climberSpeedFactor = 1.0;
 
-        public static final double climberRateLimit = 0.0;
-        public static final double limitVariability = 0.1;
+        public static final double limitThreshold = 0.1;
     }
 }

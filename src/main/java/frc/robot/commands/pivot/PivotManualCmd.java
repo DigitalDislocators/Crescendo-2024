@@ -1,28 +1,22 @@
-package frc.robot.commands;
+package frc.robot.commands.pivot;
 
+import frc.robot.Constants.PivotConstants;
 import frc.robot.subsystems.PivotSys;
 
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
-/** An example command that uses an example subsystem. */
 public class PivotManualCmd extends Command {
 
   private final PivotSys pivot;
 
   private final DoubleSupplier power;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
   public PivotManualCmd(DoubleSupplier power, PivotSys pivot) {
     this.pivot = pivot;
     this.power = power;
 
-    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(pivot);
   }
 
@@ -33,9 +27,7 @@ public class PivotManualCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //pivot.manualRollerControl(power.getAsDouble());
-
-    pivot.setPivotDeg(power.getAsDouble());
+    pivot.setManualDegPerSec(power.getAsDouble() * PivotConstants.maxManualPower);
   }
  
   // Called once the command ends or is interrupted.

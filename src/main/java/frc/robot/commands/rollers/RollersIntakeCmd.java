@@ -1,20 +1,15 @@
-package frc.robot.commands;
+package frc.robot.commands.rollers;
 
-import frc.robot.subsystems.RollerSys;
+import frc.robot.Constants.RollerConstants;
+import frc.robot.subsystems.RollersSys;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
-/** An example command that uses an example subsystem. */
-public class StopRollersCmd extends Command {
+public class RollersIntakeCmd extends Command {
 
-  private final RollerSys rollers;
+  private final RollersSys rollers;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
-  public StopRollersCmd(RollerSys rollers) {
+  public RollersIntakeCmd(RollersSys rollers) {
     this.rollers = rollers;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(rollers);
@@ -22,7 +17,9 @@ public class StopRollersCmd extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    rollers.setPower(RollerConstants.intakePower);
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override

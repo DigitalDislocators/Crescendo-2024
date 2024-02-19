@@ -1,28 +1,21 @@
-package frc.robot.commands;
+package frc.robot.commands.rollers;
 
-import frc.robot.subsystems.RollerSys;
+import frc.robot.subsystems.RollersSys;
 
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
-/** An example command that uses an example subsystem. */
-public class ManualRollersCmd extends Command {
+public class RollersManualCmd extends Command {
 
-  private RollerSys rollers;
+  private RollersSys rollers;
 
   private DoubleSupplier manualpower;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param rollers The subsystem used by this command.
-   * 
-   */
-  public ManualRollersCmd(DoubleSupplier manualpower, RollerSys rollers) {
+  public RollersManualCmd(DoubleSupplier manualPower, RollersSys rollers) {
     this.rollers = rollers;
-    this.manualpower = manualpower;
-    // Use addRequirements() here to declare subsystem dependencies.
+    this.manualpower = manualPower;
+    
     addRequirements(rollers);
   }
 
@@ -34,7 +27,12 @@ public class ManualRollersCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    rollers.setManualPower(manualpower.getAsDouble());
+    if (manualpower.getAsDouble() == 0.0) {
+
+    }
+    else {
+        rollers.setPower(manualpower.getAsDouble());
+    }
   }
 
 

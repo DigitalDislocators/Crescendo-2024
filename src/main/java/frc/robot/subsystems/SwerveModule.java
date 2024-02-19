@@ -82,7 +82,7 @@ public class SwerveModule extends SubsystemBase {
         steerEnc.setPositionConversionFactor(DriveConstants.steerRadiansPerEncRev);
 
         //configure the CANCoder to output in unsigned (wrap around from sensor value 1 to 0) and CCW positive
-        // FIXME: Make sure the CANcoders actually read CCW positive (when viewing from above), otherwise you will
+        // Make sure the CANcoders actually read CCW positive (when viewing from above), otherwise you will
         // have to configure it as CW positive. This is either a hardware problem just on 6081 or a Phoenix 6 bug.
         canCoder.getConfigurator().apply(
             new CANcoderConfiguration()

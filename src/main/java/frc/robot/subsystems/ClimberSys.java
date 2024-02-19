@@ -3,23 +3,17 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CANDevices;
 import frc.robot.Constants.ClimberConstants;
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkBase.SoftLimitDirection;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-//import edu.wpi.first.math.filter.SlewRateLimiter;
-
 public class ClimberSys extends SubsystemBase {
+  
   private final CANSparkMax leaderClimber = new CANSparkMax(CANDevices.leaderClimbMtrId, MotorType.kBrushless);
   private final CANSparkMax followerClimber = new CANSparkMax(CANDevices.followerClimbMtrId, MotorType.kBrushless);
   
-  // private final SlewRateLimiter climberRateLimiter = new SlewRateLimiter(ClimberConstants.climberRateLimit);
-
   public ClimberSys() {
-    //leftClimber.enableVoltageCompensation(DriveConstants.NOMINAL_VOLTAGE);
-
     leaderClimber.setIdleMode(IdleMode.kBrake);
     followerClimber.setIdleMode(IdleMode.kBrake);
 
@@ -34,27 +28,24 @@ public class ClimberSys extends SubsystemBase {
     followerClimber.follow(leaderClimber, true);
   }
 
-  public void setClimberSpeed(double d) {
-    leaderClimber.set(/*climberRateLimiter.calculate(*/d * ClimberConstants.climberSpeedFactor);
+  @Override
+  public void periodic() {
+    // System.out.println(getClimberPosition());
+  }
+
+  public void setClimberPower(double power) {
+    leaderClimber.set(power * ClimberConstants.climberSpeedFactor);
   }
 
   public double getClimberPosition() {
     return leaderClimber.getEncoder().getPosition();
   }
 
-  public boolean getUpperLimit() {
-    return Math.abs(getClimberPosition() - leaderClimber.getSoftLimit(SoftLimitDirection.kForward)) < ClimberConstants.limitVariability;
+  public boolean isAtUpperLimit() {
+    return Math.abs(getClimberPosition() - leaderClimber.getSoftLimit(SoftLimitDirection.kForward)) < ClimberConstants.limitThreshold;
   }
 
-  public boolean getLowerLimit() {
-    return Math.abs(getClimberPosition() - followerClimber.getSoftLimit(SoftLimitDirection.kReverse)) < ClimberConstants.limitVariability;
+  public boolean isAtLowerLimit() {
+    return Math.abs(getClimberPosition() - followerClimber.getSoftLimit(SoftLimitDirection.kReverse)) < ClimberConstants.limitThreshold;
   }
-
-  @Override
-  public void periodic() {
-    System.out.println(getClimberPosition());
-  }
-
-  @Override
-  public void simulationPeriodic() {}
 }
