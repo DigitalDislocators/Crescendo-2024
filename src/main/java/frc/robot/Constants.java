@@ -111,7 +111,7 @@ public class Constants {
         /**
          * The rate the robot will spin with full Rot command.
          */
-        public static final double maxTurnRateRadiansPerSec = 2.0 * Math.PI;
+        public static final double maxTurnRateRadiansPerSec = 0.1 * Math.PI;
 
         // Set line up the swerve modules and set these values.
 
@@ -128,7 +128,8 @@ public class Constants {
         public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(144.75); 
 
         // You may want to change this value.
-        public static final int driveCurrentLimitAmps = 80;
+        public static final int driveCurrentLimitAmps = 60;
+        public static final double brownoutVoltage = 6.5;
         
         // These values should be fine, but if the modules start to rattle you may want to play with the steer PID values.
         public static final double drivekP = 0.005;
@@ -164,58 +165,65 @@ public class Constants {
 
     public class RollerConstants {
     
-        public static final int maxRollerCurrentAmps = 80;
+        public static final int maxRollerCurrentAmps = 60;
 
-        public static final double gearRatio = 0.5;
+        public static final double gearRatio = 0.8;
 
         public static final double freeSpeedRPM = 6784.0;
 
         public static final double maxRPM = freeSpeedRPM / gearRatio;
 
-        public static final double manualShootPower = 0.5;
+        public static final double manualFirePower = 1.0;
 
-        public static final double manualIntakePower = 0.3;
+        public static final double manualIntakePower = 0.75;
         
-        public static final double shootPower = 0.5;
+        public static final double FirePower = 0.75;
+
+        public static final double ampFirePower = 0.17;
         
-        public static final double intakePower = 0.4;
+        public static final double intakePower = 0.75;
     }
 
     public class PivotConstants {
 
-        public static final int maxPivotCurrentAmps = 20;
+        public static final int maxPivotCurrentAmps = 50;
 
         public static final double gearRatio = 45.0;
 
-        public static final double Kp = 0.01;
-        public static final double Kd = 0.01;
+        public static final double Kp = 0.035;
+        public static final double Ki = 0.0;
+        public static final double Kd = 0.00037;
 
         public static final double degreesPerEncRev = 360.0 / gearRatio;
         public static final double degPerSecPerRPM = 360.0 / (gearRatio * 60.0);
 
         public static final double freeSpeedRPM = 6784.0 / gearRatio;
 
-        public static final double maxVelDegPerSec = 150.0;
+        public static final double maxVelDegPerSec = 400.0;
 
-        public static final double maxAccelDegPerSecSq = 150.0;
+        public static final double maxAccelDegPerSecSq = 575.0;
 
-        public static final double maxManualPower = .3;
+        public static final double maxManualPower = .4;
 
-        public static final double trapPresetDeg = 0.0;
+        public static final double maxManualDegPerSecSq = 0.5;
 
-        public static final double ampPresetDeg = 0.0;
+        public static final double trapPresetDeg = 150.0;
+
+        public static final double ampPresetDeg = 73.0;
         
-        public static final double sourcePresetDeg = 0.0;
+        public static final double sourcePresetDeg = 8.0;
 
-        public static final double groundPresetDeg = 0.0;
+        public static final double groundPresetDeg = 185.0;
 
         public static final double homePresetDeg = 0.0;
 
-        public static final double podiumPresetDeg = 0.0;
+        public static final double podiumPresetDeg = 85.0;
 
         public static final float lowerLimitDegrees = 0f;
 
         public static final float upperLimitDegrees = 190f;
+
+        public static final double podiumCorrectionIncrement = .01;
     }
 
     public class ClimberConstants {

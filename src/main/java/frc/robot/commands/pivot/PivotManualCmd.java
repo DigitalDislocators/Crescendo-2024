@@ -5,13 +5,16 @@ import frc.robot.subsystems.PivotSys;
 
 import java.util.function.DoubleSupplier;
 
+import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class PivotManualCmd extends Command {
+  
+  SlewRateLimiter filter = new SlewRateLimiter(PivotConstants.maxManualDegPerSecSq);
 
   private final PivotSys pivot;
 
-  private final DoubleSupplier power;
+  private final DoubleSupplier power; 
 
   public PivotManualCmd(DoubleSupplier power, PivotSys pivot) {
     this.pivot = pivot;
@@ -27,7 +30,7 @@ public class PivotManualCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    pivot.setManualDegPerSec(power.getAsDouble() * PivotConstants.maxManualPower);
+    pivot.setManualDegPerSec(filter.calculate(power.getAsDouble() * PivotConstants.maxManualPower));
   }
  
   // Called once the command ends or is interrupted.

@@ -1,32 +1,31 @@
-package frc.robot.commands.pivot;
+package frc.robot.commands.rollers;
 
-import frc.robot.Constants.PivotConstants;
-import frc.robot.subsystems.PivotSys;
+import frc.robot.Constants.RollerConstants;
+import frc.robot.subsystems.RollersSys;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class PivotPodiumPresetCmd extends Command {
+public class RollersFireCmd extends Command {
 
-  private final PivotSys pivot;
+  private final RollersSys rollers;
 
-  public PivotPodiumPresetCmd(PivotSys pivot) {
-    this.pivot = pivot;
-
-    addRequirements(pivot);
+  public RollersFireCmd(RollersSys rollers) {
+    this.rollers = rollers;
+    
+    addRequirements(rollers);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    pivot.setPivotDeg(PivotConstants.podiumPresetDeg);
+    rollers.setPower(RollerConstants.FirePower);
   }
- 
+
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    
-  }
- 
+  public void execute() {}
+  
+
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {}

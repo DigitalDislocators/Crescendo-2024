@@ -31,6 +31,8 @@ public class PivotSys extends SubsystemBase {
         leaderPivotMtr = new CANSparkFlex(CANDevices.leaderPivotMtrId, MotorType.kBrushless);
         followerPivotMtr = new CANSparkFlex(CANDevices.followerPivotMtrId, MotorType.kBrushless);
 
+
+
         leaderPivotMtr.restoreFactoryDefaults();
         followerPivotMtr.restoreFactoryDefaults();
 
@@ -58,7 +60,7 @@ public class PivotSys extends SubsystemBase {
         pivotEnc.setPosition(PivotConstants.homePresetDeg);
 
         pivotController = new ProfiledPIDController(
-            PivotConstants.Kp, 0.0, PivotConstants.Kd,
+            PivotConstants.Kp, PivotConstants.Ki, PivotConstants.Kd,
             new Constraints(PivotConstants.maxVelDegPerSec, PivotConstants.maxAccelDegPerSecSq));
     }
 
@@ -71,6 +73,7 @@ public class PivotSys extends SubsystemBase {
         else {
             leaderPivotMtr.set(manualDegPerSec);
             targetDegrees = getCurrentPositionDegrees();
+            pivotController.reset(targetDegrees);
         }
 
         if(DriverStation.isDisabled()) {

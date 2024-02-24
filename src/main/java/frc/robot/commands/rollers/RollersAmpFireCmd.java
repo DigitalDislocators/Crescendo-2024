@@ -5,11 +5,11 @@ import frc.robot.subsystems.RollersSys;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class RollersShootCmd extends Command {
+public class RollersAmpFireCmd extends Command {
 
   private final RollersSys rollers;
 
-  public RollersShootCmd(RollersSys rollers) {
+  public RollersAmpFireCmd(RollersSys rollers) {
     this.rollers = rollers;
     
     addRequirements(rollers);
@@ -18,7 +18,7 @@ public class RollersShootCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    rollers.setPower(RollerConstants.shootPower);
+    rollers.setPower(RollerConstants.ampFirePower);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

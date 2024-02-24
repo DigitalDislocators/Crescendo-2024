@@ -30,6 +30,6 @@ public class PivotAmpPresetCmd extends Command {
 
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

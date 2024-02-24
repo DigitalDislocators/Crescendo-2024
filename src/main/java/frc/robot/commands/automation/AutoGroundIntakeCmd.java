@@ -9,9 +9,9 @@ import frc.robot.subsystems.FeederSys;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
-public class AutoIntakeCmd extends SequentialCommandGroup {
+public class AutoGroundIntakeCmd extends SequentialCommandGroup {
 
-  public AutoIntakeCmd(PivotSys pivot, FeederSys feeder, RollersSys roller) {
+  public AutoGroundIntakeCmd(PivotSys pivot, FeederSys feeder, RollersSys roller) {
     super(
       new PivotGroundPresetCmd(pivot),
       new FeederInCmd(feeder),
