@@ -23,6 +23,7 @@ import frc.robot.subsystems.RollersSys;
 import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.ClimberSys;
 import frc.robot.subsystems.FeederSys;
+import frc.robot.subsystems.LimelightSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
 import frc.robot.commands.auto.programs.AllianceNoteFourPiece;
@@ -45,6 +46,7 @@ public class RobotContainer {
     private final RollersSys rollerSys = new RollersSys();
     private final FeederSys feederSys = new FeederSys();
     private final ClimberSys climberSys = new ClimberSys();
+    private final LimelightSys limelightSys = new LimelightSys(() -> swerveSys.getHeading());
 
     //Initialize joysticks.
     private final CommandXboxController driverController = new CommandXboxController(ControllerConstants.driverGamepadPort);
