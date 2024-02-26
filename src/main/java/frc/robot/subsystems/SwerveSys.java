@@ -18,6 +18,8 @@ import frc.robot.Constants.DriveConstants;
 
 public class SwerveSys extends SubsystemBase {
 
+    public static double heading;
+
     // Initializes swerve module objects
     private final SwerveModule frontLeftMod = 
         new SwerveModule(
@@ -107,6 +109,7 @@ public class SwerveSys extends SubsystemBase {
     public void periodic() {
         // Updates the odometry every 20ms
         odometry.update(getHeading(), getModulePositions());
+        heading = imu.getAngle();
     }
     
     /**

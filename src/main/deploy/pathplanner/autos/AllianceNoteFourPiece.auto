@@ -1,0 +1,49 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartPosToAllianceNoteOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceNoteOneToStartPos"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartPosToAllianceNoteTwo"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceNoteTwoToStartPos"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartPosToAllianceNoteThree"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceNoteThreeToStartPos"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

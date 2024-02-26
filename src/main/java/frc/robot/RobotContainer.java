@@ -25,6 +25,7 @@ import frc.robot.subsystems.ClimberSys;
 import frc.robot.subsystems.FeederSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
+import frc.robot.commands.auto.programs.AllianceNoteFourPiece;
 import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
@@ -61,6 +62,7 @@ public class RobotContainer {
         // Add programs to auto selector.
         autoSelector.setDefaultOption("Do Nothing", null);
         autoSelector.addOption("Example Auto", new ExampleAuto(swerveSys));
+        autoSelector.addOption("AllianceNoteFourPiece", new AllianceNoteFourPiece(swerveSys));
 
         configDriverBindings();
         configOperatorsBindings();
@@ -123,7 +125,7 @@ public class RobotContainer {
 
     // For uniformity, any information sent to Shuffleboard/SmartDashboard should go here.
     public void updateInterface() {
-        // SmartDashboard.putNumber("TY", LimelightHelpers.getTY(limelight-shooter));
+        SmartDashboard.putNumber("TY", LimelightHelpers.getTY("limelight-shooter"));
         SmartDashboard.putNumber("pivot degrees", pivotSys.getCurrentPositionDegrees());
         SmartDashboard.putNumber("heading degrees", swerveSys.getHeading().getDegrees());
         SmartDashboard.putNumber("speed m/s", swerveSys.getAverageDriveVelocityMetersPerSec());

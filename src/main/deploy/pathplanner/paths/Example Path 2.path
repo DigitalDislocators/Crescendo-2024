@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.0,
+        "x": 2.0,
         "y": 2.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.878679656440358,
-        "y": 4.121320343559642
+        "x": 4.121320343559643,
+        "y": 4.121320343559643
       },
       "isLocked": false,
-      "linkedName": "Middle Point"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.0,
-        "y": 2.0
+        "x": 1.25,
+        "y": 5.55
       },
       "prevControl": {
-        "x": 4.121320343559642,
-        "y": -0.12132034355964283
+        "x": -0.8713203435596437,
+        "y": 3.4286796564403565
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Start Point"
+      "linkedName": "SubwooferPos"
     }
   ],
   "rotationTargets": [],

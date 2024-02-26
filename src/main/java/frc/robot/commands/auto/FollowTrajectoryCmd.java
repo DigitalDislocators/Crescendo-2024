@@ -32,7 +32,7 @@ public class FollowTrajectoryCmd extends FollowPathHolonomic {
                 maxVelMetersPerSec,
                 Math.hypot(DriveConstants.trackWidth / 2.0, DriveConstants.wheelBase / 2.0),
                 new ReplanningConfig()),
-            () -> true,
+                () -> false,
             swerveSys);
 
         this.swerveSys = swerveSys;
