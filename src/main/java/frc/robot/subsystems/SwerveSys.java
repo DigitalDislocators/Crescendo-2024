@@ -18,8 +18,6 @@ import frc.robot.Constants.DriveConstants;
 
 public class SwerveSys extends SubsystemBase {
 
-    public static double heading;
-
     // Initializes swerve module objects
     private final SwerveModule frontLeftMod = 
         new SwerveModule(
@@ -109,7 +107,6 @@ public class SwerveSys extends SubsystemBase {
     public void periodic() {
         // Updates the odometry every 20ms
         odometry.update(getHeading(), getModulePositions());
-        heading = imu.getAngle();
     }
     
     /**
@@ -201,11 +198,13 @@ public class SwerveSys extends SubsystemBase {
      * @return A ChassisSpeeds representing the current motion of the drive base.
      */
     public ChassisSpeeds getChassisSpeeds() {
-        double xVel = getAverageDriveVelocityMetersPerSec() * getDirectionOfTravel().getCos();
-        double yVel = getAverageDriveVelocityMetersPerSec() * getDirectionOfTravel().getSin();
-        double omega = Units.degreesToRadians(-imu.getRate());
+        // double xVel = getAverageDriveVelocityMetersPerSec() * getDirectionOfTravel().getCos();
+        // double yVel = getAverageDriveVelocityMetersPerSec() * getDirectionOfTravel().getSin();
+        // double omega = Units.degreesToRadians(-imu.getRate());
 
-        return new ChassisSpeeds(xVel, yVel, omega);
+        // return new ChassisSpeeds(xVel, yVel, omega);
+
+        return DriveConstants.kinematics.toChassisSpeeds(getModuleStates());
     }
 
     /**

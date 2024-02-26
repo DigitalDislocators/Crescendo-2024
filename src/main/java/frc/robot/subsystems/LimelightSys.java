@@ -1,12 +1,15 @@
 package frc.robot.subsystems;
-import javax.management.loading.PrivateClassLoader;
 
-import com.fasterxml.jackson.databind.util.PrimitiveArrayBuilder;
+import java.util.function.Supplier;
+
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.LimelightHelpers;
-public class Limelight {
+
+public class LimelightSys extends SubsystemBase {
 
     private double[] botPoseArray;  
 
@@ -16,36 +19,34 @@ public class Limelight {
     private final double BLUE_TARGET_Y_POS = 5.5;
     private final double RED_TARGET_X_POS = 15.5;
     private final double RED_TARGET_Y_POS = 5.5;
+    // private double rawAngle;
     private double distance;
-    private double DriverStationAlliance;
     private double angle;
-    private double rawAngle;
 
-    public Limelight() {
-    
-    
-        
+    private Supplier<Rotation2d> robotHeading;
+
+    public LimelightSys(Supplier<Rotation2d> robotHeading) {
+        this.robotHeading = robotHeading;        
     }
 
-    public void loop() {
+    @Override
+    public void periodic() {
         botPoseArray = LimelightHelpers.getBotPose_wpiBlue("limelight-shooter");
 
         this.xPos = botPoseArray[0];
         this.yPos = botPoseArray[1];
         this.distance = calculateDistance();
-        this.angle = calculateAngle();
+        this.angle = calculateAngle(robotHeading.get());
         SmartDashboard.putNumber("xPos", xPos);
         SmartDashboard.putNumber("yPos", yPos);
         SmartDashboard.putNumber("distance", distance);
 
         getRotValue();
         getXValue();
-        // SmartDashboard.put("DriverStationAlliance", DriverStation.getAlliance());
-
     }
 
-    private double calculateAngle() {
-        double heading = SwerveSys.heading % 360;
+    private double calculateAngle(Rotation2d robotHeading) {
+        double heading = robotHeading.getDegrees() % 360;
 
         if (heading > 180) {
             heading -= 360;
@@ -63,7 +64,7 @@ public class Limelight {
             angle = Math.atan((yPos - RED_TARGET_Y_POS) / (xPos - RED_TARGET_X_POS));
         }
         angle = Math.toDegrees(angle);
-        rawAngle = angle;
+        // rawAngle = angle;
         angle += heading;
         SmartDashboard.putNumber("Angle" , angle);
         return angle;
@@ -83,9 +84,9 @@ public class Limelight {
     }
 
     public double getRotValue() {
-        SmartDashboard.putNumber("RotValue", 0.01667*angle);
+        SmartDashboard.putNumber("RotValue", 0.01667 * angle);
 
-        return 0.01667*angle; 
+        return 0.01667 * angle; 
     }
 
 
