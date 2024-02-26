@@ -213,7 +213,7 @@ public class Constants {
         
         public static final double sourcePresetDeg = 0.0;
 
-        public static final double groundPresetDeg = 185.0;
+        public static final double groundPresetDeg = 178.0;
 
         public static final double homePresetDeg = 0.0;
 
@@ -221,7 +221,7 @@ public class Constants {
 
         public static final float lowerLimitDegrees = 0f;
 
-        public static final float upperLimitDegrees = 190f;
+        public static final float upperLimitDegrees = 183f;
 
         public static final double podiumCorrectionIncrement = .01;
     }

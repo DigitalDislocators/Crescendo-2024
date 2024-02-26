@@ -62,7 +62,7 @@ public class RobotContainer {
         // Add programs to auto selector.
         autoSelector.setDefaultOption("Do Nothing", null);
         autoSelector.addOption("Example Auto", new ExampleAuto(swerveSys));
-        autoSelector.addOption("AllianceNoteFourPiece", new AllianceNoteFourPiece(swerveSys));
+        autoSelector.addOption("AllianceNoteFourPiece", new AllianceNoteFourPiece(swerveSys, feederSys, rollerSys, pivotSys));
 
         configDriverBindings();
         configOperatorsBindings();

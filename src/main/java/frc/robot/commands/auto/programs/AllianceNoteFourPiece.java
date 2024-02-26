@@ -23,19 +23,25 @@ public class AllianceNoteFourPiece extends SequentialCommandGroup {
     addCommands(
       // Again you can do it this way or keep the commands in their own files if you're more comfortable with that.
       Commands.runOnce(() -> swerveSys.setTranslation(new Translation2d(1.25, 5.55)), swerveSys),
-      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.5),
+       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
+      new WaitCommand(0.25),
       new FollowTrajectoryCmd("StartPosToAllianceNoteOne", swerveSys),
         alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
       new FollowTrajectoryCmd("AllianceNoteOneToStartPos", swerveSys),
         alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.5),
+      new WaitCommand(0.25),
       new FollowTrajectoryCmd("StartPosToAllianceNoteTwo", swerveSys),
-        alongWith
+        alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
       new FollowTrajectoryCmd("AllianceNoteTwoToStartPos", swerveSys),
+        alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
+      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
+      new WaitCommand(0.25),
       new FollowTrajectoryCmd("StartPosToAllianceNoteThree", swerveSys),
-      new FollowTrajectoryCmd("AllianceNoteThreeToStartPos", swerveSys)
+        alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+      new FollowTrajectoryCmd("AllianceNoteThreeToStartPos", swerveSys),
+        alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
+      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys)
     );
   }
 }
