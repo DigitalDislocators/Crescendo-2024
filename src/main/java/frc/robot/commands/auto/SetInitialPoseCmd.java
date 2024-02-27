@@ -7,6 +7,8 @@ package frc.robot.commands.auto;
 import com.pathplanner.lib.path.PathPlannerPath;
 
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.SwerveSys;
 
@@ -18,7 +20,14 @@ public class SetInitialPoseCmd extends Command {
 
   /** Creates a new SetInitialPoseCmd. */
   public SetInitialPoseCmd(String firstPathName, SwerveSys swerveSys) {
-    initialPose = PathPlannerPath.fromPathFile(firstPathName).getStartingDifferentialPose();
+    PathPlannerPath firstPath = PathPlannerPath.fromPathFile(firstPathName);
+
+    if(DriverStation.getAlliance().get() == Alliance.Red) {
+      firstPath.flipPath();
+    }
+
+    initialPose = firstPath.getStartingDifferentialPose();
+
     this.swerveSys = swerveSys;
   }
 
