@@ -152,13 +152,13 @@ public class Constants {
         public static final double maxVelMetersPerSec = 3.25;
 
         // These drive and rotation PID constants most likely need to be tuned for better accuracy.
-        public static final double drivekP = 12.8;
-        public static final double drivekD = 0.085;
+        public static final double drivekP = 5.0; // 12.8
+        public static final double drivekD = 0.0; // .085
 
         // public static final PIDConstants driveConstants = new PIDConstants(drivekD, drivekD);
 
-        public static final double rotkP = 1.27;
-        public static final double rotkD = 0.5;
+        public static final double rotkP = 5.0; // 1.27
+        public static final double rotkD = 0.0; // 0.5
 
         // public static final PIDConstants rotConstants = new PIDConstants(rotkP, rotkD);
     }
@@ -211,13 +211,13 @@ public class Constants {
 
         public static final double ampPresetDeg = 62.0;
         
-        public static final double sourcePresetDeg = 0.0;
+        public static final double sourcePresetDeg = 5.0;
 
-        public static final double groundPresetDeg = 185.0;
+        public static final double groundPresetDeg = 183.0;
 
         public static final double homePresetDeg = 0.0;
 
-        public static final double podiumPresetDeg = 85.0;
+        public static final double podiumPresetDeg = 75.0;
 
         public static final float lowerLimitDegrees = 0f;
 

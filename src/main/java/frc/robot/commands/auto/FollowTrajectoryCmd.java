@@ -5,6 +5,8 @@ import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.SwerveSys;
@@ -33,8 +35,7 @@ public class FollowTrajectoryCmd extends FollowPathHolonomic {
             maxVelMetersPerSec,
             Math.hypot(DriveConstants.trackWidth / 2.0, DriveConstants.wheelBase / 2.0),
             new ReplanningConfig(),
-            () -> false,
-            swerveSys);
+            () -> DriverStation.getAlliance().get() == Alliance.Red);
 
         this.swerveSys = swerveSys;
     }

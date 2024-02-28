@@ -1,6 +1,9 @@
 package frc.robot;
 
+import org.opencv.core.RotatedRect;
+
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -12,6 +15,8 @@ import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.RollerConstants;
 import frc.robot.commands.drivetrain.ArcadeDriveCmd;
+import frc.robot.commands.drivetrain.ResetHeadingCmd;
+import frc.robot.commands.drivetrain.SetHeadingCmd;
 import frc.robot.commands.feeder.FeederFeedCmd;
 import frc.robot.commands.feeder.FeederInCmd;
 import frc.robot.commands.feeder.FeederStopCmd;
@@ -23,8 +28,10 @@ import frc.robot.subsystems.FeederSys;
 // import frc.robot.subsystems.LimelightSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
+import frc.robot.commands.auto.programs.AllianceNoteFivePiece;
 import frc.robot.commands.auto.programs.AllianceNoteFourPiece;
 import frc.robot.commands.auto.programs.ExampleAuto;
+import frc.robot.commands.auto.programs.MidlineNoteThreePiece;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
@@ -43,7 +50,7 @@ public class RobotContainer {
     private final RollersSys rollerSys = new RollersSys();
     private final FeederSys feederSys = new FeederSys();
     private final ClimberSys climberSys = new ClimberSys();
-    private final LimelightSys limelightSys = new LimelightSys(() -> swerveSys.getHeading());
+    // private final LimelightSys limelightSys = new LimelightSys(() -> swerveSys.getHeading());
 
     //Initialize joysticks.
     private final CommandXboxController driverController = new CommandXboxController(ControllerConstants.driverGamepadPort);
@@ -62,6 +69,10 @@ public class RobotContainer {
         autoSelector.setDefaultOption("Do Nothing", null);
         autoSelector.addOption("Example Auto", new ExampleAuto(swerveSys));
         autoSelector.addOption("AllianceNoteFourPiece", new AllianceNoteFourPiece(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("AllianceNoteFivePiece", new AllianceNoteFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("MidlineNoteThreePiece", new MidlineNoteThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
+
+
 
         configDriverBindings();
         configOperatorsBindings();
@@ -116,6 +127,8 @@ public class RobotContainer {
         
         driverController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold)
             .onTrue(new AutoGroundIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
+
+        // driverController.a().onTrue(new SetHeadingCmd(new Rotation2d(90), swerveSys));
     }
 
     public Command getAutonomousCommand() {

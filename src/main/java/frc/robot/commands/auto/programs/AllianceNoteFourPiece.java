@@ -4,6 +4,8 @@
 
 package frc.robot.commands.auto.programs;
 
+import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.commands.auto.FollowTrajectoryCmd;
@@ -20,13 +22,19 @@ public class AllianceNoteFourPiece extends SequentialCommandGroup {
   public AllianceNoteFourPiece(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys) {
     addCommands(
       // Again you can do it this way or keep the commands in their own files if you're more comfortable with that.
-      Commands.runOnce(() -> swerveSys.setTranslation(new Translation2d(1.25, 5.55)), swerveSys),
-       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.25),
-      new FollowTrajectoryCmd("StartPosToAllianceNoteOne", swerveSys),
-        alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
-      new FollowTrajectoryCmd("AllianceNoteOneToStartPos", swerveSys),
-        alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
+      new SetInitialPoseCmd("SubwooferPosToAllianceNoteOne", swerveSys),
+      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
+      new WaitCommand(0.1),
+      new FollowTrajectoryCmd("SubwooferPosToAllianceNoteOne", swerveSys)
+        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+      new FollowTrajectoryCmd("AllianceNoteOneToSubwooferPos", swerveSys)
+        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
+      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
+      new WaitCommand(0.1),
+      new FollowTrajectoryCmd("SubwooferPosToAllianceNoteTwo", swerveSys)
+        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+      new FollowTrajectoryCmd("AllianceNoteTwoToSubwooferPos", swerveSys)
+        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.1),
       new FollowTrajectoryCmd("SubwooferPosToAllianceNoteThree", swerveSys)

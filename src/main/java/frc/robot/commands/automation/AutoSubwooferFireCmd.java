@@ -2,6 +2,8 @@ package frc.robot.commands.automation;
 
 import frc.robot.commands.feeder.FeederFeedCmd;
 import frc.robot.commands.feeder.FeederStopCmd;
+import frc.robot.commands.pivot.PivotHomePresetCmd;
+import frc.robot.commands.pivot.PivotSourcePresetCmd;
 import frc.robot.commands.rollers.RollersFireCmd;
 import frc.robot.commands.rollers.RollersStopCmd;
 import frc.robot.subsystems.RollersSys;
@@ -15,10 +17,12 @@ public class AutoSubwooferFireCmd extends SequentialCommandGroup {
   public AutoSubwooferFireCmd(FeederSys feeder, RollersSys rollers, PivotSys pivot) {
     super(
       new RollersFireCmd(rollers),
+      new PivotSourcePresetCmd(pivot),
       new WaitCommand(0.05),
       new FeederFeedCmd(feeder),
       new WaitCommand(0.6),
       new RollersStopCmd(rollers),
+      new PivotHomePresetCmd(pivot),
       new FeederStopCmd(feeder)
     );
   }
