@@ -6,7 +6,6 @@ package frc.robot.commands.auto;
 
 import com.pathplanner.lib.path.PathPlannerPath;
 
-import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -16,17 +15,11 @@ public class SetInitialPoseCmd extends Command {
   
   private final SwerveSys swerveSys;
 
-  private final Pose2d initialPose;
+  private final PathPlannerPath firstPath;
 
   /** Creates a new SetInitialPoseCmd. */
   public SetInitialPoseCmd(String firstPathName, SwerveSys swerveSys) {
-    PathPlannerPath firstPath = PathPlannerPath.fromPathFile(firstPathName);
-
-    if(DriverStation.getAlliance().get() == Alliance.Red) {
-      firstPath.flipPath();
-    }
-
-    initialPose = firstPath.getPathPoses().get(0);
+    firstPath = PathPlannerPath.fromPathFile(firstPathName);
 
     this.swerveSys = swerveSys;
   }
@@ -34,12 +27,16 @@ public class SetInitialPoseCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    swerveSys.setPose(initialPose);
+    if(DriverStation.getAlliance().get() == Alliance.Red) {
+      firstPath.flipPath();
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+      swerveSys.setPose(firstPath.getPreviewStartingHolonomicPose());
+  }
 
   // Called once the command ends or is interrupted.
   @Override

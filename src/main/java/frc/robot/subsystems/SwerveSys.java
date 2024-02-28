@@ -296,7 +296,7 @@ public class SwerveSys extends SubsystemBase {
 
         odometry = new SwerveDrivePoseEstimator(
             DriveConstants.kinematics,
-            pose.getRotation(),
+            getHeading(),
             getModulePositions(),
             pose
         );
