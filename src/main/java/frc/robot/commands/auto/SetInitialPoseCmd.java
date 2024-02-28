@@ -35,8 +35,10 @@ public class SetInitialPoseCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    swerveSys.setTranslation(firstPath.getPreviewStartingHolonomicPose().getTranslation());
-    swerveSys.setHeading(firstPath.getPreviewStartingHolonomicPose().getRotation());
+      // swerveSys.setTranslation(firstPath.getPreviewStartingHolonomicPose().getTranslation());
+      // swerveSys.setHeading(firstPath.getPreviewStartingHolonomicPose().getRotation());
+
+      
   }
 
   // Called once the command ends or is interrupted.

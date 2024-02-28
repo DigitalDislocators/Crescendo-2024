@@ -294,12 +294,14 @@ public class SwerveSys extends SubsystemBase {
     public void setPose(Pose2d pose) {
         setHeading(pose.getRotation());
 
-        odometry = new SwerveDrivePoseEstimator(
-            DriveConstants.kinematics,
-            getHeading(),
-            getModulePositions(),
-            pose
-        );
+        // odometry = new SwerveDrivePoseEstimator(
+        //     DriveConstants.kinematics,
+        //     getHeading(),
+        //     getModulePositions(),
+        //     pose
+        // );
+
+        odometry.resetPosition(getHeading(), getModulePositions(), pose);
     }
 
     public void setTranslation(Translation2d translation) {
