@@ -18,9 +18,9 @@ public class AutoAmpFireCmd extends SequentialCommandGroup {
     super(
       new PivotAmpPresetCmd(pivot),
       new RollersAmpFireCmd(rollers),
-      new WaitCommand(0.7),
+      new WaitCommand(0.9),
       new FeederFeedCmd(feeder),
-      new WaitCommand(0.6),
+      new WaitCommand(0.8),
       new PivotHomePresetCmd(pivot),
       new RollersStopCmd(rollers),
       new FeederStopCmd(feeder)

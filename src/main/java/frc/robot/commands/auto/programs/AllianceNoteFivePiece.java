@@ -8,6 +8,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
+import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 import frc.robot.commands.auto.FollowTrajectoryCmd;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
@@ -17,8 +18,8 @@ import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.RollersSys;
 import frc.robot.subsystems.SwerveSys;
 
-public class AllianceNoteFourPiece extends SequentialCommandGroup {
-  public AllianceNoteFourPiece(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys) {
+public class AllianceNoteFivePiece extends SequentialCommandGroup {
+  public AllianceNoteFivePiece(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys) {
     addCommands(
       // Again you can do it this way or keep the commands in their own files if you're more comfortable with that.
       Commands.runOnce(() -> swerveSys.setTranslation(new Translation2d(1.25, 5.55)), swerveSys),
@@ -41,7 +42,13 @@ public class AllianceNoteFourPiece extends SequentialCommandGroup {
       new FollowTrajectoryCmd("AllianceNoteThreeToSubwooferPos", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.75)
+      new WaitCommand(0.1),
+      new FollowTrajectoryCmd("SubwooferPosToMidlineNoteThree", swerveSys)
+          .alongWith(new WaitUntilCommand(() -> swerveSys.getPose().getX() > 5.5))
+          .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+      new FollowTrajectoryCmd("MidlineNoteThreeToSubwooferPos", swerveSys),
+      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
+      new WaitCommand(.75)
     );
   }
 }

@@ -8,6 +8,18 @@
         {
           "type": "path",
           "data": {
+            "pathName": "SubwooferPosToMidlineNoteThree"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MidlineNoteThreeToSubwooferPos"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
             "pathName": "SubwooferPosToAllianceNoteOne"
           }
         },

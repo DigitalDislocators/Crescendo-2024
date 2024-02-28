@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.25,
-        "y": 5.55
+        "x": 0.5,
+        "y": 1.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.2499999999999996,
-        "y": 5.55
+        "x": 1.4999999999999973,
+        "y": 1.5
       },
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.4,
-        "y": 5.55
+        "x": 7.745602258121809,
+        "y": 1.5
       },
       "prevControl": {
-        "x": 1.4,
-        "y": 5.55
+        "x": 6.745602258121809,
+        "y": 1.5
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "AllianceNoteTwoPos"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -39,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Example Testing Paths",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

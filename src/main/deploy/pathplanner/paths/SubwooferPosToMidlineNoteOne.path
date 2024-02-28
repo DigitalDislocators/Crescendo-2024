@@ -3,29 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.0,
-        "y": 2.0
+        "x": 1.3,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.0,
-        "y": 2.0
+        "x": 2.06060557468671,
+        "y": 6.31060557468671
+      },
+      "isLocked": false,
+      "linkedName": "SubwooferPos"
+    },
+    {
+      "anchor": {
+        "x": 2.9,
+        "y": 6.25
+      },
+      "prevControl": {
+        "x": 2.4019842908192404,
+        "y": 6.205498838114215
+      },
+      "nextControl": {
+        "x": 3.8960314183615194,
+        "y": 6.339002323771571
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.0,
-        "y": 2.0
+        "x": 7.6,
+        "y": 7.45832068105239
       },
       "prevControl": {
-        "x": 6.0,
-        "y": 2.0
+        "x": 6.6151922469877915,
+        "y": 7.28467250338546
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "MidlineNoteOnePos"
     }
   ],
   "rotationTargets": [],
@@ -43,7 +59,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Example Testing Paths",
+  "folder": "Midline Note Paths",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

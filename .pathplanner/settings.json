@@ -2,7 +2,11 @@
   "robotWidth": 0.635,
   "robotLength": 0.635,
   "holonomicMode": true,
-  "pathFolders": [],
+  "pathFolders": [
+    "Alliance Note Paths",
+    "Midline Note Paths",
+    "Example Testing Paths"
+  ],
   "autoFolders": [],
   "defaultMaxVel": 5.0,
   "defaultMaxAccel": 3.0,
