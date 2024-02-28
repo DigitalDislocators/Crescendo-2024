@@ -198,13 +198,13 @@ public class SwerveSys extends SubsystemBase {
      * @return A ChassisSpeeds representing the current motion of the drive base.
      */
     public ChassisSpeeds getChassisSpeeds() {
-        // double xVel = getAverageDriveVelocityMetersPerSec() * getDirectionOfTravel().getCos();
-        // double yVel = getAverageDriveVelocityMetersPerSec() * getDirectionOfTravel().getSin();
-        // double omega = Units.degreesToRadians(-imu.getRate());
+        double xVel = getAverageDriveVelocityMetersPerSec() * getDirectionOfTravel().getCos();
+        double yVel = getAverageDriveVelocityMetersPerSec() * getDirectionOfTravel().getSin();
+        double omega = Units.degreesToRadians(-imu.getRate());
 
-        // return new ChassisSpeeds(xVel, yVel, omega);
+        return new ChassisSpeeds(xVel, yVel, omega);
 
-        return DriveConstants.kinematics.toChassisSpeeds(getModuleStates());
+        // return DriveConstants.kinematics.toChassisSpeeds(getModuleStates());
     }
 
     /**
