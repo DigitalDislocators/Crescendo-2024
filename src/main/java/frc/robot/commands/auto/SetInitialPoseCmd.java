@@ -26,7 +26,7 @@ public class SetInitialPoseCmd extends Command {
       firstPath.flipPath();
     }
 
-    initialPose = firstPath.getStartingDifferentialPose();
+    initialPose = firstPath.getPreviewStartingHolonomicPose();
 
     this.swerveSys = swerveSys;
   }
