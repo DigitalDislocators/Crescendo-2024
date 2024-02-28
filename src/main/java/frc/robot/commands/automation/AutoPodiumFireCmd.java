@@ -18,7 +18,7 @@ public class AutoPodiumFireCmd extends SequentialCommandGroup {
     super(
       new RollersFireCmd(rollers),
       new PivotPodiumPresetCmd(pivot),
-      new WaitCommand(0.5),
+      new WaitCommand(0.1),
       new FeederFeedCmd(feeder),
       new WaitCommand(0.75),
       new PivotHomePresetCmd(pivot),

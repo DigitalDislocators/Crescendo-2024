@@ -177,11 +177,11 @@ public class Constants {
 
         public static final double manualIntakePower = 0.75;
         
-        public static final double FirePower = 0.77;
+        public static final double FirePower = 0.65;
 
         public static final double ampFirePower = 0.15;
         
-        public static final double intakePower = 0.75;
+        public static final double intakePower = 0.85;
     }
 
     public class PivotConstants {
