@@ -23,7 +23,7 @@ public class AllianceNoteFourPiece extends SequentialCommandGroup {
     addCommands(
       // Again you can do it this way or keep the commands in their own files if you're more comfortable with that.
       new SetInitialPoseCmd("SubwooferPosToAllianceNoteOne", swerveSys),
-      // Commands.runOnce(() -> swerveSys.setTranslation(new Translation2d(1.3, 5.55)), swerveSys),
+      // Commands.runOnce(() -> swerveSys.setTranslation(new Translation2d(15.26, 5.55)), swerveSys),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.1),
       new FollowTrajectoryCmd("SubwooferPosToAllianceNoteOne", swerveSys)

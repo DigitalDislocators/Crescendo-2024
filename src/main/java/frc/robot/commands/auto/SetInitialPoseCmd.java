@@ -27,15 +27,16 @@ public class SetInitialPoseCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    if(DriverStation.getAlliance().get() == Alliance.Red) {
-      firstPath.flipPath();
-    }
+    // if(DriverStation.getAlliance().get() == Alliance.Red) {
+      // firstPath.flipPath();
+    // }
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      swerveSys.setPose(firstPath.getPreviewStartingHolonomicPose());
+    swerveSys.setTranslation(firstPath.getPreviewStartingHolonomicPose().getTranslation());
+    swerveSys.setHeading(firstPath.getPreviewStartingHolonomicPose().getRotation());
   }
 
   // Called once the command ends or is interrupted.
