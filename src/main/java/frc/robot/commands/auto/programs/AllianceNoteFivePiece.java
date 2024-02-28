@@ -22,7 +22,16 @@ import frc.robot.subsystems.SwerveSys;
 public class AllianceNoteFivePiece extends SequentialCommandGroup {
   public AllianceNoteFivePiece(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys) {
     addCommands(
-      new SetInitialPoseCmd("SubwooferPosToAllianceNoteOne", swerveSys),
+      // Again you can do it this way or keep the commands in their own files if you're more comfortable with that.
+      new SetInitialPoseCmd("SubwooferPosToMidlineNoteThree", swerveSys),
+      // Commands.runOnce(() -> swerveSys.setTranslation(new Translation2d(1.3, 5.55)), swerveSys),
+      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
+      new WaitCommand(0.1),
+      new FollowTrajectoryCmd("SubwooferPosToMidlineNoteThree", swerveSys)
+        .alongWith(new WaitUntilCommand(() -> swerveSys.getPose().getX() > 5.5))
+        .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+      new FollowTrajectoryCmd("MidlineNoteThreeToSubwooferPos", swerveSys)
+        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.1),
       new FollowTrajectoryCmd("SubwooferPosToAllianceNoteOne", swerveSys)
@@ -42,13 +51,7 @@ public class AllianceNoteFivePiece extends SequentialCommandGroup {
       new FollowTrajectoryCmd("AllianceNoteThreeToSubwooferPos", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.1),
-      new FollowTrajectoryCmd("SubwooferPosToMidlineNoteThree", swerveSys)
-          .alongWith(new WaitUntilCommand(() -> swerveSys.getPose().getX() > 5.5))
-          .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
-      new FollowTrajectoryCmd("MidlineNoteThreeToSubwooferPos", swerveSys),
-      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(.75)
+      new WaitCommand(0.75)
     );
   }
 }
