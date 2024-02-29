@@ -1,9 +1,6 @@
 package frc.robot;
 
-import org.opencv.core.RotatedRect;
-
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -15,8 +12,6 @@ import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.RollerConstants;
 import frc.robot.commands.drivetrain.ArcadeDriveCmd;
-import frc.robot.commands.drivetrain.ResetHeadingCmd;
-import frc.robot.commands.drivetrain.SetHeadingCmd;
 import frc.robot.commands.feeder.FeederFeedCmd;
 import frc.robot.commands.feeder.FeederInCmd;
 import frc.robot.commands.feeder.FeederStopCmd;

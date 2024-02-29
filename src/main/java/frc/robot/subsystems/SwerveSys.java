@@ -270,6 +270,15 @@ public class SwerveSys extends SubsystemBase {
         return odometry.getEstimatedPosition();
     }
 
+    public Pose2d getBlueSidePose() {
+        if (DriverStation.getAlliance().get() == Alliance.Red) {
+            return new Pose2d(16.54 - getPose().getX(), getPose().getY(), new Rotation2d(MathUtil.angleModulus(getPose().getRotation().getRadians() - Math.PI)));
+        }
+        else {
+            return getPose();
+        }
+    }
+
     /**
      * Resets the current pose to (0, 0) with a heading of zero.
      */

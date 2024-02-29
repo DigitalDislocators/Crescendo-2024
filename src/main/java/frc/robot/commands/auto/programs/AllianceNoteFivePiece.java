@@ -4,8 +4,6 @@
 
 package frc.robot.commands.auto.programs;
 
-import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
@@ -28,8 +26,8 @@ public class AllianceNoteFivePiece extends SequentialCommandGroup {
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.1),
       new FollowTrajectoryCmd("SubwooferPosToMidlineNoteThree", swerveSys)
-        .alongWith(new WaitCommand(2.0))
-        .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+        .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
+        .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
       new FollowTrajectoryCmd("MidlineNoteThreeToSubwooferPos", swerveSys)
         .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
