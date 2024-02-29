@@ -19,7 +19,7 @@ public class AutoSubwooferFireCmd extends SequentialCommandGroup {
       new RollersFireCmd(rollers),
       new WaitCommand(0.05),
       new FeederFeedCmd(feeder),
-      new WaitCommand(0.6),
+      new WaitCommand(0.7),
       new RollersStopCmd(rollers),
       new FeederStopCmd(feeder)
     );

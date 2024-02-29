@@ -179,7 +179,7 @@ public class Constants {
         
         public static final double FirePower = 0.65;
 
-        public static final double ampFirePower = 0.15;
+        public static final double ampFirePower = 0.14;
         
         public static final double intakePower = 0.85;
     }
@@ -209,7 +209,7 @@ public class Constants {
 
         public static final double trapPresetDeg = 150.0;
 
-        public static final double ampPresetDeg = 62.0;
+        public static final double ampPresetDeg = 64.0;
         
         public static final double sourcePresetDeg = 5.0;
 
