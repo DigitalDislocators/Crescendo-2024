@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.hardware.Pigeon2;
+import com.pathplanner.lib.path.PathPlannerPath;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.math.MathUtil;
@@ -13,6 +14,8 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import frc.robot.Constants.CANDevices;
 import frc.robot.Constants.DriveConstants;
 
@@ -305,12 +308,22 @@ public class SwerveSys extends SubsystemBase {
     }
 
     public void setTranslation(Translation2d translation) {
-        odometry = new SwerveDrivePoseEstimator(
-            DriveConstants.kinematics,
-            getHeading(),
-            getModulePositions(),
-            new Pose2d(translation, getHeading())
-        );
+        // odometry = new SwerveDrivePoseEstimator(
+        //     DriveConstants.kinematics,
+        //     getHeading(),
+        //     getModulePositions(),
+        //     new Pose2d(translation, getHeading())
+        // );
+
+        odometry.resetPosition(getHeading(), getModulePositions(), new Pose2d(translation, getHeading()));
+    }
+
+    public void setPoseFromPathStart(String trajectoryName) {
+        if(DriverStation.getAlliance().get() == Alliance.Red) {
+        // firstPath.flipPath();
+        }
+
+        setPose(PathPlannerPath.fromPathFile(trajectoryName).getPreviewStartingHolonomicPose());
     }
 
     /**
