@@ -157,8 +157,5 @@ public class RobotContainer {
         SmartDashboard.putNumber("FR offset CANCoder degrees", swerveSys.getCanCoderAngles()[1].getDegrees() - DriveConstants.frontRightModOffset.getDegrees());
         SmartDashboard.putNumber("BL offset CANCoder degrees", swerveSys.getCanCoderAngles()[2].getDegrees() - DriveConstants.backLeftModOffset.getDegrees());
         SmartDashboard.putNumber("BR offset CANCoder degrees", swerveSys.getCanCoderAngles()[3].getDegrees() - DriveConstants.backRightModOffset.getDegrees());
-    
-        SmartDashboard.putNumber("pose x meters", swerveSys.getPose().getX());
-        SmartDashboard.putNumber("pose y meters", swerveSys.getPose().getY());
     }
 }

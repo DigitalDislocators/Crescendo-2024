@@ -295,7 +295,7 @@ public class SwerveSys extends SubsystemBase {
      * @param pose The pose to set the robot to.
      */
     public void setPose(Pose2d pose) {
-        setHeading(pose.getRotation());
+        // setHeading(pose.getRotation());
 
         // odometry = new SwerveDrivePoseEstimator(
         //     DriveConstants.kinematics,
@@ -319,11 +319,14 @@ public class SwerveSys extends SubsystemBase {
     }
 
     public void setPoseFromPathStart(String trajectoryName) {
+
+        PathPlannerPath path = PathPlannerPath.fromPathFile(trajectoryName);
+
         if(DriverStation.getAlliance().get() == Alliance.Red) {
-        // firstPath.flipPath();
+         path = path.flipPath();
         }
 
-        setPose(PathPlannerPath.fromPathFile(trajectoryName).getPreviewStartingHolonomicPose());
+        setPose(path.getPreviewStartingHolonomicPose());
     }
 
     /**

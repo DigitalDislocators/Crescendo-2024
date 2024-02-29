@@ -16,20 +16,22 @@ public class SetInitialPoseCmd extends Command {
   
   private final SwerveSys swerveSys;
 
-  // private final PathPlannerPath firstPath;
+  private PathPlannerPath firstPath;
 
   /** Creates a new SetInitialPoseCmd. */
   public SetInitialPoseCmd(String firstPathName, SwerveSys swerveSys) {
-    // firstPath = PathPlannerPath.fromPathFile(firstPathName);
+    firstPath = PathPlannerPath.fromPathFile(firstPathName);
 
     this.swerveSys = swerveSys;
+
+    addRequirements(swerveSys);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     if(DriverStation.getAlliance().get() == Alliance.Red) {
-      // firstPath.flipPath();
+      firstPath = firstPath.flipPath();
     }
   }
 
@@ -38,11 +40,11 @@ public class SetInitialPoseCmd extends Command {
   public void execute() {
       // swerveSys.setTranslation(firstPath.getPreviewStartingHolonomicPose().getTranslation());
       
-      swerveSys.setTranslation(new Translation2d(1.3, 5.55));
+      // swerveSys.setTranslation(new Translation2d(1.3, 5.55));
 
       // swerveSys.setHeading(firstPath.getPreviewStartingHolonomicPose().getRotation());
 
-    // swerveSys.setPose(firstPath.getPreviewStartingHolonomicPose());
+    swerveSys.setPose(firstPath.getPreviewStartingHolonomicPose());
   }
 
   // Called once the command ends or is interrupted.
