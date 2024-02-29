@@ -138,6 +138,8 @@ public class RobotContainer {
         SmartDashboard.putNumber("pose x meters", swerveSys.getPose().getX());
         SmartDashboard.putNumber("pose y meters", swerveSys.getPose().getY());
 
+        SmartDashboard.putNumber("blue pose x meters", swerveSys.getBlueSidePose().getX());
+
         SmartDashboard.putNumber("FL angle degrees", swerveSys.getModuleStates()[0].angle.getDegrees());
         SmartDashboard.putNumber("FR angle degrees", swerveSys.getModuleStates()[1].angle.getDegrees());
         SmartDashboard.putNumber("BL angle degrees", swerveSys.getModuleStates()[2].angle.getDegrees());
