@@ -5,7 +5,6 @@
 package frc.robot.commands.auto.programs;
 
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
@@ -28,15 +27,15 @@ public class MidlineNoteThreePiece extends SequentialCommandGroup {
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.1),
       new FollowTrajectoryCmd("OffsetSubwooferPosToMidlineNoteFive", swerveSys)
-        .alongWith(new WaitUntilCommand(() -> swerveSys.getPose().getX() > 5.5))
-        .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+        .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
+        .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
       new FollowTrajectoryCmd("MidlineNoteFiveToOffsetSubwooferPos", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.1),
       new FollowTrajectoryCmd("OffsetSubwooferPosToMidlineNoteFour", swerveSys)
-      .alongWith(new WaitUntilCommand(() -> swerveSys.getPose().getX() > 5.5))
-      .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+      .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
+      .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
       new FollowTrajectoryCmd("MidlineNoteFourToOffsetSubwooferPos", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
