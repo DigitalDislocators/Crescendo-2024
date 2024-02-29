@@ -6,6 +6,7 @@ package frc.robot.commands.auto;
 
 import com.pathplanner.lib.path.PathPlannerPath;
 
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -15,11 +16,11 @@ public class SetInitialPoseCmd extends Command {
   
   private final SwerveSys swerveSys;
 
-  private final PathPlannerPath firstPath;
+  // private final PathPlannerPath firstPath;
 
   /** Creates a new SetInitialPoseCmd. */
   public SetInitialPoseCmd(String firstPathName, SwerveSys swerveSys) {
-    firstPath = PathPlannerPath.fromPathFile(firstPathName);
+    // firstPath = PathPlannerPath.fromPathFile(firstPathName);
 
     this.swerveSys = swerveSys;
   }
@@ -27,18 +28,21 @@ public class SetInitialPoseCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    // if(DriverStation.getAlliance().get() == Alliance.Red) {
+    if(DriverStation.getAlliance().get() == Alliance.Red) {
       // firstPath.flipPath();
-    // }
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
       // swerveSys.setTranslation(firstPath.getPreviewStartingHolonomicPose().getTranslation());
+      
+      swerveSys.setTranslation(new Translation2d(1.3, 5.55));
+
       // swerveSys.setHeading(firstPath.getPreviewStartingHolonomicPose().getRotation());
 
-      
+    // swerveSys.setPose(firstPath.getPreviewStartingHolonomicPose());
   }
 
   // Called once the command ends or is interrupted.

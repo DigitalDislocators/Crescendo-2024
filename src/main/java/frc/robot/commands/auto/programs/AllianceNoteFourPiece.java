@@ -4,6 +4,8 @@
 
 package frc.robot.commands.auto.programs;
 
+import com.pathplanner.lib.path.PathPlannerPath;
+
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -22,8 +24,8 @@ public class AllianceNoteFourPiece extends SequentialCommandGroup {
   public AllianceNoteFourPiece(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys) {
     addCommands(
       // Again you can do it this way or keep the commands in their own files if you're more comfortable with that.
-      new SetInitialPoseCmd("SubwooferPosToAllianceNoteOne", swerveSys),
-      // Commands.runOnce(() -> swerveSys.setTranslation(new Translation2d(15.26, 5.55)), swerveSys),
+      // new SetInitialPoseCmd("SubwooferPosToAllianceNoteOne", swerveSys),
+      Commands.runOnce(() -> swerveSys.setPose(PathPlannerPath.fromPathFile("SubwooferPosToAllianceNoteOne").getPreviewStartingHolonomicPose()), swerveSys),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.1),
       new FollowTrajectoryCmd("SubwooferPosToAllianceNoteOne", swerveSys)
