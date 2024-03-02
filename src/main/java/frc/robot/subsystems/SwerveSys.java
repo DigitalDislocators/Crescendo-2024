@@ -282,25 +282,17 @@ public class SwerveSys extends SubsystemBase {
         }
     }
 
+    public void setHeading(Rotation2d heading) {
+        imu.setYaw(MathUtil.inputModulus(heading.getDegrees(), 0.0, 360.0));
+    }
+    
     /**
      * Resets the current pose to (0, 0) with a heading of zero.
      */
     public void resetPose() {
-        resetDriveDistances();
-        resetHeading();
-
-        odometry = new SwerveDrivePoseEstimator(
-            DriveConstants.kinematics,
-            new Rotation2d(),
-            getModulePositions(),
-            new Pose2d()
-        );
+        setPose(new Pose2d());
     }
-
-    public void setHeading(Rotation2d heading) {
-        imu.setYaw(MathUtil.inputModulus(heading.getDegrees(), 0.0, 360.0));
-    }
-
+    
     /**
      * Sets the pose of the robot.
      * 
