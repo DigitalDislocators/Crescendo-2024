@@ -27,7 +27,7 @@ public class AllianceNoteFivePiece extends SequentialCommandGroup {
       new WaitCommand(0.1),
       new FollowTrajectoryCmd("SubwooferPosToMidlineNoteThree", swerveSys)
         .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
-        .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
+          .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
       new FollowTrajectoryCmd("MidlineNoteThreeToSubwooferPos", swerveSys)
         .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
