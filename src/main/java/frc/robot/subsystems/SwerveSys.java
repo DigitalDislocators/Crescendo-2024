@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.hardware.Pigeon2;
-import com.pathplanner.lib.path.PathPlannerPath;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.math.MathUtil;
@@ -263,13 +262,17 @@ public class SwerveSys extends SubsystemBase {
     }
 
     /**
-     * @return The current estimated position of the robot on the field
-     * based on drive encoder and gyro readings.
+     * @return The current estimated position of the robot.
      */
     public Pose2d getPose() {
         return odometry.getEstimatedPosition();
     }
 
+    /**
+     * @return The current estimated pose of the robot, which will be mirrored if on the red alliance.
+     * This is useful for checking the pose of the robot in an autonomous program, as PathPlanner paths
+     * can mirror blue side paths for use on the red side.
+     */
     public Pose2d getBlueSidePose() {
         if (DriverStation.getAlliance().get() == Alliance.Red) {
             return new Pose2d(16.54 - getPose().getX(), getPose().getY(), new Rotation2d(MathUtil.angleModulus(getPose().getRotation().getRadians() - Math.PI)));
@@ -304,38 +307,11 @@ public class SwerveSys extends SubsystemBase {
      * @param pose The pose to set the robot to.
      */
     public void setPose(Pose2d pose) {
-        // setHeading(pose.getRotation());
-
-        // odometry = new SwerveDrivePoseEstimator(
-        //     DriveConstants.kinematics,
-        //     getHeading(),
-        //     getModulePositions(),
-        //     pose
-        // );
-
         odometry.resetPosition(getHeading(), getModulePositions(), pose);
     }
 
     public void setTranslation(Translation2d translation) {
-        // odometry = new SwerveDrivePoseEstimator(
-        //     DriveConstants.kinematics,
-        //     getHeading(),
-        //     getModulePositions(),
-        //     new Pose2d(translation, getHeading())
-        // );
-
         odometry.resetPosition(getHeading(), getModulePositions(), new Pose2d(translation, getHeading()));
-    }
-
-    public void setPoseFromPathStart(String trajectoryName) {
-
-        PathPlannerPath path = PathPlannerPath.fromPathFile(trajectoryName);
-
-        if(DriverStation.getAlliance().get() == Alliance.Red) {
-         path = path.flipPath();
-        }
-
-        setPose(path.getPreviewStartingHolonomicPose());
     }
 
     /**
