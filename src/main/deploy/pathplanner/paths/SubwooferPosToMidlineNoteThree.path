@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.3,
-        "y": 5.55
+        "x": 2.015554507299491,
+        "y": 5.2774048405239675
       },
       "isLocked": false,
       "linkedName": "SubwooferPos"
@@ -17,27 +17,43 @@
     {
       "anchor": {
         "x": 2.9,
-        "y": 4.85
+        "y": 4.88
       },
       "prevControl": {
-        "x": 1.7789457132798983,
-        "y": 4.990796046509518
+        "x": 1.963751189067719,
+        "y": 4.88
       },
       "nextControl": {
-        "x": 3.9725284348615055,
-        "y": 4.715298438098525
+        "x": 3.960851224760516,
+        "y": 4.88
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.622154191676804,
-        "y": 4.0840735315555845
+        "x": 4.9577334242387785,
+        "y": 4.536716441853937
       },
       "prevControl": {
-        "x": 6.622154191676804,
-        "y": 4.0840735315555845
+        "x": 3.8672755039745677,
+        "y": 4.948209996670621
+      },
+      "nextControl": {
+        "x": 5.7566541134095965,
+        "y": 4.235236936506458
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.1,
+        "y": 4.248670953482258
+      },
+      "prevControl": {
+        "x": 7.040404096347039,
+        "y": 4.0634988538147505
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,8 +64,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 3.25,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 2.8,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
@@ -64,5 +80,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

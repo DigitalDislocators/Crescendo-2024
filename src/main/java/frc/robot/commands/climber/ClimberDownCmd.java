@@ -22,10 +22,10 @@ public class ClimberDownCmd extends Command {
     }
 
     public void end(boolean isInterrupted) {
-        climberSys.setClimberPower(0.0);
+        
     }
 
     public boolean isFinished() {
-        return climberSys.isAtLowerLimit();
+        return true;
     }
 }

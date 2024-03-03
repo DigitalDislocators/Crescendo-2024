@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.75,
-        "y": 4.5
+        "x": 0.7,
+        "y": 5.25
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.375,
-        "y": 3.417468245269452
+        "x": 1.325,
+        "y": 4.167468245269452
       },
       "isLocked": false,
-      "linkedName": "OffsetSubwooferPos"
+      "linkedName": null
     },
     {
       "anchor": {
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 7.75,
-        "y": 2.4483866511592676
+        "x": 8.301118557124333,
+        "y": 3.209649727570132
       },
       "prevControl": {
-        "x": 7.2968461064816745,
-        "y": 2.237077520288918
+        "x": 7.847964663606008,
+        "y": 2.9983405966997823
       },
       "nextControl": null,
       "isLocked": false,
@@ -57,7 +57,7 @@
     "maxVelocity": 5.0,
     "maxAcceleration": 3.25,
     "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0
+    "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,

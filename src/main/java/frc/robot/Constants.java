@@ -152,13 +152,13 @@ public class Constants {
         public static final double maxVelMetersPerSec = 3.25;
 
         // These drive and rotation PID constants most likely need to be tuned for better accuracy.
-        public static final double drivekP = 5.0; // 12.8
-        public static final double drivekD = 0.0; // .085
+        public static final double drivekP = 12.9; // 12.8
+        public static final double drivekD = 0.09; // .085
 
         // public static final PIDConstants driveConstants = new PIDConstants(drivekD, drivekD);
 
-        public static final double rotkP = 5.0; // 1.27
-        public static final double rotkD = 0.0; // 0.5
+        public static final double rotkP = 2.0; // 1.27
+        public static final double rotkD = 0.5; // 0.5
 
         // public static final PIDConstants rotConstants = new PIDConstants(rotkP, rotkD);
     }
@@ -173,15 +173,15 @@ public class Constants {
 
         public static final double maxRPM = freeSpeedRPM / gearRatio;
 
-        public static final double manualFirePower = 1.0;
+        public static final double manualFirePower = 0.7;
 
         public static final double manualIntakePower = 0.75;
         
-        public static final double FirePower = 0.65;
+        public static final double FirePower = 0.74;
 
         public static final double ampFirePower = 0.14;
         
-        public static final double intakePower = 0.85;
+        public static final double intakePower = 0.95;
     }
 
     public class PivotConstants {
@@ -213,15 +213,15 @@ public class Constants {
         
         public static final double sourcePresetDeg = 5.0;
 
-        public static final double groundPresetDeg = 183.0;
+        public static final double groundPresetDeg = 177.5;
 
         public static final double homePresetDeg = 0.0;
 
-        public static final double podiumPresetDeg = 75.0;
+        public static final double podiumPresetDeg = 80.0;
 
         public static final float lowerLimitDegrees = 0f;
 
-        public static final float upperLimitDegrees = 190f;
+        public static final float upperLimitDegrees = 180f;
 
         public static final double podiumCorrectionIncrement = .01;
     }

@@ -24,31 +24,32 @@ public class AllianceNoteFivePiece extends SequentialCommandGroup {
       new SetInitialPoseCmd("SubwooferPosToMidlineNoteThree", swerveSys),
       // Commands.runOnce(() -> swerveSys.setTranslation(new Translation2d(1.3, 5.55)), swerveSys),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.1),
+      new WaitCommand(0.08),
       new FollowTrajectoryCmd("SubwooferPosToMidlineNoteThree", swerveSys)
-        .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
+        .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 4.0)
         .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
       new FollowTrajectoryCmd("MidlineNoteThreeToSubwooferPos", swerveSys)
-        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
-      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.1),
+        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
+          .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < 1.8))
+          .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
       new FollowTrajectoryCmd("SubwooferPosToAllianceNoteOne", swerveSys)
         .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
       new FollowTrajectoryCmd("AllianceNoteOneToSubwooferPos", swerveSys)
-        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
-      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.1),
+        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
+          .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < 1.8))
+          .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
       new FollowTrajectoryCmd("SubwooferPosToAllianceNoteTwo", swerveSys)
         .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
       new FollowTrajectoryCmd("AllianceNoteTwoToSubwooferPos", swerveSys)
-        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
-      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.1),
+        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
+          .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < 1.8))
+          .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
       new FollowTrajectoryCmd("SubwooferPosToAllianceNoteThree", swerveSys)
         .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
       new FollowTrajectoryCmd("AllianceNoteThreeToSubwooferPos", swerveSys)
-        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
-      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
+        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
+          .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < 1.8))
+          .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
       new WaitCommand(0.75)
     );
   }

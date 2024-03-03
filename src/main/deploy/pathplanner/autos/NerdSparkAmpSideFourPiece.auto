@@ -1,0 +1,55 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.55,
+      "y": 6.65
+    },
+    "rotation": 60.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpOffsetSubwooferPosToMidlineNoteOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MidlineNoteOneToAmpOffsetSubwooferPos"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SubwooferPosToAllianceNoteOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceNoteOneToSubwooferPos"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SubwooferPosToAllianceNoteThree"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceNoteThreeToSubwooferPos"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

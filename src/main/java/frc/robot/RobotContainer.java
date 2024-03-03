@@ -27,12 +27,15 @@ import frc.robot.commands.auto.programs.AllianceNoteFivePiece;
 import frc.robot.commands.auto.programs.AllianceNoteFourPiece;
 import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.auto.programs.MidlineNoteThreePiece;
+import frc.robot.commands.auto.programs.NerdSparkThreePiece;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
 import frc.robot.commands.automation.AutoPodiumFireCmd;
+import frc.robot.commands.automation.AutoSourceIntakeCmd;
 import frc.robot.commands.automation.AutoSubwooferFireCmd;
 import frc.robot.commands.climber.ClimberDownCmd;
+import frc.robot.commands.climber.ClimberStopCmd;
 import frc.robot.commands.climber.ClimberUpCmd;
 import frc.robot.commands.rollers.RollersManualCmd;
 import frc.robot.commands.rollers.RollersStopCmd;
@@ -66,8 +69,7 @@ public class RobotContainer {
         autoSelector.addOption("AllianceNoteFourPiece", new AllianceNoteFourPiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("AllianceNoteFivePiece", new AllianceNoteFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("MidlineNoteThreePiece", new MidlineNoteThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
-
-
+        autoSelector.addOption("NerdSparkThreePiece", new NerdSparkThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
 
         configDriverBindings();
         configOperatorsBindings();
@@ -107,11 +109,11 @@ public class RobotContainer {
       
         operatorController.leftBumper().onTrue(new FeederInCmd(feederSys)).onFalse(new FeederStopCmd(feederSys));
 
-        operatorController.povUp().whileTrue(new ClimberUpCmd(climberSys)).whileFalse(new ClimberDownCmd(climberSys));
+        operatorController.povUp().onTrue(new ClimberUpCmd(climberSys)).onFalse(new ClimberStopCmd(climberSys));
 
-        // operatorController.povLeft().onTrue();
+        operatorController.povDown().onTrue(new ClimberDownCmd(climberSys)).onFalse(new ClimberStopCmd(climberSys));
 
-        // operatorController.povRight().onTrue();
+        operatorController.povRight().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
     }    
 
     public void configDriverBindings() {
@@ -123,7 +125,7 @@ public class RobotContainer {
         driverController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold)
             .onTrue(new AutoGroundIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
 
-        // driverController.a().onTrue(new SetHeadingCmd(new Rotation2d(90), swerveSys));
+        driverController.rightBumper().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
     }
 
     public Command getAutonomousCommand() {
