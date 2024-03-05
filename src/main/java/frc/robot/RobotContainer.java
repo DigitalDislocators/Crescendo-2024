@@ -27,7 +27,6 @@ import frc.robot.commands.auto.programs.AllianceNoteFivePiece;
 import frc.robot.commands.auto.programs.AllianceNoteFourPiece;
 import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.auto.programs.MidlineNoteThreePiece;
-import frc.robot.commands.auto.programs.NerdSparkThreePiece;
 import frc.robot.commands.auto.programs.PiHiThreePiece;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
