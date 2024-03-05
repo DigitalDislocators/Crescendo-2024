@@ -28,6 +28,7 @@ import frc.robot.commands.auto.programs.AllianceNoteFourPiece;
 import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.auto.programs.MidlineNoteThreePiece;
 import frc.robot.commands.auto.programs.NerdSparkThreePiece;
+import frc.robot.commands.auto.programs.PiHiThreePiece;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
@@ -69,7 +70,7 @@ public class RobotContainer {
         autoSelector.addOption("AllianceNoteFourPiece", new AllianceNoteFourPiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("AllianceNoteFivePiece", new AllianceNoteFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("MidlineNoteThreePiece", new MidlineNoteThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
-        autoSelector.addOption("NerdSparkThreePiece", new NerdSparkThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("PiHiThreePiece", new PiHiThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
 
         configDriverBindings();
         configOperatorsBindings();

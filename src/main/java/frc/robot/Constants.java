@@ -149,18 +149,14 @@ public class Constants {
         /**
          * The default maximum speed of the robot in auto. Can be overridden by the FollowTrajectoryCmd Command.
          */
-        public static final double maxVelMetersPerSec = 3.25;
+        public static final double maxVelMetersPerSec = 5.0;
 
         // These drive and rotation PID constants most likely need to be tuned for better accuracy.
-        public static final double drivekP = 12.9; // 12.8
-        public static final double drivekD = 0.09; // .085
+        public static final double drivekP = 15.48; // 12.9
+        public static final double drivekD = 0.0625; // .09
 
-        // public static final PIDConstants driveConstants = new PIDConstants(drivekD, drivekD);
-
-        public static final double rotkP = 2.0; // 1.27
+        public static final double rotkP = 6.35; // 1.27
         public static final double rotkD = 0.5; // 0.5
-
-        // public static final PIDConstants rotConstants = new PIDConstants(rotkP, rotkD);
     }
 
     public class RollerConstants {

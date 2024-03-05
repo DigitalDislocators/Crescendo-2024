@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.5,
-        "y": 3.200961894323342
+        "x": 1.7995203910207322,
+        "y": 2.6541334285676093
       },
       "isLocked": false,
       "linkedName": "OffsetSubwooferPos"
     },
     {
       "anchor": {
-        "x": 7.807326291344313,
-        "y": 0.64
+        "x": 8.434853962439753,
+        "y": 0.6069529933546087
       },
       "prevControl": {
-        "x": 6.307326291344313,
-        "y": 0.64
+        "x": 7.766176935862641,
+        "y": 0.5863783156137748
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,8 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.5,
-    "maxAcceleration": 2.5,
+    "maxVelocity": 7.0,
+    "maxAcceleration": 2.25,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

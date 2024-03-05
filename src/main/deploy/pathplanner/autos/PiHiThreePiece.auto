@@ -20,31 +20,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "MidlineNoteFiveToOffsetSubwooferPos"
+            "pathName": "MidlineNoteFiveToSubwooferPos"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "OffsetSubwooferPosToAllianceNoteThree"
+            "pathName": "SubwooferPosToAllianceNoteThree"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceNoteThreeToOffsetSubwooferPos"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "OffsetSubwooferPosToAllianceNoteOne"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "AllianceNoteOneToSubwooferPos"
+            "pathName": "AllianceNoteThreeToSubwooferPos"
           }
         }
       ]
