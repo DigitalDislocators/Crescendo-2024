@@ -27,16 +27,15 @@ public class MidlineNoteThreePiece extends SequentialCommandGroup {
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.1),
       new FollowTrajectoryCmd("OffsetSubwooferPosToMidlineNoteFive", swerveSys)
-        .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 4.0)
-        .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
+        .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
+          .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
       new FollowTrajectoryCmd("MidlineNoteFiveToOffsetSubwooferPos", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.1),
       new FollowTrajectoryCmd("OffsetSubwooferPosToMidlineNoteFour", swerveSys)
-      .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 4.0)
-      .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
-      new WaitCommand(0.2),
+        .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
+          .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
       new FollowTrajectoryCmd("MidlineNoteFourToOffsetSubwooferPos", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
       // new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),

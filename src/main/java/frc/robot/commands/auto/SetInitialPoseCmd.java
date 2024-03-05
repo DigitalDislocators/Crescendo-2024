@@ -17,7 +17,15 @@ public class SetInitialPoseCmd extends Command {
 
   private PathPlannerPath firstPath;
 
-  /** Creates a new SetInitialPoseCmd. */
+  /**
+   * Creates a new SetInitialPoseCmd.
+   * <p>
+   * SetInitialPoseCmd sets the pose of the robot to the starting pose of a specified trajectory.
+   * This should only be used to set position at the start of an autonomous program.
+   * 
+   * @param firstPathName The name of the trajectory given in PathPlanner to take the initial pose of.
+   * @param swerveSys The SwerveSys to set the initial pose.
+   */
   public SetInitialPoseCmd(String firstPathName, SwerveSys swerveSys) {
     firstPath = PathPlannerPath.fromPathFile(firstPathName);
 
