@@ -1,4 +1,4 @@
-package frc.robot.commands.automation;
+package frc.robot.commands.drivetrain;
 
 import java.util.Optional;
 
@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.subsystems.SwerveSys;
 
-public class AutoTurnToHeadingCmd extends Command {
+public class TurnToHeadingCmd extends Command {
 
     private final SwerveSys swerveSys;
 
@@ -18,7 +18,7 @@ public class AutoTurnToHeadingCmd extends Command {
 
     private final PIDController aimController;
 
-    public AutoTurnToHeadingCmd(Rotation2d targetHeading, SwerveSys swerveSys) {
+    public TurnToHeadingCmd(Rotation2d targetHeading, SwerveSys swerveSys) {
         this.swerveSys = swerveSys;
 
         this.targetHeading = targetHeading;
