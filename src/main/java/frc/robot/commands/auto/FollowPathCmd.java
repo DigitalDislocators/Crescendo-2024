@@ -18,7 +18,7 @@ public class FollowPathCmd extends FollowPathHolonomic {
     /**
      * Creates a new FollowPathCmd.
      * <p>
-     * FollowTrajectoryCmd follows a path using {@link FollowPathHolonomic} using the
+     * FollowPathCmd follows a path using {@link FollowPathHolonomic} using the
      * maximum velocity given in the {@link AutoConstants} class.
      * 
      * @param path The path to follow.
@@ -43,7 +43,7 @@ public class FollowPathCmd extends FollowPathHolonomic {
     /**
      * Creates a new FollowPathCmd.
      * <p>
-     * FollowTrajectoryCmd follows a path using {@link FollowPathHolonomic} using the
+     * FollowPathCmd follows a path using {@link FollowPathHolonomic} using the
      * maximum velocity given in the {@link AutoConstants} class.
      * 
      * @param pathName The name of the path given in PathPlanner.

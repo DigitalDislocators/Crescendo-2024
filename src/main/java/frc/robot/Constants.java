@@ -151,7 +151,7 @@ public class Constants {
 
     public static final class AutoConstants {
         /**
-         * The default maximum swerve module drive speed in auto. Can be overridden by the FollowTrajectoryCmd Command.
+         * The default maximum swerve module drive speed in auto. Can be overridden by the FollowPathCmd Command.
          */
         public static final double maxModuleSpeedMetersPerSec = 5.0;
 
@@ -245,7 +245,7 @@ public class Constants {
 
         public static final float lowerLimitDeg = 0f;
 
-        public static final float upperLimitDegrees = 180f;
+        public static final float upperLimitDeg = 180f;
 
         public static final double podiumCorrectionIncrementDeg = .01;
 

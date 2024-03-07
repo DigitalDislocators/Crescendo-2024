@@ -15,7 +15,7 @@ public class ExampleAuto extends SequentialCommandGroup {
     addCommands(
       // Again you can do it this way or keep the commands in their own files if you're more comfortable with that.
       new SetInitialPoseCmd("Example Path 1", swerveSys),
-      new FollowTrajectoryCmd("Example Path 1", swerveSys),
+      new FollowPathCmd("Example Path 1", swerveSys),
         // .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 2.0))
         // .andThen(),
       new WaitCommand(2.0),

@@ -36,7 +36,6 @@ import frc.robot.commands.automation.AutoSourceIntakeCmd;
 import frc.robot.commands.automation.AutoSpeakerFireCmd;
 import frc.robot.commands.automation.AutoSubwooferFireCmd;
 import frc.robot.commands.climber.ClimberDownCmd;
-import frc.robot.commands.climber.ClimberStopCmd;
 import frc.robot.commands.climber.ClimberUpCmd;
 import frc.robot.commands.rollers.RollersIntakeCmd;
 import frc.robot.commands.rollers.RollersStopCmd;

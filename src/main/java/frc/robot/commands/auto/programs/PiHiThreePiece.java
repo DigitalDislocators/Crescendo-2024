@@ -7,7 +7,7 @@ package frc.robot.commands.auto.programs;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
-import frc.robot.commands.auto.FollowTrajectoryCmd;
+import frc.robot.commands.auto.FollowPathCmd;
 import frc.robot.commands.auto.SetInitialPoseCmd;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
@@ -25,16 +25,16 @@ public class PiHiThreePiece extends SequentialCommandGroup {
       // Commands.runOnce(() -> swerveSys.setPoseFromPathStart("SubwooferPosToAllianceNoteOne"), swerveSys),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.05),
-      new FollowTrajectoryCmd("OffsetSubwooferPosToMidlineNoteFive", swerveSys)
+      new FollowPathCmd("OffsetSubwooferPosToMidlineNoteFive", swerveSys)
         .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 4.0)
         .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
-      new FollowTrajectoryCmd("MidlineNoteFiveToSubwooferPos", swerveSys)
+      new FollowPathCmd("MidlineNoteFiveToSubwooferPos", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < 1.9))
           .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
-      new FollowTrajectoryCmd("SubwooferPosToAllianceNoteThree", swerveSys)
+      new FollowPathCmd("SubwooferPosToAllianceNoteThree", swerveSys)
         .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
-      new FollowTrajectoryCmd("AllianceNoteThreeToSubwooferPos", swerveSys)
+      new FollowPathCmd("AllianceNoteThreeToSubwooferPos", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < 1.8))
           .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys)))
