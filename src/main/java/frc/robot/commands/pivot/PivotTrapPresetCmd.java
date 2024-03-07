@@ -19,7 +19,7 @@ public class PivotTrapPresetCmd extends Command {
 // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    pivot.setPivotDeg(PivotConstants.trapPresetDeg);
+    pivot.setTargetDeg(PivotConstants.trapPresetDeg);
   }
  
   // Called every time the scheduler runs while the command is scheduled.

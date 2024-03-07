@@ -10,42 +10,39 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class ClimberSys extends SubsystemBase {
   
-  private final CANSparkMax leaderClimber = new CANSparkMax(CANDevices.leaderClimbMtrId, MotorType.kBrushless);
-  private final CANSparkMax followerClimber = new CANSparkMax(CANDevices.followerClimbMtrId, MotorType.kBrushless);
+  private final CANSparkMax leftClimberMtr = new CANSparkMax(CANDevices.leftClimberMtrId, MotorType.kBrushless);
+  private final CANSparkMax rightClimberMtr = new CANSparkMax(CANDevices.rightClimberMtrId, MotorType.kBrushless);
   
   public ClimberSys() {
-    leaderClimber.setIdleMode(IdleMode.kBrake);
-    followerClimber.setIdleMode(IdleMode.kBrake);
+    leftClimberMtr.setIdleMode(IdleMode.kBrake);
+    rightClimberMtr.setIdleMode(IdleMode.kBrake);
 
-    leaderClimber.setSoftLimit(SoftLimitDirection.kForward, ClimberConstants.climberForwardLimit);
-    leaderClimber.setSoftLimit(SoftLimitDirection.kReverse, ClimberConstants.climberReverseLimit);
+    leftClimberMtr.setSoftLimit(SoftLimitDirection.kForward, ClimberConstants.climberForwardLimit);
+    leftClimberMtr.setSoftLimit(SoftLimitDirection.kReverse, ClimberConstants.climberReverseLimit);
 
-    leaderClimber.enableSoftLimit(SoftLimitDirection.kForward, true);
-    leaderClimber.enableSoftLimit(SoftLimitDirection.kReverse, true);
+    leftClimberMtr.enableSoftLimit(SoftLimitDirection.kForward, true);
+    leftClimberMtr.enableSoftLimit(SoftLimitDirection.kReverse, true);
 
-    leaderClimber.setInverted(true);
-
-    followerClimber.follow(leaderClimber, true);
+    leftClimberMtr.setInverted(true);
   }
 
   @Override
-  public void periodic() {
-    // System.out.println(getClimberPosition());
-  }
+  public void periodic() {}
 
   public void setClimberPower(double power) {
-    leaderClimber.set(power * ClimberConstants.climberSpeedFactor);
+    leftClimberMtr.set(power * ClimberConstants.climberSpeedFactor);
+    rightClimberMtr.set(power * ClimberConstants.climberSpeedFactor);
   }
 
   public double getClimberPosition() {
-    return leaderClimber.getEncoder().getPosition();
+    return leftClimberMtr.getEncoder().getPosition();
   }
 
   public boolean isAtUpperLimit() {
-    return Math.abs(getClimberPosition() - leaderClimber.getSoftLimit(SoftLimitDirection.kForward)) < ClimberConstants.limitThreshold;
+    return Math.abs(getClimberPosition() - leftClimberMtr.getSoftLimit(SoftLimitDirection.kForward)) < ClimberConstants.limitThreshold;
   }
 
   public boolean isAtLowerLimit() {
-    return Math.abs(getClimberPosition() - followerClimber.getSoftLimit(SoftLimitDirection.kReverse)) < ClimberConstants.limitThreshold;
+    return Math.abs(getClimberPosition() - rightClimberMtr.getSoftLimit(SoftLimitDirection.kReverse)) < ClimberConstants.limitThreshold;
   }
 }

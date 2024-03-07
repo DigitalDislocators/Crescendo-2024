@@ -1,6 +1,8 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkFlex;
+import com.revrobotics.SparkPIDController;
+import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
@@ -11,26 +13,40 @@ import frc.robot.Constants.RollerConstants;
 public class RollersSys extends SubsystemBase {
 
     // Declare actuators, sensors, and other variables here
-    private final CANSparkFlex leaderRollerMtr;
-    private final CANSparkFlex followerRollerMtr;
+    private final CANSparkFlex topRollerMtr;
+    private final CANSparkFlex bottomRollerMtr;
+
+    private final SparkPIDController topRollerController;
+    private final SparkPIDController bottomRollerController;
 
     public RollersSys() {
-        leaderRollerMtr = new CANSparkFlex(CANDevices.leaderRollerMtrId, MotorType.kBrushless);
-        followerRollerMtr = new CANSparkFlex(CANDevices.followerRollerMtrId, MotorType.kBrushless);
+        topRollerMtr = new CANSparkFlex(CANDevices.leaderRollerMtrId, MotorType.kBrushless);
+        bottomRollerMtr = new CANSparkFlex(CANDevices.followerRollerMtrId, MotorType.kBrushless);
 
-        leaderRollerMtr.restoreFactoryDefaults();
-        followerRollerMtr.restoreFactoryDefaults();
+        topRollerMtr.restoreFactoryDefaults();
+        bottomRollerMtr.restoreFactoryDefaults();
 
-        leaderRollerMtr.enableVoltageCompensation(10);
-        followerRollerMtr.enableVoltageCompensation(10);
+        topRollerMtr.enableVoltageCompensation(10);
+        bottomRollerMtr.enableVoltageCompensation(10);
 
-        leaderRollerMtr.setSmartCurrentLimit(RollerConstants.maxRollerCurrentAmps);
+        topRollerMtr.setSmartCurrentLimit(RollerConstants.maxRollerCurrentAmps);
         
-        leaderRollerMtr.setIdleMode(IdleMode.kBrake);
+        topRollerMtr.setIdleMode(IdleMode.kBrake);
+        bottomRollerMtr.setIdleMode(IdleMode.kBrake);
 
-        leaderRollerMtr.setInverted(true);
+        topRollerMtr.setInverted(true);
+        bottomRollerMtr.setInverted(true);
         
-        followerRollerMtr.follow(leaderRollerMtr, false);
+        topRollerController = topRollerMtr.getPIDController();
+        bottomRollerController = bottomRollerMtr.getPIDController();
+
+        topRollerController.setFF(RollerConstants.feedForward);
+        topRollerController.setP(RollerConstants.kP);
+        topRollerController.setD(RollerConstants.kD);
+
+        bottomRollerController.setFF(RollerConstants.feedForward);
+        bottomRollerController.setP(RollerConstants.kP);
+        bottomRollerController.setD(RollerConstants.kD);
     }
 
     @Override
@@ -39,11 +55,18 @@ public class RollersSys extends SubsystemBase {
     }
 
     public void setRPM(double rpm) {
-        leaderRollerMtr.set(rpm / RollerConstants.maxRPM);
+        // leaderRollerMtr.set(rpm / RollerConstants.maxRPM);
+        topRollerController.setReference(rpm, ControlType.kVelocity);
+        bottomRollerController.setReference(rpm, ControlType.kVelocity);
     }
 
     public void setPower(double power) {
-        leaderRollerMtr.set(power);
+        topRollerMtr.set(power);
+        bottomRollerMtr.set(power);
+    }
+
+    public double getRPM() {
+        return (topRollerMtr.getEncoder().getVelocity() + bottomRollerMtr.getEncoder().getVelocity()) / 2;
     }
 
 }

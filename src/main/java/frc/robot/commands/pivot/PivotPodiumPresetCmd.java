@@ -18,7 +18,7 @@ public class PivotPodiumPresetCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    pivot.setPivotDeg(PivotConstants.podiumPresetDeg);
+    pivot.setTargetDeg(PivotConstants.podiumPresetDeg);
   }
  
   // Called every time the scheduler runs while the command is scheduled.

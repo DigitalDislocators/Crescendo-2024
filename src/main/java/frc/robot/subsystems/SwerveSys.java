@@ -1,9 +1,11 @@
 package frc.robot.subsystems;
 
+import java.util.Optional;
 import com.ctre.phoenix6.hardware.Pigeon2;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -15,8 +17,11 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.CANDevices;
 import frc.robot.Constants.DriveConstants;
+import frc.robot.Constants.VisionConstants;
+import frc.robot.util.LimelightPoseEstimator;
 
 public class SwerveSys extends SubsystemBase {
 
@@ -76,18 +81,38 @@ public class SwerveSys extends SubsystemBase {
         this.speedFactor = speedFactor;
     }
 
+    private Optional<Double> omegaOverrideRadPerSec = Optional.empty();
+    public void setOmegaOverrideRadPerSec(Optional<Double> omegaOverrideRadPerSec) {
+        this.omegaOverrideRadPerSec = omegaOverrideRadPerSec;
+    }
+    public boolean hasOmegaOverride() {
+        return omegaOverrideRadPerSec.isPresent();
+    }
+
     private final Pigeon2 imu = new Pigeon2(CANDevices.imuId);
 
     // Odometry for the robot, measured in meters for linear motion and radians for rotational motion
     // Takes in kinematics and robot angle for parameters
 
-    private SwerveDrivePoseEstimator odometry = 
+    private final SwerveDrivePoseEstimator poseEstimator = 
+        // new SwerveDrivePoseEstimator(
+        //     DriveConstants.kinematics,
+        //     imu.getRotation2d(),
+        //     getModulePositions(),
+        //     new Pose2d()
+        // );
         new SwerveDrivePoseEstimator(
             DriveConstants.kinematics,
-            getHeading(),
+            imu.getRotation2d(),
             getModulePositions(),
-            new Pose2d()
-        );
+            new Pose2d(),
+            VecBuilder.fill(0.05, 0.05, Units.degreesToRadians(0.5)),
+            VecBuilder.fill(0.2, 0.2, Units.degreesToRadians(30.0)));
+
+    private final LimelightPoseEstimator[] limelightPoseEstimators = new LimelightPoseEstimator[] {
+        new LimelightPoseEstimator(VisionConstants.frontLimelightName, this::getPose),
+        new LimelightPoseEstimator(VisionConstants.backLimelightName, this::getPose)
+    };
 
     /**
      * Constructs a new SwerveSys.
@@ -100,7 +125,7 @@ public class SwerveSys extends SubsystemBase {
         frontRightMod.resetDriveDistance();
         backLeftMod.resetDriveDistance();
         backRightMod.resetDriveDistance();
-
+        
         resetPose();
     }
 
@@ -108,19 +133,49 @@ public class SwerveSys extends SubsystemBase {
     @Override
     public void periodic() {
         // Updates the odometry every 20ms
-        odometry.update(getHeading(), getModulePositions());
+        poseEstimator.update(imu.getRotation2d(), getModulePositions());
+
+        for(LimelightPoseEstimator limelightPoseEstimator : limelightPoseEstimators) {
+            Optional<Pose2d> limelightPose = limelightPoseEstimator.getLimelightPoseEstimate();
+            if(limelightPose.isPresent()) {
+                // TODO find out if rotation from limelight works
+                // Ignores heading from Limelights since gyro is very percise
+                // poseEstimator.addVisionMeasurement(
+                //     new Pose2d(limelightPose.get().getTranslation(), getHeading()),
+                //     limelightPoseEstimator.getCaptureTimestamp());
+
+                poseEstimator.addVisionMeasurement(limelightPose.get(), limelightPoseEstimator.getCaptureTimestamp());
+            }
+        }
+
+        SmartDashboard.putBoolean("omega override", hasOmegaOverride());
+        if(hasOmegaOverride()) {
+            SmartDashboard.putNumber("omega override value", omegaOverrideRadPerSec.get());
+        }
     }
     
     /**
      * Inputs drive values into the swerve drive base.
      * 
-     * @param driveX The desired forward/backward lateral motion, in meters per second.
-     * @param driveY The desired left/right lateral motion, in meters per second.
-     * @param rotation The desired rotational motion, in radians per second.
+     * @param driveXMetersPerSec The desired forward/backward lateral motion, in meters per second.
+     * @param driveYMetersPerSec The desired left/right lateral motion, in meters per second.
+     * @param rotationRadPerSec The desired rotational motion, in radians per second.
      * @param isFieldOriented whether driving is field- or robot-oriented.
      */
-    public void drive(double driveX, double driveY, double rotation, boolean isFieldOriented) {  
-        if(driveX != 0.0 || driveY != 0.0 || rotation != 0.0) isLocked = false;
+    public void drive(double driveXMetersPerSec, double driveYMetersPerSec, double rotationRadPerSec, boolean isFieldOriented) {
+        if(omegaOverrideRadPerSec.isPresent()) {
+            rotationRadPerSec = omegaOverrideRadPerSec.get();
+        }
+
+        if(DriverStation.getAlliance().get() == Alliance.Red) {
+            driveXMetersPerSec *= -1;
+            driveYMetersPerSec *= -1;
+        }
+
+        // Although ChassisSpeeds says it takes radians per second for rotation, it actually takes rotations per second.
+        rotationRadPerSec = Units.radiansToRotations(rotationRadPerSec);
+
+        if(driveXMetersPerSec != 0.0 || driveYMetersPerSec != 0.0 || rotationRadPerSec != 0.0) isLocked = false;
         
         if(isLocked) {
             setModuleStatesOpenLoop(new SwerveModuleState[] {
@@ -132,22 +187,22 @@ public class SwerveSys extends SubsystemBase {
         }
         else {
             // Reduces the speed of the drive base for "turtle" or "sprint" modes.
-            driveX *= speedFactor;
-            driveY *= speedFactor;
-            rotation *= speedFactor;
+            driveXMetersPerSec *= speedFactor;
+            driveYMetersPerSec *= speedFactor;
+            rotationRadPerSec *= speedFactor;
 
             // Represents the overall state of the drive base.
             ChassisSpeeds speeds =
-            isFieldOriented
-                ? ChassisSpeeds.fromFieldRelativeSpeeds(
-                    driveX, driveY, rotation, getHeading())
-                : new ChassisSpeeds(driveX, driveY, rotation);
+                isFieldOriented
+                    ? ChassisSpeeds.fromFieldRelativeSpeeds(
+                        driveXMetersPerSec, driveYMetersPerSec, rotationRadPerSec, getHeading())
+                    : new ChassisSpeeds(driveXMetersPerSec, driveYMetersPerSec, rotationRadPerSec);
 
             // Uses kinematics (wheel placements) to convert overall robot state to array of individual module states.
             SwerveModuleState[] states = DriveConstants.kinematics.toSwerveModuleStates(speeds);
             
             // Makes sure the wheels don't try to spin faster than the maximum speed possible
-            SwerveDriveKinematics.desaturateWheelSpeeds(states, DriveConstants.maxDriveSpeedMetersPerSec);
+            SwerveDriveKinematics.desaturateWheelSpeeds(states, DriveConstants.maxModuleSpeedMetersPerSec);
 
             setModuleStatesOpenLoop(states);
         }
@@ -200,13 +255,7 @@ public class SwerveSys extends SubsystemBase {
      * @return A ChassisSpeeds representing the current motion of the drive base.
      */
     public ChassisSpeeds getChassisSpeeds() {
-        double xVel = getAverageDriveVelocityMetersPerSec() * getDirectionOfTravel().getCos();
-        double yVel = getAverageDriveVelocityMetersPerSec() * getDirectionOfTravel().getSin();
-        double omega = Units.degreesToRadians(-imu.getRate());
-
-        return new ChassisSpeeds(xVel, yVel, omega);
-
-        // return DriveConstants.kinematics.toChassisSpeeds(getModuleStates());
+        return DriveConstants.kinematics.toChassisSpeeds(getModuleStates());
     }
 
     /**
@@ -216,6 +265,10 @@ public class SwerveSys extends SubsystemBase {
      */
     public void setChassisSpeeds(ChassisSpeeds chassisSpeeds) {
         setModuleStatesClosedLoop(DriveConstants.kinematics.toSwerveModuleStates(chassisSpeeds));
+    }
+
+    public Translation2d getFieldRelativeVelocity() {
+        return new Translation2d(getChassisSpeeds().vxMetersPerSecond, getChassisSpeeds().vyMetersPerSecond).rotateBy(getHeading());
     }
     
 
@@ -265,7 +318,7 @@ public class SwerveSys extends SubsystemBase {
      * @return The current estimated position of the robot.
      */
     public Pose2d getPose() {
-        return odometry.getEstimatedPosition();
+        return poseEstimator.getEstimatedPosition();
     }
 
     /**
@@ -299,11 +352,11 @@ public class SwerveSys extends SubsystemBase {
      * @param pose The pose to set the robot to.
      */
     public void setPose(Pose2d pose) {
-        odometry.resetPosition(getHeading(), getModulePositions(), pose);
+        poseEstimator.resetPosition(imu.getRotation2d(), getModulePositions(), pose);
     }
 
     public void setTranslation(Translation2d translation) {
-        odometry.resetPosition(getHeading(), getModulePositions(), new Pose2d(translation, getHeading()));
+        poseEstimator.resetPosition(imu.getRotation2d(), getModulePositions(), new Pose2d(translation, imu.getRotation2d()));
     }
 
     /**
@@ -379,7 +432,9 @@ public class SwerveSys extends SubsystemBase {
      * @return The current heading of the robot as a Rotation2d.
      */
     public Rotation2d getHeading() {
-        return Rotation2d.fromRadians(MathUtil.angleModulus(Units.degreesToRadians(imu.getYaw().getValueAsDouble())));
+        // return Rotation2d.fromRadians(MathUtil.angleModulus(Units.degreesToRadians(imu.getYaw().getValueAsDouble())));
+        // return imu.getRotation2d();
+        return getPose().getRotation();
     }
 
     /**
@@ -406,7 +461,12 @@ public class SwerveSys extends SubsystemBase {
      * Sets the gyro heading to zero.
      */
     public void resetHeading() {
-        imu.setYaw(0.0);
+        poseEstimator.resetPosition(
+            imu.getRotation2d(),
+            getModulePositions(),
+            new Pose2d(
+                getPose().getTranslation(),
+                DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(180) : Rotation2d.fromDegrees(0)));
     }
 
     /**

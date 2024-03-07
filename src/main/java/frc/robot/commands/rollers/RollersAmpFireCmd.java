@@ -18,7 +18,7 @@ public class RollersAmpFireCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    rollers.setPower(RollerConstants.ampFirePower);
+    rollers.setRPM(RollerConstants.ampRPM);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

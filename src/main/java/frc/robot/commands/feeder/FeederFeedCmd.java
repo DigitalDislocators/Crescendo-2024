@@ -14,8 +14,7 @@ public class FeederFeedCmd extends Command {
     }
 
     public void initialize() {
-        feederSys.setLeftPower(0.0);
-        feederSys.setRightPower(1.0);
+        feederSys.setPower(1.0);
     }
 
     public void execute() {

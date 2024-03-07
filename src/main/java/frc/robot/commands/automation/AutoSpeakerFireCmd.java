@@ -1,0 +1,29 @@
+package frc.robot.commands.automation;
+
+import frc.robot.commands.feeder.FeederFeedCmd;
+import frc.robot.commands.feeder.FeederStopCmd;
+import frc.robot.commands.pivot.PivotHomePresetCmd;
+import frc.robot.commands.rollers.RollersFireCmd;
+import frc.robot.commands.rollers.RollersStopCmd;
+import frc.robot.subsystems.RollersSys;
+import frc.robot.subsystems.SwerveSys;
+import frc.robot.subsystems.FeederSys;
+import frc.robot.subsystems.PivotSys;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
+
+public class AutoSpeakerFireCmd extends SequentialCommandGroup {
+
+  public AutoSpeakerFireCmd(FeederSys feeder, RollersSys rollers, PivotSys pivot, SwerveSys swerveSys) {
+    super(
+      new RollersFireCmd(rollers),
+      new AutoSetPivotToSpeakerCmd(swerveSys, pivot),
+      new WaitCommand(0.1),
+      new FeederFeedCmd(feeder),
+      new WaitCommand(0.75),
+      new PivotHomePresetCmd(pivot),
+      new RollersStopCmd(rollers),
+      new FeederStopCmd(feeder)
+    );
+  }
+}
