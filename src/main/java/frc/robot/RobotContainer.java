@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
-import frc.robot.Constants.RollerConstants;
 import frc.robot.commands.drivetrain.ArcadeDriveCmd;
 import frc.robot.commands.feeder.FeederFeedCmd;
 import frc.robot.commands.feeder.FeederInCmd;
@@ -28,16 +27,18 @@ import frc.robot.commands.auto.programs.AllianceNoteFourPiece;
 import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.auto.programs.MidlineNoteThreePiece;
 import frc.robot.commands.auto.programs.PiHiThreePiece;
+import frc.robot.commands.automation.AutoAimToSpeakerCmd;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
 import frc.robot.commands.automation.AutoPodiumFireCmd;
 import frc.robot.commands.automation.AutoSourceIntakeCmd;
+import frc.robot.commands.automation.AutoSpeakerFireCmd;
 import frc.robot.commands.automation.AutoSubwooferFireCmd;
 import frc.robot.commands.climber.ClimberDownCmd;
 import frc.robot.commands.climber.ClimberStopCmd;
 import frc.robot.commands.climber.ClimberUpCmd;
-import frc.robot.commands.rollers.RollersManualCmd;
+import frc.robot.commands.rollers.RollersIntakeCmd;
 import frc.robot.commands.rollers.RollersStopCmd;
 
 public class RobotContainer {
@@ -48,7 +49,6 @@ public class RobotContainer {
     private final RollersSys rollerSys = new RollersSys();
     private final FeederSys feederSys = new FeederSys();
     private final ClimberSys climberSys = new ClimberSys();
-    // private final LimelightSys limelightSys = new LimelightSys(() -> swerveSys.getHeading());
 
     //Initialize joysticks.
     private final CommandXboxController driverController = new CommandXboxController(ControllerConstants.driverGamepadPort);
@@ -58,7 +58,6 @@ public class RobotContainer {
     SendableChooser<Command> autoSelector = new SendableChooser<Command>();
 
     public RobotContainer() {
-
         RobotController.setBrownoutVoltage(DriveConstants.brownoutVoltage);
 
         SmartDashboard.putData("auto selector", autoSelector);
@@ -73,21 +72,13 @@ public class RobotContainer {
 
         configDriverBindings();
         configOperatorsBindings();
-
-        swerveSys.setDefaultCommand(new ArcadeDriveCmd(
-            () -> MathUtil.applyDeadband(driverController.getLeftY(), ControllerConstants.joystickDeadband),
-            () -> MathUtil.applyDeadband(driverController.getLeftX(), ControllerConstants.joystickDeadband),
-            () -> MathUtil.applyDeadband((driverController.getRightX() * 0.8), ControllerConstants.joystickDeadband),
-            true,
-            true,
-            swerveSys));
     }
 
     private void configOperatorsBindings() {
-        rollerSys.setDefaultCommand(new RollersManualCmd(
-            () -> (operatorController.getRightTriggerAxis() * RollerConstants.manualFirePower) - 
-                  (operatorController.getLeftTriggerAxis() * RollerConstants.manualIntakePower),
-            rollerSys));
+        // rollerSys.setDefaultCommand(new RollersManualCmd(
+        //     () -> (operatorController.getRightTriggerAxis() * RollerConstants.manualFirePower) - 
+        //           (operatorController.getLeftTriggerAxis() * RollerConstants.manualIntakePower),
+        //     rollerSys));
 
         operatorController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold).onFalse(new RollersStopCmd(rollerSys));
 
@@ -100,6 +91,7 @@ public class RobotContainer {
         operatorController.a().onTrue(new AutoAmpFireCmd(feederSys, rollerSys, pivotSys));
 
         operatorController.b().onTrue(new AutoPodiumFireCmd(feederSys, rollerSys, pivotSys));
+        operatorController.b().and(driverController.a()).onTrue(new AutoSpeakerFireCmd(feederSys, rollerSys, pivotSys, swerveSys));
 
         operatorController.x().onTrue(new PivotHomePresetCmd(pivotSys));
 
@@ -109,14 +101,23 @@ public class RobotContainer {
       
         operatorController.leftBumper().onTrue(new FeederInCmd(feederSys)).onFalse(new FeederStopCmd(feederSys));
 
-        operatorController.povUp().onTrue(new ClimberUpCmd(climberSys)).onFalse(new ClimberStopCmd(climberSys));
+        operatorController.povUp().whileTrue(new ClimberUpCmd(climberSys)).whileFalse(new ClimberDownCmd(climberSys));
 
-        operatorController.povDown().onTrue(new ClimberDownCmd(climberSys)).onFalse(new ClimberStopCmd(climberSys));
-
+        operatorController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold)
+            .onTrue(new RollersIntakeCmd(rollerSys)).onFalse(new RollersStopCmd(rollerSys));
+            
         operatorController.povRight().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
     }    
 
     public void configDriverBindings() {
+        swerveSys.setDefaultCommand(new ArcadeDriveCmd(
+            () -> MathUtil.applyDeadband(driverController.getLeftY(), ControllerConstants.joystickDeadband),
+            () -> MathUtil.applyDeadband(driverController.getLeftX(), ControllerConstants.joystickDeadband),
+            () -> MathUtil.applyDeadband(driverController.getRightX(), ControllerConstants.joystickDeadband),
+            true,
+            true,
+            swerveSys));
+
         driverController.start().onTrue(Commands.runOnce(() -> swerveSys.resetHeading()));
 
         driverController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold)
@@ -126,6 +127,13 @@ public class RobotContainer {
             .onTrue(new AutoGroundIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
 
         driverController.rightBumper().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
+        
+        driverController.a().whileTrue(new AutoAimToSpeakerCmd(swerveSys));
+        // driverController.b().whileTrue(new AutoTurnToHeadingCmd(Rotation2d.fromDegrees(DriverStation.getAlliance().get() == Alliance.Red ? -90 : 90), swerveSys));
+        // driverController.x().whileTrue(new AutoTurnToHeadingCmd(Rotation2d.fromDegrees(DriverStation.getAlliance().get() == Alliance.Red ? 60 : -60), swerveSys));
+
+        // driverController.a().onTrue(new PivotGroundPresetCmd(pivotSys)).onFalse(new PivotHomePresetCmd(pivotSys));
+        // driverController.b().onTrue(new PivotAmpPresetCmd(pivotSys)).onFalse(new PivotHomePresetCmd(pivotSys));
     }
 
     public Command getAutonomousCommand() {
@@ -156,5 +164,10 @@ public class RobotContainer {
         SmartDashboard.putNumber("FR offset CANCoder degrees", swerveSys.getCanCoderAngles()[1].getDegrees() - DriveConstants.frontRightModOffset.getDegrees());
         SmartDashboard.putNumber("BL offset CANCoder degrees", swerveSys.getCanCoderAngles()[2].getDegrees() - DriveConstants.backLeftModOffset.getDegrees());
         SmartDashboard.putNumber("BR offset CANCoder degrees", swerveSys.getCanCoderAngles()[3].getDegrees() - DriveConstants.backRightModOffset.getDegrees());
+
+        SmartDashboard.putNumber("pivot degrees", pivotSys.getCurrentPositionDeg());
+
+        SmartDashboard.putNumber("roller rpm", rollerSys.getRPM());
+
     }
 }

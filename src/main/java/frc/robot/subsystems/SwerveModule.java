@@ -76,7 +76,7 @@ public class SwerveModule extends SubsystemBase {
         driveEnc.setPositionConversionFactor(DriveConstants.driveMetersPerEncRev);
 
         //set the output of the drive encoder to be in radians per second for velocity measurement
-        driveEnc.setVelocityConversionFactor(DriveConstants.driveMetersPerSecPerRPM);
+        driveEnc.setVelocityConversionFactor(DriveConstants.driveMetersPerSecPerMtrRPM);
 
         //set the output of the steeration encoder to be in radians
         steerEnc.setPositionConversionFactor(DriveConstants.steerRadiansPerEncRev);
@@ -197,10 +197,10 @@ public class SwerveModule extends SubsystemBase {
         );
 
         if(isOpenLoop) {
-            driveMtr.set(desiredState.speedMetersPerSecond / DriveConstants.kFreeMetersPerSecond);
+            driveMtr.set(desiredState.speedMetersPerSecond / DriveConstants.freeMetersPerSecond);
         }
         else {
-            double speedMetersPerSecond = desiredState.speedMetersPerSecond * DriveConstants.maxDriveSpeedMetersPerSec;
+            double speedMetersPerSecond = desiredState.speedMetersPerSecond * DriveConstants.maxModuleSpeedMetersPerSec; // FIXME should not need to multiply by max module speed
 
             driveController.setReference(
                 speedMetersPerSecond,

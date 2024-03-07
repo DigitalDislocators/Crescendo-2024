@@ -17,7 +17,7 @@ public class PivotAmpPresetCmd extends Command {
 
   @Override
   public void initialize() {
-    pivot.setPivotDeg(PivotConstants.ampPresetDeg);
+    pivot.setTargetDeg(PivotConstants.ampPresetDeg);
   }
  
   @Override

@@ -14,8 +14,7 @@ public class FeederStopCmd extends Command {
     }
 
     public void initialize() {
-        feederSys.setLeftPower(0.5);
-        feederSys.setRightPower(0.5);
+        feederSys.setPower(0.0);
     }
 
     public void execute() {

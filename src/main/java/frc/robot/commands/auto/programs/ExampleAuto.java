@@ -6,7 +6,7 @@ package frc.robot.commands.auto.programs;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
-import frc.robot.commands.auto.FollowTrajectoryCmd;
+import frc.robot.commands.auto.FollowPathCmd;
 import frc.robot.commands.auto.SetInitialPoseCmd;
 import frc.robot.subsystems.SwerveSys;
 
@@ -19,7 +19,7 @@ public class ExampleAuto extends SequentialCommandGroup {
         // .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 2.0))
         // .andThen(),
       new WaitCommand(2.0),
-      new FollowTrajectoryCmd("Example Path 2", swerveSys)
+      new FollowPathCmd("Example Path 2", swerveSys)
     );
   }
 }

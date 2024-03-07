@@ -9,6 +9,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CANDevices;
 import frc.robot.Constants.PivotConstants;
@@ -16,83 +17,98 @@ import frc.robot.Constants.PivotConstants;
 public class PivotSys extends SubsystemBase {
 
     // Declare actuators, sensors, and other variables here
-    private final CANSparkFlex leaderPivotMtr;
-    private final CANSparkFlex followerPivotMtr;
+    private final CANSparkFlex leftPivotMtr;
+    private final CANSparkFlex rightPivotMtr;
 
-    private final RelativeEncoder pivotEnc;
+    private final RelativeEncoder leftPivotEnc;
+    private final RelativeEncoder rightPivotEnc;
 
     private final ProfiledPIDController pivotController;
 
-    private double targetDegrees = 0.0;
+    private double targetDeg = 0.0;
 
-    private double manualDegPerSec = 0.0;
+    private double manualPower = 0.0;
 
     public PivotSys() {
-        leaderPivotMtr = new CANSparkFlex(CANDevices.leaderPivotMtrId, MotorType.kBrushless);
-        followerPivotMtr = new CANSparkFlex(CANDevices.followerPivotMtrId, MotorType.kBrushless);
+        leftPivotMtr = new CANSparkFlex(CANDevices.leftPivotMtrId, MotorType.kBrushless);
+        rightPivotMtr = new CANSparkFlex(CANDevices.rightPivotMtrId, MotorType.kBrushless);
 
+        leftPivotMtr.restoreFactoryDefaults();
+        rightPivotMtr.restoreFactoryDefaults();
 
+        leftPivotMtr.setInverted(true);
 
-        leaderPivotMtr.restoreFactoryDefaults();
-        followerPivotMtr.restoreFactoryDefaults();
+        leftPivotMtr.enableVoltageCompensation(10);
+        rightPivotMtr.enableVoltageCompensation(10);
 
-        leaderPivotMtr.enableVoltageCompensation(10);
-        followerPivotMtr.enableVoltageCompensation(10);
+        leftPivotMtr.setSmartCurrentLimit(PivotConstants.maxPivotCurrentAmps);
+        rightPivotMtr.setSmartCurrentLimit(PivotConstants.maxPivotCurrentAmps);
 
-        leaderPivotMtr.setSmartCurrentLimit(PivotConstants.maxPivotCurrentAmps);
+        leftPivotMtr.setSoftLimit(SoftLimitDirection.kForward, PivotConstants.upperLimitDeg);
+        leftPivotMtr.setSoftLimit(SoftLimitDirection.kReverse, PivotConstants.lowerLimitDeg);
+        rightPivotMtr.setSoftLimit(SoftLimitDirection.kForward, PivotConstants.upperLimitDeg);
+        rightPivotMtr.setSoftLimit(SoftLimitDirection.kReverse, PivotConstants.lowerLimitDeg);
 
-        leaderPivotMtr.setSoftLimit(SoftLimitDirection.kForward, PivotConstants.upperLimitDegrees);
-        leaderPivotMtr.setSoftLimit(SoftLimitDirection.kReverse, PivotConstants.lowerLimitDegrees);
-
-        leaderPivotMtr.enableSoftLimit(SoftLimitDirection.kForward, true);
-        leaderPivotMtr.enableSoftLimit(SoftLimitDirection.kReverse, true);
+        leftPivotMtr.enableSoftLimit(SoftLimitDirection.kForward, true);
+        leftPivotMtr.enableSoftLimit(SoftLimitDirection.kReverse, true);
+        rightPivotMtr.enableSoftLimit(SoftLimitDirection.kForward, true);
+        rightPivotMtr.enableSoftLimit(SoftLimitDirection.kReverse, true);
         
-        leaderPivotMtr.setIdleMode(IdleMode.kBrake);
-        followerPivotMtr.setIdleMode(IdleMode.kBrake);
-
-        followerPivotMtr.follow(leaderPivotMtr, true);
+        leftPivotMtr.setIdleMode(IdleMode.kBrake);
+        rightPivotMtr.setIdleMode(IdleMode.kBrake);
         
-        pivotEnc = leaderPivotMtr.getEncoder();
+        leftPivotEnc = leftPivotMtr.getEncoder();
+        rightPivotEnc = rightPivotMtr.getEncoder();
 
-        pivotEnc.setPositionConversionFactor(PivotConstants.degreesPerEncRev);
-        pivotEnc.setVelocityConversionFactor(PivotConstants.degPerSecPerRPM);
+        leftPivotEnc.setPositionConversionFactor(PivotConstants.degPerEncRev);
+        leftPivotEnc.setVelocityConversionFactor(PivotConstants.degPerSecPerRPM);
+        rightPivotEnc.setPositionConversionFactor(PivotConstants.degPerEncRev);
+        rightPivotEnc.setVelocityConversionFactor(PivotConstants.degPerSecPerRPM);
 
-        pivotEnc.setPosition(PivotConstants.homePresetDeg);
+        leftPivotEnc.setPosition(PivotConstants.homePresetDeg);
+        rightPivotEnc.setPosition(PivotConstants.homePresetDeg);
 
         pivotController = new ProfiledPIDController(
-            PivotConstants.Kp, PivotConstants.Ki, PivotConstants.Kd,
+            PivotConstants.kP, 0.0, PivotConstants.kD,
             new Constraints(PivotConstants.maxVelDegPerSec, PivotConstants.maxAccelDegPerSecSq));
     }
 
     // This method will be called once per scheduler run
     @Override
     public void periodic() {
-        if(manualDegPerSec == 0.0) {
-            leaderPivotMtr.set(pivotController.calculate(getCurrentPositionDegrees(), targetDegrees));
+        if(manualPower == 0.0) {
+            leftPivotMtr.set(pivotController.calculate(leftPivotEnc.getPosition(), targetDeg));
+            rightPivotMtr.set(pivotController.calculate(rightPivotEnc.getPosition(), targetDeg));
         }
         else {
-            leaderPivotMtr.set(manualDegPerSec);
-            targetDegrees = getCurrentPositionDegrees();
-            pivotController.reset(targetDegrees);
+            leftPivotMtr.set(manualPower);
+            rightPivotMtr.set(manualPower);
+            targetDeg = getCurrentPositionDeg();
+            pivotController.reset(targetDeg);
         }
 
         if(DriverStation.isDisabled()) {
-            targetDegrees = getCurrentPositionDegrees();
-            pivotController.reset(targetDegrees);
+            targetDeg = getCurrentPositionDeg();
+            pivotController.reset(targetDeg);
         }
-        System.out.println(getCurrentPositionDegrees());
+
+        SmartDashboard.putNumber("pivot error deg", getCurrentPositionDeg() - targetDeg);
     }
 
     // Put methods for controlling this subsystem here. Call these from Commands.
-    public double getCurrentPositionDegrees() {
-        return pivotEnc.getPosition();
+    public double getCurrentPositionDeg() {
+        return (leftPivotEnc.getPosition() + rightPivotEnc.getPosition()) / 2;
     }
 
-    public void setPivotDeg(double degrees) {
-        targetDegrees = degrees;
+    public void setTargetDeg(double degrees) {
+        targetDeg = degrees;
     }
 
-    public void setManualDegPerSec(double degPerSec) {
-        manualDegPerSec = degPerSec;
+    public void setManualPower(double manualPower) {
+        this.manualPower = manualPower;
+    }
+
+    public boolean isAtTarget() {
+        return Math.abs(getCurrentPositionDeg() - targetDeg) < PivotConstants.toleranceDeg;
     }
 }

@@ -7,7 +7,7 @@ package frc.robot.commands.auto.programs;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
-import frc.robot.commands.auto.FollowTrajectoryCmd;
+import frc.robot.commands.auto.FollowPathCmd;
 import frc.robot.commands.auto.SetInitialPoseCmd;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;

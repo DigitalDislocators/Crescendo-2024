@@ -19,7 +19,7 @@ public class PivotSourcePresetCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    pivot.setPivotDeg(PivotConstants.sourcePresetDeg);
+    pivot.setTargetDeg(PivotConstants.sourcePresetDeg);
   }
  
   // Called every time the scheduler runs while the command is scheduled.
