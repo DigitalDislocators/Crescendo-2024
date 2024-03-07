@@ -3,6 +3,7 @@ package frc.robot.commands.drivetrain;
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.SwerveSys;
 
 public class ArcadeDriveCmd extends Command {
@@ -81,9 +82,9 @@ public class ArcadeDriveCmd extends Command {
         }
 
         swerveSys.drive(
-            -drive,
-            -strafe,
-            -rot,
+            -drive * DriveConstants.maxDriveSpeedMetersPerSec,
+            -strafe * DriveConstants.maxDriveSpeedMetersPerSec,
+            -rot * DriveConstants.maxTurnSpeedRadPerSec,
             isFieldRelative
         );
     }
