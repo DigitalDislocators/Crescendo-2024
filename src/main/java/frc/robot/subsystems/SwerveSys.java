@@ -17,7 +17,6 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.CANDevices;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.VisionConstants;
@@ -110,8 +109,8 @@ public class SwerveSys extends SubsystemBase {
             VecBuilder.fill(0.2, 0.2, Units.degreesToRadians(30.0)));
 
     private final LimelightPoseEstimator[] limelightPoseEstimators = new LimelightPoseEstimator[] {
-        new LimelightPoseEstimator(VisionConstants.frontLimelightName, this::getPose),
-        new LimelightPoseEstimator(VisionConstants.backLimelightName, this::getPose)
+        new LimelightPoseEstimator(VisionConstants.frontLimelightName),
+        new LimelightPoseEstimator(VisionConstants.backLimelightName)
     };
 
     /**
@@ -136,21 +135,10 @@ public class SwerveSys extends SubsystemBase {
         poseEstimator.update(imu.getRotation2d(), getModulePositions());
 
         for(LimelightPoseEstimator limelightPoseEstimator : limelightPoseEstimators) {
-            Optional<Pose2d> limelightPose = limelightPoseEstimator.getLimelightPoseEstimate();
+            Optional<Pose2d> limelightPose = limelightPoseEstimator.getRobotPose();
             if(limelightPose.isPresent()) {
-                // TODO find out if rotation from limelight works
-                // Ignores heading from Limelights since gyro is very percise
-                // poseEstimator.addVisionMeasurement(
-                //     new Pose2d(limelightPose.get().getTranslation(), getHeading()),
-                //     limelightPoseEstimator.getCaptureTimestamp());
-
                 poseEstimator.addVisionMeasurement(limelightPose.get(), limelightPoseEstimator.getCaptureTimestamp());
             }
-        }
-
-        SmartDashboard.putBoolean("omega override", hasOmegaOverride());
-        if(hasOmegaOverride()) {
-            SmartDashboard.putNumber("omega override value", omegaOverrideRadPerSec.get());
         }
     }
     

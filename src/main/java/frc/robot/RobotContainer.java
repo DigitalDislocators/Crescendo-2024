@@ -120,7 +120,7 @@ public class RobotContainer {
         driverController.start().onTrue(Commands.runOnce(() -> swerveSys.resetHeading()));
 
         driverController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold)
-            .whileTrue(Commands.runOnce(() -> swerveSys.lock()));
+            .whileTrue(Commands.runOnce(() -> swerveSys.lock()).repeatedly());
         
         driverController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold)
             .onTrue(new AutoGroundIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));

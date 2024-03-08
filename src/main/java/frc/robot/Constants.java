@@ -276,31 +276,21 @@ public class Constants {
     }
 
     public class ClimberConstants {
+        public static final double gearReduction = 1.0 / 20.0;
 
-        public static final int maxClimberCurrentAmps = 40;
-
-        public static final double inchesPerEncRev = 11;
-
-        public static final double rightClimbGearReduction = 1.0 / 20.0;
-        public static final double leftClimbGearReduction = 1.0 / 20.0;
-
-        public static final float climberForwardLimit = 147;
-        public static final float climberReverseLimit = 0;
+        public static final float climberForwardLimit = 147.0f;
+        public static final float climberReverseLimit = 0.1f;
 
         public static final double climberSpeedFactor = 1.0;
-
-        public static final double limitThreshold = 0.1;
     }
 
     public class VisionConstants {
         public static final String frontLimelightName = "limelight-intake";
         public static final String backLimelightName = "limelight-shooter";
-
-	    public static final double bufferSizeSeconds = 3.0;
     }
 
     public class FieldConstants {
-        public static final Translation2d blueAllianceSpeakerPose = new Translation2d(0, 5.55);
+        public static final Translation2d blueAllianceSpeakerPose = new Translation2d(0.0, 5.55);
         public static final Translation2d redAllianceSpeakerPose = new Translation2d(16.54, 5.55);
 
         public static final double speakerTargetHeightMeters = 2.03;

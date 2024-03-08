@@ -23,6 +23,12 @@ public class ClimberSys extends SubsystemBase {
     leftClimberMtr.enableSoftLimit(SoftLimitDirection.kForward, true);
     leftClimberMtr.enableSoftLimit(SoftLimitDirection.kReverse, true);
 
+    rightClimberMtr.setSoftLimit(SoftLimitDirection.kForward, ClimberConstants.climberForwardLimit);
+    rightClimberMtr.setSoftLimit(SoftLimitDirection.kReverse, ClimberConstants.climberReverseLimit);
+
+    rightClimberMtr.enableSoftLimit(SoftLimitDirection.kForward, true);
+    rightClimberMtr.enableSoftLimit(SoftLimitDirection.kReverse, true);
+
     leftClimberMtr.setInverted(true);
   }
 
@@ -35,14 +41,6 @@ public class ClimberSys extends SubsystemBase {
   }
 
   public double getClimberPosition() {
-    return leftClimberMtr.getEncoder().getPosition();
-  }
-
-  public boolean isAtUpperLimit() {
-    return Math.abs(getClimberPosition() - leftClimberMtr.getSoftLimit(SoftLimitDirection.kForward)) < ClimberConstants.limitThreshold;
-  }
-
-  public boolean isAtLowerLimit() {
-    return Math.abs(getClimberPosition() - rightClimberMtr.getSoftLimit(SoftLimitDirection.kReverse)) < ClimberConstants.limitThreshold;
+    return (leftClimberMtr.getEncoder().getPosition() + rightClimberMtr.getEncoder().getPosition()) / 2;
   }
 }

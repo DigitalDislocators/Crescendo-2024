@@ -33,9 +33,6 @@ public class PivotSys extends SubsystemBase {
         leftPivotMtr = new CANSparkFlex(CANDevices.leftPivotMtrId, MotorType.kBrushless);
         rightPivotMtr = new CANSparkFlex(CANDevices.rightPivotMtrId, MotorType.kBrushless);
 
-        leftPivotMtr.restoreFactoryDefaults();
-        rightPivotMtr.restoreFactoryDefaults();
-
         leftPivotMtr.setInverted(true);
 
         leftPivotMtr.enableVoltageCompensation(10);
