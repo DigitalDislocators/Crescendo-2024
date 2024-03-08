@@ -1,4 +1,4 @@
-package frc.robot.commands.automation;
+package frc.robot.commands.drivetrain;
 
 import java.util.Optional;
 
@@ -18,23 +18,16 @@ import frc.robot.Constants.PivotConstants;
 import frc.robot.Constants.RollerConstants;
 import frc.robot.subsystems.SwerveSys;
 
-public class AutoAimToSpeakerCmd extends Command {
+public class AimToSpeakerCmd extends Command {
 
     private final SwerveSys swerveSys;
 
-    private final Translation2d targetTranslation;
+    private Translation2d targetTranslation = FieldConstants.blueAllianceSpeakerPose;
 
     private final ProfiledPIDController aimController;
 
-    public AutoAimToSpeakerCmd(SwerveSys swerveSys) {
+    public AimToSpeakerCmd(SwerveSys swerveSys) {
         this.swerveSys = swerveSys;
-
-        if(DriverStation.getAlliance().get() == Alliance.Red) {
-            targetTranslation = FieldConstants.redAllianceSpeakerPose;
-        }
-        else {
-            targetTranslation = FieldConstants.blueAllianceSpeakerPose;
-        }
 
         aimController = new ProfiledPIDController(
             AutoConstants.autoAimkP, 0.0, AutoConstants.autoAimkD,
@@ -43,6 +36,13 @@ public class AutoAimToSpeakerCmd extends Command {
                 AutoConstants.autoAumTurnAccelRadPerSecSq));
 
         aimController.enableContinuousInput(-Math.PI, Math.PI);
+    }
+    
+    @Override
+    public void initialize() {
+        if(DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
+            targetTranslation = FieldConstants.redAllianceSpeakerPose;
+        }
     }
     
     @Override

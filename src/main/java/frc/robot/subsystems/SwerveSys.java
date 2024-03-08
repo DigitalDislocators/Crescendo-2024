@@ -155,7 +155,7 @@ public class SwerveSys extends SubsystemBase {
             rotationRadPerSec = omegaOverrideRadPerSec.get();
         }
 
-        if(DriverStation.getAlliance().get() == Alliance.Red) {
+        if(DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
             driveXMetersPerSec *= -1;
             driveYMetersPerSec *= -1;
         }
@@ -308,7 +308,7 @@ public class SwerveSys extends SubsystemBase {
      * can mirror blue side paths for use on the red side.
      */
     public Pose2d getBlueSidePose() {
-        if (DriverStation.getAlliance().get() == Alliance.Red) {
+        if (DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
             return new Pose2d(16.54 - getPose().getX(), getPose().getY(), new Rotation2d(MathUtil.angleModulus(getPose().getRotation().getRadians() - Math.PI)));
         }
         else {
@@ -457,7 +457,7 @@ public class SwerveSys extends SubsystemBase {
             getModulePositions(),
             new Pose2d(
                 getPose().getTranslation(),
-                DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(180) : Rotation2d.fromDegrees(0)));
+                DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(180) : Rotation2d.fromDegrees(0)));
     }
 
     /**

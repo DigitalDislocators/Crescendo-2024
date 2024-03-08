@@ -35,7 +35,7 @@ public class FollowPathCmd extends FollowPathHolonomic {
             DriveConstants.maxModuleSpeedMetersPerSec,
             Math.hypot(DriveConstants.trackWidth / 2.0, DriveConstants.wheelBase / 2.0),
             new ReplanningConfig(),
-            () -> DriverStation.getAlliance().get() == Alliance.Red);
+            () -> DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red);
 
         this.swerveSys = swerveSys;
     }
