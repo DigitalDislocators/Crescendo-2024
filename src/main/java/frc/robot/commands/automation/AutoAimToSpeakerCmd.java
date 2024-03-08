@@ -41,6 +41,8 @@ public class AutoAimToSpeakerCmd extends Command {
             new Constraints(
                 AutoConstants.autoAimTurnSpeedRadPerSec,
                 AutoConstants.autoAumTurnAccelRadPerSecSq));
+
+        aimController.enableContinuousInput(-Math.PI, Math.PI);
     }
     
     @Override
@@ -62,7 +64,6 @@ public class AutoAimToSpeakerCmd extends Command {
         Rotation2d targetHeading = extrapolatedTargetOffset.getAngle();
         
         SmartDashboard.putNumber("target heading deg", targetHeading.getDegrees());
-        SmartDashboard.putNumber("distance from speaker meters", lateralDistanceToTargetMeters);
 
         PPHolonomicDriveController.setRotationTargetOverride(() -> Optional.of(targetHeading));
 

@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.84847564682598,
-        "y": 7.427458664441138
+        "x": 8.10565911858641,
+        "y": 7.448033342181972
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.84847564682598,
-        "y": 7.427458664441138
+        "x": 7.105659118586409,
+        "y": 7.448033342181972
       },
       "isLocked": false,
       "linkedName": "MidlineNoteOnePos"
@@ -28,7 +28,7 @@
         "y": 7.65
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "AmpNoteAvoidanceWaypoint"
     },
     {
       "anchor": {
@@ -54,8 +54,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 2.25,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
@@ -70,5 +70,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

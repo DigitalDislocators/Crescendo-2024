@@ -4,9 +4,11 @@
 
 package frc.robot.commands.automation;
 
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.FieldConstants;
 import frc.robot.Constants.PivotConstants;
@@ -45,8 +47,8 @@ public class AutoSetPivotToSpeakerCmd extends Command {
 	public void execute() {
 		double lateralDistanceToTargetMeters = swerveSys.getPose().getTranslation().getDistance(targetTranslation);
 
-		double hypotDistanceToTargetMetes = 
-			Math.hypot(lateralDistanceToTargetMeters, FieldConstants.speakerTargetHeightMeters - PivotConstants.pivotHeightMeters);
+        double hypotDistanceToTargetMetes = 
+		Math.hypot(lateralDistanceToTargetMeters, FieldConstants.speakerTargetHeightMeters - PivotConstants.pivotHeightMeters);
 
         double timeOfFlightSecs = hypotDistanceToTargetMetes / (RollerConstants.fireRPM * RollerConstants.metersPerSecondPerRPM);
 
@@ -55,9 +57,10 @@ public class AutoSetPivotToSpeakerCmd extends Command {
             swerveSys.getFieldRelativeVelocity().getY() * timeOfFlightSecs);
     
         Translation2d extrapolatedTranslation = swerveSys.getPose().getTranslation().plus(extrapolation);
-        Translation2d extrapolatedTargetOffset = targetTranslation.minus(extrapolatedTranslation);
+        // Translation2d extrapolatedTargetOffset = targetTranslation.minus(extrapolatedTranslation);
 
-		double extrapolatedDistanceToTargetMeters = extrapolatedTargetOffset.getDistance(targetTranslation);
+        double extrapolatedDistanceToTargetMeters = extrapolatedTranslation.getDistance(targetTranslation);
+        SmartDashboard.putNumber("distance from speaker meters", extrapolatedDistanceToTargetMeters);
 
 		double targetAngleDeg = PivotConstants.pivotDegSpeakerShotInterpolator.get(extrapolatedDistanceToTargetMeters);
 
@@ -71,6 +74,6 @@ public class AutoSetPivotToSpeakerCmd extends Command {
 	// Returns true when the command should end.
 	@Override
 	public boolean isFinished() {
-		return false;
+		return true;
 	}
 }

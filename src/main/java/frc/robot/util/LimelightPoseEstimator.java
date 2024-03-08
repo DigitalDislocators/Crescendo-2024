@@ -21,7 +21,7 @@ public class LimelightPoseEstimator {
 	public Optional<Pose2d> getRobotPose() {
 		Pose2d limelightPose = LimelightHelpers.getBotPose2d_wpiBlue(limelightName);
 		// Limelight returns a pose of the origin when it has no targets
-		if(limelightPose.equals(new Pose2d())) {
+		if(limelightPose == null || limelightPose.equals(new Pose2d())) {
 			return Optional.empty();
 		}
 		else {

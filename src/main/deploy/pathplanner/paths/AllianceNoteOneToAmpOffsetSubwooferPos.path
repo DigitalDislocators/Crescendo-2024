@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.4,
+        "x": 2.7253808893582705,
         "y": 6.995390431883621
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.4,
+        "x": 1.7253808893582705,
         "y": 6.995390431883621
       },
       "isLocked": false,
@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 0.5,
-        "y": 6.65
+        "x": 0.75,
+        "y": 6.6
       },
       "prevControl": {
-        "x": 0.8535533905932737,
-        "y": 7.003553390593274
+        "x": 1.1035533905932737,
+        "y": 6.953553390593274
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "AmpOffsetSubwooferPos"
     }
   ],
   "rotationTargets": [
@@ -38,8 +38,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 3.25,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
