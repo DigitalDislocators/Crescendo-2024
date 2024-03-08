@@ -31,8 +31,6 @@ import frc.robot.commands.automation.AutoAimToSpeakerCmd;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
-import frc.robot.commands.automation.AutoPodiumFireCmd;
-import frc.robot.commands.automation.AutoSetPivotToSpeakerCmd;
 import frc.robot.commands.automation.AutoSourceIntakeCmd;
 import frc.robot.commands.automation.AutoSpeakerFireCmd;
 import frc.robot.commands.automation.AutoSubwooferFireCmd;

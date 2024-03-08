@@ -14,16 +14,16 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 public class AutoSpeakerFireCmd extends SequentialCommandGroup {
 
-  public AutoSpeakerFireCmd(FeederSys feeder, RollersSys rollers, PivotSys pivot, SwerveSys swerveSys) {
-    super(
-      new RollersFireCmd(rollers),
-      new AutoSetPivotToSpeakerCmd(swerveSys, pivot),
-      new WaitCommand(1.25),
-      new FeederFeedCmd(feeder),
-      new WaitCommand(0.75),
-      new PivotHomePresetCmd(pivot),
-      new RollersStopCmd(rollers),
-      new FeederStopCmd(feeder)
-    );
-  }
+	public AutoSpeakerFireCmd(FeederSys feeder, RollersSys rollers, PivotSys pivot, SwerveSys swerveSys) {
+		super(
+			new RollersFireCmd(rollers),
+			new AutoSetPivotToSpeakerCmd(swerveSys, pivot).repeatedly().alongWith(
+				new WaitCommand(1.25).andThen(
+				new FeederFeedCmd(feeder)).andThen(
+				new WaitCommand(0.75))),
+			new PivotHomePresetCmd(pivot),
+			new RollersStopCmd(rollers),
+			new FeederStopCmd(feeder)
+		);
+	}
 }

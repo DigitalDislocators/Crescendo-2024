@@ -41,6 +41,8 @@ public class AutoAimToSpeakerCmd extends Command {
             new Constraints(
                 AutoConstants.autoAimTurnSpeedRadPerSec,
                 AutoConstants.autoAumTurnAccelRadPerSecSq));
+
+        aimController.enableContinuousInput(-Math.PI, Math.PI);
     }
     
     @Override

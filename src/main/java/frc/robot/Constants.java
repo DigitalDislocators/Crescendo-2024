@@ -152,14 +152,14 @@ public class Constants {
     public static final class AutoConstants {
 
         // These drive and rotation PID constants most likely need to be tuned for better accuracy.
-        public static final double drivekP = 15.48; // 12.8
-        public static final double drivekD = 0.0625; // .085
+        public static final double drivekP = 5.0; // 12.8
+        public static final double drivekD = 0.5; //0.0625; // .085
 
-        public static final double rotkP = 6.35; // 1.27
+        public static final double rotkP = 5.0; // 1.27
         public static final double rotkD = 0.5; // 0.5
 
-        public static final double autoAimkP = 2.5 * 2;
-        public static final double autoAimkD = 0.25 * 2;
+        public static final double autoAimkP = 5.0;
+        public static final double autoAimkD = 0.5;
 
         public static final double autoAimToleranceDeg = 0.25;
 
