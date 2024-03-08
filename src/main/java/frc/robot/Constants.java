@@ -146,7 +146,8 @@ public class Constants {
         public static final double kvVoltSecsPerMeter = 2.44;
         public static final double kaVoltSecsPerMeterSq = 0.0;
 
-        public static final SimpleMotorFeedforward driveFF = new SimpleMotorFeedforward(ksVolts, kvVoltSecsPerMeter, kaVoltSecsPerMeterSq);
+        public static final SimpleMotorFeedforward driveFF =
+            new SimpleMotorFeedforward(ksVolts, kvVoltSecsPerMeter, kaVoltSecsPerMeterSq);
     }
 
     public static final class AutoConstants {
@@ -158,6 +159,8 @@ public class Constants {
         public static final double rotkP = 5.0; // 1.27
         public static final double rotkD = 0.5; // 0.5
 
+        // Auto aim PID values should ideally be the same as the PathPlanner rotation ones. They are separate for safe measure.
+
         public static final double autoAimkP = 5.0;
         public static final double autoAimkD = 0.5;
 
@@ -165,9 +168,6 @@ public class Constants {
 
         public static final double autoAimTurnSpeedRadPerSec = 2.0 * Math.PI;
         public static final double autoAumTurnAccelRadPerSecSq = 4.0 * Math.PI;
-
-        // public static final PathPoint driveToAmpWaypoint = new PathPoint(new Translation2d(1.83, 7.81), new RotationTarget(1.0, Rotation2d.fromDegrees(-90.0)));
-        // public static final PathPoint driveToAmpTargetPoint = new PathPoint(new Translation2d(1.83, 7.61), new RotationTarget(2.0, Rotation2d.fromDegrees(-90.0)));
 
         public static final Pose2d driveToAmpWaypoint = new Pose2d(1.83, 7.81, Rotation2d.fromDegrees(-90.0));
         public static final Pose2d driveToAmpTargetPoint = new Pose2d(1.83, 7.61, Rotation2d.fromDegrees(-90.0));
@@ -223,9 +223,9 @@ public class Constants {
 
         public static final double maxAccelDegPerSecSq = 225.0; // 575.0;
 
-        public static final double maxManualPower = 0.2;
+        public static final double maxManualDegPerSec = 180.0;
 
-        public static final double maxManualDegPerSecSq = 0.5;
+        public static final double maxManualDegPerSecSq = 360.0;
 
         public static final double trapPresetDeg = 150.0;
 

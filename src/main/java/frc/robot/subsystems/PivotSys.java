@@ -101,7 +101,8 @@ public class PivotSys extends SubsystemBase {
         targetDeg = degrees;
     }
 
-    public void setManualPower(double manualPower) {
+    public void setManualSpeedDegPerSec(double degPerSec) {
+        double manualPower = (degPerSec / PivotConstants.degPerSecPerRPM) * PivotConstants.freeSpeedRPM;
         this.manualPower = manualPower;
     }
 

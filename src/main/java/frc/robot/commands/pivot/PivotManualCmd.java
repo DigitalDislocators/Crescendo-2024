@@ -10,15 +10,17 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 public class PivotManualCmd extends Command {
   
-  SlewRateLimiter filter = new SlewRateLimiter(PivotConstants.maxManualDegPerSecSq);
+  private final SlewRateLimiter slewRateLimiter;
 
   private final PivotSys pivot;
 
-  private final DoubleSupplier power; 
+  private final DoubleSupplier input; 
 
-  public PivotManualCmd(DoubleSupplier power, PivotSys pivot) {
+  public PivotManualCmd(DoubleSupplier input, PivotSys pivot) {
     this.pivot = pivot;
-    this.power = power;
+    this.input = input;
+
+    slewRateLimiter = new SlewRateLimiter(PivotConstants.maxManualDegPerSecSq);
 
     addRequirements(pivot);
   }
@@ -30,7 +32,7 @@ public class PivotManualCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    pivot.setManualPower(filter.calculate(power.getAsDouble() * PivotConstants.maxManualPower));
+    pivot.setManualSpeedDegPerSec(slewRateLimiter.calculate(input.getAsDouble() * PivotConstants.maxManualDegPerSec));
   }
  
   // Called once the command ends or is interrupted.
