@@ -3,24 +3,24 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.55,
-        "y": 6.65
+        "x": 0.75,
+        "y": 6.6
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.8183271785786015,
-        "y": 7.071901084658534
+        "x": 1.0183271785786014,
+        "y": 7.021901084658533
       },
       "isLocked": false,
       "linkedName": "AmpOffsetSubwooferPos"
     },
     {
       "anchor": {
-        "x": 2.4,
+        "x": 2.7253808893582705,
         "y": 6.995390431883621
       },
       "prevControl": {
-        "x": 1.9003556188216606,
+        "x": 2.2257365081799314,
         "y": 6.9765359269334954
       },
       "nextControl": null,
@@ -38,8 +38,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 3.25,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

@@ -3,37 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.434853962439753,
-        "y": 0.6069529933546087
+        "x": 8.13652113519766,
+        "y": 0.7818377541516989
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.934853962439753,
-        "y": 0.606952993354609
+        "x": 6.636521135197659,
+        "y": 0.7818377541516991
       },
       "isLocked": false,
       "linkedName": "MidlineNoteFivePos"
     },
     {
       "anchor": {
-        "x": 0.7193498096269378,
-        "y": 4.979072013281871
+        "x": 0.75,
+        "y": 4.5
       },
       "prevControl": {
-        "x": 1.4693498096269377,
-        "y": 3.680033907605213
+        "x": 1.5,
+        "y": 3.200961894323342
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "OffsetSubwooferPos"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
@@ -48,5 +48,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7,
-        "y": 5.25
+        "x": 0.75,
+        "y": 4.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.325,
-        "y": 4.167468245269452
+        "x": 1.375,
+        "y": 3.4174682452694523
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "OffsetSubwooferPos"
     },
     {
       "anchor": {
@@ -54,8 +54,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 3.25,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

@@ -105,17 +105,17 @@ public class Constants {
 
         public static final double freeMetersPerSecond = 6784 * driveMetersPerSecPerMtrRPM;
 
-        public static final double maxDriveSpeedMetersPerSec = 5.0;
+        /**
+         * The maximum possible speed a module can be driven. Used for desaturation.
+         */
+        public static final double maxModuleSpeedMetersPerSec = 6.5;
+
+        public static final double maxDriveSpeedMetersPerSec = 6.3;
 
         /**
          * The rate the robot will spin with full Rot command.
          */
-        public static final double maxTurnSpeedRadPerSec = Math.PI;
-
-        /**
-         * The maximum speed a module can be driven. Used for desaturation.
-         */
-        public static final double maxModuleSpeedMetersPerSec = 5.0;
+        public static final double maxTurnSpeedRadPerSec = 2.0 * Math.PI;
 
         // Set line up the swerve modules and set these values.
 
@@ -126,17 +126,17 @@ public class Constants {
         // Don't quote me on that they should be pointing to the left. (I'm almost positive though.) If 
         // the drive base drives 180 off from the commanded direction, flip these readings 180 degrees and change
         // the comment above for future reference.
-        public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(125.25); 
-        public static final Rotation2d frontRightModOffset = Rotation2d.fromDegrees(215);
-        public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(146.5);
-        public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(144.75); 
+        public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(123.75); 
+        public static final Rotation2d frontRightModOffset = Rotation2d.fromDegrees(216.74);
+        public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(139.48);
+        public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(143.17); 
 
         // You may want to change this value.
         public static final int driveCurrentLimitAmps = 50;
         public static final double brownoutVoltage = 6.5;
         
         // These values should be fine, but if the modules start to rattle you may want to play with the steer PID values.
-        public static final double drivekP = 0.005;
+        public static final double drivekP = 0.13;//0.005;
         public static final double drivekD = 0.0;
 
         public static final double steerkP = 0.37431;
@@ -150,10 +150,6 @@ public class Constants {
     }
 
     public static final class AutoConstants {
-        /**
-         * The default maximum swerve module drive speed in auto. Can be overridden by the FollowPathCmd Command.
-         */
-        public static final double maxModuleSpeedMetersPerSec = 5.0;
 
         // These drive and rotation PID constants most likely need to be tuned for better accuracy.
         public static final double drivekP = 15.48; // 12.8
@@ -162,13 +158,13 @@ public class Constants {
         public static final double rotkP = 6.35; // 1.27
         public static final double rotkD = 0.5; // 0.5
 
-        public static final double autoAimkP = 2.5;
-        public static final double autoAimkD = 0.25;
+        public static final double autoAimkP = 2.5 * 2;
+        public static final double autoAimkD = 0.25 * 2;
 
-        public static final double autoAimToleranceDeg = 2.0;
+        public static final double autoAimToleranceDeg = 0.25;
 
-        public static final double autoAimTurnSpeedRadPerSec = Math.PI;
-        public static final double autoAumTurnAccelRadPerSecSq = Math.PI;
+        public static final double autoAimTurnSpeedRadPerSec = 2.0 * Math.PI;
+        public static final double autoAumTurnAccelRadPerSecSq = 4.0 * Math.PI;
 
         // public static final PathPoint driveToAmpWaypoint = new PathPoint(new Translation2d(1.83, 7.81), new RotationTarget(1.0, Rotation2d.fromDegrees(-90.0)));
         // public static final PathPoint driveToAmpTargetPoint = new PathPoint(new Translation2d(1.83, 7.61), new RotationTarget(2.0, Rotation2d.fromDegrees(-90.0)));
@@ -183,7 +179,7 @@ public class Constants {
 
     public class RollerConstants {
     
-        public static final int maxRollerCurrentAmps = 60;
+        public static final int maxRollerCurrentAmps = 55;
 
         public static final double gearRatio = 0.8;
 
@@ -227,7 +223,7 @@ public class Constants {
 
         public static final double maxAccelDegPerSecSq = 225.0; // 575.0;
 
-        public static final double maxManualPower = .4;
+        public static final double maxManualPower = 0.2;
 
         public static final double maxManualDegPerSecSq = 0.5;
 
@@ -237,11 +233,11 @@ public class Constants {
         
         public static final double sourcePresetDeg = 5.0;
 
-        public static final double groundPresetDeg = 179.0;
+        public static final double groundPresetDeg = 178.0;
 
         public static final double homePresetDeg = 0.0;
 
-        public static final double podiumPresetDeg = 85.0;
+        public static final double podiumPresetDeg = 81.0;
 
         public static final float lowerLimitDeg = 0f;
 
@@ -265,11 +261,11 @@ public class Constants {
             InterpolatingDoubleTreeMap pivotInterpolator = new InterpolatingDoubleTreeMap();
 
             // data points with coordinate (lateral distance to speaker [meters], pivot angle [degrees])
-            pivotInterpolator.put(1.25, 62.0);
-            pivotInterpolator.put(2.07, 70.5);
-            pivotInterpolator.put(2.74, 79.0);
-            pivotInterpolator.put(3.3, podiumPresetDeg);
-            pivotInterpolator.put(4.0, 83.0);
+            pivotInterpolator.put(1.23, 65.0);
+            pivotInterpolator.put(2.24, 78.0);
+            // pivotInterpolator.put(2.74, 79.0);
+            pivotInterpolator.put(2.85, podiumPresetDeg);
+            // pivotInterpolator.put(4.0, 83.0);
 
             return pivotInterpolator;
         }

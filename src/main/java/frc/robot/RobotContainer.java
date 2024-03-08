@@ -32,11 +32,13 @@ import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
 import frc.robot.commands.automation.AutoPodiumFireCmd;
+import frc.robot.commands.automation.AutoSetPivotToSpeakerCmd;
 import frc.robot.commands.automation.AutoSourceIntakeCmd;
 import frc.robot.commands.automation.AutoSpeakerFireCmd;
 import frc.robot.commands.automation.AutoSubwooferFireCmd;
 import frc.robot.commands.climber.ClimberDownCmd;
 import frc.robot.commands.climber.ClimberUpCmd;
+import frc.robot.commands.rollers.RollersFireCmd;
 import frc.robot.commands.rollers.RollersIntakeCmd;
 import frc.robot.commands.rollers.RollersStopCmd;
 
@@ -89,8 +91,8 @@ public class RobotContainer {
 
         operatorController.a().onTrue(new AutoAmpFireCmd(feederSys, rollerSys, pivotSys));
 
-        operatorController.b().onTrue(new AutoPodiumFireCmd(feederSys, rollerSys, pivotSys));
-        operatorController.b().and(driverController.a()).onTrue(new AutoSpeakerFireCmd(feederSys, rollerSys, pivotSys, swerveSys));
+        // operatorController.b().onTrue(new AutoPodiumFireCmd(feederSys, rollerSys, pivotSys));
+        // operatorController.b().and(driverController.a()).onTrue(new AutoSpeakerFireCmd(feederSys, rollerSys, pivotSys, swerveSys));
 
         operatorController.x().onTrue(new PivotHomePresetCmd(pivotSys));
 
@@ -102,10 +104,21 @@ public class RobotContainer {
 
         operatorController.povUp().whileTrue(new ClimberUpCmd(climberSys)).whileFalse(new ClimberDownCmd(climberSys));
 
-        operatorController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold)
-            .onTrue(new RollersIntakeCmd(rollerSys)).onFalse(new RollersStopCmd(rollerSys));
+        operatorController.b()
+            .onTrue(new AutoSpeakerFireCmd(feederSys, rollerSys, pivotSys, swerveSys))
+            .onFalse(new RollersStopCmd(rollerSys))
+            .onFalse(new PivotHomePresetCmd(pivotSys))
+            .onFalse(new FeederStopCmd(feederSys));
             
         operatorController.povRight().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
+
+        operatorController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold)
+            .onTrue(new RollersFireCmd(rollerSys))
+            .onFalse(new RollersStopCmd(rollerSys));
+
+        operatorController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold)
+            .onTrue(new RollersIntakeCmd(rollerSys))
+            .onFalse(new RollersStopCmd(rollerSys));
     }    
 
     public void configDriverBindings() {
@@ -165,6 +178,8 @@ public class RobotContainer {
         SmartDashboard.putNumber("BR offset CANCoder degrees", swerveSys.getCanCoderAngles()[3].getDegrees() - DriveConstants.backRightModOffset.getDegrees());
 
         SmartDashboard.putNumber("pivot degrees", pivotSys.getCurrentPositionDeg());
+
+        SmartDashboard.putNumber("drive voltage", swerveSys.getAverageDriveVoltage());
 
         SmartDashboard.putNumber("roller rpm", rollerSys.getRPM());
 

@@ -189,6 +189,10 @@ public class SwerveModule extends SubsystemBase {
         // (e.g. module turns 1 degree and reverses drive direction to get from 90 degrees to -89 degrees)
         desiredState = SwerveModuleState.optimize(desiredState, getSteerEncAngle());
 
+        // Scale velocity based on turn error to help prevent skew.
+        double angleErrorRad = desiredState.angle.getRadians() - getSteerEncAngle().getRadians();
+        desiredState.speedMetersPerSecond *= Math.cos(angleErrorRad);
+
         steerController.setReference(
             calculateAdjustedAngle(
                 desiredState.angle.getRadians(),
@@ -200,7 +204,7 @@ public class SwerveModule extends SubsystemBase {
             driveMtr.set(desiredState.speedMetersPerSecond / DriveConstants.freeMetersPerSecond);
         }
         else {
-            double speedMetersPerSecond = desiredState.speedMetersPerSecond * DriveConstants.maxModuleSpeedMetersPerSec; // FIXME should not need to multiply by max module speed
+            double speedMetersPerSecond = desiredState.speedMetersPerSecond;// * DriveConstants.maxModuleSpeedMetersPerSec; // FIXME should not need to multiply by max module speed
 
             driveController.setReference(
                 speedMetersPerSecond,
@@ -213,5 +217,18 @@ public class SwerveModule extends SubsystemBase {
 
     public void setDriveCurrentLimit(int amps) {
         driveMtr.setSmartCurrentLimit(amps);
+    }
+
+    public void runCharacterization(double volts) {
+        steerController.setReference(
+            0.0,
+            ControlType.kPosition
+        );
+
+        driveMtr.setVoltage(volts);
+    }
+
+    public double getDriveVoltage() {
+        return driveMtr.get() * 12.0;
     }
 }

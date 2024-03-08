@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.84847564682598,
-        "y": 7.427458664441138
+        "x": 8.10565911858641,
+        "y": 7.448033342181972
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.790459257108991,
-        "y": 7.06740180397654
+        "x": 7.047642728869421,
+        "y": 7.087976481717374
       },
       "isLocked": false,
       "linkedName": "MidlineNoteOnePos"
@@ -48,8 +48,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 3.25,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
