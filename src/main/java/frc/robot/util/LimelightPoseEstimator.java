@@ -7,6 +7,7 @@ package frc.robot.util;
 import java.util.Optional;
 
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants.VisionConstants;
 
@@ -14,9 +15,15 @@ public class LimelightPoseEstimator {
 
 	private final String limelightName;
 
-  	/** Creates a new VisionSys. */
-  	public LimelightPoseEstimator(String limelightName) {
+	private final Transform2d poseOffset;
+
+  	public LimelightPoseEstimator(String limelightName, Transform2d poseOffset) {
 		this.limelightName = limelightName;
+		this.poseOffset = poseOffset;
+	}
+
+	public LimelightPoseEstimator(String limelightName) {
+		this(limelightName, new Transform2d());
 	}
 
 	public Optional<Pose2d> getRobotPose() {
@@ -26,7 +33,7 @@ public class LimelightPoseEstimator {
 			return Optional.empty();
 		}
 		else {
-			return Optional.of(limelightPose);
+			return Optional.of(limelightPose.transformBy(poseOffset));
 		}
 	}
 
