@@ -17,11 +17,26 @@ public class LimelightPoseEstimator {
 
 	private final Transform2d poseOffset;
 
+	/**
+	 * Creates a new LimelightPoseEstimator.
+	 * 
+	 * <p>LimelightPoseEstimator is a helper object for returning robot pose estimates from Limelights.
+	 * 
+	 * @param limelightName The name of the Limelight pipeline.
+	 * @param poseOffset A Transform2d to shift the Limelight pose if it is consistently off by a certain amount.
+	 */
   	public LimelightPoseEstimator(String limelightName, Transform2d poseOffset) {
 		this.limelightName = limelightName;
 		this.poseOffset = poseOffset;
 	}
 
+	/**
+	 * Creates a new LimelightPoseEstimator.
+	 * 
+	 * <p>LimelightPoseEstimator is a helper object for returning robot pose estimates from Limelights.
+	 * 
+	 * @param limelightName The name of the Limelight pipeline.
+	 */
 	public LimelightPoseEstimator(String limelightName) {
 		this(limelightName, new Transform2d());
 	}
