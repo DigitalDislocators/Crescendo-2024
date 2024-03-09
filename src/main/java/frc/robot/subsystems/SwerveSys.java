@@ -105,8 +105,8 @@ public class SwerveSys extends SubsystemBase {
             imu.getRotation2d(),
             getModulePositions(),
             new Pose2d(),
-            VecBuilder.fill(0.05, 0.05, Units.degreesToRadians(0.5)),
-            VecBuilder.fill(0.25, 0.25, Units.degreesToRadians(30.0)));
+            VecBuilder.fill(0.05, 0.05, Units.degreesToRadians(0.25)),
+            VecBuilder.fill(0.35, 0.35, Units.degreesToRadians(30.0)));
 
     private final LimelightPoseEstimator[] limelightPoseEstimators = new LimelightPoseEstimator[] {
         new LimelightPoseEstimator(VisionConstants.frontLimelightName),

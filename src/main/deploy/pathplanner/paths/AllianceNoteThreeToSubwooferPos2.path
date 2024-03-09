@@ -3,52 +3,36 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.75,
-        "y": 4.5
+        "x": 2.58,
+        "y": 4.52
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.375,
-        "y": 3.4174682452694523
-      },
-      "isLocked": false,
-      "linkedName": "OffsetSubwooferPos"
-    },
-    {
-      "anchor": {
-        "x": 5.5,
-        "y": 1.8
-      },
-      "prevControl": {
-        "x": 4.0,
-        "y": 1.8
-      },
-      "nextControl": {
-        "x": 6.5,
-        "y": 1.8
+        "x": 1.9734796406329773,
+        "y": 5.068440591931129
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.085084440845574,
-        "y": 2.43809931228885
+        "x": 1.25,
+        "y": 5.55
       },
       "prevControl": {
-        "x": 7.631930547327248,
-        "y": 2.2267901814185005
+        "x": 1.6797524383062088,
+        "y": 5.472315495130435
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteFourPos"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 1.0,
+      "waypointRelativePos": 0.4,
       "rotationDegrees": 0,
-      "rotateFast": false
+      "rotateFast": true
     }
   ],
   "constraintZones": [],
@@ -61,7 +45,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,

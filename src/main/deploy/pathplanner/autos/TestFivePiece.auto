@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SubwooferPosToMidlineNoteThree"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MidlineNoteThreeToAllianceNoteTwo"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceNoteTwoToAllianceNoteOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceNoteOneToAllianceNoteThree"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceNoteThreeToSubwooferPos2"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

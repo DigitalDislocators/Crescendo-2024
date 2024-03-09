@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 8.146808474068077,
-        "y": 4.1
+        "y": 4.0
       },
       "prevControl": null,
       "nextControl": {
         "x": 6.974051842840528,
-        "y": 4.13551022590767
+        "y": 4.035510225907671
       },
       "isLocked": false,
       "linkedName": "MidlineNoteThreePos"
@@ -64,8 +64,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.75,
+    "maxVelocity": 3.75,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
@@ -75,7 +75,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Midline Note Paths",
+  "folder": null,
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.Timer;
+import frc.robot.Constants.VisionConstants;
 
 public class LimelightPoseEstimator {
 
@@ -20,8 +21,8 @@ public class LimelightPoseEstimator {
 
 	public Optional<Pose2d> getRobotPose() {
 		Pose2d limelightPose = LimelightHelpers.getBotPose2d_wpiBlue(limelightName);
-		// Limelight returns a pose of the origin when it has no targets
-		if(limelightPose == null || limelightPose.equals(new Pose2d())) {
+		// Returns empty if either no pose is given or if the area of the largest tag is less than the threshold.
+		if(limelightPose.equals(new Pose2d()) || LimelightHelpers.getTA(limelightName) < VisionConstants.targetAreaPercentThreshold) {
 			return Optional.empty();
 		}
 		else {

@@ -8,40 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.015554507299491,
-        "y": 5.2774048405239675
+        "x": 1.9000478400512852,
+        "y": 5.105156492221974
       },
       "isLocked": false,
       "linkedName": "SubwooferPos"
     },
     {
       "anchor": {
-        "x": 2.9,
-        "y": 4.88
+        "x": 2.8715608929078047,
+        "y": 4.754599637587292
       },
       "prevControl": {
-        "x": 1.963751189067719,
-        "y": 4.88
+        "x": 1.7980920801587552,
+        "y": 4.754599637587292
       },
       "nextControl": {
-        "x": 3.960851224760516,
-        "y": 4.88
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 4.9577334242387785,
-        "y": 4.536716441853937
-      },
-      "prevControl": {
-        "x": 3.8672755039745677,
-        "y": 4.948209996670621
-      },
-      "nextControl": {
-        "x": 5.7566541134095965,
-        "y": 4.235236936506458
+        "x": 3.8592839545088706,
+        "y": 4.754599637587292
       },
       "isLocked": false,
       "linkedName": null
@@ -49,11 +33,11 @@
     {
       "anchor": {
         "x": 8.146808474068077,
-        "y": 4.1
+        "y": 4.0
       },
       "prevControl": {
         "x": 6.737443048820935,
-        "y": 4.1252228870372525
+        "y": 4.025222887037253
       },
       "nextControl": null,
       "isLocked": false,
@@ -64,8 +48,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.75,
+    "maxVelocity": 3.75,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
@@ -75,7 +59,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Midline Note Paths",
+  "folder": null,
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
