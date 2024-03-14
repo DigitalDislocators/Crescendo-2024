@@ -18,11 +18,14 @@ import frc.robot.commands.drivetrain.AimToSpeakerCmd;
 import frc.robot.commands.feeder.FeederFeedCmd;
 import frc.robot.commands.feeder.FeederInCmd;
 import frc.robot.commands.feeder.FeederStopCmd;
+import frc.robot.commands.lights.LightsDefaultCmd;
+import frc.robot.commands.lights.PartyModeCmd;
 import frc.robot.commands.pivot.PivotHomePresetCmd;
 import frc.robot.subsystems.RollersSys;
 import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.ClimberSys;
 import frc.robot.subsystems.FeederSys;
+import frc.robot.subsystems.LightsSys;
 // import frc.robot.subsystems.LimelightSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
@@ -52,6 +55,7 @@ public class RobotContainer {
     private final RollersSys rollerSys = new RollersSys();
     private final FeederSys feederSys = new FeederSys();
     private final ClimberSys climberSys = new ClimberSys();
+    private final LightsSys lightsSys = new LightsSys();
 
     //Initialize joysticks.
     private final CommandXboxController driverController = new CommandXboxController(ControllerConstants.driverGamepadPort);
@@ -75,10 +79,12 @@ public class RobotContainer {
         autoSelector.addOption("TestFivePiece", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
 
         configDriverBindings();
-        configOperatorsBindings();
+        configOperatorBindings();
+
+        lightsSys.setDefaultCommand(new LightsDefaultCmd(lightsSys));
     }
 
-    private void configOperatorsBindings() {
+    private void configOperatorBindings() {
         // rollerSys.setDefaultCommand(new RollersManualCmd(
         //     () -> (operatorController.getRightTriggerAxis() * RollerConstants.manualFirePower) - 
         //           (operatorController.getLeftTriggerAxis() * RollerConstants.manualIntakePower),
@@ -122,7 +128,9 @@ public class RobotContainer {
         operatorController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold)
             .onTrue(new RollersIntakeCmd(rollerSys))
             .onFalse(new RollersStopCmd(rollerSys));
-    }    
+
+        operatorController.start().toggleOnTrue(new PartyModeCmd(lightsSys));
+    }
 
     public void configDriverBindings() {
         swerveSys.setDefaultCommand(new ArcadeDriveCmd(

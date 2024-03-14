@@ -7,6 +7,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.util.Color;
 
 public class Constants {
 
@@ -278,6 +279,13 @@ public class Constants {
         public static final float climberReverseLimit = 0.1f;
 
         public static final double climberSpeedFactor = 1.0;
+    }
+
+    public class LightsConstants {
+        public static final Color blueAllianceColor = new Color(0, 0, 255);
+        public static final Color redAllianceColor = new Color(255, 0, 0);
+
+        public static final double partyModeHueIncrement = 12;
     }
 
     public class VisionConstants {
