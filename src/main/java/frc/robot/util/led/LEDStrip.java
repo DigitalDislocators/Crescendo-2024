@@ -51,7 +51,7 @@ public class LEDStrip {
     public Color[] getPixelBuffer() {
         Color[] pixelBuffer = new Color[length];
         if(isReversed) {
-            for(int i = length - 1; i >= length; i--) {
+            for(int i = length - 1; i >= 0; i--) {
                 pixelBuffer[i] =
                     new Color(
                         colorBuffer[i].red * valueBuffer[i] * brightness,
