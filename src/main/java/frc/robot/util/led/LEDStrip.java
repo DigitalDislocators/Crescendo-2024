@@ -78,12 +78,12 @@ public class LEDStrip {
             index = length - 1 - index;
         }
         return new Color(
-            colorBuffer[index].red * valueBuffer[index],
-            colorBuffer[index].green * valueBuffer[index],
-            colorBuffer[index].blue * valueBuffer[index]
+            colorBuffer[index].red * valueBuffer[index] * brightness,
+            colorBuffer[index].green * valueBuffer[index] * brightness,
+            colorBuffer[index].blue * valueBuffer[index] * brightness
         );
     }
-
+    
     public Color[] getColorBuffer() {
         return colorBuffer;
     }
