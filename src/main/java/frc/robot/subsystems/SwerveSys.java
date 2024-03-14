@@ -222,6 +222,10 @@ public class SwerveSys extends SubsystemBase {
         drive(0.0, 0.0, 0.0, isFieldOriented);
     }
 
+    public void Turns() {
+        drive(0.0, 1.0, 0.5, isFieldOriented);
+    }
+
     /**
      * Turns the modules to the X-lock position as long as drive inputs are zero.
      */

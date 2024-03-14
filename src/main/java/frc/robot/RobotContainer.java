@@ -139,6 +139,7 @@ public class RobotContainer {
         driverController.rightBumper().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
         
         driverController.a().whileTrue(new AutoAimToSpeakerCmd(swerveSys));
+        driverController.b().whileTrue(Commands.runOnce(() -> swerveSys.Turns()));
         // driverController.b().whileTrue(new AutoTurnToHeadingCmd(Rotation2d.fromDegrees(DriverStation.getAlliance().get() == Alliance.Red ? -90 : 90), swerveSys));
         // driverController.x().whileTrue(new AutoTurnToHeadingCmd(Rotation2d.fromDegrees(DriverStation.getAlliance().get() == Alliance.Red ? 60 : -60), swerveSys));
 
