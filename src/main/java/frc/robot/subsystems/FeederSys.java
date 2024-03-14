@@ -14,13 +14,6 @@ public class FeederSys extends SubsystemBase {
         rightServo = new PWM(8);
     }
 
-    // public void setLeftPower(double leftpower) {
-    //     leftServo.set(leftpower);
-    // }
-    // public void setRightPower(double rightpower) {
-    //     rightServo.set(rightpower);
-    // }
-
     public void setPower(double power) {
         leftServo.setSpeed(-power);
         rightServo.setSpeed(power);

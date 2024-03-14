@@ -17,7 +17,7 @@ public class AutoSpeakerFireCmd extends SequentialCommandGroup {
 	public AutoSpeakerFireCmd(FeederSys feeder, RollersSys rollers, PivotSys pivot, SwerveSys swerveSys) {
 		super(
 			new RollersFireCmd(rollers),
-			new AutoSetPivotToSpeakerCmd(swerveSys, pivot).repeatedly().alongWith(
+			new AutoSetPivotToSpeakerCmd(swerveSys, pivot).raceWith(
 				new WaitCommand(1.25).andThen(
 				new FeederFeedCmd(feeder)).andThen(
 				new WaitCommand(0.75))),

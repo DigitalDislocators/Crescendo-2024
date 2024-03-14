@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -11,14 +12,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.commands.drivetrain.ArcadeDriveCmd;
+import frc.robot.commands.drivetrain.LockCmd;
+import frc.robot.commands.drivetrain.TurnToHeadingCmd;
+import frc.robot.commands.drivetrain.AimToSpeakerCmd;
 import frc.robot.commands.feeder.FeederFeedCmd;
 import frc.robot.commands.feeder.FeederInCmd;
 import frc.robot.commands.feeder.FeederStopCmd;
+import frc.robot.commands.lights.LightsDefaultCmd;
+import frc.robot.commands.lights.PartyModeCmd;
 import frc.robot.commands.pivot.PivotHomePresetCmd;
 import frc.robot.subsystems.RollersSys;
 import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.ClimberSys;
 import frc.robot.subsystems.FeederSys;
+import frc.robot.subsystems.LightsSys;
 // import frc.robot.subsystems.LimelightSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
@@ -27,7 +34,7 @@ import frc.robot.commands.auto.programs.AllianceNoteFourPiece;
 import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.auto.programs.MidlineNoteThreePiece;
 import frc.robot.commands.auto.programs.PiHiThreePiece;
-import frc.robot.commands.automation.AutoAimToSpeakerCmd;
+import frc.robot.commands.auto.programs.TestFivePiece;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
@@ -48,6 +55,7 @@ public class RobotContainer {
     private final RollersSys rollerSys = new RollersSys();
     private final FeederSys feederSys = new FeederSys();
     private final ClimberSys climberSys = new ClimberSys();
+    private final LightsSys lightsSys = new LightsSys();
 
     //Initialize joysticks.
     private final CommandXboxController driverController = new CommandXboxController(ControllerConstants.driverGamepadPort);
@@ -68,12 +76,15 @@ public class RobotContainer {
         autoSelector.addOption("AllianceNoteFivePiece", new AllianceNoteFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("MidlineNoteThreePiece", new MidlineNoteThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("PiHiThreePiece", new PiHiThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("TestFivePiece", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
 
         configDriverBindings();
-        configOperatorsBindings();
+        configOperatorBindings();
+
+        lightsSys.setDefaultCommand(new LightsDefaultCmd(lightsSys));
     }
 
-    private void configOperatorsBindings() {
+    private void configOperatorBindings() {
         // rollerSys.setDefaultCommand(new RollersManualCmd(
         //     () -> (operatorController.getRightTriggerAxis() * RollerConstants.manualFirePower) - 
         //           (operatorController.getLeftTriggerAxis() * RollerConstants.manualIntakePower),
@@ -117,7 +128,9 @@ public class RobotContainer {
         operatorController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold)
             .onTrue(new RollersIntakeCmd(rollerSys))
             .onFalse(new RollersStopCmd(rollerSys));
-    }    
+
+        operatorController.start().toggleOnTrue(new PartyModeCmd(lightsSys));
+    }
 
     public void configDriverBindings() {
         swerveSys.setDefaultCommand(new ArcadeDriveCmd(
@@ -131,20 +144,16 @@ public class RobotContainer {
         driverController.start().onTrue(Commands.runOnce(() -> swerveSys.resetHeading()));
 
         driverController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold)
-            .whileTrue(Commands.runOnce(() -> swerveSys.lock()));
+            .whileTrue(new LockCmd(swerveSys));
         
         driverController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold)
             .onTrue(new AutoGroundIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
 
         driverController.rightBumper().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
         
-        driverController.a().whileTrue(new AutoAimToSpeakerCmd(swerveSys));
-        driverController.b().whileTrue(Commands.runOnce(() -> swerveSys.Turns()));
-        // driverController.b().whileTrue(new AutoTurnToHeadingCmd(Rotation2d.fromDegrees(DriverStation.getAlliance().get() == Alliance.Red ? -90 : 90), swerveSys));
-        // driverController.x().whileTrue(new AutoTurnToHeadingCmd(Rotation2d.fromDegrees(DriverStation.getAlliance().get() == Alliance.Red ? 60 : -60), swerveSys));
-
-        // driverController.a().onTrue(new PivotGroundPresetCmd(pivotSys)).onFalse(new PivotHomePresetCmd(pivotSys));
-        // driverController.b().onTrue(new PivotAmpPresetCmd(pivotSys)).onFalse(new PivotHomePresetCmd(pivotSys));
+        driverController.a().whileTrue(new AimToSpeakerCmd(swerveSys));
+        driverController.b().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(90), swerveSys));
+        driverController.x().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(-60), swerveSys));
     }
 
     public Command getAutonomousCommand() {

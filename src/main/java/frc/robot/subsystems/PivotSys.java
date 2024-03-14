@@ -33,9 +33,6 @@ public class PivotSys extends SubsystemBase {
         leftPivotMtr = new CANSparkFlex(CANDevices.leftPivotMtrId, MotorType.kBrushless);
         rightPivotMtr = new CANSparkFlex(CANDevices.rightPivotMtrId, MotorType.kBrushless);
 
-        leftPivotMtr.restoreFactoryDefaults();
-        rightPivotMtr.restoreFactoryDefaults();
-
         leftPivotMtr.setInverted(true);
 
         leftPivotMtr.enableVoltageCompensation(10);
@@ -104,7 +101,8 @@ public class PivotSys extends SubsystemBase {
         targetDeg = degrees;
     }
 
-    public void setManualPower(double manualPower) {
+    public void setManualSpeedDegPerSec(double degPerSec) {
+        double manualPower = (degPerSec / 6.0) / PivotConstants.freeSpeedRPM;
         this.manualPower = manualPower;
     }
 

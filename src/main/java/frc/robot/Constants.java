@@ -7,6 +7,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.util.Color;
 
 public class Constants {
 
@@ -146,28 +147,28 @@ public class Constants {
         public static final double kvVoltSecsPerMeter = 2.44;
         public static final double kaVoltSecsPerMeterSq = 0.0;
 
-        public static final SimpleMotorFeedforward driveFF = new SimpleMotorFeedforward(ksVolts, kvVoltSecsPerMeter, kaVoltSecsPerMeterSq);
+        public static final SimpleMotorFeedforward driveFF =
+            new SimpleMotorFeedforward(ksVolts, kvVoltSecsPerMeter, kaVoltSecsPerMeterSq);
     }
 
     public static final class AutoConstants {
 
         // These drive and rotation PID constants most likely need to be tuned for better accuracy.
-        public static final double drivekP = 5.0; // 12.8
-        public static final double drivekD = 0.5; //0.0625; // .085
+        public static final double drivekP = 2.0 * 4.0; // 12.8
+        public static final double drivekD = 0.02 * 4.0; //0.0625; // .085
 
-        public static final double rotkP = 5.0; // 1.27
+        public static final double rotkP = 5.5; // 1.27
         public static final double rotkD = 0.5; // 0.5
 
-        public static final double autoAimkP = 5.0;
+        // Auto aim PID values should ideally be the same as the PathPlanner rotation ones. They are separate for safe measure.
+
+        public static final double autoAimkP = 5.5;
         public static final double autoAimkD = 0.5;
 
         public static final double autoAimToleranceDeg = 0.25;
 
         public static final double autoAimTurnSpeedRadPerSec = 2.0 * Math.PI;
-        public static final double autoAumTurnAccelRadPerSecSq = 4.0 * Math.PI;
-
-        // public static final PathPoint driveToAmpWaypoint = new PathPoint(new Translation2d(1.83, 7.81), new RotationTarget(1.0, Rotation2d.fromDegrees(-90.0)));
-        // public static final PathPoint driveToAmpTargetPoint = new PathPoint(new Translation2d(1.83, 7.61), new RotationTarget(2.0, Rotation2d.fromDegrees(-90.0)));
+        public static final double autoAumTurnAccelRadPerSecSq = 3.0 * Math.PI;
 
         public static final Pose2d driveToAmpWaypoint = new Pose2d(1.83, 7.81, Rotation2d.fromDegrees(-90.0));
         public static final Pose2d driveToAmpTargetPoint = new Pose2d(1.83, 7.61, Rotation2d.fromDegrees(-90.0));
@@ -192,7 +193,7 @@ public class Constants {
         public static final double kP = 0.0002;
         public static final double kD = 0.003;
         
-        public static final double fireRPM = 5000.0;
+        public static final double fireRPM = 6000.0;
 
         public static final double ampRPM = 1200.0;
         
@@ -215,17 +216,17 @@ public class Constants {
         public static final double kD = 0.00025; // 0.00037;
 
         public static final double degPerEncRev = 360.0 / gearRatio;
-        public static final double degPerSecPerRPM = 360.0 / (gearRatio * 60.0);
+        public static final double degPerSecPerRPM = 360.0 / (60.0 * gearRatio);
 
         public static final double freeSpeedRPM = 6784.0 / gearRatio;
 
-        public static final double maxVelDegPerSec = 350.0; // 400.0;
+        public static final double maxVelDegPerSec = 450.0; // 400.0;
 
-        public static final double maxAccelDegPerSecSq = 225.0; // 575.0;
+        public static final double maxAccelDegPerSecSq = 400.0; // 575.0;
 
-        public static final double maxManualPower = 0.2;
+        public static final double maxManualDegPerSec = 180.0;
 
-        public static final double maxManualDegPerSecSq = 0.5;
+        public static final double maxManualDegPerSecSq = 360.0;
 
         public static final double trapPresetDeg = 150.0;
 
@@ -233,11 +234,11 @@ public class Constants {
         
         public static final double sourcePresetDeg = 5.0;
 
-        public static final double groundPresetDeg = 178.0;
+        public static final double groundPresetDeg = 170.0;
 
         public static final double homePresetDeg = 0.0;
 
-        public static final double podiumPresetDeg = 81.0;
+        public static final double podiumPresetDeg = 75.0;
 
         public static final float lowerLimitDeg = 0f;
 
@@ -261,42 +262,41 @@ public class Constants {
             InterpolatingDoubleTreeMap pivotInterpolator = new InterpolatingDoubleTreeMap();
 
             // data points with coordinate (lateral distance to speaker [meters], pivot angle [degrees])
-            pivotInterpolator.put(1.23, 65.0);
-            pivotInterpolator.put(2.24, 78.0);
+            pivotInterpolator.put(1.23, 59.0);
+            pivotInterpolator.put(2.24, 66.0);
             // pivotInterpolator.put(2.74, 79.0);
             pivotInterpolator.put(2.85, podiumPresetDeg);
-            // pivotInterpolator.put(4.0, 83.0);
+            pivotInterpolator.put(3.5, 77.0);
 
             return pivotInterpolator;
         }
     }
 
     public class ClimberConstants {
+        public static final double gearReduction = 1.0 / 20.0;
 
-        public static final int maxClimberCurrentAmps = 40;
-
-        public static final double inchesPerEncRev = 11;
-
-        public static final double rightClimbGearReduction = 1.0 / 20.0;
-        public static final double leftClimbGearReduction = 1.0 / 20.0;
-
-        public static final float climberForwardLimit = 147;
-        public static final float climberReverseLimit = 0;
+        public static final float climberForwardLimit = 147.0f;
+        public static final float climberReverseLimit = 0.1f;
 
         public static final double climberSpeedFactor = 1.0;
+    }
 
-        public static final double limitThreshold = 0.1;
+    public class LightsConstants {
+        public static final Color blueAllianceColor = new Color(0, 0, 255);
+        public static final Color redAllianceColor = new Color(255, 0, 0);
+
+        public static final double partyModeHueIncrement = 12;
     }
 
     public class VisionConstants {
         public static final String frontLimelightName = "limelight-intake";
         public static final String backLimelightName = "limelight-shooter";
 
-	    public static final double bufferSizeSeconds = 3.0;
+        public static final double targetAreaPercentThreshold = 0.15;
     }
 
     public class FieldConstants {
-        public static final Translation2d blueAllianceSpeakerPose = new Translation2d(0, 5.55);
+        public static final Translation2d blueAllianceSpeakerPose = new Translation2d(0.0, 5.55);
         public static final Translation2d redAllianceSpeakerPose = new Translation2d(16.54, 5.55);
 
         public static final double speakerTargetHeightMeters = 2.03;

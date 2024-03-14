@@ -37,7 +37,7 @@ public class SetInitialPoseCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    if(DriverStation.getAlliance().get() == Alliance.Red) {
+    if(DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
       firstPath = firstPath.flipPath();
     }
   }

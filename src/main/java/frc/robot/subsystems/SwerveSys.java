@@ -17,11 +17,10 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.CANDevices;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.VisionConstants;
-import frc.robot.util.LimelightPoseEstimator;
+import frc.robot.util.limelight.LimelightPoseEstimator;
 
 public class SwerveSys extends SubsystemBase {
 
@@ -106,12 +105,12 @@ public class SwerveSys extends SubsystemBase {
             imu.getRotation2d(),
             getModulePositions(),
             new Pose2d(),
-            VecBuilder.fill(0.05, 0.05, Units.degreesToRadians(0.5)),
-            VecBuilder.fill(0.25, 0.25, Units.degreesToRadians(30.0)));
+            VecBuilder.fill(0.05, 0.05, Units.degreesToRadians(0.25)),
+            VecBuilder.fill(0.35, 0.35, Units.degreesToRadians(30.0)));
 
     private final LimelightPoseEstimator[] limelightPoseEstimators = new LimelightPoseEstimator[] {
-        new LimelightPoseEstimator(VisionConstants.frontLimelightName, this::getPose),
-        new LimelightPoseEstimator(VisionConstants.backLimelightName, this::getPose)
+        new LimelightPoseEstimator(VisionConstants.frontLimelightName),
+        new LimelightPoseEstimator(VisionConstants.backLimelightName)
     };
 
     /**
@@ -136,21 +135,10 @@ public class SwerveSys extends SubsystemBase {
         poseEstimator.update(imu.getRotation2d(), getModulePositions());
 
         for(LimelightPoseEstimator limelightPoseEstimator : limelightPoseEstimators) {
-            Optional<Pose2d> limelightPose = limelightPoseEstimator.getLimelightPoseEstimate();
+            Optional<Pose2d> limelightPose = limelightPoseEstimator.getRobotPose();
             if(limelightPose.isPresent()) {
-                // TODO find out if rotation from limelight works
-                // Ignores heading from Limelights since gyro is very percise
-                // poseEstimator.addVisionMeasurement(
-                //     new Pose2d(limelightPose.get().getTranslation(), getHeading()),
-                //     limelightPoseEstimator.getCaptureTimestamp());
-
                 poseEstimator.addVisionMeasurement(limelightPose.get(), limelightPoseEstimator.getCaptureTimestamp());
             }
-        }
-
-        SmartDashboard.putBoolean("omega override", hasOmegaOverride());
-        if(hasOmegaOverride()) {
-            SmartDashboard.putNumber("omega override value", omegaOverrideRadPerSec.get());
         }
     }
     
@@ -167,7 +155,7 @@ public class SwerveSys extends SubsystemBase {
             rotationRadPerSec = omegaOverrideRadPerSec.get();
         }
 
-        if(DriverStation.getAlliance().get() == Alliance.Red) {
+        if(DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
             driveXMetersPerSec *= -1;
             driveYMetersPerSec *= -1;
         }
@@ -324,7 +312,7 @@ public class SwerveSys extends SubsystemBase {
      * can mirror blue side paths for use on the red side.
      */
     public Pose2d getBlueSidePose() {
-        if (DriverStation.getAlliance().get() == Alliance.Red) {
+        if (DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
             return new Pose2d(16.54 - getPose().getX(), getPose().getY(), new Rotation2d(MathUtil.angleModulus(getPose().getRotation().getRadians() - Math.PI)));
         }
         else {
@@ -473,7 +461,7 @@ public class SwerveSys extends SubsystemBase {
             getModulePositions(),
             new Pose2d(
                 getPose().getTranslation(),
-                DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(180) : Rotation2d.fromDegrees(0)));
+                DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(180) : Rotation2d.fromDegrees(0)));
     }
 
     /**

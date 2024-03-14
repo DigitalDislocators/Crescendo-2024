@@ -8,8 +8,8 @@
     "Example Testing Paths"
   ],
   "autoFolders": [],
-  "defaultMaxVel": 2.0,
-  "defaultMaxAccel": 2.75,
+  "defaultMaxVel": 3.75,
+  "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,
   "defaultMaxAngAccel": 360.0,
   "maxModuleSpeed": 22.1

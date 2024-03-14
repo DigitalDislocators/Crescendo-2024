@@ -4,7 +4,6 @@
 
 package frc.robot.commands.automation;
 
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
@@ -21,26 +20,23 @@ public class AutoSetPivotToSpeakerCmd extends Command {
 	private final SwerveSys swerveSys;
 	private final PivotSys pivotSys;
 
-	private final Translation2d targetTranslation;
+	private Translation2d targetTranslation = FieldConstants.blueAllianceSpeakerPose;
 
 	/** Creates a new AutoSetPivotCmd. */
 	public AutoSetPivotToSpeakerCmd(SwerveSys swerveSys, PivotSys pivotSys) {
 		this.swerveSys = swerveSys;
 		this.pivotSys = pivotSys;
 
-		if(DriverStation.getAlliance().get() == Alliance.Red) {
-			targetTranslation = FieldConstants.redAllianceSpeakerPose;
-		}
-		else {
-			targetTranslation = FieldConstants.blueAllianceSpeakerPose;
-		}
-
 		addRequirements(pivotSys);
 	}
 
 	// Called when the command is initially scheduled.
 	@Override
-	public void initialize() {}
+	public void initialize() {
+		if(DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
+			targetTranslation = FieldConstants.redAllianceSpeakerPose;
+		}
+	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
@@ -74,6 +70,6 @@ public class AutoSetPivotToSpeakerCmd extends Command {
 	// Returns true when the command should end.
 	@Override
 	public boolean isFinished() {
-		return true;
+		return false;
 	}
 }

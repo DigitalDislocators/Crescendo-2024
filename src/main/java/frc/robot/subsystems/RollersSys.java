@@ -23,9 +23,6 @@ public class RollersSys extends SubsystemBase {
         topRollerMtr = new CANSparkFlex(CANDevices.leaderRollerMtrId, MotorType.kBrushless);
         bottomRollerMtr = new CANSparkFlex(CANDevices.followerRollerMtrId, MotorType.kBrushless);
 
-        topRollerMtr.restoreFactoryDefaults();
-        bottomRollerMtr.restoreFactoryDefaults();
-
         topRollerMtr.enableVoltageCompensation(10);
         bottomRollerMtr.enableVoltageCompensation(10);
 
