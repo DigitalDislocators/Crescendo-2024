@@ -178,7 +178,7 @@ public class SwerveSys extends SubsystemBase {
         if(driveXMetersPerSec != 0.0 || driveYMetersPerSec != 0.0 || rotationRadPerSec != 0.0) isLocked = false;
         
         if(isLocked) {
-            setModuleStatesOpenLoop(new SwerveModuleState[] {
+            setModuleStates(new SwerveModuleState[] {
                 new SwerveModuleState(0.0, new Rotation2d(0.25 * Math.PI)),
                 new SwerveModuleState(0.0, new Rotation2d(-0.25 * Math.PI)),
                 new SwerveModuleState(0.0, new Rotation2d(-0.25 * Math.PI)),
@@ -204,7 +204,7 @@ public class SwerveSys extends SubsystemBase {
             // Makes sure the wheels don't try to spin faster than the maximum speed possible
             SwerveDriveKinematics.desaturateWheelSpeeds(states, DriveConstants.maxModuleSpeedMetersPerSec);
 
-            setModuleStatesOpenLoop(states);
+            setModuleStates(states);
         }
     }
 
@@ -225,24 +225,11 @@ public class SwerveSys extends SubsystemBase {
 
     /**
      * Sets the desired state for each swerve module.
-     * <p>Controls the lienar and rotational values for the modules based on the free speed of the drive motors (open-loop).
-     * 
-     * @param moduleStates An array of module states to set. The order is FL, FR, BL, BR.
-     */
-    public void setModuleStatesOpenLoop(SwerveModuleState[] moduleStates) {
-        frontLeftMod.setDesiredState(moduleStates[0], false);
-        frontRightMod.setDesiredState(moduleStates[1], false);
-        backLeftMod.setDesiredState(moduleStates[2], false);
-        backRightMod.setDesiredState(moduleStates[3], false);
-    }
-
-    /**
-     * Sets the desired state for each swerve module.
      * <p>Uses PID and feedforward control (closed-loop) to control the linear and rotational values for the modules.
      * 
      * @param moduleStates An array module states to set. The order is FL, FR, BL, BR.
      */
-    public void setModuleStatesClosedLoop(SwerveModuleState[] moduleStates) {
+    public void setModuleStates(SwerveModuleState[] moduleStates) {
         frontLeftMod.setDesiredState(moduleStates[0], true);
         frontRightMod.setDesiredState(moduleStates[1], true);
         backLeftMod.setDesiredState(moduleStates[2], true);
@@ -264,7 +251,7 @@ public class SwerveSys extends SubsystemBase {
      * @param chassisSpeeds The desired ChassisSpeeds.
      */
     public void setChassisSpeeds(ChassisSpeeds chassisSpeeds) {
-        setModuleStatesClosedLoop(DriveConstants.kinematics.toSwerveModuleStates(chassisSpeeds));
+        setModuleStates(DriveConstants.kinematics.toSwerveModuleStates(chassisSpeeds));
     }
 
     public Translation2d getFieldRelativeVelocity() {
