@@ -181,9 +181,9 @@ public class SwerveModule extends SubsystemBase {
      * only be used if running an autonomour trajectory.
      *
      * @param desiredState Object that holds a desired linear and steerational setpoint.
-     * @param isOpenLoop True if the velocity control is open- or closed-loop.
+     * @param isClosedLoop True if the velocity control is closed-loop.
      */
-    public void setDesiredState(SwerveModuleState desiredState, boolean isOpenLoop) {
+    public void setDesiredState(SwerveModuleState desiredState, boolean isClosedLoop) {
         
         // Optimizes speed and angle to minimize change in heading
         // (e.g. module turns 1 degree and reverses drive direction to get from 90 degrees to -89 degrees)
@@ -200,17 +200,15 @@ public class SwerveModule extends SubsystemBase {
             ControlType.kPosition
         );
 
-        if(isOpenLoop) {
+        if(!isClosedLoop) {
             driveMtr.set(desiredState.speedMetersPerSecond / DriveConstants.freeMetersPerSecond);
         }
         else {
-            double speedMetersPerSecond = desiredState.speedMetersPerSecond;// * DriveConstants.maxModuleSpeedMetersPerSec; // FIXME should not need to multiply by max module speed
-
             driveController.setReference(
-                speedMetersPerSecond,
+                desiredState.speedMetersPerSecond,
                 ControlType.kVelocity,
                 0, 
-                DriveConstants.driveFF.calculate(speedMetersPerSecond)
+                DriveConstants.driveFF.calculate(desiredState.speedMetersPerSecond)
             );
         }
     }
