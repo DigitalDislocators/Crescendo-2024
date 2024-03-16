@@ -32,11 +32,9 @@ public class PartyModeCmd extends Command {
 			int hue = startingHue;
 			for(int i = 0; i < strip.getLength(); i++) {
 				strip.setColor(Color.fromHSV(hue, 255, 255), i);
-				if(hue >= 255) {
-					hue = 0;
-				}
-				else {
-					hue += LightsConstants.partyModeHueIncrement;
+				startingHue += LightsConstants.partyModeHueIncrement;
+				if(startingHue > 180) {
+					startingHue -= 180;
 				}
 			}
 		}
