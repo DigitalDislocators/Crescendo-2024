@@ -45,7 +45,7 @@ public class PartyModeCmd extends Command {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		if(startingHue >= 255) {
+		if(startingHue >= 180) {
 			startingHue = 0;
 		}
 		else {

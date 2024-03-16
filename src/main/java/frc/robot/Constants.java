@@ -285,7 +285,7 @@ public class Constants {
         public static final Color blueAllianceColor = new Color(0, 0, 255);
         public static final Color redAllianceColor = new Color(255, 0, 0);
 
-        public static final double partyModeHueIncrement = 12;
+        public static final double partyModeHueIncrement = 5;
     }
 
     public class VisionConstants {

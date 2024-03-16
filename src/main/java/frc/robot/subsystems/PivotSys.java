@@ -16,7 +16,7 @@ import frc.robot.Constants.PivotConstants;
 
 public class PivotSys extends SubsystemBase {
 
-    // Declare actuators, sensors, and other variables here
+    // Declare actuators, sensors, versh, and other variables here
     private final CANSparkFlex leftPivotMtr;
     private final CANSparkFlex rightPivotMtr;
 

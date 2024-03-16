@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.hal.AllianceStationID;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.util.led.LEDStrip;
@@ -19,13 +20,13 @@ public class LightsSys extends SubsystemBase {
 
 	/** Creates a new LightsSys. */
 	public LightsSys() {
-		exampleStrip1 = new LEDStrip(20);
-		exampleStrip2 = new LEDStrip(10);
-		exampleStrip3 = new LEDStrip(20);
+		exampleStrip1 = new LEDStrip(78);
+		exampleStrip2 = new LEDStrip(128);
+		exampleStrip3 = new LEDStrip(78);
 
 		exampleStrip3.setReversed(true);
 
-		ledStripArray = new LEDStripArray(0, exampleStrip1, exampleStrip2, exampleStrip3);
+		ledStripArray = new LEDStripArray(9, exampleStrip1, exampleStrip2, exampleStrip3);
 	}
 
 	@Override

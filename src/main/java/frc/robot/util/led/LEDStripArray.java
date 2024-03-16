@@ -28,6 +28,8 @@ public class LEDStripArray {
         driver.setLength(length);
 
         driver.setData(buffer);
+
+        driver.start();
     }
 
     public void update() {
