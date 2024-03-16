@@ -45,11 +45,9 @@ public class PartyModeCmd extends Command {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		if(startingHue >= 180) {
-			startingHue = 0;
-		}
-		else {
-			startingHue += LightsConstants.partyModeHueIncrement;
+		startingHue += LightsConstants.partyModeHueIncrement;
+		if(startingHue > 180) {
+			startingHue -= 180;
 		}
 		
 		for(LEDStrip strip : new LEDStrip[] {lightsSys.exampleStrip1, lightsSys.exampleStrip2, lightsSys.exampleStrip3}) {
@@ -66,4 +64,9 @@ public class PartyModeCmd extends Command {
 	public boolean isFinished() {
 		return false;
   	}
+
+	@Override
+	public boolean runsWhenDisabled() {
+		return true;
+	}
 }
