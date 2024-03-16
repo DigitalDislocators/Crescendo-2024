@@ -286,6 +286,7 @@ public class Constants {
         public static final Color redAllianceColor = new Color(255, 0, 0);
 
         public static final double partyModeHueIncrement = 5;
+        public static final double partyModeTranslationTimeSec = 0.05;
     }
 
     public class VisionConstants {

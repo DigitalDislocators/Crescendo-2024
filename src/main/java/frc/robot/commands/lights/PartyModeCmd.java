@@ -4,6 +4,7 @@
 
 package frc.robot.commands.lights;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.LightsConstants;
@@ -15,11 +16,15 @@ public class PartyModeCmd extends Command {
 
 	private final LightsSys lightsSys;
 
+	private final Timer timer;
+
 	private int startingHue = 0;
 
 	/** Creates a new LightsDefaultCmd. */
 	public PartyModeCmd(LightsSys lightsSys) {
 		this.lightsSys = lightsSys;
+
+		timer = new Timer();
 
 		addRequirements(lightsSys);
 	}
@@ -38,24 +43,30 @@ public class PartyModeCmd extends Command {
 				}
 			}
 		}
+		timer.restart();
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		startingHue += LightsConstants.partyModeHueIncrement;
-		if(startingHue > 180) {
-			startingHue -= 180;
-		}
-		
-		for(LEDStrip strip : new LEDStrip[] {lightsSys.exampleStrip1, lightsSys.exampleStrip2, lightsSys.exampleStrip3}) {
-			strip.translateColors(TranslateDirection.FORWARD, Color.fromHSV(startingHue, 255, 255));
+		if(timer.advanceIfElapsed(LightsConstants.partyModeTranslationTimeSec)) {
+			timer.restart();
+			startingHue += LightsConstants.partyModeHueIncrement;
+			if(startingHue > 180) {
+				startingHue -= 180;
+			}
+			
+			for(LEDStrip strip : new LEDStrip[] {lightsSys.exampleStrip1, lightsSys.exampleStrip2, lightsSys.exampleStrip3}) {
+				strip.translateColors(TranslateDirection.FORWARD, Color.fromHSV(startingHue, 255, 255));
+			}
 		}
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
-	public void end(boolean interrupted) {}
+	public void end(boolean interrupted) {
+		timer.stop();
+	}
 
 	// Returns true when the command should end.
 	@Override
