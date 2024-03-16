@@ -18,8 +18,10 @@ public class LEDStrip {
     private Color[] colorBuffer;
     private double[] valueBuffer;
 
-    public LEDStrip(int length) {
+    public LEDStrip(int length, double brightness, boolean isReversed) {
         this.length = length;
+        this.brightness = brightness;
+        this.isReversed = isReversed;
 
         colorBuffer = new Color[length];
         valueBuffer = new double[length];
@@ -28,6 +30,18 @@ public class LEDStrip {
             colorBuffer[i] = new Color();
             valueBuffer[i] = 0.0;
         }
+    }
+
+    public LEDStrip(int length) {
+        this(length, 1.0, false);
+    }
+
+    public LEDStrip(int length, double brightness) {
+        this(length, brightness, false);
+    }
+
+    public LEDStrip(int length, boolean isReversed) {
+        this(length, 1.0, isReversed);
     }
 
     public int getLength() {
@@ -111,6 +125,13 @@ public class LEDStrip {
     }
 
     public void translateColors(TranslateDirection direction, Color... voidColors) {
+        if(voidColors.length > length) {
+            Color[] proxyVoidColors = new Color[length];
+            for(int i = 0; i < length; i++) {
+                proxyVoidColors[i] = voidColors[i];
+            }
+            voidColors = proxyVoidColors;
+        }
         if(direction == TranslateDirection.FORWARD) {
             for(int i = voidColors.length; i < length; i++) {
                 colorBuffer[i] = colorBuffer[i - voidColors.length];
