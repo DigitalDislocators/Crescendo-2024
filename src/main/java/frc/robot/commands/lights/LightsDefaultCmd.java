@@ -24,11 +24,16 @@ public class LightsDefaultCmd extends Command {
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
-		if(DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
-			lightsSys.setColor(LightsConstants.redAllianceColor);
+		if(DriverStation.getAlliance().isPresent()) {
+			if(DriverStation.getAlliance().get() == Alliance.Red) {
+				lightsSys.setColor(LightsConstants.redAllianceColor);
+			}
+			else {
+				lightsSys.setColor(LightsConstants.blueAllianceColor);
+			}
 		}
 		else {
-			lightsSys.setColor(LightsConstants.blueAllianceColor);
+			lightsSys.setColor(LightsConstants.noAllianceColor);
 		}
 		lightsSys.setValue(1.0);
 	}
