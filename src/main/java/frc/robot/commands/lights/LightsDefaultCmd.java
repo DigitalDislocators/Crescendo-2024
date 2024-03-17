@@ -4,6 +4,8 @@
 
 package frc.robot.commands.lights;
 
+import java.util.function.BooleanSupplier;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -14,9 +16,12 @@ public class LightsDefaultCmd extends Command {
 
 	private final LightsSys lightsSys;
 
+	private final BooleanSupplier hasNoteSupplier;
+
 	/** Creates a new LightsDefaultCmd. */
-	public LightsDefaultCmd(LightsSys lightsSys) {
+	public LightsDefaultCmd(LightsSys lightsSys, BooleanSupplier hasNoteSupplier) {
 		this.lightsSys = lightsSys;
+		this.hasNoteSupplier = hasNoteSupplier;
 
 		addRequirements(lightsSys);
 	}
@@ -24,7 +29,10 @@ public class LightsDefaultCmd extends Command {
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
-		if(DriverStation.getAlliance().isPresent()) {
+		if(hasNoteSupplier.getAsBoolean()) {
+			lightsSys.setColor(LightsConstants.hasNoteColor);
+		}
+		else if(DriverStation.getAlliance().isPresent()) {
 			if(DriverStation.getAlliance().get() == Alliance.Red) {
 				lightsSys.setColor(LightsConstants.redAllianceColor);
 			}
@@ -35,6 +43,7 @@ public class LightsDefaultCmd extends Command {
 		else {
 			lightsSys.setColor(LightsConstants.noAllianceColor);
 		}
+
 		lightsSys.setValue(1.0);
 	}
 

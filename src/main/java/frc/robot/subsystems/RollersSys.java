@@ -1,11 +1,13 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkFlex;
+import com.revrobotics.ColorSensorV3;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CANDevices;
 import frc.robot.Constants.RollerConstants;
@@ -18,6 +20,8 @@ public class RollersSys extends SubsystemBase {
 
     private final SparkPIDController topRollerController;
     private final SparkPIDController bottomRollerController;
+
+    private final ColorSensorV3 sensor;
 
     public RollersSys() {
         topRollerMtr = new CANSparkFlex(CANDevices.leaderRollerMtrId, MotorType.kBrushless);
@@ -44,6 +48,8 @@ public class RollersSys extends SubsystemBase {
         bottomRollerController.setFF(RollerConstants.feedForward);
         bottomRollerController.setP(RollerConstants.kP);
         bottomRollerController.setD(RollerConstants.kD);
+
+        sensor = new ColorSensorV3(Port.kMXP);
     }
 
     @Override
@@ -64,6 +70,10 @@ public class RollersSys extends SubsystemBase {
 
     public double getRPM() {
         return (topRollerMtr.getEncoder().getVelocity() + bottomRollerMtr.getEncoder().getVelocity()) / 2;
+    }
+
+    public boolean hasNote() {
+        return sensor.getProximity() < RollerConstants.sensorHasNoteADCThreshold;
     }
 
 }

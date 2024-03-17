@@ -81,7 +81,7 @@ public class RobotContainer {
         configDriverBindings();
         configOperatorBindings();
 
-        lightsSys.setDefaultCommand(new LightsDefaultCmd(lightsSys));
+        lightsSys.setDefaultCommand(new LightsDefaultCmd(lightsSys, rollerSys::hasNote));
     }
 
     private void configOperatorBindings() {
