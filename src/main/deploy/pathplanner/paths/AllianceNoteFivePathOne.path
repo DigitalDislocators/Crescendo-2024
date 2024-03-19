@@ -3,61 +3,61 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.146808474068077,
-        "y": 4.0
-      },
-      "prevControl": null,
-      "nextControl": {
-        "x": 6.974051842840528,
-        "y": 4.035510225907671
-      },
-      "isLocked": false,
-      "linkedName": "MidlineNoteThreePos"
-    },
-    {
-      "anchor": {
-        "x": 5.0400321352073405,
-        "y": 4.495567086377553
-      },
-      "prevControl": {
-        "x": 5.6366977896915325,
-        "y": 4.228096275746708
-      },
-      "nextControl": {
-        "x": 3.840624105640822,
-        "y": 5.033232754803925
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 2.9002656501553608,
-        "y": 4.88
-      },
-      "prevControl": {
-        "x": 3.8778886669746764,
-        "y": 4.88
-      },
-      "nextControl": {
-        "x": 1.900265650155363,
-        "y": 4.88
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
         "x": 1.2542914308886268,
         "y": 5.55
       },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.4394635305561345,
+        "y": 5.174531451819796
+      },
+      "isLocked": false,
+      "linkedName": "SubwooferPos"
+    },
+    {
+      "anchor": {
+        "x": 2.9,
+        "y": 4.85
+      },
       "prevControl": {
-        "x": 2.093294004638347,
-        "y": 5.256830162788419
+        "x": 2.1284174650827845,
+        "y": 4.845038994541334
+      },
+      "nextControl": {
+        "x": 3.774689454140814,
+        "y": 4.855623946836867
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.513249723241301,
+        "y": 4.351544342186429
+      },
+      "prevControl": {
+        "x": 4.217045025568748,
+        "y": 4.937922657800202
+      },
+      "nextControl": {
+        "x": 6.294803711919854,
+        "y": 3.9979842044508933
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.146808474068077,
+        "y": 4.0
+      },
+      "prevControl": {
+        "x": 7.4678441086205485,
+        "y": 4.0429241760739165
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": "MidlineNoteThreePos"
     }
   ],
   "rotationTargets": [],
@@ -75,7 +75,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old Paths",
+  "folder": "AllianceNoteFivePaths",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

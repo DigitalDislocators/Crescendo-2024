@@ -8,56 +8,40 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.974051842840528,
-        "y": 4.035510225907671
+        "x": 6.963764503964967,
+        "y": 3.8886140930125155
       },
       "isLocked": false,
       "linkedName": "MidlineNoteThreePos"
     },
     {
       "anchor": {
-        "x": 5.0400321352073405,
-        "y": 4.495567086377553
+        "x": 5.286928268086981,
+        "y": 4.392693697662954
       },
       "prevControl": {
-        "x": 5.6366977896915325,
-        "y": 4.228096275746708
+        "x": 6.040858324207876,
+        "y": 3.9970670345500086
       },
       "nextControl": {
-        "x": 3.840624105640822,
-        "y": 5.033232754803925
+        "x": 4.247907042174855,
+        "y": 4.937922657795059
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.9002656501553608,
-        "y": 4.88
+        "x": 3.7438274375295624,
+        "y": 5.575737667766062
       },
       "prevControl": {
-        "x": 3.8778886669746764,
-        "y": 4.88
-      },
-      "nextControl": {
-        "x": 1.900265650155363,
-        "y": 4.88
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 1.2542914308886268,
-        "y": 5.55
-      },
-      "prevControl": {
-        "x": 2.093294004638347,
-        "y": 5.256830162788419
+        "x": 4.093596959123743,
+        "y": 5.23113113619711
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": "AllianceNoteTwoShootPos"
     }
   ],
   "rotationTargets": [],
@@ -71,11 +55,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old Paths",
+  "folder": "AllianceNoteFivePaths",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

@@ -8,36 +8,42 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SubwooferPosToMidlineNoteThree"
+            "pathName": "EnigmaFourPathOne"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "MidlineNoteThreeToAllianceNoteTwo"
+            "pathName": "EnigmaFourPathTwo"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceNoteTwoToAllianceNoteOne"
+            "pathName": "EnigmaFourPathThree"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceNoteOneToAllianceNoteThree"
+            "pathName": "EnigmaFourPathFour"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceNoteThreeToSubwooferPos2"
+            "pathName": "EnigmaFourPathFive"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "EnigmaFourPathSix"
           }
         }
       ]
     }
   },
-  "folder": "Old Autos",
+  "folder": null,
   "choreoAuto": false
 }

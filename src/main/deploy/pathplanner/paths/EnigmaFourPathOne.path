@@ -3,61 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.146808474068077,
-        "y": 4.0
-      },
-      "prevControl": null,
-      "nextControl": {
-        "x": 6.974051842840528,
-        "y": 4.035510225907671
-      },
-      "isLocked": false,
-      "linkedName": "MidlineNoteThreePos"
-    },
-    {
-      "anchor": {
-        "x": 5.0400321352073405,
-        "y": 4.495567086377553
-      },
-      "prevControl": {
-        "x": 5.6366977896915325,
-        "y": 4.228096275746708
-      },
-      "nextControl": {
-        "x": 3.840624105640822,
-        "y": 5.033232754803925
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 2.9002656501553608,
-        "y": 4.88
-      },
-      "prevControl": {
-        "x": 3.8778886669746764,
-        "y": 4.88
-      },
-      "nextControl": {
-        "x": 1.900265650155363,
-        "y": 4.88
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
         "x": 1.2542914308886268,
         "y": 5.55
       },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.690651094334772,
+        "y": 5.884357833878576
+      },
+      "isLocked": false,
+      "linkedName": "SubwooferPos"
+    },
+    {
+      "anchor": {
+        "x": 2.9,
+        "y": 6.3
+      },
       "prevControl": {
-        "x": 2.093294004638347,
-        "y": 5.256830162788419
+        "x": 2.1500949862178675,
+        "y": 6.2880639074894535
+      },
+      "nextControl": {
+        "x": 3.8998733517095094,
+        "y": 6.3159147900140615
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.1,
+        "y": 7.448033342181972
+      },
+      "prevControl": {
+        "x": 6.213375218325218,
+        "y": 6.784220919000106
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": "MidlineNoteOnePos"
     }
   ],
   "rotationTargets": [],
@@ -75,7 +59,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old Paths",
+  "folder": "EnigmaFour",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

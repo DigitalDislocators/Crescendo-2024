@@ -3,38 +3,32 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.7253808893582705,
-        "y": 6.995390431883621
+        "x": 8.10565911858641,
+        "y": 7.448033342181972
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7253808893582705,
-        "y": 6.995390431883621
+        "x": 6.130490055466327,
+        "y": 6.902804382049867
       },
       "isLocked": false,
-      "linkedName": "AllianceNoteOneAugmentedPos"
+      "linkedName": "MidlineNoteOnePos"
     },
     {
       "anchor": {
-        "x": 0.75,
-        "y": 6.6
+        "x": 1.2542914308886268,
+        "y": 5.55
       },
       "prevControl": {
-        "x": 1.1035533905932737,
-        "y": 6.953553390593274
+        "x": 2.1492899126149148,
+        "y": 5.611724033222502
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "AmpOffsetSubwooferPos"
+      "linkedName": "SubwooferPos"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.85,
-      "rotationDegrees": 60.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -45,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 60.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old Paths",
+  "folder": "EnigmaFive",
   "previewStartingState": {
-    "rotation": 0.0,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -3,61 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.146808474068077,
-        "y": 4.0
+        "x": 1.2542914308886268,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.974051842840528,
-        "y": 4.035510225907671
+        "x": 1.5834862747419731,
+        "y": 6.120966627898167
       },
       "isLocked": false,
-      "linkedName": "MidlineNoteThreePos"
-    },
-    {
-      "anchor": {
-        "x": 5.0400321352073405,
-        "y": 4.495567086377553
-      },
-      "prevControl": {
-        "x": 5.6366977896915325,
-        "y": 4.228096275746708
-      },
-      "nextControl": {
-        "x": 3.840624105640822,
-        "y": 5.033232754803925
-      },
-      "isLocked": false,
-      "linkedName": null
+      "linkedName": "SubwooferPos"
     },
     {
       "anchor": {
         "x": 2.9002656501553608,
-        "y": 4.88
+        "y": 6.3
       },
       "prevControl": {
-        "x": 3.8778886669746764,
-        "y": 4.88
+        "x": 2.1502656501553608,
+        "y": 6.3
       },
       "nextControl": {
-        "x": 1.900265650155363,
-        "y": 4.88
+        "x": 4.203625636017523,
+        "y": 6.3
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.2542914308886268,
-        "y": 5.55
+        "x": 8.10565911858641,
+        "y": 7.448033342181972
       },
       "prevControl": {
-        "x": 2.093294004638347,
-        "y": 5.256830162788419
+        "x": 6.233363444170498,
+        "y": 6.892517043179449
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": "MidlineNoteOnePos"
     }
   ],
   "rotationTargets": [],
@@ -75,7 +59,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old Paths",
+  "folder": "EnigmaFive",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

@@ -205,7 +205,7 @@ public class Constants {
 
         public static final double metersPerSecondPerRPM = rollerCircumferenceMeters / 60.0;
 
-        public static final int sensorHasNoteADCThreshold = 20;
+        public static final int sensorHasNoteADCThreshold = 200;
     }
 
     public class PivotConstants {

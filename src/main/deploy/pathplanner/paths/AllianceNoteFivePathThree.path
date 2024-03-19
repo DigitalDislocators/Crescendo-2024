@@ -3,38 +3,32 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.7253808893582705,
-        "y": 6.995390431883621
+        "x": 3.7438274375295624,
+        "y": 5.575737667766062
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7253808893582705,
-        "y": 6.995390431883621
+        "x": 3.2438274375295624,
+        "y": 5.575737667766062
       },
       "isLocked": false,
-      "linkedName": "AllianceNoteOneAugmentedPos"
+      "linkedName": "AllianceNoteTwoShootPos"
     },
     {
       "anchor": {
-        "x": 0.75,
-        "y": 6.6
+        "x": 3.25,
+        "y": 5.575737667766062
       },
       "prevControl": {
-        "x": 1.1035533905932737,
-        "y": 6.953553390593274
+        "x": 3.75,
+        "y": 5.575737667766062
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "AmpOffsetSubwooferPos"
+      "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.85,
-      "rotationDegrees": 60.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -45,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 60.0,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old Paths",
+  "folder": "AllianceNoteFivePaths",
   "previewStartingState": {
-    "rotation": 0.0,
+    "rotation": 180.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

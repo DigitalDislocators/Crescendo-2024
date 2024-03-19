@@ -9,6 +9,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CANDevices;
@@ -24,6 +25,8 @@ public class PivotSys extends SubsystemBase {
     private final RelativeEncoder rightPivotEnc;
 
     private final ProfiledPIDController pivotController;
+
+    private final DutyCycleEncoder absPivotEnc;
 
     private double targetDeg = 0.0;
 
@@ -65,17 +68,24 @@ public class PivotSys extends SubsystemBase {
         leftPivotEnc.setPosition(PivotConstants.homePresetDeg);
         rightPivotEnc.setPosition(PivotConstants.homePresetDeg);
 
+        absPivotEnc = new DutyCycleEncoder(9);
+
+        absPivotEnc.setDistancePerRotation(360);
+
+        absPivotEnc.setPositionOffset(0.5 + .07);
+
         pivotController = new ProfiledPIDController(
             PivotConstants.kP, 0.0, PivotConstants.kD,
             new Constraints(PivotConstants.maxVelDegPerSec, PivotConstants.maxAccelDegPerSecSq));
     }
 
     // This method will be called once per scheduler run
+
     @Override
     public void periodic() {
         if(manualPower == 0.0) {
-            leftPivotMtr.set(pivotController.calculate(leftPivotEnc.getPosition(), targetDeg));
-            rightPivotMtr.set(pivotController.calculate(rightPivotEnc.getPosition(), targetDeg));
+            leftPivotMtr.set(pivotController.calculate(absPivotEnc.getDistance(), targetDeg));
+            rightPivotMtr.set(pivotController.calculate(absPivotEnc.getDistance(), targetDeg));
         }
         else {
             leftPivotMtr.set(manualPower);
@@ -94,7 +104,7 @@ public class PivotSys extends SubsystemBase {
 
     // Put methods for controlling this subsystem here. Call these from Commands.
     public double getCurrentPositionDeg() {
-        return (leftPivotEnc.getPosition() + rightPivotEnc.getPosition()) / 2;
+        return absPivotEnc.getDistance();
     }
 
     public void setTargetDeg(double degrees) {
