@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -61,7 +62,7 @@ public class AimToSpeakerCmd extends Command {
         Translation2d extrapolatedTranslation = swerveSys.getPose().getTranslation().plus(extrapolation);
         Translation2d extrapolatedTargetOffset = targetTranslation.minus(extrapolatedTranslation);
 
-        Rotation2d targetHeading = extrapolatedTargetOffset.getAngle();
+        Rotation2d targetHeading = Rotation2d.fromRadians(MathUtil.angleModulus(extrapolatedTargetOffset.getAngle().getRadians()));
         
         SmartDashboard.putNumber("target heading deg", targetHeading.getDegrees());
 
