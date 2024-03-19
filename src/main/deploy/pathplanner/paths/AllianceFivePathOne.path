@@ -1,0 +1,84 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.2542914308886268,
+        "y": 5.55
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.881819101984069,
+        "y": 5.061370724245209
+      },
+      "isLocked": false,
+      "linkedName": "SubwooferPos"
+    },
+    {
+      "anchor": {
+        "x": 3.25,
+        "y": 4.88
+      },
+      "prevControl": {
+        "x": 2.05,
+        "y": 4.88
+      },
+      "nextControl": {
+        "x": 4.45,
+        "y": 4.88
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.5,
+        "y": 4.35
+      },
+      "prevControl": {
+        "x": 4.3404930920137526,
+        "y": 4.835049269096032
+      },
+      "nextControl": {
+        "x": 6.297984851464272,
+        "y": 4.016183990551057
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.146808474068077,
+        "y": 4.0
+      },
+      "prevControl": {
+        "x": 7.035775876063031,
+        "y": 4.001774820592248
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "MidlineNoteThreePos"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 3.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 360.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "AllianceFive",
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

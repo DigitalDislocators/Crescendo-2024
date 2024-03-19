@@ -1,0 +1,49 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "EnigmaFourPathOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "EnigmaFourPathTwo"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "EnigmaFourPathThree"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "EnigmaFourPathFour"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "EnigmaFourPathFive"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "EnigmaFourPathSix"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

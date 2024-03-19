@@ -3,13 +3,19 @@
   "robotLength": 0.635,
   "holonomicMode": true,
   "pathFolders": [
-    "Alliance Note Paths",
-    "Midline Note Paths",
-    "Example Testing Paths"
+    "AllianceFive",
+    "AllianceFour",
+    "EnigmaFour",
+    "Example Testing Paths",
+    "MidlineThree",
+    "Old"
   ],
-  "autoFolders": [],
-  "defaultMaxVel": 3.75,
-  "defaultMaxAccel": 3.0,
+  "autoFolders": [
+    "Example Testing Autos",
+    "Old Autos"
+  ],
+  "defaultMaxVel": 4.0,
+  "defaultMaxAccel": 2.5,
   "defaultMaxAngVel": 540.0,
   "defaultMaxAngAccel": 360.0,
   "maxModuleSpeed": 22.1

@@ -1,0 +1,68 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.2542914308886268,
+        "y": 5.55
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.690651094334772,
+        "y": 5.884357833878576
+      },
+      "isLocked": false,
+      "linkedName": "SubwooferPos"
+    },
+    {
+      "anchor": {
+        "x": 2.9,
+        "y": 6.3
+      },
+      "prevControl": {
+        "x": 2.1500949862178675,
+        "y": 6.2880639074894535
+      },
+      "nextControl": {
+        "x": 3.8998733517095094,
+        "y": 6.3159147900140615
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.1,
+        "y": 7.448033342181972
+      },
+      "prevControl": {
+        "x": 6.213375218325218,
+        "y": 6.784220919000106
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "MidlineNoteOnePos"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 2.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 360.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "EnigmaFour",
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

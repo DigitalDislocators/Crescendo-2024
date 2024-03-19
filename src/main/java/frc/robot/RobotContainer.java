@@ -26,15 +26,13 @@ import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.ClimberSys;
 import frc.robot.subsystems.FeederSys;
 import frc.robot.subsystems.LightsSys;
-// import frc.robot.subsystems.LimelightSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
-import frc.robot.commands.auto.programs.AllianceNoteFivePiece;
-import frc.robot.commands.auto.programs.AllianceNoteFourPiece;
+import frc.robot.commands.auto.programs.AllianceFive;
+import frc.robot.commands.auto.programs.AllianceFour;
+import frc.robot.commands.auto.programs.EnigmaFour;
 import frc.robot.commands.auto.programs.ExampleAuto;
-import frc.robot.commands.auto.programs.MidlineNoteThreePiece;
-import frc.robot.commands.auto.programs.PiHiThreePiece;
-import frc.robot.commands.auto.programs.TestFivePiece;
+import frc.robot.commands.auto.programs.MidlineThree;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
@@ -72,11 +70,16 @@ public class RobotContainer {
         // Add programs to auto selector.
         autoSelector.setDefaultOption("Do Nothing", null);
         autoSelector.addOption("Example Auto", new ExampleAuto(swerveSys));
-        autoSelector.addOption("AllianceNoteFourPiece", new AllianceNoteFourPiece(swerveSys, feederSys, rollerSys, pivotSys));
-        autoSelector.addOption("AllianceNoteFivePiece", new AllianceNoteFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
-        autoSelector.addOption("MidlineNoteThreePiece", new MidlineNoteThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
-        autoSelector.addOption("PiHiThreePiece", new PiHiThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
-        autoSelector.addOption("TestFivePiece", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
+        // autoSelector.addOption("AllianceNoteFourPiece", new AllianceNoteFourPiece(swerveSys, feederSys, rollerSys, pivotSys));
+        // autoSelector.addOption("AllianceNoteFivePiece", new AllianceNoteFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
+        // autoSelector.addOption("MidlineNoteThreePiece", new MidlineNoteThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
+        // autoSelector.addOption("PiHiThreePiece", new PiHiThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
+        // autoSelector.addOption("TestFivePiece", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("EnigmaFour", new EnigmaFour(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("AllianceFive", new AllianceFive(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("AllianceFour", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("MidlineThree", new MidlineThree(swerveSys, feederSys, rollerSys, pivotSys));
+
 
         configDriverBindings();
         configOperatorBindings();

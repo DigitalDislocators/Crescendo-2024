@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.75,
+      "y": 4.55
+    },
+    "rotation": -60.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MidlineThreePathOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MidlineThreePathTwo"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MidlineThreePathThree"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MidlineThreePathFour"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

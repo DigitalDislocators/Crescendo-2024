@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.13652113519766,
-        "y": 0.7818377541516989
+        "x": 8.15,
+        "y": 0.75
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.284800138522584,
-        "y": 0.8641364651150346
+        "x": 6.298279003324925,
+        "y": 0.8322987109633357
       },
       "isLocked": false,
       "linkedName": "MidlineNoteFivePos"
@@ -32,11 +32,11 @@
     },
     {
       "anchor": {
-        "x": 1.3,
+        "x": 1.2542914308886268,
         "y": 5.55
       },
       "prevControl": {
-        "x": 2.2830253179303357,
+        "x": 2.2373167488189623,
         "y": 5.380278229228139
       },
       "nextControl": null,
@@ -59,7 +59,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Midline Note Paths",
+  "folder": "Old",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

@@ -49,7 +49,7 @@ public class RollersSys extends SubsystemBase {
         bottomRollerController.setP(RollerConstants.kP);
         bottomRollerController.setD(RollerConstants.kD);
 
-        sensor = new ColorSensorV3(Port.kMXP);
+        sensor = new ColorSensorV3(Port.kOnboard);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class RollersSys extends SubsystemBase {
     }
 
     public boolean hasNote() {
-        return sensor.getProximity() < RollerConstants.sensorHasNoteADCThreshold;
+        return sensor.getProximity() > RollerConstants.sensorHasNoteADCThreshold;
     }
 
 }
