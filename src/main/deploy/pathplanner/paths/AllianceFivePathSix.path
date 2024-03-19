@@ -3,32 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.15,
-        "y": 0.75
+        "x": 2.65,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.298279003324925,
-        "y": 0.8322987109633357
+        "x": 2.15,
+        "y": 5.55
       },
       "isLocked": false,
-      "linkedName": "MidlineNoteFivePos"
-    },
-    {
-      "anchor": {
-        "x": 2.1595772514853304,
-        "y": 3.5902812657755643
-      },
-      "prevControl": {
-        "x": 2.6316132382481348,
-        "y": 2.2870514762347782
-      },
-      "nextControl": {
-        "x": 1.6863596634461446,
-        "y": 4.896773302318534
-      },
-      "isLocked": false,
-      "linkedName": null
+      "linkedName": "AllianceNoteTwoPos"
     },
     {
       "anchor": {
@@ -36,8 +20,8 @@
         "y": 5.55
       },
       "prevControl": {
-        "x": 2.2373167488189623,
-        "y": 5.380278229228139
+        "x": 2.254291430888627,
+        "y": 5.55
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,8 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 1.75,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
@@ -59,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old",
+  "folder": "AllianceFive",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

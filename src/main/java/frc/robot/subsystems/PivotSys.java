@@ -72,7 +72,7 @@ public class PivotSys extends SubsystemBase {
 
         absPivotEnc.setDistancePerRotation(360);
 
-        absPivotEnc.setPositionOffset(0.5 + .07);
+        absPivotEnc.setPositionOffset(PivotConstants.absPivotEncOffset);
 
         pivotController = new ProfiledPIDController(
             PivotConstants.kP, 0.0, PivotConstants.kD,

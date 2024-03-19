@@ -3,13 +3,12 @@
   "robotLength": 0.635,
   "holonomicMode": true,
   "pathFolders": [
-    "AllianceNoteFivePaths",
-    "AllianceNoteFourPaths",
+    "AllianceFive",
+    "AllianceFour",
     "EnigmaFour",
     "Example Testing Paths",
-    "MidlineNoteThreePaths",
-    "EnigmaFive",
-    "Old Paths"
+    "MidlineThree",
+    "Old"
   ],
   "autoFolders": [
     "Example Testing Autos",

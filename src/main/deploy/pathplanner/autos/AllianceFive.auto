@@ -1,0 +1,61 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFivePathOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFivePathTwo"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFivePathThree"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFivePathFour"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFivePathFive"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFivePathSix"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFivePathSeven"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFivePathEight"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

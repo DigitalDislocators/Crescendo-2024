@@ -8,43 +8,38 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.5834862747419731,
-        "y": 6.120966627898167
+        "x": 1.881819101984069,
+        "y": 4.999646691022705
       },
       "isLocked": false,
       "linkedName": "SubwooferPos"
     },
     {
       "anchor": {
-        "x": 2.9002656501553608,
-        "y": 6.3
+        "x": 2.6,
+        "y": 4.35
       },
       "prevControl": {
-        "x": 2.1502656501553608,
-        "y": 6.3
-      },
-      "nextControl": {
-        "x": 4.203625636017523,
-        "y": 6.3
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 8.10565911858641,
-        "y": 7.448033342181972
-      },
-      "prevControl": {
-        "x": 6.233363444170498,
-        "y": 6.892517043179449
+        "x": 2.0907523483340924,
+        "y": 4.804690627040331
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteOnePos"
+      "linkedName": "AllianceNoteThreePos"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.85,
+      "rotationDegrees": -45.0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 0.15,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -55,11 +50,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": -45.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "EnigmaFive",
+  "folder": "AllianceFour",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

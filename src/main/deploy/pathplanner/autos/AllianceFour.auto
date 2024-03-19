@@ -1,0 +1,49 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFourPathOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFourPathTwo"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFourPathThree"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFourPathFour"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFourPathFive"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AllianceFourPathSix"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

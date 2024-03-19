@@ -20,7 +20,7 @@
         "y": 6.85
       },
       "prevControl": {
-        "x": 1.9839555568810219,
+        "x": 1.9839555568810217,
         "y": 6.20721239031346
       },
       "nextControl": null,
@@ -49,7 +49,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old Paths",
+  "folder": "Old",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 0.75,
-        "y": 4.5
+        "y": 4.55
       },
       "prevControl": null,
       "nextControl": {
         "x": 1.6657849857053102,
-        "y": 3.8057407043134877
+        "y": 3.8557407043134875
       },
       "isLocked": false,
       "linkedName": "OffsetSubwooferPos"
@@ -49,7 +49,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old Paths",
+  "folder": "Old",
   "previewStartingState": {
     "rotation": -60.0,
     "velocity": 0

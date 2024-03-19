@@ -17,26 +17,25 @@ import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.RollersSys;
 import frc.robot.subsystems.SwerveSys;
 
-public class MidlineNoteThreePiece extends SequentialCommandGroup {
-  public MidlineNoteThreePiece(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys) {
+public class MidlineThree extends SequentialCommandGroup {
+  public MidlineThree(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys) {
     addCommands(
-      new SetInitialPoseCmd("OffsetSubwooferPosToMidlineNoteFive", swerveSys),
-      // Commands.runOnce(() -> swerveSys.setHeading(new Rotation2d(60)), swerveSys),
+      new SetInitialPoseCmd("MidlineThreePathOne", swerveSys),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.1),
-      new FollowPathCmd("OffsetSubwooferPosToMidlineNoteFive", swerveSys)
+      new WaitCommand(0.08),
+      new FollowPathCmd("MidlineThreePathOne", swerveSys)
         .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
           .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
-      new FollowPathCmd("MidlineNoteFiveToOffsetSubwooferPos", swerveSys)
-        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
+      new FollowPathCmd("MidlineThreePathTwo", swerveSys)
+        .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < 1.0)
+          .andThen(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys))),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new WaitCommand(0.1),
-      new FollowPathCmd("OffsetSubwooferPosToMidlineNoteFour", swerveSys)
+      new FollowPathCmd("MidlineThreePathThree", swerveSys)
         .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
           .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
-      new FollowPathCmd("MidlineNoteFourToOffsetSubwooferPos", swerveSys)
+      new FollowPathCmd("MidlineThreePathFour", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
-      // new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
+      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.5)
     );
   }

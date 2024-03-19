@@ -3,61 +3,61 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2542914308886268,
-        "y": 5.55
-      },
-      "prevControl": null,
-      "nextControl": {
-        "x": 1.4394635305561345,
-        "y": 5.174531451819796
-      },
-      "isLocked": false,
-      "linkedName": "SubwooferPos"
-    },
-    {
-      "anchor": {
-        "x": 2.9,
-        "y": 4.85
-      },
-      "prevControl": {
-        "x": 2.1284174650827845,
-        "y": 4.845038994541334
-      },
-      "nextControl": {
-        "x": 3.774689454140814,
-        "y": 4.855623946836867
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 5.513249723241301,
-        "y": 4.351544342186429
-      },
-      "prevControl": {
-        "x": 4.217045025568748,
-        "y": 4.937922657800202
-      },
-      "nextControl": {
-        "x": 6.294803711919854,
-        "y": 3.9979842044508933
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
         "x": 8.146808474068077,
         "y": 4.0
       },
+      "prevControl": null,
+      "nextControl": {
+        "x": 6.93290248735886,
+        "y": 3.9914874817218315
+      },
+      "isLocked": false,
+      "linkedName": "MidlineNoteThreePos"
+    },
+    {
+      "anchor": {
+        "x": 5.5,
+        "y": 4.35
+      },
       "prevControl": {
-        "x": 7.4678441086205485,
-        "y": 4.0429241760739165
+        "x": 6.297378114927437,
+        "y": 4.027838329662315
+      },
+      "nextControl": {
+        "x": 4.331748343245848,
+        "y": 4.8220043077040495
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.25,
+        "y": 4.88
+      },
+      "prevControl": {
+        "x": 4.45,
+        "y": 4.88
+      },
+      "nextControl": {
+        "x": 2.05,
+        "y": 4.88
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.2542914308886268,
+        "y": 5.55
+      },
+      "prevControl": {
+        "x": 1.850957085372818,
+        "y": 5.071658063115625
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteThreePos"
+      "linkedName": "SubwooferPos"
     }
   ],
   "rotationTargets": [],
@@ -65,20 +65,20 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 2.5,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 0.6250946894531991,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "AllianceNoteFivePaths",
+  "folder": "AllianceFive",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

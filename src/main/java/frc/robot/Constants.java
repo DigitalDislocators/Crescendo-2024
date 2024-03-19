@@ -176,6 +176,8 @@ public class Constants {
         public static final double driveToAmpMaxVelMetersPerSec = 4.0;
         public static final double driveToAmpMaxAccelMetersPerSecSq = 3.0;
 
+        public static final double subwooferShotThreshold = 1.85;
+
     }
 
     public class RollerConstants {
@@ -228,7 +230,7 @@ public class Constants {
 
         public static final double maxManualDegPerSec = 180.0;
 
-        public static final double maxManualDegPerSecSq = 360.0;
+        public static final double maxManualDegPerSecSq = 375.0;
 
         public static final double trapPresetDeg = 150.0;
 
@@ -250,13 +252,15 @@ public class Constants {
 
         public static final double toleranceDeg = 0.5;
 
-        /**
-         * Used to calculate the approximate time of flight of the note.
+        public static final double absPivotEncOffset = 0.5 + 0.07;
+
+        /*
+         Used to calculate the approximate time of flight of the note.
          */
         public static final double pivotHeightMeters = Units.inchesToMeters(10.5);
 
-        /**
-         * Takes distance to speaker in meters as the key and pivot angle in degrees as the value.
+        /*
+         Takes distance to speaker in meters as the key and pivot angle in degrees as the value.
          */
         public static final InterpolatingDoubleTreeMap pivotDegSpeakerShotInterpolator = constructPivotInterpolator();
         

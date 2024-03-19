@@ -33,11 +33,11 @@
     {
       "anchor": {
         "x": 0.75,
-        "y": 4.5
+        "y": 4.55
       },
       "prevControl": {
         "x": 1.375,
-        "y": 3.4174682452694514
+        "y": 3.467468245269451
       },
       "nextControl": null,
       "isLocked": false,
@@ -59,7 +59,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old Paths",
+  "folder": "Old",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

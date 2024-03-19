@@ -3,32 +3,43 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.0,
-        "y": 7.0
+        "x": 1.2542914308886268,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.0,
-        "y": 7.0
+        "x": 1.9538304740769885,
+        "y": 6.162115983379837
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "SubwooferPos"
     },
     {
       "anchor": {
-        "x": 4.0,
-        "y": 6.0
+        "x": 2.75,
+        "y": 6.85
       },
       "prevControl": {
-        "x": 3.0,
-        "y": 6.0
+        "x": 2.2727379790599187,
+        "y": 6.460448810621932
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "AllianceNoteOnePos"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.15,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 0.85,
+      "rotationDegrees": 45.0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -39,11 +50,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 45.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "EnigmaFive",
+  "folder": "AllianceFour",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

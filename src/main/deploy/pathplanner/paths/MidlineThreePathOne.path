@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7995203910207322,
-        "y": 2.704133428567609
+        "x": 1.6250000000000002,
+        "y": 3.0344555433772324
       },
       "isLocked": false,
       "linkedName": "OffsetSubwooferPos"
@@ -20,15 +20,26 @@
         "y": 0.75
       },
       "prevControl": {
-        "x": 7.4813229734228885,
-        "y": 0.7294253222591661
+        "x": 7.15,
+        "y": 0.75
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "MidlineNoteFivePos"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.1,
+      "rotationDegrees": -60.0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 0.85,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -39,11 +50,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old",
+  "folder": "MidlineThree",
   "previewStartingState": {
     "rotation": -60.0,
     "velocity": 0
