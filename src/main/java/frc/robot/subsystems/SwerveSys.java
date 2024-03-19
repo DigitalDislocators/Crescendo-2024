@@ -228,10 +228,10 @@ public class SwerveSys extends SubsystemBase {
      * @param moduleStates An array module states to set. The order is FL, FR, BL, BR.
      */
     public void setModuleStates(SwerveModuleState[] moduleStates) {
-        frontLeftMod.setDesiredState(moduleStates[0], true);
-        frontRightMod.setDesiredState(moduleStates[1], true);
-        backLeftMod.setDesiredState(moduleStates[2], true);
-        backRightMod.setDesiredState(moduleStates[3], true);
+        frontLeftMod.setDesiredState(moduleStates[0], false);
+        frontRightMod.setDesiredState(moduleStates[1], false);
+        backLeftMod.setDesiredState(moduleStates[2], false);
+        backRightMod.setDesiredState(moduleStates[3], false);
     }
 
     /**
