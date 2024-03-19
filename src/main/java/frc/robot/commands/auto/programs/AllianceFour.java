@@ -37,8 +37,8 @@ public class AllianceFour extends SequentialCommandGroup {
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))
           .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
-      new FollowPathCmd("AllianeFourPathFive", swerveSys)
-        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+      // new FollowPathCmd("AllianeFourPathFive", swerveSys),
+          // .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
       new FollowPathCmd("AllianceFourPathSix", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))
