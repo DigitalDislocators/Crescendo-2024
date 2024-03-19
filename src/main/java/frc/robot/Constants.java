@@ -133,7 +133,7 @@ public class Constants {
         public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(143.17); 
 
         // You may want to change this value.
-        public static final int driveCurrentLimitAmps = 50;
+        public static final int driveCurrentLimitAmps = 65;
         public static final double brownoutVoltage = 6.5;
         
         // These values should be fine, but if the modules start to rattle you may want to play with the steer PID values.

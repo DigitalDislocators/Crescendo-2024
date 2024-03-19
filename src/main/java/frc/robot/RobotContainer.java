@@ -77,7 +77,7 @@ public class RobotContainer {
         // autoSelector.addOption("TestFivePiece", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("EnigmaFour", new EnigmaFour(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("AllianceFive", new AllianceFive(swerveSys, feederSys, rollerSys, pivotSys));
-        autoSelector.addOption("AllianceFour", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys));
+        // autoSelector.addOption("AllianceFour", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("MidlineThree", new MidlineThree(swerveSys, feederSys, rollerSys, pivotSys));
 
 
