@@ -29,7 +29,6 @@ import frc.robot.subsystems.LightsSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
 import frc.robot.commands.auto.programs.AllianceFive;
-import frc.robot.commands.auto.programs.AllianceFour;
 import frc.robot.commands.auto.programs.EnigmaFour;
 import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.auto.programs.MidlineThree;
