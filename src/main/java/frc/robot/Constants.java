@@ -252,7 +252,7 @@ public class Constants {
 
         public static final double toleranceDeg = 0.5;
 
-        public static final double absPivotEncOffset = 0.5 + 0.07;
+        public static final double absPivotEncOffsetDeg = 0.0;
 
         /*
          Used to calculate the approximate time of flight of the note.
