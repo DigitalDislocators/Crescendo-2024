@@ -53,7 +53,7 @@ public class LimelightPoseEstimator {
 	}
 
 	public double getLatencySec() {
-		return (LimelightHelpers.getLatency_Capture(limelightName) + LimelightHelpers.getLatency_Capture(limelightName)) * 0.001;
+		return (LimelightHelpers.getLatency_Capture(limelightName) + LimelightHelpers.getLatency_Pipeline(limelightName)) * 0.001;
 	}
 
 	public double getCaptureTimestamp() {
