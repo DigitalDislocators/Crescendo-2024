@@ -15,6 +15,8 @@ public class LEDStripArray {
 
     private final AddressableLEDBuffer buffer;
 
+    private boolean isPaused = false;
+
     public LEDStripArray(int pwmPort, LEDParent... ledStrips) {
         this.ledStrips = ledStrips;
 
@@ -36,7 +38,9 @@ public class LEDStripArray {
         CommandScheduler.getInstance().schedule(Commands.run(() -> update()));
     }
 
-    public void update() {
+    private void update() {
+        if(isPaused) return;
+        
         int bufferIndex = 0;
         for(LEDParent ledStrip : ledStrips) {
             for(Color pixel : ledStrip.getPixelBuffer()) {
@@ -46,6 +50,13 @@ public class LEDStripArray {
         }
 
         driver.setData(buffer);
+    }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+    public void setPaused(boolean isPaused) {
+        this.isPaused = isPaused;
     }
 
     public void setColors(Color color) {
