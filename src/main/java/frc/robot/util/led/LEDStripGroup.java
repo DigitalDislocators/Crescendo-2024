@@ -1,22 +1,35 @@
 package frc.robot.util.led;
 
-import org.ejml.simple.UnsupportedOperation;
-
 import edu.wpi.first.wpilibj.util.Color;
 
-public class LEDStripGroup extends LEDStrip {
+public class LEDStripGroup implements LEDParent {
 
-    private final LEDStrip[] components;
+    private final LEDParent[] components;
+
+    private final Color[] colorBuffer;
+
+    private final double[] valueBuffer;
 
     private final int length;
 
-    public LEDStripGroup(boolean isReversed, LEDStrip... components) {
-        super(0, isReversed);
+    private boolean isReversed;
+
+    public LEDStripGroup(boolean isReversed, LEDParent... components) {
+        this.isReversed = isReversed;
         this.components = components;
         int length = 0;
-        for(LEDStrip ledStrip : components) {
+        for(LEDParent ledStrip : components) {
             length += ledStrip.getLength();
         }
+
+        colorBuffer = new Color[length];
+        valueBuffer = new double[length];
+
+        for(int i = 0; i < length; i++) {
+            colorBuffer[i] = new Color();
+            valueBuffer[i] = 1.0;
+        }
+
         this.length = length;
     }
 
@@ -24,7 +37,7 @@ public class LEDStripGroup extends LEDStrip {
         this(false, components);
     }
 
-    public LEDStrip[] getComponents() {
+    public LEDParent[] getComponents() {
         return components;
     }
 
@@ -32,23 +45,24 @@ public class LEDStripGroup extends LEDStrip {
         return length;
     }
 
-    @Override
-    public double getBrightness() {
-        throw new UnsupportedOperation("LEDStripGroup has no value for brightness. Get brightness of components instead.");
+    public boolean isReversed() {
+        return isReversed;
     }
-    @Override
+    public void setReversed(boolean isReversed) {
+        this.isReversed = isReversed;
+    }
+
     public void setBrightness(double brightness) {
-        for(LEDStrip ledStrip : components) {
+        for(LEDParent ledStrip : components) {
             ledStrip.setBrightness(brightness);
         }
     }
 
-    @Override
-    public Color[] getPixelBuffer() {
+    public Color[] getLEDBuffer() {
         Color[] pixelBuffer = new Color[length];
         int groupPixel = 0;
-        if(isReversed()) {
-            for(LEDStrip ledStrip : components) {
+        if(isReversed) {
+            for(LEDParent ledStrip : components) {
                 for(int i = ledStrip.getLength() - 1; i >= 0; i--) {
                     pixelBuffer[groupPixel] = ledStrip.getPixel(i);
                     groupPixel++;
@@ -56,7 +70,7 @@ public class LEDStripGroup extends LEDStrip {
             }
         }
         else {
-            for(LEDStrip ledStrip : components) {
+            for(LEDParent ledStrip : components) {
                 for(int i = 0; i < length; i++) {
                     pixelBuffer[groupPixel] = ledStrip.getPixel(i);
                     groupPixel++;
@@ -66,13 +80,12 @@ public class LEDStripGroup extends LEDStrip {
         return pixelBuffer;
     }
 
-    @Override
-    public Color getPixel(int index) {
-        if(isReversed()) {
+    public Color getLED(int index) {
+        if(isReversed) {
             index = length - 1 - index;
         }
         int pixelCount = 0;
-        for(LEDStrip ledStrip : components) {
+        for(LEDParent ledStrip : components) {
             pixelCount += ledStrip.getLength();
             if(pixelCount > index) {
                 return ledStrip.getPixel(index + ledStrip.getLength() - pixelCount);
@@ -81,62 +94,146 @@ public class LEDStripGroup extends LEDStrip {
         throw new ArrayIndexOutOfBoundsException(index);
     }
 
-    @Override
+    public Color[] getPixelBuffer() {
+        Color[] pixelBuffer = new Color[length];
+        if(isReversed) {
+            for(int i = length - 1; i >= 0; i--) {
+                pixelBuffer[i] =
+                    new Color(
+                        colorBuffer[i].red * valueBuffer[i],
+                        colorBuffer[i].green * valueBuffer[i],
+                        colorBuffer[i].blue * valueBuffer[i]
+                    );
+            }
+        }
+        else {
+            for(int i = 0; i < length; i++) {
+                pixelBuffer[i] =
+                    new Color(
+                        colorBuffer[i].red * valueBuffer[i],
+                        colorBuffer[i].green * valueBuffer[i],
+                        colorBuffer[i].blue * valueBuffer[i]
+                    );
+            } 
+        }
+        return pixelBuffer;
+    }
+
+    public Color getPixel(int index) {
+        if(isReversed) {
+            index = length - 1 - index;
+        }
+        return new Color(
+            colorBuffer[index].red * valueBuffer[index],
+            colorBuffer[index].green * valueBuffer[index],
+            colorBuffer[index].blue * valueBuffer[index]
+        );
+    }
+
     public Color[] getColorBuffer() {
-        throw new UnsupportedOperation("LEDStripGroup has no color buffer. Get color buffer of components instead.");
+        return colorBuffer;
     }
-
-    @Override
+    
     public Color getColor(int index) {
-        throw new UnsupportedOperation("LEDStripGroup has no color buffer. Get color buffer of components instead.");
+        return colorBuffer[index];
     }
 
-    @Override
     public double[] getValueBuffer() {
-        throw new UnsupportedOperation("LEDStripGroup has no value buffer. Get value buffer of components instead.");
+        return valueBuffer;
     }
 
-    @Override
     public double getValue(int index) {
-        throw new UnsupportedOperation("LEDStripGroup has no value buffer. Get value buffer of components instead.");
+        return valueBuffer[index];
     }
 
-    @Override
     public void setColor(Color color) {
-        for(LEDStrip ledStrip : components) {
+        for(int i = 0; i < length; i++) {
+            colorBuffer[i] = color;
+        }
+        
+        for(LEDParent ledStrip : components) {
             ledStrip.setColor(color);
         }
     }
 
-    @Override
     public void setColor(Color color, int index) {
-        throw new UnsupportedOperation("LEDStripGroup has no indeces. Set color at an index of components instead.");
+        colorBuffer[index] = color;
+        for(LEDParent ledStrip : components) {
+            if(index < ledStrip.getLength()) {
+                ledStrip.setColor(color, index);
+            }
+        }
     }
 
-    @Override
     public void translateColors(TranslateDirection direction, Color... voidColors) {
-        for(LEDStrip ledStrip : components) {
+        if(voidColors.length > length) {
+            Color[] proxyVoidColors = new Color[length];
+            for(int i = 0; i < length; i++) {
+                proxyVoidColors[i] = voidColors[i];
+            }
+            voidColors = proxyVoidColors;
+        }
+        if(direction == TranslateDirection.FORWARD) {
+            for(int i = voidColors.length; i < length; i++) {
+                colorBuffer[i] = colorBuffer[i - voidColors.length];
+            }
+            for(int i = 0; i < voidColors.length; i++) {
+                colorBuffer[i] = voidColors[i];
+            }
+        }
+        else {
+            for(int i = length - voidColors.length - 1; i >= 0; i--) {
+                colorBuffer[i] = colorBuffer[i + voidColors.length];
+            }
+            for(int i = 0; i < voidColors.length; i++) {
+                colorBuffer[length - voidColors.length + i] = voidColors[i];
+            }
+        }
+
+        for(LEDParent ledStrip : components) {
             ledStrip.translateColors(direction, voidColors);
         }
     }
 
-    @Override
     public void setValue(double value) {
-        for(LEDStrip ledStrip : components) {
+        for(int i = 0; i < length; i++) {
+            valueBuffer[i] = value;
+        }
+
+        for(LEDParent ledStrip : components) {
             ledStrip.setValue(value);
         }
     }
 
-    @Override
     public void setValue(double value, int index) {
-        throw new UnsupportedOperation("LEDStripGroup has no indeces. Set value at an index of components instead.");
+        valueBuffer[index] = value;
+        for(LEDParent ledStrip : components) {
+            if(index < ledStrip.getLength()) {
+                ledStrip.setValue(value, index);
+            }
+        }
     }
 
-    @Override
     public void translateValues(TranslateDirection direction, double... voidValues) {
-        for(LEDStrip ledStrip : components) {
+        if(direction == TranslateDirection.FORWARD) {
+            for(int i = voidValues.length; i < length; i++) {
+                valueBuffer[i] = valueBuffer[i - voidValues.length];
+            }
+            for(int i = 0; i < voidValues.length; i++) {
+                valueBuffer[i] = valueBuffer[i];
+            }
+        }
+        else {
+            for(int i = length - voidValues.length - 1; i >= 0; i--) {
+                valueBuffer[i] = valueBuffer[i + voidValues.length];
+            }
+            for(int i = 0; i < voidValues.length; i++) {
+                valueBuffer[length - voidValues.length + i] = voidValues[i];
+            }
+        }
+
+        for(LEDParent ledStrip : components) {
             ledStrip.translateValues(direction, voidValues);
         }
     }
-    
 }

@@ -31,7 +31,6 @@ public class LightsSys extends SubsystemBase {
 	@Override
 	public void periodic() {
 		// This method will be called once per scheduler run
-		ledStripArray.update();
 	}
 
 	public void setColor(Color color) {
