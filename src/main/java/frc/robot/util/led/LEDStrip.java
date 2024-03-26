@@ -2,12 +2,7 @@ package frc.robot.util.led;
 
 import edu.wpi.first.wpilibj.util.Color;
 
-public class LEDStrip {
-    
-    public enum TranslateDirection {
-        FORWARD,
-        REVERSE
-    }
+public class LEDStrip implements LEDParent {
 
     private final int length;
 
@@ -28,7 +23,7 @@ public class LEDStrip {
 
         for(int i = 0; i < length; i++) {
             colorBuffer[i] = new Color();
-            valueBuffer[i] = 0.0;
+            valueBuffer[i] = 1.0;
         }
     }
 
@@ -62,11 +57,11 @@ public class LEDStrip {
         this.brightness = brightness;
     }
 
-    public Color[] getPixelBuffer() {
-        Color[] pixelBuffer = new Color[length];
+    public Color[] getLEDBuffer() {
+        Color[] ledBuffer = new Color[length];
         if(isReversed) {
             for(int i = length - 1; i >= 0; i--) {
-                pixelBuffer[i] =
+                ledBuffer[i] =
                     new Color(
                         colorBuffer[i].red * valueBuffer[i] * brightness,
                         colorBuffer[i].green * valueBuffer[i] * brightness,
@@ -76,7 +71,7 @@ public class LEDStrip {
         }
         else {
             for(int i = 0; i < length; i++) {
-                pixelBuffer[i] =
+                ledBuffer[i] =
                     new Color(
                         colorBuffer[i].red * valueBuffer[i] * brightness,
                         colorBuffer[i].green * valueBuffer[i] * brightness,
@@ -84,10 +79,10 @@ public class LEDStrip {
                     );
             } 
         }
-        return pixelBuffer;
+        return ledBuffer;
     }
 
-    public Color getPixel(int index) {
+    public Color getLED(int index) {
         if(isReversed) {
             index = length - 1 - index;
         }
@@ -95,6 +90,41 @@ public class LEDStrip {
             colorBuffer[index].red * valueBuffer[index] * brightness,
             colorBuffer[index].green * valueBuffer[index] * brightness,
             colorBuffer[index].blue * valueBuffer[index] * brightness
+        );
+    }
+
+    public Color[] getPixelBuffer() {
+        Color[] pixelBuffer = new Color[length];
+        if(isReversed) {
+            for(int i = length - 1; i >= 0; i--) {
+                pixelBuffer[i] =
+                    new Color(
+                        colorBuffer[i].red * valueBuffer[i],
+                        colorBuffer[i].green * valueBuffer[i],
+                        colorBuffer[i].blue * valueBuffer[i]
+                    );
+            }
+        }
+        else {
+            for(int i = 0; i < length; i++) {
+                pixelBuffer[i] =
+                    new Color(
+                        colorBuffer[i].red * valueBuffer[i],
+                        colorBuffer[i].green * valueBuffer[i],
+                        colorBuffer[i].blue * valueBuffer[i]
+                    );
+            } 
+        }
+        return pixelBuffer;    }
+
+    public Color getPixel(int index) {
+        if(isReversed) {
+            index = length - 1 - index;
+        }
+        return new Color(
+            colorBuffer[index].red * valueBuffer[index],
+            colorBuffer[index].green * valueBuffer[index],
+            colorBuffer[index].blue * valueBuffer[index]
         );
     }
     
