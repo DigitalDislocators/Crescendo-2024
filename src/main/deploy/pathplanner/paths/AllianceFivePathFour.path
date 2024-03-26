@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.75,
-        "y": 6.85
+        "x": 2.4270480621161745,
+        "y": 6.5118855049740185
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.1595772514853304,
-        "y": 6.357575421917761
+        "x": 1.836625313601505,
+        "y": 6.01946092689178
       },
       "isLocked": false,
       "linkedName": "AllianceNoteOnePos"
@@ -39,7 +39,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 4.5,
+    "maxAcceleration": 2.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

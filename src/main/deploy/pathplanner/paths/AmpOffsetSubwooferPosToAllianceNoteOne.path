@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 0.75,
-        "y": 6.6
+        "y": 6.5
       },
       "prevControl": null,
       "nextControl": {
         "x": 1.0183271785786014,
-        "y": 7.021901084658533
+        "y": 6.921901084658534
       },
       "isLocked": false,
       "linkedName": "AmpOffsetSubwooferPos"
@@ -39,7 +39,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 2.5,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

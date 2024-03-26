@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.55,
-      "y": 6.65
+      "x": 0.75,
+      "y": 6.5
     },
     "rotation": 60.0
   },
@@ -14,30 +14,42 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AmpOffsetSubwooferPosToMidlineNoteOne"
+            "pathName": "SecondPickThreePathOne"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "MidlineNoteOneToAmpOffsetSubwooferPos"
+            "pathName": "SecondPickThreePathTwo"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "SubwooferPosToAllianceNoteOne"
+            "pathName": "SecondPickThreePathThree"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceNoteOneToSubwooferPos"
+            "pathName": "SecondPickThreePathFour"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SecondPickThreePathFive"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SecondPickThreePathSix"
           }
         }
       ]
     }
   },
-  "folder": "Old Autos",
+  "folder": null,
   "choreoAuto": false
 }

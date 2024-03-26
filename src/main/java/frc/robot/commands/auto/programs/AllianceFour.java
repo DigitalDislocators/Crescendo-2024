@@ -16,23 +16,24 @@ import frc.robot.commands.automation.AutoSubwooferFireCmd;
 import frc.robot.subsystems.FeederSys;
 import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.RollersSys;
+import frc.robot.subsystems.SpacebarSys;
 import frc.robot.subsystems.SwerveSys;
 
 public class AllianceFour extends SequentialCommandGroup {
-  public AllianceFour(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys) {
+  public AllianceFour(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys, SpacebarSys SpacebarSys) {
     addCommands(
       // Again you can do it this way or keep the commands in their own files if you're more comfortable with that.
       new SetInitialPoseCmd("AllianceFourPathOne", swerveSys),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.08),
       new FollowPathCmd("AllianceFourPathOne", swerveSys)
-        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys)),
       new FollowPathCmd("AllianceFourPathTwo", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))
           .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
       new FollowPathCmd("AllianceFourPathThree", swerveSys)
-        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys)),
       new FollowPathCmd("AllianceFourPathFour", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))

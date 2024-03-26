@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 0.75,
-        "y": 6.6
+        "y": 6.5
       },
       "prevControl": null,
       "nextControl": {
         "x": 1.2803300858899107,
-        "y": 7.130330085889911
+        "y": 7.030330085889911
       },
       "isLocked": false,
       "linkedName": "AmpOffsetSubwooferPos"

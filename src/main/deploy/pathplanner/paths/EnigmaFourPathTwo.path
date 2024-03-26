@@ -3,29 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.10565911858641,
-        "y": 7.448033342181972
+        "x": 8.1,
+        "y": 4.1
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.177539737654673,
-        "y": 6.9166618592480305
+        "x": 6.624282321246348,
+        "y": 4.0943608704260015
       },
       "isLocked": false,
-      "linkedName": "MidlineNoteOnePos"
+      "linkedName": "MidlineNoteThreePos"
     },
     {
       "anchor": {
-        "x": 2.9,
-        "y": 6.295851388695259
+        "x": 4.906296729886693,
+        "y": 4.588153136206022
       },
       "prevControl": {
-        "x": 3.9,
-        "y": 6.295851388695259
+        "x": 5.461813028889215,
+        "y": 4.320682325575177
       },
       "nextControl": {
-        "x": 2.26,
-        "y": 6.295851388695259
+        "x": 4.230545477567368,
+        "y": 4.913514850285697
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.0957250886932854,
+        "y": 4.824761930225615
+      },
+      "prevControl": {
+        "x": 4.0957250886932846,
+        "y": 4.824761930225615
+      },
+      "nextControl": {
+        "x": 1.9633698900133096,
+        "y": 4.824761930225615
       },
       "isLocked": false,
       "linkedName": null
@@ -36,8 +52,8 @@
         "y": 5.55
       },
       "prevControl": {
-        "x": 1.8863798142010921,
-        "y": 5.953688339788793
+        "x": 1.9229684574657373,
+        "y": 4.937922657800203
       },
       "nextControl": null,
       "isLocked": false,
@@ -49,7 +65,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 2.5,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
@@ -64,5 +80,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

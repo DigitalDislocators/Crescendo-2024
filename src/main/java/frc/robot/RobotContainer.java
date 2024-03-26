@@ -20,14 +20,18 @@ import frc.robot.commands.feeder.FeederInCmd;
 import frc.robot.commands.feeder.FeederStopCmd;
 import frc.robot.commands.lights.LightsDefaultCmd;
 import frc.robot.commands.lights.PartyModeCmd;
+import frc.robot.commands.pivot.PivotAmpPresetCmd;
+import frc.robot.commands.pivot.PivotGroundPresetCmd;
 import frc.robot.commands.pivot.PivotHomePresetCmd;
 import frc.robot.subsystems.RollersSys;
+import frc.robot.subsystems.SpacebarSys;
 import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.ClimberSys;
 import frc.robot.subsystems.FeederSys;
 import frc.robot.subsystems.LightsSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
+import frc.robot.commands.pivot.PivotPodiumPresetCmd;
 import frc.robot.commands.auto.programs.AllianceFive;
 import frc.robot.commands.auto.programs.AllianceFour;
 import frc.robot.commands.auto.programs.EnigmaFour;
@@ -40,10 +44,13 @@ import frc.robot.commands.automation.AutoSourceIntakeCmd;
 import frc.robot.commands.automation.AutoSpeakerFireCmd;
 import frc.robot.commands.automation.AutoSubwooferFireCmd;
 import frc.robot.commands.climber.ClimberDownCmd;
+import frc.robot.commands.climber.ClimberStopCmd;
 import frc.robot.commands.climber.ClimberUpCmd;
 import frc.robot.commands.rollers.RollersFireCmd;
 import frc.robot.commands.rollers.RollersIntakeCmd;
 import frc.robot.commands.rollers.RollersStopCmd;
+import frc.robot.commands.spacebar.SpacebarHomeCmd;
+import frc.robot.commands.spacebar.SpacebarOutCmd;
 
 public class RobotContainer {
     
@@ -54,6 +61,7 @@ public class RobotContainer {
     private final FeederSys feederSys = new FeederSys();
     private final ClimberSys climberSys = new ClimberSys();
     private final LightsSys lightsSys = new LightsSys();
+    private final SpacebarSys spacebarSys = new SpacebarSys();
 
     //Initialize joysticks.
     private final CommandXboxController driverController = new CommandXboxController(ControllerConstants.driverGamepadPort);
@@ -75,10 +83,10 @@ public class RobotContainer {
         // autoSelector.addOption("MidlineNoteThreePiece", new MidlineNoteThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
         // autoSelector.addOption("PiHiThreePiece", new PiHiThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
         // autoSelector.addOption("TestFivePiece", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
-        autoSelector.addOption("EnigmaFour", new EnigmaFour(swerveSys, feederSys, rollerSys, pivotSys));
-        autoSelector.addOption("AllianceFive", new AllianceFive(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("EnigmaFour", new EnigmaFour(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
+        autoSelector.addOption("AllianceFive", new AllianceFive(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("AllianceFour", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys));
-        autoSelector.addOption("MidlineThree", new MidlineThree(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("MidlineThree", new MidlineThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
 
 
         configDriverBindings();
@@ -93,36 +101,39 @@ public class RobotContainer {
         //           (operatorController.getLeftTriggerAxis() * RollerConstants.manualIntakePower),
         //     rollerSys));
 
-        operatorController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold).onFalse(new RollersStopCmd(rollerSys));
-
-        operatorController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold).onFalse(new RollersStopCmd(rollerSys));
-
         pivotSys.setDefaultCommand(new PivotManualCmd( 
             () -> MathUtil.applyDeadband((operatorController.getLeftY()), ControllerConstants.joystickDeadband),
             pivotSys));
 
-        operatorController.a().onTrue(new AutoAmpFireCmd(feederSys, rollerSys, pivotSys));
+        
 
-        // operatorController.b().onTrue(new AutoPodiumFireCmd(feederSys, rollerSys, pivotSys));
-        // operatorController.b().and(driverController.a()).onTrue(new AutoSpeakerFireCmd(feederSys, rollerSys, pivotSys, swerveSys));
+        operatorController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold).onFalse(new RollersStopCmd(rollerSys));
 
-        operatorController.x().onTrue(new PivotHomePresetCmd(pivotSys));
-
-        operatorController.y().onTrue(new AutoSubwooferFireCmd(feederSys, rollerSys, pivotSys));
-
-        operatorController.rightBumper().onTrue(new FeederFeedCmd(feederSys)).onFalse(new FeederStopCmd(feederSys));
-      
         operatorController.leftBumper().onTrue(new FeederInCmd(feederSys)).onFalse(new FeederStopCmd(feederSys));
 
-        operatorController.povUp().whileTrue(new ClimberUpCmd(climberSys)).whileFalse(new ClimberDownCmd(climberSys));
+        operatorController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold).onFalse(new RollersStopCmd(rollerSys));
 
+        operatorController.rightBumper().onTrue(new FeederFeedCmd(feederSys)).onFalse(new FeederStopCmd(feederSys));
+
+        operatorController.a().onTrue(new AutoAmpFireCmd(feederSys, rollerSys, pivotSys, spacebarSys));
+        
         operatorController.b()
             .onTrue(new AutoSpeakerFireCmd(feederSys, rollerSys, pivotSys, swerveSys))
             .onFalse(new RollersStopCmd(rollerSys))
             .onFalse(new PivotHomePresetCmd(pivotSys))
             .onFalse(new FeederStopCmd(feederSys));
-            
+        
+        operatorController.x().onTrue(new PivotHomePresetCmd(pivotSys));
+
+        operatorController.y().onTrue(new AutoSubwooferFireCmd(feederSys, rollerSys, pivotSys));
+      
+        operatorController.povUp().onTrue(new ClimberUpCmd(climberSys)).onFalse(new ClimberStopCmd(climberSys));
+        
         operatorController.povRight().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
+
+        operatorController.povDown().onTrue(new ClimberDownCmd(climberSys)).onFalse(new ClimberStopCmd(climberSys));
+        
+        
 
         operatorController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold)
             .onTrue(new RollersFireCmd(rollerSys))
@@ -133,6 +144,18 @@ public class RobotContainer {
             .onFalse(new RollersStopCmd(rollerSys));
 
         operatorController.start().toggleOnTrue(new PartyModeCmd(lightsSys));
+
+        // For spacebar testin and troubleshootin
+        
+        // operatorController.povDown().onTrue(new SpacebarHomeCmd(spacebarSys));
+
+        // operatorController.povLeft().onTrue(new SpacebarOutCmd(spacebarSys));
+
+        // For Pivot testin and troubleshootin
+
+        // operatorController.b().onTrue(new PivotPodiumPresetCmd(pivotSys));
+        // operatorController.a().onTrue(new PivotGroundPresetCmd(pivotSys));
+        // operatorController.y().onTrue(new PivotAmpPresetCmd(pivotSys));
     }
 
     public void configDriverBindings() {
@@ -150,13 +173,15 @@ public class RobotContainer {
             .whileTrue(new LockCmd(swerveSys));
         
         driverController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold)
-            .onTrue(new AutoGroundIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
+            .onTrue(new AutoGroundIntakeCmd(pivotSys, feederSys, rollerSys, spacebarSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
 
         driverController.rightBumper().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
         
-        driverController.a().whileTrue(new AimToSpeakerCmd(swerveSys));
-        driverController.b().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(90), swerveSys));
-        driverController.x().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(-60), swerveSys));
+        driverController.a().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(0), swerveSys));
+        driverController.b().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(120), swerveSys));
+        driverController.x().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(90), swerveSys));
+        driverController.y().whileTrue(new AimToSpeakerCmd(swerveSys));
+
     }
 
     public Command getAutonomousCommand() {
@@ -193,6 +218,5 @@ public class RobotContainer {
         SmartDashboard.putNumber("drive voltage", swerveSys.getAverageDriveVoltage());
 
         SmartDashboard.putNumber("roller rpm", rollerSys.getRPM());
-
     }
 }

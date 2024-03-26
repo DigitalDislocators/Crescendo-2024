@@ -22,8 +22,8 @@ import frc.robot.subsystems.RollersSys;
 import frc.robot.subsystems.SpacebarSys;
 import frc.robot.subsystems.SwerveSys;
 
-public class TestFivePiece extends SequentialCommandGroup {
-  public TestFivePiece(SwerveSys swerveSys, FeederSys feederSys, RollersSys rollersSys, PivotSys pivotSys, SpacebarSys SpacebarSys) {
+public class SecondPickFour extends SequentialCommandGroup {
+  public SecondPickFour(SwerveSys swerveSys, FeederSys feederSys, RollersSys rollersSys, PivotSys pivotSys, SpacebarSys SpacebarSys) {
     addCommands(
       new SetInitialPoseCmd("SubwooferPosToMidlineNoteThree", swerveSys),
       new AutoSubwooferFireCmd(feederSys, rollersSys, pivotSys),

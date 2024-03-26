@@ -14,7 +14,9 @@ public class SpacebarHomeCmd extends Command {
     }
 
     public void initialize() {
-        spacebarSys.setPosition(0.0);
+        spacebarSys.setSpacebarLeftPosition(0.125);
+        spacebarSys.setSpacebarRightPosition(0.875 + 0.015);
+        
     }
 
     public void execute() {

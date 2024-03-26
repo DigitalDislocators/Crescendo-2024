@@ -16,10 +16,11 @@ import frc.robot.commands.automation.AutoSubwooferFireCmd;
 import frc.robot.subsystems.FeederSys;
 import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.RollersSys;
+import frc.robot.subsystems.SpacebarSys;
 import frc.robot.subsystems.SwerveSys;
 
 public class EnigmaFour extends SequentialCommandGroup {
-  public EnigmaFour(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys) {
+  public EnigmaFour(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys, SpacebarSys SpacebarSys) {
     addCommands(
       // Again you can do it this way or keep the commands in their own files if you're more comfortable with that.
       new SetInitialPoseCmd("EnigmaFourPathOne", swerveSys),
@@ -28,19 +29,19 @@ public class EnigmaFour extends SequentialCommandGroup {
       new WaitCommand(0.05),
       new FollowPathCmd("EnigmaFourPathOne", swerveSys)
         .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 4.0)
-        .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys))),
+        .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys))),
       new FollowPathCmd("EnigmaFourPathTwo", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))
           .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
       new FollowPathCmd("EnigmaFourPathThree", swerveSys)
-        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys)),
       new FollowPathCmd("EnigmaFourPathFour", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))
           .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
       new FollowPathCmd("EnigmaFourPathFive", swerveSys)
-        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys)),
+        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys)),
       new FollowPathCmd("EnigmaFourPathSix", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))

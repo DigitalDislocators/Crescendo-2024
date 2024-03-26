@@ -14,7 +14,8 @@ public class SpacebarOutCmd extends Command {
     }
 
     public void initialize() {
-        spacebarSys.setPosition(1.0);
+        spacebarSys.setSpacebarLeftPosition(0.875);
+        spacebarSys.setSpacebarRightPosition(0.12 + 0.015);
     }
 
     public void execute() {

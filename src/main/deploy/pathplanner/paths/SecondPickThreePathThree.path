@@ -3,35 +3,35 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2542914308886268,
-        "y": 5.55
+        "x": 0.75,
+        "y": 6.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.020335874007605,
-        "y": 4.907212390313461
+        "x": 1.634922969094059,
+        "y": 6.758781637864028
       },
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": "AmpOffsetSubwooferPos"
     },
     {
       "anchor": {
-        "x": 2.3550366900232556,
-        "y": 4.6395898305581085
+        "x": 2.7253808893582705,
+        "y": 6.995390431883621
       },
       "prevControl": {
-        "x": 1.5889922469042776,
-        "y": 5.282377440244647
+        "x": 1.881819101984069,
+        "y": 6.851367687697781
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "AllianceNoteThreePos"
+      "linkedName": "AllianceNoteOneAugmentedPos"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.15,
-      "rotationDegrees": 0,
+      "waypointRelativePos": 0.1,
+      "rotationDegrees": 60.0,
       "rotateFast": false
     }
   ],
@@ -45,13 +45,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -45.0,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old",
+  "folder": "SecondPickThree",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 60.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

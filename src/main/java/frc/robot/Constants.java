@@ -176,7 +176,9 @@ public class Constants {
         public static final double driveToAmpMaxVelMetersPerSec = 4.0;
         public static final double driveToAmpMaxAccelMetersPerSecSq = 3.0;
 
-        public static final double subwooferShotThreshold = 1.85;
+        public static final double subwooferShotThreshold = 2.0;
+
+        public static final double offsetSubwooferShotThreshold = 1.0;
 
     }
 
@@ -190,16 +192,17 @@ public class Constants {
 
         public static final double maxRPM = freeSpeedRPM / gearRatio;
 
-        public static final double feedForward = 0.000179;
+        public static final double feedForward = 0.00018;
 
-        public static final double kP = 0.0002;
-        public static final double kD = 0.003;
-        
-        public static final double fireRPM = 6000.0;
+        public static final double kP = 0.0002; // 0.0002
 
-        public static final double ampRPM = 1200.0;
+        public static final double kD = 0.0025; // 0.003
         
-        public static final double intakeRPM = 7200.0;
+        public static final double fireRPM = 5000.0;
+
+        public static final double ampRPM = 1500.0;
+        
+        public static final double intakeRPM = 5800.0;
 
         public static final double rollerDiameterMeters = Units.inchesToMeters(2.0);
 
@@ -216,7 +219,7 @@ public class Constants {
 
         public static final double gearRatio = 45.0;
 
-        public static final double kP = 0.015; // 0.035;
+        public static final double kP = 0.0125; // 0.035;
         public static final double kD = 0.00025; // 0.00037;
 
         public static final double degPerEncRev = 360.0 / gearRatio;
@@ -224,9 +227,9 @@ public class Constants {
 
         public static final double freeSpeedRPM = 6784.0 / gearRatio;
 
-        public static final double maxVelDegPerSec = 450.0; // 400.0;
+        public static final double maxVelDegPerSec = 600.0; // 400.0;
 
-        public static final double maxAccelDegPerSecSq = 400.0; // 575.0;
+        public static final double maxAccelDegPerSecSq = 525.0; // 575.0;
 
         public static final double maxManualDegPerSec = 180.0;
 
@@ -234,25 +237,25 @@ public class Constants {
 
         public static final double trapPresetDeg = 150.0;
 
-        public static final double ampPresetDeg = 64.0;
+        public static final double ampPresetDeg = 72.0;
         
         public static final double sourcePresetDeg = 5.0;
 
-        public static final double groundPresetDeg = 170.0;
+        public static final double groundPresetDeg = 183.0;
 
         public static final double homePresetDeg = 0.0;
 
-        public static final double podiumPresetDeg = 75.0;
+        public static final double podiumPresetDeg = 84.4;
 
         public static final float lowerLimitDeg = 0f;
 
-        public static final float upperLimitDeg = 180f;
+        public static final float upperLimitDeg = 181f;
 
         public static final double podiumCorrectionIncrementDeg = .01;
 
         public static final double toleranceDeg = 0.5;
 
-        public static final double absPivotEncOffsetDeg = 0.0;
+        public static final double absPivotEncOffsetDeg = 208.0;
 
         /*
          Used to calculate the approximate time of flight of the note.
@@ -269,10 +272,10 @@ public class Constants {
 
             // data points with coordinate (lateral distance to speaker [meters], pivot angle [degrees])
             pivotInterpolator.put(1.23, 59.0);
-            pivotInterpolator.put(2.24, 66.0);
-            // pivotInterpolator.put(2.74, 79.0);
-            pivotInterpolator.put(2.85, podiumPresetDeg);
-            pivotInterpolator.put(3.5, 77.0);
+            pivotInterpolator.put(2.24, 79.7 - 1.0);
+            pivotInterpolator.put(2.77, 84.0 - 1.0);
+            pivotInterpolator.put(3.06, podiumPresetDeg - 1.0);
+            // pivotInterpolator.put(3.5, 77.0);
 
             return pivotInterpolator;
         }
@@ -290,7 +293,7 @@ public class Constants {
     public class LightsConstants {
         public static final Color blueAllianceColor = new Color(0, 0, 255);
         public static final Color redAllianceColor = new Color(255, 0, 0);
-        public static final Color noAllianceColor = new Color(255, 0, 255);
+        public static final Color noAllianceColor = new Color(200, 255, 200);
 
         public static final Color hasNoteColor = new Color(0, 255, 0);
 
