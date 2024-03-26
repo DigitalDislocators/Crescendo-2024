@@ -20,8 +20,6 @@ import frc.robot.commands.feeder.FeederInCmd;
 import frc.robot.commands.feeder.FeederStopCmd;
 import frc.robot.commands.lights.LightsDefaultCmd;
 import frc.robot.commands.lights.PartyModeCmd;
-import frc.robot.commands.pivot.PivotAmpPresetCmd;
-import frc.robot.commands.pivot.PivotGroundPresetCmd;
 import frc.robot.commands.pivot.PivotHomePresetCmd;
 import frc.robot.subsystems.RollersSys;
 import frc.robot.subsystems.SpacebarSys;
@@ -31,7 +29,6 @@ import frc.robot.subsystems.FeederSys;
 import frc.robot.subsystems.LightsSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
-import frc.robot.commands.pivot.PivotPodiumPresetCmd;
 import frc.robot.commands.auto.programs.AllianceFive;
 import frc.robot.commands.auto.programs.EnigmaFour;
 import frc.robot.commands.auto.programs.ExampleAuto;
@@ -48,8 +45,6 @@ import frc.robot.commands.climber.ClimberUpCmd;
 import frc.robot.commands.rollers.RollersFireCmd;
 import frc.robot.commands.rollers.RollersIntakeCmd;
 import frc.robot.commands.rollers.RollersStopCmd;
-import frc.robot.commands.spacebar.SpacebarHomeCmd;
-import frc.robot.commands.spacebar.SpacebarOutCmd;
 
 public class RobotContainer {
     

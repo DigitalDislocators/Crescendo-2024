@@ -43,8 +43,8 @@ public class LEDStripArray {
         
         int bufferIndex = 0;
         for(LEDParent ledStrip : ledStrips) {
-            for(Color pixel : ledStrip.getPixelBuffer()) {
-                buffer.setLED(bufferIndex, pixel);
+            for(Color led : ledStrip.getLEDBuffer()) {
+                buffer.setLED(bufferIndex, led);
                 bufferIndex++;
             }
         }
