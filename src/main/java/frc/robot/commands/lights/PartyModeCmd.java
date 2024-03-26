@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.LightsConstants;
 import frc.robot.subsystems.LightsSys;
+import frc.robot.util.led.LEDParent.TranslateDirection;
 import frc.robot.util.led.LEDStrip;
-import frc.robot.util.led.LEDStrip.TranslateDirection;
 
 public class PartyModeCmd extends Command {
 
