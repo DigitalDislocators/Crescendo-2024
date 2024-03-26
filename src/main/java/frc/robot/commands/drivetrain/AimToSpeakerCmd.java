@@ -23,7 +23,7 @@ public class AimToSpeakerCmd extends Command {
 
     private final SwerveSys swerveSys;
 
-    private Translation2d targetTranslation = FieldConstants.blueAllianceSpeakerPose;
+    private Translation2d targetTranslation;
 
     private final ProfiledPIDController aimController;
 
@@ -43,6 +43,9 @@ public class AimToSpeakerCmd extends Command {
     public void initialize() {
         if(DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
             targetTranslation = FieldConstants.redAllianceSpeakerPose;
+        }
+        else {
+            targetTranslation = FieldConstants.blueAllianceSpeakerPose;
         }
     }
     

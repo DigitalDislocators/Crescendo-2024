@@ -84,17 +84,24 @@ public class TurnToHeadingCmd extends Command {
 
     @Override
     public void initialize() {
-        if(shouldMirrorHeading && DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
-            targetHeading = Rotation2d.fromDegrees(180).minus(targetHeading);
-        }
+        
     }
     
     @Override
     public void execute() {
         PPHolonomicDriveController.setRotationTargetOverride(() -> Optional.of(targetHeading));
+        
+        Rotation2d mirroredHeading;
+        if(shouldMirrorHeading && DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red) {
+            mirroredHeading = Rotation2d.fromDegrees(180).minus(targetHeading);
+        }
+        else {
+            mirroredHeading = targetHeading;
+        }
+
     
-        if(Math.abs(swerveSys.getHeading().getDegrees() - targetHeading.getDegrees()) > AutoConstants.autoAimToleranceDeg) {
-            double aimRadPerSec = aimController.calculate(swerveSys.getHeading().getRadians(), targetHeading.getRadians());
+        if(Math.abs(swerveSys.getHeading().getDegrees() - mirroredHeading.getDegrees()) > AutoConstants.autoAimToleranceDeg) {
+            double aimRadPerSec = aimController.calculate(swerveSys.getHeading().getRadians(), mirroredHeading.getRadians());
             swerveSys.setOmegaOverrideRadPerSec(Optional.of(aimRadPerSec));
         }
         else {
