@@ -3,11 +3,10 @@ package frc.robot.util.led;
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.util.Color;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.util.led.LEDParent.TranslateDirection;
 
-public class LEDStripArray {
+public class LEDStripArray extends SubsystemBase{
     
     private final LEDParent[] ledStrips;
 
@@ -34,11 +33,10 @@ public class LEDStripArray {
         driver.setData(buffer);
 
         driver.start();
-
-        CommandScheduler.getInstance().schedule(Commands.run(() -> update()));
     }
 
-    private void update() {
+    @Override
+    public void periodic() {
         if(isPaused) return;
         
         int bufferIndex = 0;
