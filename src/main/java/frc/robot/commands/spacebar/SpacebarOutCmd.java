@@ -1,32 +1,38 @@
 package frc.robot.commands.spacebar;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.SpacebarConstants;
 import frc.robot.subsystems.SpacebarSys;
+import edu.wpi.first.wpilibj2.command.Command;
 
 public class SpacebarOutCmd extends Command {
 
-    private SpacebarSys spacebarSys;
+  private final SpacebarSys spacebar;
+
+  public SpacebarOutCmd(SpacebarSys spacebar) {
+    this.spacebar = spacebar;
+
+    addRequirements(spacebar);
+  }
+
+  // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {
+    spacebar.setTargetDeg(SpacebarConstants.spacebarOutDeg);
+  }
+ 
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
     
-    public SpacebarOutCmd(SpacebarSys spacebarSys) {
-        this.spacebarSys = spacebarSys;
+  }
+ 
+  // Called once the command ends or is interrupted.
+  @Override
+  public void end(boolean interrupted) {}
 
-        addRequirements(spacebarSys);
-    }
-
-    public void initialize() {
-        spacebarSys.setSpacebarLeftPosition(0.875);
-        spacebarSys.setSpacebarRightPosition(0.12 + 0.015);
-    }
-
-    public void execute() {
-
-    }
-
-    public void end(boolean isInerrupted) {
-
-    }
-
-    public boolean isFinished() {
-        return true;
-    }
+  // Returns true when the command should end.
+  @Override
+  public boolean isFinished() {
+    return true;
+  }
 }

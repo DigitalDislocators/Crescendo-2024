@@ -46,12 +46,12 @@ public class AllianceFive extends SequentialCommandGroup {
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))
           .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
-      new FollowPathCmd("AllianceFivePathSeven", swerveSys)
-        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys)),
-      new FollowPathCmd("AllianceFivePathEight", swerveSys)
-        .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
-          .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))
-          .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
+      // new FollowPathCmd("AllianceFivePathSeven", swerveSys)
+      //   .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys)),
+      // new FollowPathCmd("AllianceFivePathEight", swerveSys)
+      //   .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
+      //     .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))
+      //     .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
       new WaitCommand(0.75)
     );
   }

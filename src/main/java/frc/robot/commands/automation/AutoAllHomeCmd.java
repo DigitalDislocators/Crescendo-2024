@@ -19,7 +19,7 @@ public class AutoAllHomeCmd extends SequentialCommandGroup {
       new PivotHomePresetCmd(pivot),
       new RollersIntakeCmd(roller),
       new FeederInCmd(feeder),
-      new WaitCommand(0.75),
+      new WaitCommand(0.9),
       new RollersStopCmd(roller),
       new FeederStopCmd(feeder)
     );

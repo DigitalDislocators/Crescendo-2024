@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.2418759624486673,
-        "y": 5.55
+        "x": 2.5710708063020142,
+        "y": 5.45
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7418759624486673,
-        "y": 5.55
+        "x": 2.0710708063020142,
+        "y": 5.45
       },
       "isLocked": false,
       "linkedName": "AllianceNoteTwoPos"
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 2.5,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

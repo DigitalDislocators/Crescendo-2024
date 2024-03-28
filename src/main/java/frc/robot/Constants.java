@@ -43,6 +43,8 @@ public class Constants {
         //Leader Mtr is Left Mtr and Follower Mtr is Right Mtr
         public static final int rightClimberMtrId = 17;
         public static final int leftClimberMtrId = 18;
+
+        public static final int spacebarMtrId = 21;
     }
 
     public static final class ControllerConstants {
@@ -96,7 +98,7 @@ public class Constants {
          */
         public static final double steerMtrGearReduction = (14.0 / 50.0) * (10.0 / 60.0);
 
-        public static final double wheelRadiusMeters = Units.inchesToMeters(2);
+        public static final double wheelRadiusMeters = Units.inchesToMeters(2.5);
         public static final double wheelCircumferenceMeters = 2.0 * wheelRadiusMeters * Math.PI;
 
         public static final double driveMetersPerEncRev = wheelCircumferenceMeters * driveMtrGearReduction;
@@ -200,7 +202,7 @@ public class Constants {
         
         public static final double fireRPM = 5000.0;
 
-        public static final double ampRPM = 1500.0;
+        public static final double ampRPM = 1200.0;
         
         public static final double intakeRPM = 5800.0;
 
@@ -237,7 +239,7 @@ public class Constants {
 
         public static final double trapPresetDeg = 150.0;
 
-        public static final double ampPresetDeg = 72.0;
+        public static final double ampPresetDeg = 68.0;
         
         public static final double sourcePresetDeg = 5.0;
 
@@ -282,12 +284,27 @@ public class Constants {
     }
 
     public class ClimberConstants {
-        public static final double gearReduction = 1.0 / 20.0;
+        public static final double gearReduction = 20.0;
 
         public static final float climberForwardLimit = 147.0f;
         public static final float climberReverseLimit = 0.1f;
 
         public static final double climberSpeedFactor = 1.0;
+    }
+
+    public class SpacebarConstants {
+        public static final double gearReduction = 5.0;
+
+        public static final float spacebarForwardLimit = 100.0f;
+        public static final float spacebarReverseLimit = 0.1f;
+
+        public static final double kP = 0.0;
+        public static final double kD = 0.0;
+        public static final double maxVelDegPerSec = 0.0;
+        public static final double maxAccelDegPerSecSq = 0.0;
+
+        public static final double spacebarHomeDeg = 0.0;
+        public static final double spacebarOutDeg = 90.0;
     }
 
     public class LightsConstants {

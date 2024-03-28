@@ -34,8 +34,7 @@ public class SecondPickThree extends SequentialCommandGroup {
           .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new FollowPathCmd("SecondPickThreePathThree", swerveSys)
-        .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
-          .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys))),
+        .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys)),
       new FollowPathCmd("SecondPickThreePathFour", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys))
         .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.offsetSubwooferShotThreshold)

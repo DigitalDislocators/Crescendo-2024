@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.1,
-        "y": 4.1
+        "x": 7.930774357789317,
+        "y": 4.1046482092964185
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.927243368772451,
-        "y": 4.13551022590767
+        "x": 6.758017726561768,
+        "y": 4.140158435204089
       },
       "isLocked": false,
       "linkedName": "MidlineNoteThreePos"

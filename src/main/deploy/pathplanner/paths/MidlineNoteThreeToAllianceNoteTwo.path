@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.1,
-        "y": 4.1
+        "x": 7.930774357789317,
+        "y": 4.1046482092964185
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.143498054904466,
-        "y": 4.550117887396973
+        "x": 4.258194381050417,
+        "y": 3.806315382054324
       },
       "isLocked": false,
       "linkedName": "MidlineNoteThreePos"
@@ -20,8 +20,8 @@
         "y": 5.55
       },
       "prevControl": {
-        "x": 5.436234096433955,
-        "y": 4.19247948338978
+        "x": 4.9165840687571105,
+        "y": 4.166372242518921
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,7 +31,7 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.4,
-      "rotationDegrees": 180.0,
+      "rotationDegrees": 179.91330259780364,
       "rotateFast": true
     }
   ],

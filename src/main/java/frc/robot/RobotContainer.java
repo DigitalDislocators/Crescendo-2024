@@ -22,6 +22,7 @@ import frc.robot.commands.lights.LightsDefaultCmd;
 import frc.robot.commands.lights.PartyModeCmd;
 import frc.robot.commands.pivot.PivotHomePresetCmd;
 import frc.robot.subsystems.RollersSys;
+import frc.robot.subsystems.ServoSpacebarSys;
 import frc.robot.subsystems.SpacebarSys;
 import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.ClimberSys;
@@ -30,9 +31,10 @@ import frc.robot.subsystems.LightsSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
 import frc.robot.commands.auto.programs.AllianceFive;
-import frc.robot.commands.auto.programs.EnigmaFour;
 import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.auto.programs.MidlineThree;
+import frc.robot.commands.auto.programs.SecondPickThree;
+import frc.robot.commands.auto.programs.SmashySmash;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
@@ -45,6 +47,8 @@ import frc.robot.commands.climber.ClimberUpCmd;
 import frc.robot.commands.rollers.RollersFireCmd;
 import frc.robot.commands.rollers.RollersIntakeCmd;
 import frc.robot.commands.rollers.RollersStopCmd;
+import frc.robot.commands.spacebar.SpacebarHomeCmd;
+import frc.robot.commands.spacebar.SpacebarOutCmd;
 
 public class RobotContainer {
     
@@ -55,6 +59,7 @@ public class RobotContainer {
     private final FeederSys feederSys = new FeederSys();
     private final ClimberSys climberSys = new ClimberSys();
     private final LightsSys lightsSys = new LightsSys();
+    private final ServoSpacebarSys servoSpacebarSys = new ServoSpacebarSys();
     private final SpacebarSys spacebarSys = new SpacebarSys();
 
     //Initialize joysticks.
@@ -76,10 +81,10 @@ public class RobotContainer {
         // autoSelector.addOption("AllianceNoteFivePiece", new AllianceNoteFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
         // autoSelector.addOption("MidlineNoteThreePiece", new MidlineNoteThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
         // autoSelector.addOption("PiHiThreePiece", new PiHiThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
-        // autoSelector.addOption("TestFivePiece", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys));
-        autoSelector.addOption("EnigmaFour", new EnigmaFour(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
+        autoSelector.addOption("SmashySmash", new SmashySmash(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
+        // autoSelector.addOption("TestFive", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("AllianceFive", new AllianceFive(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
-        // autoSelector.addOption("AllianceFour", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("SecondPickThree", new SecondPickThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("MidlineThree", new MidlineThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
 
 
@@ -139,11 +144,16 @@ public class RobotContainer {
 
         operatorController.start().toggleOnTrue(new PartyModeCmd(lightsSys));
 
+        // Servo spacebar
+        // operatorController.povDown().onTrue(new ServoSpacebarHomeCmd(servoSpacebarSys));
+
+        // operatorController.povLeft().onTrue(new ServoSpacebarOutCmd(servoSpacebarSys));
+
+
         // For spacebar testin and troubleshootin
         
-        // operatorController.povDown().onTrue(new SpacebarHomeCmd(spacebarSys));
-
-        // operatorController.povLeft().onTrue(new SpacebarOutCmd(spacebarSys));
+       operatorController.povLeft().onTrue(new SpacebarOutCmd(spacebarSys));
+       operatorController.povDown().onTrue(new SpacebarHomeCmd(spacebarSys));
 
         // For Pivot testin and troubleshootin
 
@@ -212,5 +222,8 @@ public class RobotContainer {
         SmartDashboard.putNumber("drive voltage", swerveSys.getAverageDriveVoltage());
 
         SmartDashboard.putNumber("roller rpm", rollerSys.getRPM());
+
+        SmartDashboard.putNumber("spacebar position degrees", spacebarSys.getCurrentPositionDeg());
+        SmartDashboard.putNumber("spacebar position enc counts", spacebarSys.getCurrentPositionEncCounts());
     }
 }
