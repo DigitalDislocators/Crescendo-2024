@@ -39,8 +39,8 @@ public class SpacebarSys extends SubsystemBase {
     spacebarMtr.set(spacebarController.calculate(getCurrentPositionDeg(), targetDeg));
   }
 
-  // public void setSpacebarPower(double power) {
-    // spacebarMtr.set(power * SpacebarConstants.spacebarSpeedFactor);
+  // public void setPower(double power) {
+    // spacebarMtr.set(power);
   // }
 
   public void setTargetDeg(double degrees) {

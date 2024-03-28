@@ -18,6 +18,7 @@ public class SpacebarOutCmd extends Command {
   @Override
   public void initialize() {
     spacebar.setTargetDeg(SpacebarConstants.spacebarOutDeg);
+    // spacebar.setPower(1.0);
   }
  
   // Called every time the scheduler runs while the command is scheduled.

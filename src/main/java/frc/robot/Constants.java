@@ -295,13 +295,13 @@ public class Constants {
     public class SpacebarConstants {
         public static final double gearReduction = 5.0;
 
-        public static final float spacebarForwardLimit = 100.0f;
-        public static final float spacebarReverseLimit = 0.1f;
+        public static final float spacebarForwardLimit = 5.0f;
+        public static final float spacebarReverseLimit = 0.01f;
 
         public static final double kP = 0.0;
         public static final double kD = 0.0;
-        public static final double maxVelDegPerSec = 0.0;
-        public static final double maxAccelDegPerSecSq = 0.0;
+        public static final double maxVelDegPerSec = 100.0;
+        public static final double maxAccelDegPerSecSq = 100.0;
 
         public static final double spacebarHomeDeg = 0.0;
         public static final double spacebarOutDeg = 90.0;
