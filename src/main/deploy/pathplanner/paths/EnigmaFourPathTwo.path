@@ -32,11 +32,11 @@
     },
     {
       "anchor": {
-        "x": 1.2542914308886268,
+        "x": 1.32,
         "y": 5.55
       },
       "prevControl": {
-        "x": 1.8098077298911497,
+        "x": 1.875516299002523,
         "y": 6.192977999991088
       },
       "nextControl": null,
@@ -59,7 +59,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "EnigmaFour",
+  "folder": "SpecialThree",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

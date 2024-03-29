@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2542914308886268,
+        "x": 1.32,
         "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8552485162614438,
+        "x": 1.920957085372817,
         "y": 5.997518561453163
       },
       "isLocked": false,
@@ -54,7 +54,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "EnigmaFour",
+  "folder": "SpecialThree",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

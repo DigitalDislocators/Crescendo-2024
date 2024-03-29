@@ -27,6 +27,7 @@ public class SmashySmash extends SequentialCommandGroup {
       new FollowPathCmd("SecondPickThreePathOne", swerveSys)
         .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
           .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys))),
+      new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new FollowPathCmd("SmashySmashPathTwo", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)),
       new WaitCommand(0.5)

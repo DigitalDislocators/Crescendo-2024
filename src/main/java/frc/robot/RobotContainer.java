@@ -225,5 +225,6 @@ public class RobotContainer {
 
         SmartDashboard.putNumber("spacebar position degrees", spacebarSys.getCurrentPositionDeg());
         SmartDashboard.putNumber("spacebar position enc counts", spacebarSys.getCurrentPositionEncCounts());
+        SmartDashboard.putNumber("spacebar target", spacebarSys.getSpacebarTargetDeg());
     }
 }

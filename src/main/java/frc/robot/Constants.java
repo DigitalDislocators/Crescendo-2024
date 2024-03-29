@@ -111,9 +111,9 @@ public class Constants {
         /**
          * The maximum possible speed a module can be driven. Used for desaturation.
          */
-        public static final double maxModuleSpeedMetersPerSec = 6.5;
+        public static final double maxModuleSpeedMetersPerSec = 10;
 
-        public static final double maxDriveSpeedMetersPerSec = 6.3;
+        public static final double maxDriveSpeedMetersPerSec = 10;
 
         /**
          * The rate the robot will spin with full Rot command.
@@ -129,10 +129,10 @@ public class Constants {
         // Don't quote me on that they should be pointing to the left. (I'm almost positive though.) If 
         // the drive base drives 180 off from the commanded direction, flip these readings 180 degrees and change
         // the comment above for future reference.
-        public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(123.75); 
-        public static final Rotation2d frontRightModOffset = Rotation2d.fromDegrees(216.74);
-        public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(139.48);
-        public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(143.17); 
+        public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(122.43); // 123.75
+        public static final Rotation2d frontRightModOffset = Rotation2d.fromDegrees(216.12); // 216.74
+        public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(172.3); // 139.48
+        public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(141.1); // 143.17
 
         // You may want to change this value.
         public static final int driveCurrentLimitAmps = 65;
@@ -202,7 +202,7 @@ public class Constants {
         
         public static final double fireRPM = 5000.0;
 
-        public static final double ampRPM = 1200.0;
+        public static final double ampRPM = 1000.0;
         
         public static final double intakeRPM = 5800.0;
 
@@ -275,8 +275,8 @@ public class Constants {
             // data points with coordinate (lateral distance to speaker [meters], pivot angle [degrees])
             pivotInterpolator.put(1.23, 59.0);
             pivotInterpolator.put(2.24, 79.7 - 1.0);
-            pivotInterpolator.put(2.77, 84.0 - 1.0);
-            pivotInterpolator.put(3.06, podiumPresetDeg - 1.0);
+            pivotInterpolator.put(2.77, 84.0 - 2.0);
+            pivotInterpolator.put(3.06, podiumPresetDeg - 2.0);
             // pivotInterpolator.put(3.5, 77.0);
 
             return pivotInterpolator;
@@ -293,18 +293,18 @@ public class Constants {
     }
 
     public class SpacebarConstants {
-        public static final double gearReduction = 5.0;
+        public static final double gearReduction = 15.0;
 
         public static final float spacebarForwardLimit = 5.0f;
         public static final float spacebarReverseLimit = 0.01f;
 
-        public static final double kP = 0.0;
-        public static final double kD = 0.0;
-        public static final double maxVelDegPerSec = 100.0;
-        public static final double maxAccelDegPerSecSq = 100.0;
+        public static final double kP = 0.0185;
+        public static final double kD = 0.0002;
+        public static final double maxVelDegPerSec = 1000.0;
+        public static final double maxAccelDegPerSecSq = 1000.0;
 
-        public static final double spacebarHomeDeg = 0.0;
-        public static final double spacebarOutDeg = 90.0;
+        public static final double spacebarHomeDeg = -5.0;
+        public static final double spacebarOutDeg = 200.0;
     }
 
     public class LightsConstants {
