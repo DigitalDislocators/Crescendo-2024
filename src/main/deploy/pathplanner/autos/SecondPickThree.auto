@@ -14,13 +14,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SecondPickThreePathOne"
+            "pathName": "AmpMidlineTwoPathOne"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "SecondPickThreePathTwo"
+            "pathName": "AmpMidlineTwoPathTwo"
           }
         },
         {
@@ -50,6 +50,6 @@
       ]
     }
   },
-  "folder": null,
+  "folder": "Old Autos",
   "choreoAuto": false
 }

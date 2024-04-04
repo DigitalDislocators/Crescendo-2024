@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.5710708063020142,
-        "y": 5.45
+        "x": 2.643082178394933,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.5710708063020142,
-        "y": 5.45
+        "x": 1.6430821783949332,
+        "y": 5.55
       },
       "isLocked": false,
       "linkedName": "AllianceNoteTwoPos"
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SpecialThree",
+  "folder": "Old",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

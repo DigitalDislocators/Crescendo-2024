@@ -1,12 +1,6 @@
 {
   "version": 1.0,
-  "startingPose": {
-    "position": {
-      "x": 0.75,
-      "y": 6.5
-    },
-    "rotation": 60.0
-  },
+  "startingPose": null,
   "command": {
     "type": "sequential",
     "data": {
@@ -14,18 +8,18 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AmpMidlineTwoPathOne"
+            "pathName": "RotationTuningOne"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "SmashySmashPathTwo"
+            "pathName": "RotationTuningTwo"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Example Testing Autos",
   "choreoAuto": false
 }

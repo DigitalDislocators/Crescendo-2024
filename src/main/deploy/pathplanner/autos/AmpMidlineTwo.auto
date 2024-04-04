@@ -3,9 +3,9 @@
   "startingPose": {
     "position": {
       "x": 0.75,
-      "y": 4.55
+      "y": 6.5
     },
-    "rotation": -60.0
+    "rotation": 60.0
   },
   "command": {
     "type": "sequential",
@@ -14,25 +14,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "MidlineThreePathOne"
+            "pathName": "AmpMidlineTwoPathOne"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "MidlineThreePathTwo"
+            "pathName": "AmpMidlineTwoPathTwo"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "MidlineThreePathThree"
+            "pathName": "AmpMidlineTwoPathThree"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "MidlineThreePathFour"
+            "pathName": "AmpMidlineTwoPathFour"
           }
         }
       ]

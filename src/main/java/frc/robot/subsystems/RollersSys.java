@@ -59,6 +59,7 @@ public class RollersSys extends SubsystemBase {
 
     public void setRPM(double rpm) {
         // leaderRollerMtr.set(rpm / RollerConstants.maxRPM);
+        // Carl was kind of here;
         topRollerController.setReference(rpm, ControlType.kVelocity);
         bottomRollerController.setReference(rpm, ControlType.kVelocity);
     }

@@ -8,50 +8,34 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.25,
-        "y": 3.6839745962155614
+        "x": 1.6250000000000002,
+        "y": 3.0344555433772324
       },
       "isLocked": false,
       "linkedName": "OffsetSubwooferPos"
     },
     {
       "anchor": {
-        "x": 4.206757686698332,
-        "y": 2.1089044684355036
+        "x": 8.157095812938493,
+        "y": 0.5040796046504367
       },
       "prevControl": {
-        "x": 2.8729865764869382,
-        "y": 2.636879640363291
-      },
-      "nextControl": {
-        "x": 5.540528796909725,
-        "y": 1.580929296507716
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 8.115946457456825,
-        "y": 2.1500538239171716
-      },
-      "prevControl": {
-        "x": 6.943189826229277,
-        "y": 1.6665488970075688
+        "x": 7.157095812938493,
+        "y": 0.5040796046504367
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteFourPos"
+      "linkedName": "MidlineNoteFivePos"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.15,
+      "waypointRelativePos": 0.1,
       "rotationDegrees": -60.0,
       "rotateFast": false
     },
     {
-      "waypointRelativePos": 1.85,
+      "waypointRelativePos": 0.85,
       "rotationDegrees": 0,
       "rotateFast": false
     }
@@ -60,7 +44,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
@@ -70,10 +54,10 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "MidlineThree",
+  "folder": "SourceMidlineTwo",
   "previewStartingState": {
     "rotation": -60.0,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

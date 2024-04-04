@@ -118,7 +118,7 @@ public class Constants {
         /**
          * The rate the robot will spin with full Rot command.
          */
-        public static final double maxTurnSpeedRadPerSec = 2.0 * Math.PI;
+        public static final double maxTurnSpeedRadPerSec = 4.0 * Math.PI;
 
         // Set line up the swerve modules and set these values.
 
@@ -129,10 +129,10 @@ public class Constants {
         // Don't quote me on that they should be pointing to the left. (I'm almost positive though.) If 
         // the drive base drives 180 off from the commanded direction, flip these readings 180 degrees and change
         // the comment above for future reference.
-        public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(122.43); // 123.75
-        public static final Rotation2d frontRightModOffset = Rotation2d.fromDegrees(216.12); // 216.74
-        public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(172.3); // 139.48
-        public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(141.1); // 143.17
+        public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(122.7); // 122.43
+        public static final Rotation2d frontRightModOffset = Rotation2d.fromDegrees(215.1); // 216.12
+        public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(62); // 190
+        public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(83.2); // 141.1
 
         // You may want to change this value.
         public static final int driveCurrentLimitAmps = 65;
@@ -164,10 +164,10 @@ public class Constants {
 
         // Auto aim PID values should ideally be the same as the PathPlanner rotation ones. They are separate for safe measure.
 
-        public static final double autoAimkP = 5.5;
+        public static final double autoAimkP = 5.9;
         public static final double autoAimkD = 0.5;
 
-        public static final double autoAimToleranceDeg = 0.25;
+        public static final double autoAimToleranceDeg = 0.2;
 
         public static final double autoAimTurnSpeedRadPerSec = 2.0 * Math.PI;
         public static final double autoAumTurnAccelRadPerSecSq = 3.0 * Math.PI;
@@ -204,7 +204,7 @@ public class Constants {
 
         public static final double ampRPM = 1000.0;
         
-        public static final double intakeRPM = 5800.0;
+        public static final double intakeRPM = 6200.0;
 
         public static final double rollerDiameterMeters = Units.inchesToMeters(2.0);
 
@@ -239,7 +239,7 @@ public class Constants {
 
         public static final double trapPresetDeg = 150.0;
 
-        public static final double ampPresetDeg = 68.0;
+        public static final double ampPresetDeg = 67.0;
         
         public static final double sourcePresetDeg = 5.0;
 
@@ -275,8 +275,8 @@ public class Constants {
             // data points with coordinate (lateral distance to speaker [meters], pivot angle [degrees])
             pivotInterpolator.put(1.23, 59.0);
             pivotInterpolator.put(2.24, 79.7 - 1.0);
-            pivotInterpolator.put(2.77, 84.0 - 2.0);
-            pivotInterpolator.put(3.06, podiumPresetDeg - 2.0);
+            pivotInterpolator.put(2.77, 84.0 - 6.0);
+            pivotInterpolator.put(3.06, podiumPresetDeg - 6.0);
             // pivotInterpolator.put(3.5, 77.0);
 
             return pivotInterpolator;
@@ -293,17 +293,17 @@ public class Constants {
     }
 
     public class SpacebarConstants {
-        public static final double gearReduction = 15.0;
+        public static final double gearReduction = 25.0;
 
         public static final float spacebarForwardLimit = 5.0f;
         public static final float spacebarReverseLimit = 0.01f;
 
-        public static final double kP = 0.0185;
-        public static final double kD = 0.0002;
-        public static final double maxVelDegPerSec = 1000.0;
-        public static final double maxAccelDegPerSecSq = 1000.0;
+        public static final double kP = 0.017;
+        public static final double kD = 0.00024;
+        public static final double maxVelDegPerSec = 200000.0;
+        public static final double maxAccelDegPerSecSq = 2000000.0;
 
-        public static final double spacebarHomeDeg = -5.0;
+        public static final double spacebarHomeDeg = -2.0;
         public static final double spacebarOutDeg = 200.0;
     }
 

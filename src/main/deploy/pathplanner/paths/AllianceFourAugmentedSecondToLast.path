@@ -3,59 +3,48 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.115946457456825,
-        "y": 2.1500538239171716
+        "x": 1.32,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.046063214933448,
-        "y": 1.820858980063825
+        "x": 1.8549416212616885,
+        "y": 6.419299455140264
       },
       "isLocked": false,
-      "linkedName": "MidlineNoteFourPos"
+      "linkedName": "SubwooferPos"
     },
     {
       "anchor": {
-        "x": 4.3199184142729194,
-        "y": 2.0266057574721668
+        "x": 2.9517023445074457,
+        "y": 6.275276710954424
       },
       "prevControl": {
-        "x": 6.280469297319485,
-        "y": 1.6313334020192305
+        "x": 2.2017973307253134,
+        "y": 6.263340618443878
       },
       "nextControl": {
-        "x": 3.0442883943411996,
-        "y": 2.283789229232594
+        "x": 3.9515756962169553,
+        "y": 6.291191500968486
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.75,
-        "y": 4.55
+        "x": 9.381289138518127,
+        "y": 7.283435920255299
       },
       "prevControl": {
-        "x": 1.3674521584632144,
-        "y": 3.6622926378684837
+        "x": 7.550142819583883,
+        "y": 6.841080348827365
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "OffsetSubwooferPos"
+      "linkedName": "MidlineNoteOnePos"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.15,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 1.85,
-      "rotationDegrees": -60.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -66,11 +55,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -60.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "MidlineThree",
+  "folder": "AllianceFive",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

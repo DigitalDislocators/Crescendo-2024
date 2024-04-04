@@ -22,10 +22,10 @@ public class SpacebarSys extends SubsystemBase {
   public SpacebarSys() {
     spacebarMtr.setIdleMode(IdleMode.kBrake);
 
-    spacebarMtr.enableVoltageCompensation(10);
+    // spacebarMtr.enableVoltageCompensation(12);
 
-    spacebarMtr.setSoftLimit(SoftLimitDirection.kForward, SpacebarConstants.spacebarForwardLimit);
-    spacebarMtr.setSoftLimit(SoftLimitDirection.kReverse, SpacebarConstants.spacebarReverseLimit);
+    // spacebarMtr.setSoftLimit(SoftLimitDirection.kForward, SpacebarConstants.spacebarForwardLimit);
+    // spacebarMtr.setSoftLimit(SoftLimitDirection.kReverse, SpacebarConstants.spacebarReverseLimit);
 
     spacebarMtr.enableSoftLimit(SoftLimitDirection.kForward, false);
     spacebarMtr.enableSoftLimit(SoftLimitDirection.kReverse, false);

@@ -3,74 +3,63 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.126233796327242,
-        "y": 7.304010597996133
+        "x": 9.381289138518127,
+        "y": 7.283435920255299
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.1262337963272415,
-        "y": 7.304010597996133
+        "x": 7.8896250023025045,
+        "y": 6.830793009962091
       },
       "isLocked": false,
       "linkedName": "MidlineNoteOnePos"
     },
     {
       "anchor": {
-        "x": 2.8796909724196706,
-        "y": 7.65
+        "x": 2.9722770222482806,
+        "y": 6.264989372084008
       },
       "prevControl": {
-        "x": 4.179690972419671,
-        "y": 7.65
+        "x": 3.9722770222482797,
+        "y": 6.264989372084008
       },
       "nextControl": {
-        "x": 1.5796909724196706,
-        "y": 7.65
+        "x": 1.8399218235683048,
+        "y": 6.264989372084008
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.75,
-        "y": 6.5
+        "x": 1.32,
+        "y": 5.55
       },
       "prevControl": {
-        "x": 1.3775276710954423,
-        "y": 7.0401046112869174
+        "x": 1.875516299002523,
+        "y": 6.192977999991088
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "AmpOffsetSubwooferPos"
+      "linkedName": "SubwooferPos"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 1.2,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 1.9,
-      "rotationDegrees": 60.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 2.5,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 60.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SecondPickThree",
+  "folder": "AllianceFive",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

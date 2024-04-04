@@ -3,48 +3,54 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.32,
-        "y": 5.55
+        "x": 0.75,
+        "y": 6.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.920047840051285,
-        "y": 5.105156492221974
+        "x": 1.2542914308886268,
+        "y": 7.1908498704215456
       },
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": "AmpOffsetSubwooferPos"
     },
     {
       "anchor": {
-        "x": 2.8715608929078047,
-        "y": 4.754599637587292
+        "x": 2.8591162946736923,
+        "y": 7.592056086367812
       },
       "prevControl": {
-        "x": 1.7980920801587552,
-        "y": 4.754599637587292
+        "x": 1.4993862706343044,
+        "y": 7.592056086367812
       },
       "nextControl": {
-        "x": 3.8592839545088706,
-        "y": 4.754599637587292
+        "x": 4.859116294673692,
+        "y": 7.592056086367812
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.124959258768076,
-        "y": 4.151350907000171
+        "x": 8.527440012273509,
+        "y": 5.627174362118149
       },
       "prevControl": {
-        "x": 6.715593833520933,
-        "y": 4.176573794037424
+        "x": 7.4266947531388805,
+        "y": 6.460448810621932
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteThreePos"
+      "linkedName": "MidlineNoteTwoPos"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.55,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -59,10 +65,10 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old",
+  "folder": "AmpMidlineTwo",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 60.0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

@@ -1,6 +1,12 @@
 {
   "version": 1.0,
-  "startingPose": null,
+  "startingPose": {
+    "position": {
+      "x": 0.75,
+      "y": 4.55
+    },
+    "rotation": -60.0
+  },
   "command": {
     "type": "sequential",
     "data": {
@@ -8,37 +14,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "EnigmaFourPathOne"
+            "pathName": "SourceMidlineTwoPathOne"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "EnigmaFourPathTwo"
+            "pathName": "SourceMidlineTwoPathTwo"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "EnigmaFourPathThree"
+            "pathName": "SourceMidlineTwoPathThree"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "EnigmaFourPathFour"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "EnigmaFourPathFive"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "EnigmaFourPathSix"
+            "pathName": "SourceMidlineTwoPathFour"
           }
         }
       ]

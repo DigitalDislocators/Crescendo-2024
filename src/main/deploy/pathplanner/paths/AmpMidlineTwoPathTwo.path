@@ -3,63 +3,74 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.32,
-        "y": 5.55
+        "x": 9.381289138518127,
+        "y": 7.283435920255299
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8549416212616885,
-        "y": 6.419299455140264
+        "x": 8.381289138518127,
+        "y": 7.283435920255299
       },
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": "MidlineNoteOnePos"
     },
     {
       "anchor": {
-        "x": 2.9517023445074457,
-        "y": 6.275276710954424
+        "x": 2.8796909724196706,
+        "y": 7.65
       },
       "prevControl": {
-        "x": 2.2017973307253134,
-        "y": 6.263340618443878
+        "x": 4.179690972419671,
+        "y": 7.65
       },
       "nextControl": {
-        "x": 3.9515756962169553,
-        "y": 6.291191500968486
+        "x": 1.5796909724196706,
+        "y": 7.65
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.126233796327242,
-        "y": 7.304010597996133
+        "x": 0.75,
+        "y": 6.5
       },
       "prevControl": {
-        "x": 6.295087477392997,
-        "y": 6.861655026568199
+        "x": 1.3775276710954423,
+        "y": 7.0401046112869174
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteOnePos"
+      "linkedName": "AmpOffsetSubwooferPos"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.2,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 1.9,
+      "rotationDegrees": 60.0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 60.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SpecialThree",
+  "folder": "AmpMidlineTwo",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

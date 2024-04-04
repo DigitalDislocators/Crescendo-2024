@@ -3,59 +3,53 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.75,
-        "y": 6.5
+        "x": 1.32,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2542914308886268,
-        "y": 7.1908498704215456
+        "x": 2.3961860455049235,
+        "y": 6.162115983379837
       },
       "isLocked": false,
-      "linkedName": "AmpOffsetSubwooferPos"
+      "linkedName": "SubwooferPos"
     },
     {
       "anchor": {
-        "x": 2.8591162946736923,
-        "y": 7.592056086367812
+        "x": 5.646985128556723,
+        "y": 6.501598166103601
       },
       "prevControl": {
-        "x": 1.4993862706343044,
-        "y": 7.592056086367812
+        "x": 4.628688571186666,
+        "y": 6.599007613569738
       },
       "nextControl": {
-        "x": 4.218846318713084,
-        "y": 7.592056086367812
+        "x": 6.6652816859267805,
+        "y": 6.404188718637463
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.126233796327242,
-        "y": 7.304010597996133
+        "x": 8.794910822904352,
+        "y": 5.3905655680985545
       },
       "prevControl": {
-        "x": 7.1262337963272415,
-        "y": 7.304010597996133
+        "x": 8.259969201642663,
+        "y": 5.719760411951901
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteOnePos"
+      "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.55,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 2.5,
+    "maxVelocity": 16.0,
+    "maxAcceleration": 3.25,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
@@ -65,9 +59,9 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SecondPickThree",
+  "folder": "AllianceFive",
   "previewStartingState": {
-    "rotation": 60.0,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": false

@@ -20,7 +20,7 @@
         "y": 4.55
       },
       "prevControl": {
-        "x": 1.6249999999999996,
+        "x": 1.6249999999999993,
         "y": 3.034455543377232
       },
       "nextControl": null,
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "MidlineThree",
+  "folder": "SourceMidlineTwo",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

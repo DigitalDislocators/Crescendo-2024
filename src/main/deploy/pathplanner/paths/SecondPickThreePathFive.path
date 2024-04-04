@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 8.115946457456825,
-        "y": 5.894645172748993
+        "x": 8.527440012273509,
+        "y": 5.627174362118149
       },
       "prevControl": {
-        "x": 5.986467311280489,
-        "y": 7.561194069756561
+        "x": 6.397960866097172,
+        "y": 7.293723259125717
       },
       "nextControl": null,
       "isLocked": false,
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SecondPickThree",
+  "folder": "Old",
   "previewStartingState": {
     "rotation": 60.0,
     "velocity": 0

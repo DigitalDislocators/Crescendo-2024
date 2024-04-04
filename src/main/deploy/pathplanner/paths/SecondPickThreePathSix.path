@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.115946457456825,
-        "y": 5.894645172748993
+        "x": 8.527440012273509,
+        "y": 5.627174362118149
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.128361925896784,
-        "y": 6.5324601827148525
+        "x": 7.5398554807134675,
+        "y": 6.264989372084009
       },
       "isLocked": false,
       "linkedName": "MidlineNoteTwoPos"
@@ -49,7 +49,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SecondPickThree",
+  "folder": "Old",
   "previewStartingState": {
     "rotation": -30.0,
     "velocity": 0

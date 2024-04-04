@@ -3,66 +3,66 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.32,
-        "y": 5.55
+        "x": 8.115946457456825,
+        "y": 2.1500538239171716
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.920047840051285,
-        "y": 5.105156492221974
+        "x": 7.015201198322196,
+        "y": 1.543100830562564
       },
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": "MidlineNoteFourPos"
     },
     {
       "anchor": {
-        "x": 2.8715608929078047,
-        "y": 4.754599637587292
+        "x": 4.669687935867101,
+        "y": 1.5225261528217289
       },
       "prevControl": {
-        "x": 1.7980920801587552,
-        "y": 4.754599637587292
+        "x": 6.630238818913667,
+        "y": 1.1272537973687926
       },
       "nextControl": {
-        "x": 3.8592839545088706,
-        "y": 4.754599637587292
+        "x": 3.394057915935381,
+        "y": 1.7797096245821573
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.124959258768076,
-        "y": 4.151350907000171
+        "x": 1.1822800587957067,
+        "y": 3.435971182719308
       },
       "prevControl": {
-        "x": 6.715593833520933,
-        "y": 4.176573794037424
+        "x": 1.7997322172589212,
+        "y": 2.548263820587792
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteThreePos"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 2.75,
+    "maxVelocity": 14.0,
+    "maxAcceleration": 6.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 120.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Old",
+  "folder": "SourceMidlineTwo",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

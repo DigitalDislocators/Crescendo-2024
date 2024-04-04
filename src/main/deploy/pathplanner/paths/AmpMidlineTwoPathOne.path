@@ -3,53 +3,59 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.126233796327242,
-        "y": 7.304010597996133
+        "x": 0.75,
+        "y": 6.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.634569660111619,
-        "y": 6.851367687702925
+        "x": 1.2542914308886268,
+        "y": 7.1908498704215456
       },
       "isLocked": false,
-      "linkedName": "MidlineNoteOnePos"
+      "linkedName": "AmpOffsetSubwooferPos"
     },
     {
       "anchor": {
-        "x": 2.9722770222482806,
-        "y": 6.264989372084008
+        "x": 2.8591162946736923,
+        "y": 7.592056086367812
       },
       "prevControl": {
-        "x": 3.9722770222482797,
-        "y": 6.264989372084008
+        "x": 1.4993862706343044,
+        "y": 7.592056086367812
       },
       "nextControl": {
-        "x": 1.8399218235683048,
-        "y": 6.264989372084008
+        "x": 4.218846318713084,
+        "y": 7.592056086367812
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.32,
-        "y": 5.55
+        "x": 9.381289138518127,
+        "y": 7.283435920255299
       },
       "prevControl": {
-        "x": 1.875516299002523,
-        "y": 6.192977999991088
+        "x": 8.381289138518127,
+        "y": 7.283435920255299
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": "MidlineNoteOnePos"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.55,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
@@ -59,9 +65,9 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SpecialThree",
+  "folder": "AmpMidlineTwo",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 60.0,
     "velocity": 0
   },
   "useDefaultConstraints": false
