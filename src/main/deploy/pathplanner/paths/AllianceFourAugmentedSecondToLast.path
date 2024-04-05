@@ -3,45 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.32,
+        "x": 1.25,
         "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8549416212616885,
-        "y": 6.419299455140264
+        "x": 2.9228516999891143,
+        "y": 5.90493251161941
       },
       "isLocked": false,
       "linkedName": "SubwooferPos"
     },
     {
       "anchor": {
-        "x": 2.9517023445074457,
-        "y": 6.275276710954424
+        "x": 8.87720953386769,
+        "y": 7.664067458460732
       },
       "prevControl": {
-        "x": 2.2017973307253134,
-        "y": 6.263340618443878
-      },
-      "nextControl": {
-        "x": 3.9515756962169553,
-        "y": 6.291191500968486
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 9.381289138518127,
-        "y": 7.283435920255299
-      },
-      "prevControl": {
-        "x": 7.550142819583883,
-        "y": 6.841080348827365
+        "x": 8.013073068752654,
+        "y": 7.38630930895947
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteOnePos"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],

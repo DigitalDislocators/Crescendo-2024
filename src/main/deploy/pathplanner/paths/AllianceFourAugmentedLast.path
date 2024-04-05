@@ -16,32 +16,16 @@
     },
     {
       "anchor": {
-        "x": 2.9722770222482806,
-        "y": 6.264989372084008
+        "x": 1.9229684574657373,
+        "y": 7.283435920255299
       },
       "prevControl": {
-        "x": 3.9722770222482797,
-        "y": 6.264989372084008
-      },
-      "nextControl": {
-        "x": 1.8399218235683048,
-        "y": 6.264989372084008
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 1.32,
-        "y": 5.55
-      },
-      "prevControl": {
-        "x": 1.875516299002523,
-        "y": 6.192977999991088
+        "x": 2.9477178086185747,
+        "y": 6.774231966759674
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],

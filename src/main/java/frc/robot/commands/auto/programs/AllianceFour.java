@@ -26,7 +26,7 @@ public class AllianceFour extends SequentialCommandGroup {
       new SetInitialPoseCmd("AllianceFivePathThree", swerveSys),
       // Commands.runOnce(() -> swerveSys.setTranslation(new Translation2d(1.3, 5.55)), swerveSys),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      // new WaitCommand(0.08),
+      // new WaitCommand(3.0),
       // new FollowPathCmd("AllianceFivePathOne", swerveSys)
       //   .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 4.5)
       //     .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys))),
@@ -34,6 +34,7 @@ public class AllianceFour extends SequentialCommandGroup {
       //   .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys)
       //     .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.subwooferShotThreshold))
       //     .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
+
       new FollowPathCmd("AllianceFivePathThree", swerveSys)
         .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys)),
       new FollowPathCmd("AllianceFivePathFour", swerveSys)

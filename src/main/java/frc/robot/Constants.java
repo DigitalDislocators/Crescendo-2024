@@ -118,7 +118,7 @@ public class Constants {
         /**
          * The rate the robot will spin with full Rot command.
          */
-        public static final double maxTurnSpeedRadPerSec = 4.0 * Math.PI;
+        public static final double maxTurnSpeedRadPerSec = 3.0 * Math.PI;
 
         // Set line up the swerve modules and set these values.
 
@@ -164,7 +164,7 @@ public class Constants {
 
         // Auto aim PID values should ideally be the same as the PathPlanner rotation ones. They are separate for safe measure.
 
-        public static final double autoAimkP = 5.9;
+        public static final double autoAimkP = 10.9;
         public static final double autoAimkD = 0.5;
 
         public static final double autoAimToleranceDeg = 0.2;
@@ -200,8 +200,8 @@ public class Constants {
 
         public static final double kD = 0.0025; // 0.003
         
-        public static final double fireRPM = 5000.0;
-
+        public static final double fireRPM = 5250.0;
+        
         public static final double ampRPM = 1000.0;
         
         public static final double intakeRPM = 6200.0;
@@ -241,7 +241,7 @@ public class Constants {
 
         public static final double ampPresetDeg = 67.0;
         
-        public static final double sourcePresetDeg = 5.0;
+        public static final double sourcePresetDeg = 58.0;
 
         public static final double groundPresetDeg = 183.0;
 
@@ -273,10 +273,10 @@ public class Constants {
             InterpolatingDoubleTreeMap pivotInterpolator = new InterpolatingDoubleTreeMap();
 
             // data points with coordinate (lateral distance to speaker [meters], pivot angle [degrees])
-            pivotInterpolator.put(1.23, 59.0);
-            pivotInterpolator.put(2.24, 79.7 - 1.0);
+            pivotInterpolator.put(1.23, 59.0 - 4.0);
+            pivotInterpolator.put(2.24, 79.7 - 4.0);
             pivotInterpolator.put(2.77, 84.0 - 6.0);
-            pivotInterpolator.put(3.06, podiumPresetDeg - 6.0);
+            pivotInterpolator.put(3.12, podiumPresetDeg - 6.0);
             // pivotInterpolator.put(3.5, 77.0);
 
             return pivotInterpolator;

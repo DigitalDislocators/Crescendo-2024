@@ -31,6 +31,7 @@ import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
 import frc.robot.commands.auto.programs.AllianceFive;
 import frc.robot.commands.auto.programs.AllianceFour;
+import frc.robot.commands.auto.programs.AmpMidlineThree;
 import frc.robot.commands.auto.programs.AmpMidlineTwo;
 import frc.robot.commands.auto.programs.ExampleAuto;
 import frc.robot.commands.auto.programs.SourceMidlineTwo;
@@ -38,6 +39,7 @@ import frc.robot.commands.auto.programs.SmashySmash;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
+import frc.robot.commands.automation.AutoFeedCmd;
 import frc.robot.commands.automation.AutoSourceIntakeCmd;
 import frc.robot.commands.automation.AutoSpeakerFireCmd;
 import frc.robot.commands.automation.AutoSubwooferFireCmd;
@@ -79,7 +81,7 @@ public class RobotContainer {
         autoSelector.addOption("Example Auto", new ExampleAuto(swerveSys));
         autoSelector.addOption("AllianceFour", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("AmpMidlineTwo", new AmpMidlineTwo(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
-        // autoSelector.addOption("MidlineNoteThreePiece", new MidlineNoteThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
+        autoSelector.addOption("AmpMidlineThree", new AmpMidlineThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("PiHiThreePiece", new PiHiThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("SmashySmash", new SmashySmash(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("TestFive", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
@@ -103,8 +105,6 @@ public class RobotContainer {
         pivotSys.setDefaultCommand(new PivotManualCmd( 
             () -> MathUtil.applyDeadband((operatorController.getLeftY()), ControllerConstants.joystickDeadband),
             pivotSys));
-
-        
 
         operatorController.axisGreaterThan(XboxController.Axis.kLeftTrigger.value, ControllerConstants.triggerPressedThreshhold).onFalse(new RollersStopCmd(rollerSys));
 
@@ -178,6 +178,8 @@ public class RobotContainer {
         
         driverController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold)
             .onTrue(new AutoGroundIntakeCmd(pivotSys, feederSys, rollerSys, spacebarSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
+
+        driverController.leftBumper().onTrue(new AutoFeedCmd(feederSys, rollerSys, pivotSys));
 
         driverController.rightBumper().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
         
