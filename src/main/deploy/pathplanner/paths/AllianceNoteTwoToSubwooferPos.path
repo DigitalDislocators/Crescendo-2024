@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.643082178394933,
-        "y": 5.55
+        "x": 2.529921450820346,
+        "y": 5.555162990025228
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.143082178394933,
-        "y": 5.55
+        "x": 2.029921450820346,
+        "y": 5.555162990025228
       },
       "isLocked": false,
       "linkedName": "AllianceNoteTwoPos"

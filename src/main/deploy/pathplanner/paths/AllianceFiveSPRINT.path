@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.523537062111719,
-        "y": 7.581768747497395
+        "x": 4.505090513940426,
+        "y": 6.100391950157335
       },
       "isLocked": false,
       "linkedName": "SubwooferPos"
     },
     {
       "anchor": {
-        "x": 8.198245168420161,
-        "y": 5.771197106303988
+        "x": 8.146808474068077,
+        "y": 7.448033342181972
       },
       "prevControl": {
-        "x": 7.190085959119288,
-        "y": 6.367862760788179
+        "x": 6.850603776395523,
+        "y": 7.304010597996133
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 16.0,
-    "maxAcceleration": 3.25,
+    "maxAcceleration": 5.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

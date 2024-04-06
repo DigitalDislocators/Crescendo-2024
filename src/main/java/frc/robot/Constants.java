@@ -129,10 +129,10 @@ public class Constants {
         // Don't quote me on that they should be pointing to the left. (I'm almost positive though.) If 
         // the drive base drives 180 off from the commanded direction, flip these readings 180 degrees and change
         // the comment above for future reference.
-        public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(122.7); // 122.43
-        public static final Rotation2d frontRightModOffset = Rotation2d.fromDegrees(215.1); // 216.12
-        public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(62); // 190
-        public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(83.2); // 141.1
+        public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(123.8); // 122.43
+        public static final Rotation2d frontRightModOffset = Rotation2d.fromDegrees(184); // 184.12
+        public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(61.7); // 62
+        public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(81.6); // 82.7
 
         // You may want to change this value.
         public static final int driveCurrentLimitAmps = 65;
@@ -178,7 +178,7 @@ public class Constants {
         public static final double driveToAmpMaxVelMetersPerSec = 4.0;
         public static final double driveToAmpMaxAccelMetersPerSecSq = 3.0;
 
-        public static final double subwooferShotThreshold = 2.0;
+        public static final double subwooferShotThreshold = 2.15;
 
         public static final double offsetSubwooferShotThreshold = 1.0;
 

@@ -8,64 +8,48 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7789457132798983,
-        "y": 5.061370724245209
+        "x": 3.0854377498228684,
+        "y": 6.048955255805248
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.25,
-        "y": 4.85
+        "x": 5.760145856131312,
+        "y": 6.491310827233184
       },
       "prevControl": {
-        "x": 1.75,
-        "y": 4.85
+        "x": 4.7664370204411775,
+        "y": 6.55583737500527
       },
       "nextControl": {
-        "x": 4.45,
-        "y": 4.85
+        "x": 6.552270949153427,
+        "y": 6.439874132881099
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.400088995666714,
-        "y": 4.217808936871006
+        "x": 8.403991945828503,
+        "y": 5.709473073081484
       },
       "prevControl": {
-        "x": 4.240582087680466,
-        "y": 4.702858205967039
-      },
-      "nextControl": {
-        "x": 6.198073847130986,
-        "y": 3.8839929274220637
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 8.124959258768076,
-        "y": 4.151350907000171
-      },
-      "prevControl": {
-        "x": 7.07102247370334,
-        "y": 4.1045624219446895
+        "x": 7.220947975730539,
+        "y": 5.976943883712329
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteThreePos"
+      "linkedName": "MidlineNoteTwoPos"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 7.0,
+    "maxAcceleration": 4.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
