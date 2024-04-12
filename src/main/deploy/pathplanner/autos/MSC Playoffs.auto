@@ -44,13 +44,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFivePathThree"
+            "pathName": null
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFivePathFour"
+            "pathName": null
           }
         }
       ]
