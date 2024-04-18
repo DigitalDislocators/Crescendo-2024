@@ -17,7 +17,6 @@ public class AutoSubwooferFireCmd extends SequentialCommandGroup {
     super(
       new PivotHomePresetCmd(pivot),
       new RollersFireCmd(rollers),
-      new WaitCommand(0.03),
       new FeederFeedCmd(feeder),
       new WaitCommand(0.8),
       new RollersStopCmd(rollers),

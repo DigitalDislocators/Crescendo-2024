@@ -1,6 +1,12 @@
 {
   "version": 1.0,
-  "startingPose": null,
+  "startingPose": {
+    "position": {
+      "x": 0.75,
+      "y": 6.5
+    },
+    "rotation": 60.0
+  },
   "command": {
     "type": "sequential",
     "data": {
@@ -8,49 +14,37 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFivePathFive"
+            "pathName": "AmpMidlineTwoPathOne"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFivePathSix"
+            "pathName": "AmpMidlineTwoPathTwo"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFivePathOne"
+            "pathName": "AmpMdilineThreePathOne"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFivePathTwo"
+            "pathName": "AmpMidlineThreePathTwo"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFivePathSeven"
+            "pathName": "AmpMidlineTwoPathThree"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFivePathEight"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": null
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": null
+            "pathName": "AmpMidlineTwoPathFour"
           }
         }
       ]

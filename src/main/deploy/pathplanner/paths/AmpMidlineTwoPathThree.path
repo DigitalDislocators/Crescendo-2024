@@ -8,36 +8,36 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2542914308886268,
-        "y": 7.1908498704215456
+        "x": 2.0567038627811596,
+        "y": 6.892517043179449
       },
       "isLocked": false,
       "linkedName": "AmpOffsetSubwooferPos"
     },
     {
       "anchor": {
-        "x": 2.8591162946736923,
-        "y": 7.592056086367812
+        "x": 3.68210340430706,
+        "y": 6.820505671086531
       },
       "prevControl": {
-        "x": 1.4993862706343044,
-        "y": 7.592056086367812
+        "x": 2.3223733802676723,
+        "y": 6.820505671086531
       },
       "nextControl": {
-        "x": 4.859116294673692,
-        "y": 7.592056086367812
+        "x": 5.6821034043070595,
+        "y": 6.820505671086531
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.48629065679184,
-        "y": 5.843208478396908
+        "x": 8.362842590346835,
+        "y": 5.750622428563154
       },
       "prevControl": {
-        "x": 7.3855453976572125,
-        "y": 6.6764829269006905
+        "x": 7.190085959119287,
+        "y": 6.141541305639003
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,7 +46,12 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.55,
+      "waypointRelativePos": 0.15,
+      "rotationDegrees": 60.0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 1.4,
       "rotationDegrees": 0,
       "rotateFast": false
     }
@@ -55,7 +60,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 2.75,
+    "maxAcceleration": 5.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

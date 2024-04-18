@@ -2,6 +2,7 @@ package frc.robot.commands.automation;
 
 import frc.robot.commands.feeder.FeederFeedCmd;
 import frc.robot.commands.feeder.FeederStopCmd;
+import frc.robot.commands.pivot.PivotHomePresetCmd;
 import frc.robot.commands.pivot.PivotSourcePresetCmd;
 import frc.robot.commands.rollers.RollersFireCmd;
 import frc.robot.commands.rollers.RollersStopCmd;
@@ -17,10 +18,11 @@ public class AutoFeedCmd extends SequentialCommandGroup {
     super(
       new PivotSourcePresetCmd(pivot),
       new RollersFireCmd(rollers),
-      new WaitCommand(0.4),
+      new WaitCommand(0.6),
       new FeederFeedCmd(feeder),
-      new WaitCommand(0.8),
+      new WaitCommand(1.25),
       new RollersStopCmd(rollers),
+      new PivotHomePresetCmd(pivot),
       new FeederStopCmd(feeder)
     );
   }

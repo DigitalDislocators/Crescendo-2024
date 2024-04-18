@@ -20,6 +20,8 @@ import frc.robot.commands.feeder.FeederInCmd;
 import frc.robot.commands.feeder.FeederStopCmd;
 import frc.robot.commands.lights.LightsDefaultCmd;
 import frc.robot.commands.lights.PartyModeCmd;
+import frc.robot.commands.pivot.PivotAmpPresetCmd;
+import frc.robot.commands.pivot.PivotGroundPresetCmd;
 import frc.robot.commands.pivot.PivotHomePresetCmd;
 import frc.robot.subsystems.RollersSys;
 import frc.robot.subsystems.SpacebarSys;
@@ -29,8 +31,9 @@ import frc.robot.subsystems.FeederSys;
 import frc.robot.subsystems.LightsSys;
 import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
-import frc.robot.commands.auto.programs.AllianceFive;
+import frc.robot.commands.pivot.PivotPodiumPresetCmd;
 import frc.robot.commands.auto.programs.AllianceFour;
+import frc.robot.commands.auto.programs.AllianceFive;
 import frc.robot.commands.auto.programs.AmpMidlineThree;
 import frc.robot.commands.auto.programs.AmpMidlineTwo;
 import frc.robot.commands.auto.programs.ExampleAuto;
@@ -79,13 +82,13 @@ public class RobotContainer {
         // Add programs to auto selector.
         autoSelector.setDefaultOption("Do Nothing", null);
         autoSelector.addOption("Example Auto", new ExampleAuto(swerveSys));
-        autoSelector.addOption("AllianceFour", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
+        autoSelector.addOption("AllianceFour", new AllianceFive(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("AmpMidlineTwo", new AmpMidlineTwo(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("AmpMidlineThree", new AmpMidlineThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("PiHiThreePiece", new PiHiThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("SmashySmash", new SmashySmash(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("TestFive", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
-        autoSelector.addOption("AllianceFive", new AllianceFive(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
+        autoSelector.addOption("AllianceFive", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("SecondPickThree", new SecondPickThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("SourceMidlineTwo", new SourceMidlineTwo(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
 
@@ -183,7 +186,7 @@ public class RobotContainer {
 
         driverController.rightBumper().onTrue(new AutoSourceIntakeCmd(pivotSys, feederSys, rollerSys)).onFalse(new AutoAllHomeCmd(pivotSys, feederSys, rollerSys));
         
-        driverController.a().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(180), swerveSys));
+        driverController.a().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(170), swerveSys));
         driverController.b().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(120), swerveSys));
         driverController.x().whileTrue(new TurnToHeadingCmd(Rotation2d.fromDegrees(90), swerveSys));
         driverController.y().whileTrue(new AimToSpeakerCmd(swerveSys));

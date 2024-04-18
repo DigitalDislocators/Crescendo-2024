@@ -257,7 +257,7 @@ public class Constants {
 
         public static final double toleranceDeg = 0.5;
 
-        public static final double absPivotEncOffsetDeg = 208.0;
+        public static final double absPivotEncOffsetDeg = 208.0 - 60.0;
 
         /*
          Used to calculate the approximate time of flight of the note.
@@ -299,9 +299,9 @@ public class Constants {
         public static final float spacebarReverseLimit = 0.01f;
 
         public static final double kP = 0.015;
-        public static final double kD = 0.00027;
-        public static final double maxVelDegPerSec = 200000.0;
-        public static final double maxAccelDegPerSecSq = 2000000.0;
+        public static final double kD = 0.00025;
+        public static final double maxVelDegPerSec = 2000.0;
+        public static final double maxAccelDegPerSecSq = 1500.0;
 
         public static final double spacebarHomeDeg = -2.0;
         public static final double spacebarOutDeg = 200.0;

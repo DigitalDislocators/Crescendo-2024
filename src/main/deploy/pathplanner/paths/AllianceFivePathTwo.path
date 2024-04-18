@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.48629065679184,
-        "y": 5.843208478396908
+        "x": 8.362842590346835,
+        "y": 5.750622428563154
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.7683050654321875,
-        "y": 6.563322199326104
+        "x": 6.644856998987182,
+        "y": 6.4707361494923505
       },
       "isLocked": false,
       "linkedName": "MidlineNoteTwoPos"
@@ -52,7 +52,7 @@
       "maxWaypointRelativePos": 1.5,
       "constraints": {
         "maxVelocity": 4.0,
-        "maxAcceleration": 3.0,
+        "maxAcceleration": 3.75,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 360.0
       }
