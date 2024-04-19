@@ -18,7 +18,7 @@ public class LightsDefaultCmd extends Command {
 
 	private final BooleanSupplier hasNoteSupplier;
 
-	private boolean prevHasNote = false;
+	private boolean prevHasNote = true;
 
 	/** Creates a new LightsDefaultCmd. */
 	public LightsDefaultCmd(LightsSys lightsSys, BooleanSupplier hasNoteSupplier) {
@@ -44,12 +44,12 @@ public class LightsDefaultCmd extends Command {
 			if(DriverStation.getAlliance().get() == Alliance.Red) {
 				lightsSys.setColor(LightsConstants.redAllianceColor);
 			}
-			else {
+			else if (DriverStation.getAlliance().get() == Alliance.Blue) {
 				lightsSys.setColor(LightsConstants.blueAllianceColor);
 			}
-		}
-		else {
-			lightsSys.setColor(LightsConstants.noAllianceColor);
+			else {
+				lightsSys.setColor(LightsConstants.noAllianceColor);
+			}
 		}
 
 		lightsSys.setValue(1.0);
