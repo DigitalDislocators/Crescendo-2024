@@ -29,6 +29,11 @@ public class LightsDefaultCmd extends Command {
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
+	}
+
+	// Called every time the scheduler runs while the command is scheduled.
+	@Override
+	public void execute() {
 		if(hasNoteSupplier.getAsBoolean()) {
 			lightsSys.setColor(LightsConstants.hasNoteColor);
 		}
@@ -46,10 +51,6 @@ public class LightsDefaultCmd extends Command {
 
 		lightsSys.setValue(1.0);
 	}
-
-	// Called every time the scheduler runs while the command is scheduled.
-	@Override
-	public void execute() {}
 
 	// Called once the command ends or is interrupted.
 	@Override

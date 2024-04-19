@@ -202,7 +202,7 @@ public class Constants {
         
         public static final double fireRPM = 5250.0;
         
-        public static final double ampRPM = 1000.0;
+        public static final double ampRPM = 900.0;
         
         public static final double intakeRPM = 6200.0;
 
@@ -221,7 +221,7 @@ public class Constants {
 
         public static final double gearRatio = 45.0;
 
-        public static final double kP = 0.0125; // 0.035;
+        public static final double kP = 0.012; // 0.035;
         public static final double kD = 0.00025; // 0.00037;
 
         public static final double degPerEncRev = 360.0 / gearRatio;
@@ -231,7 +231,7 @@ public class Constants {
 
         public static final double maxVelDegPerSec = 600.0; // 400.0;
 
-        public static final double maxAccelDegPerSecSq = 525.0; // 575.0;
+        public static final double maxAccelDegPerSecSq = 400.0; // 575.0;
 
         public static final double maxManualDegPerSec = 180.0;
 
@@ -241,7 +241,7 @@ public class Constants {
 
         public static final double ampPresetDeg = 67.0;
         
-        public static final double sourcePresetDeg = 58.0;
+        public static final double sourcePresetDeg = 68.0;
 
         public static final double groundPresetDeg = 183.0;
 

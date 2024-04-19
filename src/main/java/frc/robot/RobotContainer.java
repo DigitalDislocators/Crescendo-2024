@@ -82,13 +82,13 @@ public class RobotContainer {
         // Add programs to auto selector.
         autoSelector.setDefaultOption("Do Nothing", null);
         autoSelector.addOption("Example Auto", new ExampleAuto(swerveSys));
-        autoSelector.addOption("AllianceFour", new AllianceFive(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
+        autoSelector.addOption("AllianceFour", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("AmpMidlineTwo", new AmpMidlineTwo(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("AmpMidlineThree", new AmpMidlineThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("PiHiThreePiece", new PiHiThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("SmashySmash", new SmashySmash(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("TestFive", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
-        autoSelector.addOption("AllianceFive", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
+        autoSelector.addOption("AllianceFive", new AllianceFive(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("SecondPickThree", new SecondPickThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("SourceMidlineTwo", new SourceMidlineTwo(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
 
