@@ -18,6 +18,8 @@ public class LightsDefaultCmd extends Command {
 
 	private final BooleanSupplier hasNoteSupplier;
 
+	private boolean prevHasNote = false;
+
 	/** Creates a new LightsDefaultCmd. */
 	public LightsDefaultCmd(LightsSys lightsSys, BooleanSupplier hasNoteSupplier) {
 		this.lightsSys = lightsSys;
@@ -29,15 +31,16 @@ public class LightsDefaultCmd extends Command {
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
+
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		if(hasNoteSupplier.getAsBoolean()) {
+		if(!prevHasNote && hasNoteSupplier.getAsBoolean()) {
 			lightsSys.setColor(LightsConstants.hasNoteColor);
 		}
-		else if(DriverStation.getAlliance().isPresent()) {
+		else if(DriverStation.getAlliance().isPresent() && prevHasNote && !hasNoteSupplier.getAsBoolean()) {
 			if(DriverStation.getAlliance().get() == Alliance.Red) {
 				lightsSys.setColor(LightsConstants.redAllianceColor);
 			}
@@ -50,6 +53,8 @@ public class LightsDefaultCmd extends Command {
 		}
 
 		lightsSys.setValue(1.0);
+
+		prevHasNote = hasNoteSupplier.getAsBoolean();
 	}
 
 	// Called once the command ends or is interrupted.
