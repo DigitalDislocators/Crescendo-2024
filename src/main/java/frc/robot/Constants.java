@@ -135,8 +135,8 @@ public class Constants {
         public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(81.6); // 82.7
 
         // You may want to change this value.
-        public static final int driveCurrentLimitAmps = 55;
-        public static final double brownoutVoltage = 6.5;
+        public static final int driveCurrentLimitAmps = 70;
+        public static final double brownoutVoltage = 6.25;
         
         // These values should be fine, but if the modules start to rattle you may want to play with the steer PID values.
         public static final double drivekP = 0.13;//0.005;
@@ -178,7 +178,7 @@ public class Constants {
         public static final double driveToAmpMaxVelMetersPerSec = 4.0;
         public static final double driveToAmpMaxAccelMetersPerSecSq = 3.0;
 
-        public static final double subwooferShotThreshold = 2.2;
+        public static final double subwooferShotThreshold = 1.8;
 
         public static final double offsetSubwooferShotThreshold = 1.0;
 
@@ -229,9 +229,9 @@ public class Constants {
 
         public static final double freeSpeedRPM = 6784.0 / gearRatio;
 
-        public static final double maxVelDegPerSec = 600.0; // 400.0;
+        public static final double maxVelDegPerSec = 800.0; // 400.0;
 
-        public static final double maxAccelDegPerSecSq = 400.0; // 575.0;
+        public static final double maxAccelDegPerSecSq = 575.0; // 575.0;
 
         public static final double maxManualDegPerSec = 180.0;
 

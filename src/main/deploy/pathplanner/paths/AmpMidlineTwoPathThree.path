@@ -32,16 +32,16 @@
     },
     {
       "anchor": {
-        "x": 9.09324365014645,
-        "y": 7.468608019922806
+        "x": 8.599451384366429,
+        "y": 5.7
       },
       "prevControl": {
-        "x": 7.920487018918902,
-        "y": 7.859526896998656
+        "x": 7.4266947531388805,
+        "y": 6.09091887707585
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "MidlineNoteTwoPos"
+      "linkedName": null
     }
   ],
   "rotationTargets": [

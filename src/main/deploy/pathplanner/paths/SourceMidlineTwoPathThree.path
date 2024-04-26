@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 9.566461238185635,
-        "y": 2.2117778571396745
+        "x": 9.587035915926469,
+        "y": 2.43809931228885
       },
       "prevControl": {
-        "x": 8.393704606958087,
-        "y": 1.7282729302300717
+        "x": 8.414279284698921,
+        "y": 1.9545943853792473
       },
       "nextControl": null,
       "isLocked": false,
@@ -65,7 +65,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 6.0,
+    "maxAcceleration": 2.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 2.4784847564682604,
-        "y": 6.5941842159373545
+        "x": 2.704806211617436,
+        "y": 6.799930993345696
       },
       "prevControl": {
-        "x": 2.001222735528179,
-        "y": 6.204633026559287
+        "x": 2.2275441906773548,
+        "y": 6.410379803967628
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "AllianceNoteOnePos"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
@@ -35,7 +35,7 @@
       "rotateFast": false
     },
     {
-      "waypointRelativePos": 0.85,
+      "waypointRelativePos": 0.7,
       "rotationDegrees": 45.0,
       "rotateFast": false
     }

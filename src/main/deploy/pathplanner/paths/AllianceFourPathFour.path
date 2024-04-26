@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.529921450820346,
-        "y": 5.555162990025228
+        "x": 2.75,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.029921450820346,
-        "y": 5.555162990025228
+        "x": 2.25,
+        "y": 5.55
       },
       "isLocked": false,
-      "linkedName": "AllianceNoteTwoPos"
+      "linkedName": null
     },
     {
       "anchor": {

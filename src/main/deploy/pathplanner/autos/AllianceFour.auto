@@ -8,13 +8,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFourPathOne"
+            "pathName": "AllianceFourPathFive"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFourPathTwo"
+            "pathName": "AllianceFourPathSix"
           }
         },
         {
@@ -32,13 +32,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFourPathFive"
+            "pathName": "AllianceFourPathOne"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AllianceFourPathSix"
+            "pathName": "AllianceFourPathTwo"
           }
         }
       ]
