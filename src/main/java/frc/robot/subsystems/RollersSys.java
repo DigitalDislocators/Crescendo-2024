@@ -21,7 +21,7 @@ public class RollersSys extends SubsystemBase {
     private final SparkPIDController topRollerController;
     private final SparkPIDController bottomRollerController;
 
-    private final ColorSensorV3 sensor;
+    private final I2CColorSensor sensor;
 
     public RollersSys() {
         topRollerMtr = new CANSparkFlex(CANDevices.leaderRollerMtrId, MotorType.kBrushless);
@@ -49,7 +49,7 @@ public class RollersSys extends SubsystemBase {
         bottomRollerController.setP(RollerConstants.kP);
         bottomRollerController.setD(RollerConstants.kD);
 
-        sensor = new ColorSensorV3(Port.kOnboard);
+        sensor = new I2CColorSensor();
     }
 
     @Override
@@ -74,7 +74,6 @@ public class RollersSys extends SubsystemBase {
     }
 
     public boolean hasNote() {
-        return sensor.getProximity() > RollerConstants.sensorHasNoteADCThreshold;
+        return sensor.hasNote();
     }
-
 }

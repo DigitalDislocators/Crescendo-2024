@@ -213,6 +213,8 @@ public class Constants {
         public static final double metersPerSecondPerRPM = rollerCircumferenceMeters / 60.0;
 
         public static final int sensorHasNoteADCThreshold = 200;
+
+        public static final double sensorTimeIntervalSecs = 0.4;
     }
 
     public class PivotConstants {
