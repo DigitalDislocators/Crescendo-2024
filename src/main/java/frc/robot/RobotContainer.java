@@ -84,7 +84,7 @@ public class RobotContainer {
         autoSelector.addOption("Example Auto", new ExampleAuto(swerveSys));
         autoSelector.addOption("AllianceFour", new AllianceFour(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("AmpMidlineTwo", new AmpMidlineTwo(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
-        autoSelector.addOption("AmpMidlineThree", new AmpMidlineThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
+        //autoSelector.addOption("AmpMidlineThree", new AmpMidlineThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("PiHiThreePiece", new PiHiThreePiece(swerveSys, feederSys, rollerSys, pivotSys));
         autoSelector.addOption("SmashySmash", new SmashySmash(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("TestFive", new TestFivePiece(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
@@ -147,10 +147,10 @@ public class RobotContainer {
 
         operatorController.start().toggleOnTrue(new PartyModeCmd(lightsSys));
 
-        // Servo spacebar
-        // operatorController.povDown().onTrue(new ServoSpacebarHomeCmd(servoSpacebarSys));
+         //Servo spacebar
+         //operatorController.povDown().onTrue(new ServoSpacebarHomeCmd(servoSpacebarSys));
 
-        // operatorController.povLeft().onTrue(new ServoSpacebarOutCmd(servoSpacebarSys));
+         //operatorController.povLeft().onTrue(new ServoSpacebarOutCmd(servoSpacebarSys));
 
 
         // For spacebar testin and troubleshootin
