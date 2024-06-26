@@ -33,6 +33,7 @@ import frc.robot.subsystems.SwerveSys;
 import frc.robot.commands.pivot.PivotManualCmd;
 import frc.robot.commands.pivot.PivotPodiumPresetCmd;
 import frc.robot.commands.auto.programs.AllianceFour;
+import frc.robot.commands.auto.FollowPathCmd;
 import frc.robot.commands.auto.programs.AllianceFive;
 import frc.robot.commands.auto.programs.AmpMidlineThree;
 import frc.robot.commands.auto.programs.AmpMidlineTwo;
@@ -91,7 +92,6 @@ public class RobotContainer {
         autoSelector.addOption("AllianceFive", new AllianceFive(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         // autoSelector.addOption("SecondPickThree", new SecondPickThree(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
         autoSelector.addOption("SourceMidlineTwo", new SourceMidlineTwo(swerveSys, feederSys, rollerSys, pivotSys, spacebarSys));
-
 
         configDriverBindings();
         configOperatorBindings();
@@ -195,6 +195,7 @@ public class RobotContainer {
 
     public Command getAutonomousCommand() {
         return autoSelector.getSelected();
+        // return new FollowPathCmd("TEST", swerveSys);
     } 
 
     // For uniformity, any information sent to Shuffleboard/SmartDashboard should go here.

@@ -44,7 +44,7 @@ public class LightsDefaultCmd extends Command {
 			if(DriverStation.getAlliance().get() == Alliance.Red) {
 				lightsSys.setColor(LightsConstants.redAllianceColor);
 			}
-			else if (DriverStation.getAlliance().get() == Alliance.Blue) {
+			else if(DriverStation.getAlliance().get() == Alliance.Blue) {
 				lightsSys.setColor(LightsConstants.blueAllianceColor);
 			}
 			else {

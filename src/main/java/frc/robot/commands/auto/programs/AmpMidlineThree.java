@@ -32,9 +32,9 @@ public class AmpMidlineThree extends SequentialCommandGroup {
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys))
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.offsetSubwooferShotThreshold)
           .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
-      new FollowPathCmd("AmpThreePathOne", swerveSys)
+      new FollowPathCmd("AmpMidlineThreePathOne", swerveSys)
         .alongWith(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys)),
-      new FollowPathCmd("AmpThreePathTwo", swerveSys)
+      new FollowPathCmd("AmpMidlineThreePathTwo", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys))
         .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.offsetSubwooferShotThreshold)
         .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),

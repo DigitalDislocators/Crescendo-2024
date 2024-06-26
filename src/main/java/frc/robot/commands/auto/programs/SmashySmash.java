@@ -21,10 +21,10 @@ import frc.robot.subsystems.SwerveSys;
 public class SmashySmash extends SequentialCommandGroup {
   public SmashySmash(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys, SpacebarSys SpacebarSys) {
     addCommands(
-      new SetInitialPoseCmd("SecondPickThreePathOne", swerveSys),
+      new SetInitialPoseCmd("AmpMidlineTwoPathOne", swerveSys),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
       new WaitCommand(0.08),
-      new FollowPathCmd("SecondPickThreePathOne", swerveSys)
+      new FollowPathCmd("AmpMidlineTwoPathOne", swerveSys)
         .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
           .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys))),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
