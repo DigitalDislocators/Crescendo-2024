@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 2.529921450820346,
-        "y": 5.555162990025228
+        "x": 2.75,
+        "y": 5.55
       },
       "prevControl": {
-        "x": 2.029921450820346,
-        "y": 5.555162990025228
+        "x": 2.25,
+        "y": 5.55
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "AllianceNoteTwoPos"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
-    "maxAcceleration": 1.245,
+    "maxAcceleration": 2.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.393704606958085,
-        "y": 7.550906730886145
+        "x": 10.3,
+        "y": 7.35
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.393704606958085,
-        "y": 7.550906730886145
+        "x": 9.121292175065555,
+        "y": 7.7266535082944845
       },
       "isLocked": false,
-      "linkedName": "MidlineNoteOnePos"
+      "linkedName": null
     },
     {
       "anchor": {

@@ -14,18 +14,6 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SourceMidlineTwoPathOne"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "SourceMidlineTwoPathTwo"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
             "pathName": "SourceMidlineTwoPathThree"
           }
         },
@@ -33,6 +21,12 @@
           "type": "path",
           "data": {
             "pathName": "SourceMidlineTwoPathFour"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SourceMidlineTwoPathOne"
           }
         }
       ]

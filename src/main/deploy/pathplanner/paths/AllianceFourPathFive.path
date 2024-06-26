@@ -16,21 +16,21 @@
     },
     {
       "anchor": {
-        "x": 2.509346773079512,
-        "y": 4.464705069761017
+        "x": 2.6,
+        "y": 4.3
       },
       "prevControl": {
-        "x": 2.000099121413604,
-        "y": 4.919395696801348
+        "x": 2.0907523483340924,
+        "y": 4.754690627040331
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "AllianceNoteThreePos"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.85,
+      "waypointRelativePos": 0.75,
       "rotationDegrees": -45.0,
       "rotateFast": false
     },

@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.4784847564682604,
-        "y": 6.5941842159373545
+        "x": 2.7,
+        "y": 6.8
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8880620079535908,
-        "y": 6.101759637855116
+        "x": 2.1095772514853306,
+        "y": 6.307575421917761
       },
       "isLocked": false,
-      "linkedName": "AllianceNoteOnePos"
+      "linkedName": null
     },
     {
       "anchor": {
@@ -25,7 +25,7 @@
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "SubwooferPos"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
