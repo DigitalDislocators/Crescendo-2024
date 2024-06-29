@@ -32,15 +32,15 @@
     },
     {
       "anchor": {
-        "x": 9.587035915926469,
+        "x": 9.25,
         "y": 2.43809931228885
       },
       "prevControl": {
-        "x": 8.414279284698921,
+        "x": 8.077243368772452,
         "y": 1.9545943853792473
       },
       "nextControl": null,
-      "isLocked": false,
+      "isLocked": true,
       "linkedName": "MidlineNoteFourPos"
     }
   ],
@@ -57,6 +57,11 @@
     },
     {
       "waypointRelativePos": 1.05,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 2,
       "rotationDegrees": 0,
       "rotateFast": false
     }

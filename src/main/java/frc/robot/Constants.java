@@ -122,17 +122,13 @@ public class Constants {
 
         // Set line up the swerve modules and set these values.
 
-        // The bolt heads should be pointing to the left. These values are subtracted from the CANCoder reading,
+        // The bolt heads should be pointing to the right. These values are subtracted from the CANCoder reading,
         // so they should be the raw CANCoder value when set straight. These values should be between 0 and 360
         // degrees.
-
-        // Don't quote me on that they should be pointing to the left. (I'm almost positive though.) If 
-        // the drive base drives 180 off from the commanded direction, flip these readings 180 degrees and change
-        // the comment above for future reference.
-        public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(303.13); // 122.43
-        public static final Rotation2d frontRightModOffset = Rotation2d.fromDegrees(4.13); // 184.12
-        public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(246.18); // 62
-        public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(258.39); // 82.7
+        public static final Rotation2d frontLeftModOffset = Rotation2d.fromDegrees(124.80); // 122.43
+        public static final Rotation2d frontRightModOffset = Rotation2d.fromDegrees(202.67); // 184.12
+        public static final Rotation2d backLeftModOffset = Rotation2d.fromDegrees(63.36); // 62
+        public static final Rotation2d backRightModOffset = Rotation2d.fromDegrees(79.36); // 82.7
 
         // You may want to change this value.
         public static final int driveCurrentLimitAmps = 70;
@@ -318,6 +314,8 @@ public class Constants {
 
         public static final double partyModeHueIncrement = 5;
         public static final double partyModeTranslationTimeSec = 0.05;
+
+        public static final double brightnessPercentage = 0.5;
     }
 
     public class VisionConstants {

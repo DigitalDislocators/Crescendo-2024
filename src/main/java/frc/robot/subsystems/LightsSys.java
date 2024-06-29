@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.LightsConstants;
 import frc.robot.util.led.LEDStrip;
 import frc.robot.util.led.LEDStripArray;
 
@@ -26,6 +27,8 @@ public class LightsSys extends SubsystemBase {
 		exampleStrip3.setReversed(true);
 
 		ledStripArray = new LEDStripArray(9, exampleStrip1, exampleStrip2, exampleStrip3);
+
+		ledStripArray.setBrightnesses(LightsConstants.brightnessPercentage);
 	}
 
 	@Override
