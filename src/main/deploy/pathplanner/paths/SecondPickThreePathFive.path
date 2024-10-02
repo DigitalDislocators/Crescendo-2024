@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.75,
-        "y": 6.5
+        "x": 0.7563113988427739,
+        "y": 6.5383776785252685
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7892330521503153,
-        "y": 7.077689142846958
+        "x": 1.7955444509930891,
+        "y": 7.116066821372226
       },
       "isLocked": false,
       "linkedName": "AmpOffsetSubwooferPos"

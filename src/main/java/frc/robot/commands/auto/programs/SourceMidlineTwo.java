@@ -21,23 +21,23 @@ import frc.robot.subsystems.SwerveSys;
 public class SourceMidlineTwo extends SequentialCommandGroup {
   public SourceMidlineTwo(SwerveSys swerveSys, FeederSys FeederSys, RollersSys RollersSys, PivotSys PivotSys, SpacebarSys SpacebarSys) {
     addCommands(
-      new SetInitialPoseCmd("SourceMidlineTwoPathThree", swerveSys),
+      new SetInitialPoseCmd("SourceMidlineTwoPathOne", swerveSys),
       new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new FollowPathCmd("SourceMidlineTwoPathThree", swerveSys)
+      new FollowPathCmd("SourceMidlineTwoPathOne", swerveSys)
         .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
           .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys))),
-      new FollowPathCmd("SourceMidlineTwoPathFour", swerveSys)
+      new FollowPathCmd("SourceMidlineTwoPathTwo", swerveSys)
         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys))
           .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.offsetSubwooferShotThreshold)
           .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys))),
       // new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys),
-      new FollowPathCmd("SourceMidlineTwoPathOne", swerveSys)
+      new FollowPathCmd("SourceMidlineTwoPathThree", swerveSys)
         .alongWith(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() > 5.5)
-          .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys)))
-      // new FollowPathCmd("SourceMidlineTwoPathFour", swerveSys)
-      //   .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys))
-      //   .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.offsetSubwooferShotThreshold)
-      //   .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys)))
+          .andThen(new AutoGroundIntakeCmd(PivotSys, FeederSys, RollersSys, SpacebarSys))),
+       new FollowPathCmd("SourceMidlineTwoPathFour", swerveSys)
+         .alongWith(new AutoAllHomeCmd(PivotSys, FeederSys, RollersSys))
+         .andThen(new WaitUntilCommand(() -> swerveSys.getBlueSidePose().getX() < AutoConstants.offsetSubwooferShotThreshold)
+         .andThen(new AutoSubwooferFireCmd(FeederSys, RollersSys, PivotSys)))
     );
   }
 }

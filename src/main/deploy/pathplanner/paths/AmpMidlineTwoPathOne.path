@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.75,
-        "y": 6.5
+        "x": 0.7563113988427739,
+        "y": 6.5383776785252685
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2542914308886268,
-        "y": 7.1908498704215456
+        "x": 1.260602829731401,
+        "y": 7.229227548946814
       },
       "isLocked": false,
       "linkedName": "AmpOffsetSubwooferPos"
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 8.3,
-        "y": 7.345159953477801
+        "x": 9.22697905546187,
+        "y": 7.31429793686655
       },
       "prevControl": {
-        "x": 7.271266112958292,
-        "y": 7.684642136201565
+        "x": 8.198245168420161,
+        "y": 7.653780119590314
       },
       "nextControl": null,
       "isLocked": false,
@@ -54,11 +54,22 @@
   "constraintZones": [
     {
       "name": "New Constraints Zone",
-      "minWaypointRelativePos": 1.25,
+      "minWaypointRelativePos": 1.6,
       "maxWaypointRelativePos": 2.0,
       "constraints": {
         "maxVelocity": 4.0,
-        "maxAcceleration": 8.0,
+        "maxAcceleration": 7.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 360.0
+      }
+    },
+    {
+      "name": "New Constraints Zone",
+      "minWaypointRelativePos": 0,
+      "maxWaypointRelativePos": 0.75,
+      "constraints": {
+        "maxVelocity": 6.0,
+        "maxAcceleration": 4.0,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 360.0
       }
@@ -66,8 +77,8 @@
   ],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 2.75,
+    "maxVelocity": 7.0,
+    "maxAcceleration": 7.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },

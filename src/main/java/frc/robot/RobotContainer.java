@@ -24,6 +24,7 @@ import frc.robot.commands.pivot.PivotAmpPresetCmd;
 import frc.robot.commands.pivot.PivotGroundPresetCmd;
 import frc.robot.commands.pivot.PivotHomePresetCmd;
 import frc.robot.subsystems.RollersSys;
+import frc.robot.subsystems.ServoSpacebarSys;
 import frc.robot.subsystems.SpacebarSys;
 import frc.robot.subsystems.PivotSys;
 import frc.robot.subsystems.ClimberSys;
@@ -43,6 +44,8 @@ import frc.robot.commands.auto.programs.SmashySmash;
 import frc.robot.commands.automation.AutoAllHomeCmd;
 import frc.robot.commands.automation.AutoGroundIntakeCmd;
 import frc.robot.commands.automation.AutoAmpFireCmd;
+import frc.robot.commands.automation.AutoAmpHoldDownCmd;
+import frc.robot.commands.automation.AutoAmpHoldUpCmd;
 import frc.robot.commands.automation.AutoFeedCmd;
 import frc.robot.commands.automation.AutoSourceIntakeCmd;
 import frc.robot.commands.automation.AutoSpeakerFireCmd;
@@ -53,6 +56,8 @@ import frc.robot.commands.climber.ClimberUpCmd;
 import frc.robot.commands.rollers.RollersFireCmd;
 import frc.robot.commands.rollers.RollersIntakeCmd;
 import frc.robot.commands.rollers.RollersStopCmd;
+import frc.robot.commands.servospacebar.ServoSpacebarHomeCmd;
+import frc.robot.commands.servospacebar.ServoSpacebarOutCmd;
 import frc.robot.commands.spacebar.SpacebarHomeCmd;
 import frc.robot.commands.spacebar.SpacebarOutCmd;
 
@@ -65,7 +70,7 @@ public class RobotContainer {
     private final FeederSys feederSys = new FeederSys();
     private final ClimberSys climberSys = new ClimberSys();
     private final LightsSys lightsSys = new LightsSys();
-    // private final ServoSpacebarSys servoSpacebarSys = new ServoSpacebarSys();
+     private final ServoSpacebarSys servoSpacebarSys = new ServoSpacebarSys();
     private final SpacebarSys spacebarSys = new SpacebarSys();
 
     //Initialize joysticks.
@@ -135,6 +140,7 @@ public class RobotContainer {
 
         operatorController.povDown().onTrue(new ClimberDownCmd(climberSys)).onFalse(new ClimberStopCmd(climberSys));
         
+        operatorController.povLeft().onTrue(new AutoAmpHoldUpCmd(pivotSys, spacebarSys)).onFalse(new AutoAmpHoldDownCmd(pivotSys, spacebarSys));
         
 
         operatorController.axisGreaterThan(XboxController.Axis.kRightTrigger.value, ControllerConstants.triggerPressedThreshhold)
@@ -148,15 +154,15 @@ public class RobotContainer {
         operatorController.start().toggleOnTrue(new PartyModeCmd(lightsSys));
 
          //Servo spacebar
-         //operatorController.povDown().onTrue(new ServoSpacebarHomeCmd(servoSpacebarSys));
+         operatorController.povDown().onTrue(new ServoSpacebarHomeCmd(servoSpacebarSys));
 
-         //operatorController.povLeft().onTrue(new ServoSpacebarOutCmd(servoSpacebarSys));
+         operatorController.povLeft().onTrue(new ServoSpacebarOutCmd(servoSpacebarSys));
 
 
         // For spacebar testin and troubleshootin
         
-       operatorController.povLeft().onTrue(new SpacebarOutCmd(spacebarSys));
-       operatorController.povDown().onTrue(new SpacebarHomeCmd(spacebarSys));
+       //operatorController.povLeft().onTrue(new SpacebarOutCmd(spacebarSys));
+       //operatorController.povDown().onTrue(new SpacebarHomeCmd(spacebarSys));
 
         // For Pivot testin and troubleshootin
 

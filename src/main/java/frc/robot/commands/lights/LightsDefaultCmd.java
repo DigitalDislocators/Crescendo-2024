@@ -37,10 +37,10 @@ public class LightsDefaultCmd extends Command {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		if(!prevHasNote && hasNoteSupplier.getAsBoolean()) {
+		/*if(!prevHasNote && hasNoteSupplier.getAsBoolean()) {
 			lightsSys.setColor(LightsConstants.hasNoteColor);
 		}
-		else if(DriverStation.getAlliance().isPresent() && prevHasNote && !hasNoteSupplier.getAsBoolean()) {
+		else if(DriverStation.getAlliance().isPresent() && prevHasNote && !hasNoteSupplier.getAsBoolean()) {*/
 			if(DriverStation.getAlliance().get() == Alliance.Red) {
 				lightsSys.setColor(LightsConstants.redAllianceColor);
 			}
@@ -50,11 +50,11 @@ public class LightsDefaultCmd extends Command {
 			else {
 				lightsSys.setColor(LightsConstants.noAllianceColor);
 			}
-		}
+		// }
 
 		lightsSys.setValue(1.0);
 
-		prevHasNote = hasNoteSupplier.getAsBoolean();
+		// prevHasNote = hasNoteSupplier.getAsBoolean();
 	}
 
 	// Called once the command ends or is interrupted.

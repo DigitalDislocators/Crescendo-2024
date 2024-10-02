@@ -245,7 +245,7 @@ public class Constants {
 
         public static final double homePresetDeg = 0.0;
 
-        public static final double podiumPresetDeg = 84.4;
+        public static final double podiumPresetDeg = 82.4;
 
         public static final float lowerLimitDeg = 0f;
 
@@ -271,10 +271,10 @@ public class Constants {
             InterpolatingDoubleTreeMap pivotInterpolator = new InterpolatingDoubleTreeMap();
 
             // data points with coordinate (lateral distance to speaker [meters], pivot angle [degrees])
-            pivotInterpolator.put(1.23, 59.0 - 4.0);
-            pivotInterpolator.put(2.24, 79.7 - 4.0);
-            pivotInterpolator.put(2.77, 84.0 - 6.0);
-            pivotInterpolator.put(3.12, podiumPresetDeg - 6.0);
+            pivotInterpolator.put(1.23, 59.0 - 2.0);
+            pivotInterpolator.put(2.24, 79.7 - 2.0);
+            pivotInterpolator.put(2.77, 84.0 - 3.0);
+            pivotInterpolator.put(3.12, podiumPresetDeg);
             // pivotInterpolator.put(3.5, 77.0);
 
             return pivotInterpolator;

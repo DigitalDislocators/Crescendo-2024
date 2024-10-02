@@ -3,43 +3,77 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.6,
-        "y": 5.7
+        "x": 8.279983195037481,
+        "y": 5.758179478444265
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.447818046513287,
-        "y": 6.193792265780022
+        "x": 7.1278012415507686,
+        "y": 6.251971744224287
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.7438274375295624,
-        "y": 6.254702033213591
+        "x": 3.371662470252881,
+        "y": 7.306377596320301
       },
       "prevControl": {
-        "x": 4.371355108625004,
-        "y": 6.794806644500508
+        "x": 4.871424119298004,
+        "y": 7.256106256128845
+      },
+      "nextControl": {
+        "x": 1.6305913103854421,
+        "y": 7.364737523466695
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.8001858657745748,
+        "y": 6.487678567774198
+      },
+      "prevControl": {
+        "x": 1.420527543962801,
+        "y": 6.995026278295288
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
-  "constraintZones": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.1,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "New Constraints Zone",
+      "minWaypointRelativePos": 1.05,
+      "maxWaypointRelativePos": 2.0,
+      "constraints": {
+        "maxVelocity": 3.5,
+        "maxAcceleration": 4.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 360.0
+      }
+    }
+  ],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 8.0,
-    "maxAcceleration": 6.0,
+    "maxVelocity": 7.0,
+    "maxAcceleration": 8.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": 60.0,
     "rotateFast": false
   },
   "reversed": false,

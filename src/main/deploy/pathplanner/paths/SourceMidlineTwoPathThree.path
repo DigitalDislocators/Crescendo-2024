@@ -3,44 +3,44 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.75,
-        "y": 4.55
+        "x": 0.7296371484973552,
+        "y": 4.619015152817273
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.25,
-        "y": 3.6839745962155614
+        "x": 1.2296371484973552,
+        "y": 3.7529897490328343
       },
       "isLocked": false,
       "linkedName": "OffsetSubwooferPos"
     },
     {
       "anchor": {
-        "x": 4.206757686698332,
-        "y": 2.1089044684355036
+        "x": 5.204629557128788,
+        "y": 1.460802119599227
       },
       "prevControl": {
-        "x": 2.8729865764869382,
-        "y": 2.636879640363291
+        "x": 3.8055514707520652,
+        "y": 2.222065196010092
       },
       "nextControl": {
-        "x": 5.540528796909725,
-        "y": 1.580929296507716
+        "x": 6.185097484589756,
+        "y": 0.9273122178925234
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 9.25,
-        "y": 2.43809931228885
+        "x": 8.578876706625595,
+        "y": 2.540972700993022
       },
       "prevControl": {
-        "x": 8.077243368772452,
-        "y": 1.9545943853792473
+        "x": 7.303246686693876,
+        "y": 1.9134450298975794
       },
       "nextControl": null,
-      "isLocked": true,
+      "isLocked": false,
       "linkedName": "MidlineNoteFourPos"
     }
   ],
@@ -51,32 +51,39 @@
       "rotateFast": false
     },
     {
-      "waypointRelativePos": 1.85,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    },
-    {
       "waypointRelativePos": 1.05,
       "rotationDegrees": 0,
       "rotateFast": false
     },
     {
-      "waypointRelativePos": 2,
-      "rotationDegrees": 0,
+      "waypointRelativePos": 1.75,
+      "rotationDegrees": 25.0,
       "rotateFast": false
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "New Constraints Zone",
+      "minWaypointRelativePos": 0.95,
+      "maxWaypointRelativePos": 2.0,
+      "constraints": {
+        "maxVelocity": 4.0,
+        "maxAcceleration": 4.5,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 360.0
+      }
+    }
+  ],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 2.5,
+    "maxVelocity": 6.5,
+    "maxAcceleration": 7.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 360.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 25.0,
     "rotateFast": false
   },
   "reversed": false,

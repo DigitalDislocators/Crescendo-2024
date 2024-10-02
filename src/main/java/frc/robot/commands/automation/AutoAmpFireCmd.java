@@ -25,7 +25,7 @@ public class AutoAmpFireCmd extends SequentialCommandGroup {
       new SpacebarOutCmd(spacebar),
       new WaitCommand(0.25),
       new FeederFeedCmd(feeder),
-      new WaitCommand(1.1),
+      new WaitCommand(1.5),
       new SpacebarHomeCmd(spacebar),
       new WaitCommand(0.775),
       new PivotHomePresetCmd(pivot),

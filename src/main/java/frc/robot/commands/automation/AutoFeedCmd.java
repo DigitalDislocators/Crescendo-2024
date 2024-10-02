@@ -20,7 +20,7 @@ public class AutoFeedCmd extends SequentialCommandGroup {
       new RollersFireCmd(rollers),
       new WaitCommand(0.6),
       new FeederFeedCmd(feeder),
-      new WaitCommand(1.25),
+      new WaitCommand(1.6),
       new RollersStopCmd(rollers),
       new PivotHomePresetCmd(pivot),
       new FeederStopCmd(feeder)
