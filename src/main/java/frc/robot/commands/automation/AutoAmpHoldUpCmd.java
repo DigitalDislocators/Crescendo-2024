@@ -11,9 +11,13 @@ import frc.robot.subsystems.SpacebarSys;
 public class AutoAmpHoldUpCmd extends SequentialCommandGroup {
   public AutoAmpHoldUpCmd(PivotSys pivot, SpacebarSys spacebar) {
     super(
-       new PivotAmpPresetCmd(pivot),
-       new WaitCommand(0.175),
+      new PivotAmpPresetCmd(pivot),
+      new WaitCommand(0.175),
       new SpacebarOutCmd(spacebar)
     );
   }
+
+public AutoAmpHoldUpCmd(SpacebarSys spacebarSys) {
+    //TODO Auto-generated constructor stub
+}
 }

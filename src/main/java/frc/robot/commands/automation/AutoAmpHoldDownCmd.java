@@ -15,4 +15,8 @@ public class AutoAmpHoldDownCmd extends SequentialCommandGroup {
       new PivotHomePresetCmd(pivot)
     );
   }
+
+  public AutoAmpHoldDownCmd(SpacebarSys spacebarSys) {
+    //TODO Auto-generated constructor stub
+  }
 } 

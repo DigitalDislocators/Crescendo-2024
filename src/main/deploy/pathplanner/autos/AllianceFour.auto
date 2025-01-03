@@ -40,6 +40,12 @@
           "data": {
             "pathName": "AllianceFourPathTwo"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpMidlineTwoPathOne"
+          }
         }
       ]
     }
